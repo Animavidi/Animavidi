@@ -1,0 +1,46 @@
+.card {
+  position: relative;
+  display: grid;
+  min-inline-size: 0;
+  grid-template-columns: 4.5rem minmax(0, 1fr) 0.8rem;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.05rem 1.15rem;
+  border: 1px solid rgb(30 51 40 / 15%);
+  border-radius: 1.7rem;
+  appearance: none;
+  font: inherit;
+  text-align: start;
+  text-decoration: none;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: 0 0.8rem 2.1rem rgb(69 52 27 / 9%);
+  transition: border-color var(--motion-fast) var(--ease-standard), transform var(--motion-fast) var(--ease-standard), box-shadow var(--motion-fast) var(--ease-standard);
+}
+
+.card:focus-visible { outline: 3px solid rgb(183 140 69 / 60%); outline-offset: 3px; }
+.primary { color: var(--color-sand-50); background: radial-gradient(circle at 18% 10%, rgb(255 255 255 / 5%), transparent 30%), linear-gradient(120deg, #244b30, #1f442b); }
+.secondary { color: var(--color-savanna-950); background: rgb(250 247 240 / 90%); backdrop-filter: blur(12px); }
+.iconDisc { display: grid; inline-size: 4.25rem; block-size: 4.25rem; place-items: center; border: 1px solid currentColor; border-radius: 50%; background: rgb(246 243 236 / 94%); color: #23452d; }
+.icon { position: relative; display: block; inline-size: 2rem; block-size: 2rem; }
+.location { inline-size: 1.55rem; block-size: 1.9rem; border-radius: 50% 50% 50% 0; background: currentColor; transform: rotate(-45deg); }
+.location::after { position: absolute; inset: 0.43rem; border-radius: 50%; background: var(--color-sand-50); content: ''; }
+.map { border: 2px solid currentColor; border-radius: 0.15rem; transform: skewY(-10deg); }
+.map::before, .map::after { position: absolute; inset-block: -2px; inline-size: 2px; background: currentColor; content: ''; }
+.map::before { inset-inline-start: 31%; }
+.map::after { inset-inline-end: 31%; }
+.copy { display: grid; min-inline-size: 0; gap: 0.45rem; }
+.titleRow { display: flex; min-inline-size: 0; flex-wrap: wrap; gap: 0.45rem 0.6rem; align-items: center; }
+.titleRow strong { font-size: clamp(1rem, 4.5vw, 1.25rem); line-height: 1.12; }
+.badge { padding: 0.24rem 0.5rem; border-radius: 0.4rem; color: #3c452e; background: #d8b77b; font-size: 0.66rem; line-height: 1; white-space: nowrap; }
+.description { font-size: clamp(0.8rem, 3.65vw, 0.94rem); line-height: 1.48; opacity: 0.78; text-wrap: pretty; }
+.chevron { inline-size: 0.72rem; block-size: 0.72rem; border-block-start: 2px solid currentColor; border-inline-end: 2px solid currentColor; transform: rotate(45deg); }
+
+@media (max-width: 22rem) {
+  .card { grid-template-columns: 3.6rem minmax(0, 1fr) 0.7rem; gap: 0.7rem; padding: 1rem 0.9rem; border-radius: 1.45rem; }
+  .iconDisc { inline-size: 3.45rem; block-size: 3.45rem; }
+  .badge { white-space: normal; }
+}
+
+@media (hover: hover) { .card:hover { transform: translateY(-2px); box-shadow: 0 1rem 2.4rem rgb(69 52 27 / 13%); } }
+@media (prefers-reduced-motion: reduce) { .card { transition: none; } .card:hover { transform: none; } }

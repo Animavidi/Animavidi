@@ -1,0 +1,9 @@
+export type GateTime={month:number;monthName:string;parkOpen:string;parkClose:string;campOpen:string;campClose:string}
+export type InformationCategory={id:string;title:string;keywords:readonly string[]}
+export type Facility='shop'|'restaurant'|'fuel'
+export type Camp={id:string;name:string;type:'rest-camp';facilities:readonly Facility[];telephone?:string;notes?:string}
+export type EmergencyContact={id:string;service:string;number:string;availability?:string}
+export type ParkRule={id:string;title:string;description:string}
+export type SafariTip={id:string;title:string;description:string}
+export type HistoryMilestone={year:string;title:string;description:string}
+export type SourceMetadata={title:string;type:'PDF visitor map';reviewed:string;warning:string}

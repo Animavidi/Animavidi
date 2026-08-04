@@ -1,7 +1,22 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 
-import { PlaceholderPage } from '@/components/PlaceholderPage/PlaceholderPage'
+import { DemoEntryPage } from '@/features/demo/routes/DemoEntryPage'
+import { DemoUnavailablePage } from '@/features/demo/routes/DemoUnavailablePage'
+import { MammalDetailPage } from '@/features/mammals/routes/MammalDetailPage'
+import { MammalsPage } from '@/features/mammals/routes/MammalsPage'
+import { NewSightingPage } from '@/features/mammals/routes/NewSightingPage'
+import { KrugerHomePage } from '@/features/parks/routes/KrugerHomePage'
+import { EditSightingPage } from '@/features/sightings/routes/EditSightingPage'
+import { MySightingsPage } from '@/features/sightings/routes/MySightingsPage'
+import { SightingDetailPage } from '@/features/sightings/routes/SightingDetailPage'
+import { LocationPage } from '@/features/onboarding/routes/LocationPage'
 import { WelcomePage } from '@/features/welcome/routes/WelcomePage'
+
+const ParkMapPage = lazy(() => import('@/features/map/routes/ParkMapPage').then((module) => ({ default: module.ParkMapPage })))
+const PassportPage = lazy(() => import('@/features/passport/routes/PassportPage').then((module) => ({ default: module.PassportPage })))
+const ParkInformationPage = lazy(() => import('@/features/information/routes/ParkInformationPage').then((module) => ({ default: module.ParkInformationPage })))
+const ParkInformationErrorPage = lazy(() => import('@/features/information/routes/ParkInformationPage').then((module) => ({ default: module.ParkInformationErrorPage })))
 
 export const router = createBrowserRouter([
   {
@@ -9,15 +24,92 @@ export const router = createBrowserRouter([
     element: <WelcomePage />,
   },
   {
-    path: '/safari/new',
-    element: <PlaceholderPage />,
+    path: '/onboarding/start',
+    element: <DemoEntryPage destination="/onboarding/location" />,
+  },
+  {
+    path: '/onboarding/location',
+    element: <LocationPage />,
+  },
+  {
+    path: '/account/create',
+    element: <DemoEntryPage destination="/passport?flow=demo" />,
+  },
+  {
+    path: '/login',
+    element: <DemoEntryPage destination="/passport?flow=demo" />,
+  },
+  {
+    path: '/onboarding/passport',
+    element: <DemoEntryPage destination="/passport?flow=demo" />,
+  },
+  {
+    path: '/onboarding/complete',
+    element: <Navigate replace to="/parks/kruger" />,
   },
   {
     path: '/safari/continue',
-    element: <PlaceholderPage />,
+    element: <DemoEntryPage destination="/passport?flow=demo" />,
   },
   {
     path: '/demo',
-    element: <PlaceholderPage />,
+    element: <Navigate replace to="/parks/kruger" />,
+  },
+  {
+    path: '/demo/new-explorer',
+    element: <DemoEntryPage destination="/onboarding/location" />,
+  },
+  {
+    path: '/demo/returning-explorer',
+    element: <DemoEntryPage destination="/passport?flow=demo" />,
+  },
+  {
+    path: '/full-version',
+    element: <DemoUnavailablePage />,
+  },
+  {
+    path: '/parks/kruger',
+    element: <KrugerHomePage />,
+  },
+  {
+    path: '/parks/kruger/mammals',
+    element: <MammalsPage />,
+  },
+  {
+    path: '/parks/kruger/mammals/:animalId',
+    element: <MammalDetailPage />,
+  },
+  {
+    path: '/parks/kruger/mammals/:animalId/sightings/new',
+    element: <NewSightingPage />,
+  },
+  {
+    path: '/parks/kruger/sightings',
+    element: <MySightingsPage />,
+  },
+  {
+    path: '/parks/kruger/sightings/:sightingId',
+    element: <SightingDetailPage />,
+  },
+  {
+    path: '/parks/kruger/sightings/:sightingId/edit',
+    element: <EditSightingPage />,
+  },
+  {
+    path: '/parks/kruger/map',
+    element: <Suspense fallback={<p role="status">Loading Park Map…</p>}><ParkMapPage /></Suspense>,
+  },
+  {
+    path: '/parks/kruger/information',
+    element: <Suspense fallback={<p role="status">Opening Park Information…</p>}><ParkInformationPage /></Suspense>,
+    errorElement: <Suspense fallback={<p role="status">Opening fallback…</p>}><ParkInformationErrorPage /></Suspense>,
+  },
+  {
+    path: '/passport',
+    element: <Suspense fallback={<p role="status">Opening Safari Passport…</p>}><PassportPage /></Suspense>,
+  },
+  {
+    path: '*',
+    element: <DemoUnavailablePage />,
   },
 ])

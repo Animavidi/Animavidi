@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1025 275 1025 3500" role="img" aria-labelledby="rivers-title rivers-description" data-prototype-only="true" data-map-category="rivers">
+  <title id="rivers-title">Kruger rivers</title>
+  <desc id="rivers-description">Intentional empty prototype layer. River geometry cannot be distinguished reliably from other blue linework without source layer metadata.</desc>
+  <g id="kruger-rivers-layer" data-map-category="rivers" data-availability="unresolved" />
+</svg>

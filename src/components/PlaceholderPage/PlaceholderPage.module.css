@@ -4,7 +4,7 @@
   grid-template-rows: auto 1fr;
   padding: var(--space-6) var(--page-gutter);
   color: var(--color-sand-50);
-  background: var(--color-savanna-950);
+  background: radial-gradient(circle at 50% 30%, var(--color-savanna-700), var(--color-savanna-950) 62%);
 }
 
 .logo {
@@ -14,7 +14,7 @@
 .content {
   align-self: center;
   justify-self: center;
-  max-inline-size: 36rem;
+  max-inline-size: 40rem;
   padding-block: var(--space-8);
   text-align: center;
 }
@@ -31,9 +31,10 @@
 .title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 9vw, 4.5rem);
+  font-size: clamp(3rem, 11vw, 5.5rem);
   font-weight: 500;
-  line-height: 1;
+  letter-spacing: -0.025em;
+  line-height: 0.94;
 }
 
 .copy {

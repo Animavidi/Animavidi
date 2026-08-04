@@ -87,11 +87,17 @@ pnpm build
 | Route | Status |
 | --- | --- |
 | `/` | Definitieve Welcome Page |
-| `/safari/new` | Tijdelijke routebestemming |
-| `/safari/continue` | Tijdelijke routebestemming |
+| `/onboarding/start` | Start van een eerste safari |
+| `/safari/continue` | Terugkeer naar een bestaande safari |
+| `/onboarding/location` | GPS-placeholder of handmatige locatiekeuze |
+| `/account/create` | Frontendformulier voor accountaanmaak |
+| `/login` | Frontendformulier voor login |
+| `/onboarding/passport` | Safari Passport-introductie |
+| `/onboarding/complete` | Voltooide onboarding |
 | `/demo` | Tijdelijke routebestemming |
 
-De drie tijdelijke bestemmingen bevatten bewust nog geen
+Account-, login- en locatiegegevens worden uitsluitend lokaal gevalideerd en
+niet opgeslagen of verzonden. De demo bevat bewust nog geen
 productfunctionaliteit.
 
 ## Projectstructuur
@@ -121,6 +127,13 @@ Lees deze bronnen voordat product- of interfacewerk wordt uitgevoerd:
 
 Deze documenten zijn de permanente bron van waarheid voor verdere
 ontwikkeling.
+
+## Approved visual references
+
+De goedgekeurde referenties in `docs/designs/` zijn de verplichte visuele bron
+van waarheid voor layout, compositie, typografie, witruimte, kleuren en
+visuele hiërarchie. Een scherm met een goedgekeurde referentie wordt tegen die
+afbeelding ontworpen en beoordeeld.
 
 ## Omgevingsvariabelen
 

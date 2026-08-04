@@ -49,6 +49,10 @@ De actuele, ondersteunde versies staan in `package.json` en het lockbestand. Maj
 9. **Geen stille fouten.** Verwachte fouten worden getypeerd, afgehandeld en observeerbaar gemaakt.
 10. **Documenteer beslissingen.** Materiële afwijkingen van deze gids vereisen een Architecture Decision Record.
 
+### 2.3 Approved visual references
+
+When an approved reference image exists, implementation must reproduce it as closely as technically possible. Codex may not replace it with a generic interpretation or redesign unless explicitly instructed.
+
 ## 3. Repositorystructuur
 
 ### 3.1 Doelstructuur

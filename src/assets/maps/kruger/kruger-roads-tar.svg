@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1025 275 1025 3500" role="img" aria-labelledby="roads-tar-title roads-tar-description" data-prototype-only="true" data-map-category="roads-tar">
+  <title id="roads-tar-title">Kruger roads-tar</title>
+  <desc id="roads-tar-description">Intentional empty prototype layer. Tar-road geometry cannot be distinguished reliably from other linework without source layer metadata.</desc>
+  <g id="kruger-roads-tar-layer" data-map-category="roads-tar" data-availability="unresolved" />
+</svg>

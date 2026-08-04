@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1025 275 1025 3500" role="img" aria-labelledby="roads-gravel-title roads-gravel-description" data-prototype-only="true" data-map-category="roads-gravel">
+  <title id="roads-gravel-title">Kruger roads-gravel</title>
+  <desc id="roads-gravel-description">Intentional empty prototype layer. Gravel-road geometry cannot be distinguished reliably from other linework without source layer metadata.</desc>
+  <g id="kruger-roads-gravel-layer" data-map-category="roads-gravel" data-availability="unresolved" />
+</svg>

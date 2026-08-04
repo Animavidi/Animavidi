@@ -1,0 +1,11 @@
+.clearance {
+  width: 100%;
+  height: 4.75rem;
+  flex: 0 0 4.75rem;
+  pointer-events: none;
+}
+
+.withoutNavigation {
+  height: 9.25rem;
+  flex-basis: 9.25rem;
+}

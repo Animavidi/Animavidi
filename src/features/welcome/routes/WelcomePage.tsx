@@ -1,34 +1,31 @@
-import { ActionLink } from '@/components/ActionLink/ActionLink'
 import { AppLogo } from '@/components/AppLogo/AppLogo'
+import lionSunsetHero from '@/assets/welcome/lion-sunset-hero.webp'
+import { WelcomeAction } from '@/features/welcome/components/WelcomeAction/WelcomeAction'
+import { demoMode } from '@/features/demo/config/demoMode'
 
 import styles from './WelcomePage.module.css'
 
 export function WelcomePage() {
   return (
     <main className={styles.page}>
-      <div aria-hidden="true" className={styles.backdrop} />
+      <div aria-hidden="true" className={styles.backdrop} style={{ backgroundImage: `url(${lionSunsetHero})` }} />
       <div aria-hidden="true" className={styles.overlay} />
 
       <header className={styles.header}>
-        <AppLogo />
+        <AppLogo className={styles.logo} detailed tone="dark" />
+        <p>Jouw wildlife. Jouw verhaal. Jouw bijdrage.</p>
       </header>
 
       <section aria-labelledby="welcome-title" className={styles.hero}>
         <div className={styles.intro}>
-          <p className={styles.eyebrow}>Your Personal Safari Passport</p>
-          <h1 className={styles.title} id="welcome-title">
-            Every journey begins in the wild.
-          </h1>
+          <h1 className={styles.title} id="welcome-title">Welkom bij Animavidi</h1>
+          <p className={styles.introCopy}>Bouw jouw persoonlijke wildlife-journaal op.<br />Ontdek dieren, leer ze herkennen en bewaar<br />al jouw waarnemingen op één plek.</p>
         </div>
 
         <nav aria-label="Begin your Animavidi journey" className={styles.actions}>
-          <ActionLink to="/safari/new">Start my first safari</ActionLink>
-          <ActionLink to="/safari/continue" variant="secondary">
-            Continue my safari
-          </ActionLink>
-          <ActionLink to="/demo" variant="tertiary">
-            View demo
-          </ActionLink>
+          <WelcomeAction icon="account" subtitle="Start met de demo-ontdekkingsreiziger" title="Nieuwe ontdekkingsreiziger" to={demoMode.routes.newExplorer} />
+          <WelcomeAction icon="login" subtitle="Ga verder als demo-ontdekkingsreiziger" title="Verder waar ik gebleven was" to={demoMode.routes.returningExplorer} variant="ivory" />
+          <WelcomeAction icon="preview" subtitle="Ontdek eerst wat Animavidi kan doen" title="Bekijk een voorbeeld" to="/parks/kruger" variant="outline" />
         </nav>
       </section>
 
@@ -39,7 +36,9 @@ export function WelcomePage() {
           rel="noreferrer"
           target="_blank"
         >
-          Sponsored by LuxurySafariHomes.com
+          <span>Sponsored by</span>
+          <strong>Luxury Safari Homes</strong>
+          <span>luxurysafarihomes.com&nbsp; ↗</span>
           <span className="srOnly"> (opens in a new tab)</span>
         </a>
       </footer>

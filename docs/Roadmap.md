@@ -25,6 +25,23 @@ Er is nog **geen concrete doelgroep, kernpropositie, benoemde schermenset, uitge
 
 Daarom bevat deze roadmap geen verzonnen productfuncties. Vanaf versie 0.2 zijn expliciete goedkeuringspoorten opgenomen. Zodra een flow of scherm samen is vastgesteld, wordt die vóór implementatie met naam, scope en acceptatiecriteria aan deze roadmap toegevoegd.
 
+### Goedgekeurde onboarding-scope
+
+Op 2026-08-02 is de volgende frontend-only flow expliciet goedgekeurd:
+
+1. Welcome;
+2. Start my first safari;
+3. Continue my safari;
+4. locatie kiezen via een transparante GPS-placeholder of handmatige selectie;
+5. account aanmaken als lokaal gevalideerd frontendformulier;
+6. login als lokaal gevalideerd frontendformulier;
+7. Safari Passport-introductie;
+8. onboarding voltooid.
+
+Deze scope bevat geen backend, database, authenticatieprovider, persistente
+opslag, browser-GPS-request of API-call. Ontbrekende gegevens gebruiken
+zichtbaar aangeduide placeholder-data.
+
 ## 2. Roadmapregels
 
 1. **Geen feature zonder besluit.** Alleen expliciet goedgekeurde functionaliteit krijgt een releaseversie.
@@ -671,6 +688,7 @@ Gebruik uitsluitend:
 | --- | --- | --- | --- | --- |
 | 2026-08-02 | Versie 0.1 beperkt tot technisch fundament en documentatie | Er zijn nog geen productpagina’s of functies overeengekomen | Productimplementatie wacht op 0.2 en 0.3 | Producteigenaar |
 | 2026-08-02 | Geen concrete features opnemen in 0.2–2.0 zonder expliciete goedkeuring | De gevraagde scope mag alleen overeengekomen functionaliteit bevatten | Latere versies gebruiken releasepoorten en lege featurescope | Producteigenaar |
+| 2026-08-02 | Frontend-only onboarding-flow met acht benoemde schermen goedgekeurd | De producteigenaar heeft de volledige flow expliciet opgedragen | De onboarding mag worden geïmplementeerd zonder backend, opslag, GPS-request of authenticatieprovider | Producteigenaar |
 
 ## 24. Wijzigingsbeheer
 

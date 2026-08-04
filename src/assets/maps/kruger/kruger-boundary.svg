@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1025 275 1025 3500" role="img" aria-labelledby="boundary-title boundary-description" data-prototype-only="true" data-map-category="boundary">
+  <title id="boundary-title">Kruger boundary</title>
+  <desc id="boundary-description">Intentional empty prototype layer. The Illustrator export has no semantic park-boundary group and colour alone is insufficient evidence.</desc>
+  <g id="kruger-boundary-layer" data-map-category="boundary" data-availability="unresolved" />
+</svg>

@@ -1,15 +1,16 @@
 .actionLink {
   display: inline-flex;
-  min-block-size: 3rem;
+  min-block-size: 3.5rem;
   inline-size: 100%;
   align-items: center;
   justify-content: center;
-  padding: var(--space-3) var(--space-5);
+  padding: var(--space-3) var(--space-6);
   border: 1px solid transparent;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-pill);
   font-family: var(--font-interface);
-  font-size: 0.9375rem;
-  font-weight: 650;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.015em;
   line-height: 1.4;
   text-align: center;
   text-decoration: none;
@@ -28,14 +29,14 @@
 .primary {
   color: var(--color-savanna-950);
   background: var(--color-sand-50);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 12px 30px rgb(20 36 28 / 18%);
 }
 
 .secondary {
   color: var(--color-sand-50);
   border-color: rgb(250 247 240 / 55%);
-  background: rgb(23 35 28 / 38%);
-  backdrop-filter: blur(8px);
+  background: rgb(20 36 28 / 30%);
+  backdrop-filter: blur(14px);
 }
 
 .tertiary {
@@ -46,7 +47,7 @@
 
 @media (hover: hover) {
   .actionLink:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
   }
 
   .primary:hover {

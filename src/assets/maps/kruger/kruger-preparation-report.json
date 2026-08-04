@@ -1,0 +1,26 @@
+{
+  "sourceViewBox": "0 0 2487.6 4146.66",
+  "sharedViewBox": "1025 275 1025 3500",
+  "masterElementCount": 13107,
+  "removedRasterImagesFromBase": 8,
+  "layerFeatureCounts": {
+    "base": 13101,
+    "labels": 1250,
+    "camps": 8,
+    "gates": 19,
+    "hides": 13,
+    "picnic": 1,
+    "viewpoints": 10,
+    "waterholes": 35,
+    "boundary": 0,
+    "roads-tar": 0,
+    "roads-gravel": 0,
+    "rivers": 0
+  },
+  "unresolvedLayers": {
+    "boundary": "The Illustrator export has no semantic park-boundary group and colour alone is insufficient evidence.",
+    "roads-tar": "Tar-road geometry cannot be distinguished reliably from other linework without source layer metadata.",
+    "roads-gravel": "Gravel-road geometry cannot be distinguished reliably from other linework without source layer metadata.",
+    "rivers": "River geometry cannot be distinguished reliably from other blue linework without source layer metadata."
+  }
+}

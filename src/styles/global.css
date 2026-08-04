@@ -1,16 +1,17 @@
 :root {
-  --color-savanna-950: #17231c;
-  --color-savanna-900: #223128;
-  --color-savanna-700: #3d5947;
-  --color-gold-600: #a66e22;
-  --color-gold-500: #c78b36;
-  --color-gold-300: #e5be78;
-  --color-sand-50: #faf7f0;
-  --color-sand-100: #f3ebdd;
-  --color-sand-200: #e7d8c3;
-  --color-ink-950: #1b1d1a;
-  --color-ink-700: #4c514a;
-  --color-ink-500: #737970;
+  --color-savanna-950: #14241c;
+  --color-savanna-900: #1e3328;
+  --color-savanna-700: #405b4b;
+  --color-gold-600: #987039;
+  --color-gold-500: #b78c45;
+  --color-gold-300: #d9bd86;
+  --color-sand-50: #f6f3ec;
+  --color-sand-100: #eee9df;
+  --color-sand-200: #ddd5c7;
+  --color-ink-950: #18231d;
+  --color-ink-700: #4f5b54;
+  --color-ink-500: #727b75;
+  --color-danger-700: #9a3f35;
 
   --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --font-interface: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -27,13 +28,15 @@
   --space-10: 8rem;
 
   --radius-sm: 0.375rem;
-  --radius-md: 0.625rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.125rem;
+  --radius-xl: 1.75rem;
   --radius-pill: 999px;
 
-  --shadow-sm: 0 1px 2px rgb(23 35 28 / 8%);
-  --motion-fast: 150ms;
+  --shadow-sm: 0 1px 2px rgb(20 36 28 / 7%);
+  --shadow-md: 0 24px 64px rgb(20 36 28 / 12%);
+  --motion-fast: 220ms;
+  --motion-base: 480ms;
   --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
   --page-gutter: 1.25rem;
 
@@ -65,6 +68,13 @@ body,
 
 body {
   min-inline-size: 20rem;
+  color: var(--color-ink-950);
+  background: var(--color-sand-50);
+}
+
+::selection {
+  color: var(--color-sand-50);
+  background: var(--color-savanna-700);
 }
 
 button,

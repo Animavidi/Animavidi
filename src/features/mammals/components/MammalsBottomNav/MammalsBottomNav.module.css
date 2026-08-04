@@ -1,0 +1,52 @@
+.navigation {
+  position: sticky;
+  z-index: 10;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding: 0.45rem 0.35rem calc(0.45rem + env(safe-area-inset-bottom));
+  background: linear-gradient(135deg, #1e3328, #1e3328);
+  border-radius: 1.35rem 1.35rem 0 0;
+  box-shadow: 0 -0.5rem 1.5rem rgb(30 51 40 / 16%);
+}
+
+.fixed {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: min(100%, 48rem);
+  margin-inline: auto;
+}
+
+.navigation a {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+  min-height: 3.55rem;
+  place-content: center;
+  color: rgb(246 243 236 / 68%);
+  font-size: 0.58rem;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+}
+
+.navigation a > span {
+  color: inherit;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+}
+
+.navigation .active {
+  color: var(--color-safari-gold);
+  background: rgb(183 140 69 / 8%);
+  border-color: rgb(183 140 69 / 28%);
+}
+
+.navigation a:focus-visible {
+  outline: 2px solid var(--color-safari-gold);
+  outline-offset: -2px;
+}

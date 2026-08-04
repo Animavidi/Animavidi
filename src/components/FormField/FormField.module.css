@@ -1,0 +1,6 @@
+.field { display: grid; gap: var(--space-3); }
+.label { color: var(--color-savanna-900); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.hint { margin: calc(var(--space-1) * -1) 0 0; color: var(--color-ink-500); font-size: 0.8125rem; line-height: 1.5; }
+.input { min-block-size: 3.5rem; inline-size: 100%; padding: var(--space-3) var(--space-4); border: 1px solid rgb(30 51 40 / 16%); border-radius: var(--radius-md); color: var(--color-ink-950); background: rgb(255 255 255 / 68%); transition: border-color var(--motion-fast) var(--ease-standard), box-shadow var(--motion-fast) var(--ease-standard), background-color var(--motion-fast) var(--ease-standard); }
+.input:focus-visible { border-color: var(--color-gold-500); outline: 0; background: #fffdf8; box-shadow: 0 0 0 3px rgb(183 140 69 / 14%); }
+.input:user-invalid { border-color: var(--color-danger-700); }
