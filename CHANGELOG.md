@@ -6,6 +6,15 @@ structuur van [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+- Completed all five Big Five medallion reliefs in the approved classical engraving style, using individual etched linework for Lion, Elephant, Leopard, Buffalo and Rhinoceros.
+- Restored the redesigned Safari Passport's Journey, Achievements, Species Discovered, Recent Memories, Animals statistic and concrete rank requirements, with working in-page collection navigation.
+- Corrected Passport responsiveness so all five Big Five medallions remain in one fluid row without horizontal scrolling, and removed the paw motif from the restrained tone-on-tone Explorer blind stamp.
+- Refined the Big Five collection into text-free engraved bronze medallions with layered metal depth, concise labels beneath each collectible, and stronger unseen-versus-discovered material states.
+- Replaced the Passport paw badge with a leather-embossed lion emblem and rebuilt all Big Five collectibles as uniform relief medallions with distinct unseen and officially stamped visual states.
+- Redesigned the Passport Explorer mark as a restrained vintage ink stamp with irregular rings, authentic wear, classic arc lettering and a simple safari paw motif integrated into the leather cover.
+- Rebuilt Safari Passport v2 as a mobile-first luxury leather travel document with a reusable PassportCard, compact 3×2 statistics, rank and Big Five panels, and focused collection navigation while preserving all Passport data and routes.
+- Refined the Welcome Screen with taller single-line actions, increased sponsor spacing, and a personal returning-explorer greeting backed by the existing local demo-user state.
+- Simplified the Welcome screen to two focused explorer actions, removed the introductory copy and demo shortcut, and gave the cinematic wildlife background more uninterrupted visual space without changing the remaining routes or branding.
 - Added Vercel SPA rewrite configuration so every React Router route resolves through `index.html` during direct navigation and browser refreshes; the production script uses Vite's runner config loader for a reproducible sandbox-safe build.
 - Added the first-completion-only Big Five achievement celebration with the untouched user-created piano theme, Passport-backed transition detection, persisted sound preference, autoplay fallback and an accessible premium achievement dialog.
 - Added an expandable label interaction to the universal Add Sighting FAB: a one-time two-second introduction, hover/focus disclosure, touch-first explanation and second-tap activation, while preserving direct Animal Detail routing and Species Picker behaviour.

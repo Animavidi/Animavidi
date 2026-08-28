@@ -68,3 +68,4 @@ $RECYCLE.BIN/
 # Codex-local working and deliverable folders
 work/
 outputs/
+tmp/

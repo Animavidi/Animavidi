@@ -1,0 +1,68 @@
+.card {
+  position: relative;
+  min-block-size: 25.75rem;
+  overflow: hidden;
+  padding: 2rem 1.6rem 1.4rem;
+  color: #f6f3ec;
+  background:
+    linear-gradient(130deg, rgb(255 255 255 / 5%), transparent 28%, rgb(0 0 0 / 13%)),
+    radial-gradient(circle at 70% 18%, rgb(183 140 69 / 12%), transparent 28%),
+    repeating-radial-gradient(ellipse at 20% 30%, rgb(255 255 255 / 2%) 0 1px, transparent 1px 5px),
+    #4a291c;
+  border: 1px solid #2c160f;
+  border-radius: 1.25rem;
+  box-shadow: 0 0.85rem 1.7rem rgb(30 20 12 / 28%), inset 0 0 2.7rem rgb(0 0 0 / 28%);
+}
+
+.card::before {
+  position: absolute;
+  z-index: 4;
+  inset: 0.55rem;
+  border: 1px solid rgb(210 159 88 / 72%);
+  border-radius: 0.9rem;
+  box-shadow: inset 0 0 0 3px #4a291c, inset 0 0 0 4px rgb(183 140 69 / 28%);
+  content: '';
+  pointer-events: none;
+}
+
+.card::after {
+  position: absolute;
+  inset: 0.82rem;
+  border: 1px dashed rgb(218 164 94 / 60%);
+  border-radius: 0.72rem;
+  content: '';
+  pointer-events: none;
+}
+
+.title { position: relative; z-index: 2; text-shadow: 0 2px 1px rgb(0 0 0 / 34%); }
+.title p { margin: 0; color: #d4a85e; font-size: 0.76rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+.title h2 { max-inline-size: 58%; margin: 0.5rem 0 0.65rem; color: #d4a85e; font: 500 clamp(2.15rem, 10.8vw, 3.55rem)/0.88 Georgia, serif; letter-spacing: -0.04em; text-transform: uppercase; }
+.title span { color: #e1b767; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+
+.stamp { position: absolute; z-index: 3; top: 0.9rem; right: -0.55rem; inline-size: 38%; opacity: 0.22; mix-blend-mode: screen; }
+.emblem { --relief-cut: #30180f; position: absolute; z-index: 2; bottom: 1.7rem; left: 1.35rem; display: grid; inline-size: 5.5rem; block-size: 5.5rem; place-items: center; color: #583323; filter: drop-shadow(1.5px 1.5px 0 rgb(218 164 94 / 28%)) drop-shadow(-1.5px -1.5px 0 rgb(18 7 4 / 52%)); }
+.emblem svg { inline-size: 4.4rem; block-size: 4.4rem; opacity: 0.9; }
+
+.identity { position: absolute; z-index: 2; right: 1.15rem; bottom: 1.25rem; display: grid; inline-size: calc(100% - 7.7rem); grid-template-columns: 1fr 1fr; gap: 0.72rem 0.55rem; margin: 0; padding: 0.75rem; background: rgb(40 19 12 / 31%); border: 1px solid rgb(212 168 94 / 18%); border-radius: 0.7rem; }
+.identity div { min-inline-size: 0; }
+.identity .name { grid-column: 1 / -1; }
+.identity dt { margin-block-end: 0.18rem; color: #d4a85e; font-size: 0.54rem; font-weight: 800; letter-spacing: 0.055em; text-transform: uppercase; }
+.identity dd { margin: 0; overflow-wrap: anywhere; font-size: 0.68rem; font-weight: 750; line-height: 1.25; }
+.identity .name dd { font-size: 0.82rem; }
+
+@media (min-width: 40rem) {
+  .card { min-block-size: 28rem; padding: 2.4rem; }
+  .emblem { left: 2rem; bottom: 2rem; inline-size: 6.5rem; block-size: 6.5rem; }
+  .identity { right: 2rem; bottom: 1.8rem; inline-size: calc(100% - 10rem); padding: 1rem; }
+  .identity dd { font-size: 0.8rem; }
+  .identity .name dd { font-size: 0.95rem; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card { animation: passport-open 600ms ease both; }
+}
+
+@keyframes passport-open {
+  from { opacity: 0; transform: perspective(800px) rotateY(-4deg) translateY(0.4rem); }
+  to { opacity: 1; transform: none; }
+}

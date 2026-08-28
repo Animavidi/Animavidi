@@ -4,7 +4,7 @@ import styles from './WelcomeAction.module.css'
 
 type WelcomeActionProps = {
   icon: 'account' | 'login' | 'preview'
-  subtitle: string
+  subtitle?: string
   title: string
   to: string
   variant?: 'green' | 'ivory' | 'outline'
@@ -22,7 +22,7 @@ export function WelcomeAction({
       <WelcomeActionIcon name={icon} />
       <span className={styles.copy}>
         <strong>{title}</strong>
-        <span>{subtitle}</span>
+        {subtitle ? <span>{subtitle}</span> : null}
       </span>
       <span aria-hidden="true" className={styles.chevron} />
     </Link>

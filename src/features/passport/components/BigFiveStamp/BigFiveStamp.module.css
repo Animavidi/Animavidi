@@ -1,1 +1,118 @@
-.stamp{display:grid;flex:0 0 8.8rem;min-height:9.3rem;padding:.75rem;place-items:center;align-content:center;color:#5d6151;text-align:center;text-decoration:none;border:2px solid currentcolor;border-radius:50%;box-shadow:inset 0 0 0 4px #f6f3ec,inset 0 0 0 5px currentcolor;scroll-snap-align:start;transform:rotate(-2deg);opacity:.65}.stamp:nth-child(even){transform:rotate(2deg)}.stamp svg{width:4.4rem;height:3.8rem;fill:none;stroke:currentcolor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.name{font:700 .7rem/1 Arial,sans-serif;letter-spacing:.05em;text-transform:uppercase}.stamp strong{font:700 .65rem Arial,sans-serif;text-transform:uppercase}.stamp small{font-size:.57rem}.seen{color:#9b594b;opacity:1}.stamp:focus-visible{outline:3px solid #b78c45;outline-offset:3px}
+.stamp {
+  --bronze-light: #e2d1b4;
+  --bronze-mid: #c2aa85;
+  --bronze-dark: #8f7659;
+  --bronze-ink: #7b664d;
+  --relief-cut: var(--bronze-mid);
+  display: grid;
+  min-inline-size: 0;
+  flex: 1 1 0;
+  place-items: center;
+  align-content: start;
+  color: #3f3428;
+  text-align: center;
+  text-decoration: none;
+  scroll-snap-align: start;
+}
+
+.medallion {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  inline-size: 100%;
+  max-inline-size: 4rem;
+  aspect-ratio: 0.72;
+  place-items: center;
+  overflow: hidden;
+  padding: 0.38rem 0.2rem;
+  color: var(--bronze-ink);
+  background:
+    radial-gradient(circle at 34% 24%, rgb(255 255 255 / 48%), transparent 25%),
+    radial-gradient(ellipse at 65% 76%, var(--bronze-dark), transparent 52%),
+    linear-gradient(135deg, var(--bronze-light), var(--bronze-mid) 46%, var(--bronze-dark));
+  border: 1px solid var(--bronze-dark);
+  border-radius: 48% / 38%;
+  box-shadow:
+    inset 2px 2px 3px rgb(255 255 255 / 58%),
+    inset -3px -3px 5px rgb(67 42 24 / 38%),
+    0 2px 2px rgb(63 42 25 / 18%),
+    0 5px 8px rgb(63 42 25 / 15%);
+}
+
+.medallion::before,
+.medallion::after {
+  position: absolute;
+  border-radius: inherit;
+  content: '';
+  pointer-events: none;
+}
+
+.medallion::before {
+  z-index: 2;
+  inset: 0.2rem;
+  border: 1px solid rgb(75 48 29 / 45%);
+  box-shadow: inset 1px 1px 1px rgb(255 247 222 / 48%), inset -1px -1px 1px rgb(65 39 22 / 36%);
+}
+
+.medallion::after {
+  z-index: 3;
+  inset: 0.38rem;
+  border: 1px dashed rgb(78 51 31 / 28%);
+  box-shadow: 0 0 0 1px rgb(255 245 215 / 18%);
+}
+
+.animal {
+  position: relative;
+  z-index: 1;
+  inline-size: 79%;
+  block-size: auto;
+  filter:
+    drop-shadow(1.5px 1.5px 0 rgb(255 239 202 / 52%))
+    drop-shadow(-1.5px -1.5px 0 rgb(67 39 22 / 52%))
+    drop-shadow(0 2px 2px rgb(50 29 17 / 22%));
+}
+
+.stamp strong {
+  max-inline-size: 100%;
+  margin-block-start: 0.34rem;
+  overflow: hidden;
+  font: 800 clamp(0.43rem, 1.65vw, 0.54rem)/1 Arial, sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stamp small {
+  min-block-size: 1.6em;
+  margin-block-start: 0.12rem;
+  color: #766958;
+  font-size: clamp(0.34rem, 1.35vw, 0.43rem);
+  line-height: 1.18;
+}
+
+.stamp:focus-visible { border-radius: 0.5rem; outline: 3px solid #b78c45; outline-offset: 3px; }
+.unseen { opacity: 0.48; filter: saturate(0.42); }
+.seen {
+  --bronze-light: #e0b66e;
+  --bronze-mid: #b77b3f;
+  --bronze-dark: #704025;
+  --bronze-ink: #3c2115;
+  --relief-cut: #9a6037;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .seen .medallion { animation: medal-emboss 850ms cubic-bezier(.2,.75,.2,1) both; }
+  .seen .medallion::after { animation: medal-sheen 1050ms 300ms ease-out both; }
+}
+
+@keyframes medal-emboss {
+  0% { filter: saturate(0.25); opacity: 0.4; transform: scale(1.025); }
+  45% { filter: saturate(0.72); box-shadow: inset 3px 3px 5px rgb(255 248 225 / 62%), inset -4px -4px 7px rgb(56 31 18 / 52%); transform: scale(0.985); }
+  100% { filter: none; opacity: 1; transform: none; }
+}
+
+@keyframes medal-sheen {
+  from { background: linear-gradient(112deg, transparent 20%, rgb(255 239 188 / 0%) 35%, transparent 50%); opacity: 0; transform: translateX(-45%); }
+  48% { opacity: 0.75; }
+  to { background: linear-gradient(112deg, transparent 45%, rgb(255 239 188 / 28%) 50%, transparent 56%); opacity: 0; transform: translateX(45%); }
+}

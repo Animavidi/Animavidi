@@ -1,1 +1,26 @@
-.stamp{width:100%;height:auto;color:#b78c45;overflow:visible;transform:rotate(-8deg);filter:drop-shadow(0 2px 0 rgb(0 0 0 / 20%));opacity:.9}.arc{fill:currentcolor;font:700 28px Georgia,serif;letter-spacing:7px}.est{fill:currentcolor;font:700 15px Arial,sans-serif;letter-spacing:5px}.explorer{fill:currentcolor;font:700 34px Georgia,serif;letter-spacing:3px}
+.stamp {
+  inline-size: 100%;
+  block-size: auto;
+  overflow: visible;
+  color: #9b6a36;
+  filter: drop-shadow(0 1px 0 rgb(255 220 155 / 20%)) drop-shadow(0 -1px 0 rgb(22 10 6 / 28%));
+  transform: rotate(-7deg);
+}
+
+.outerRing,
+.brokenRing,
+.innerRing,
+.divider {
+  fill: none;
+  stroke: currentcolor;
+}
+
+.outerRing { stroke-width: 4; }
+.brokenRing { stroke-dasharray: 42 4 11 3 28 5; stroke-width: 2.5; }
+.innerRing { stroke-dasharray: 3 2 19 2; stroke-width: 2; }
+.divider { stroke-width: 2.5; }
+.arc { fill: currentcolor; font: 700 27px Georgia, serif; letter-spacing: 6px; }
+.est { fill: currentcolor; font: 700 15px Arial, sans-serif; letter-spacing: 4px; }
+.explorer { fill: currentcolor; font: 800 31px Georgia, serif; letter-spacing: 2px; }
+.star { fill: currentcolor; }
+.ornament { fill: currentcolor; stroke: currentcolor; stroke-width: 2; }

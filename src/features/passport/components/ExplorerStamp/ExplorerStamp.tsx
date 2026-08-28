@@ -1,28 +1,49 @@
 import styles from './ExplorerStamp.module.css'
 
 export function ExplorerStamp() {
-  return <svg aria-hidden="true" className={styles.stamp} viewBox="0 0 320 320">
-    <defs>
-      <path id="stamp-top" d="M49 161a111 111 0 0 1 222 0" />
-      <path id="stamp-bottom" d="M50 174a111 111 0 0 0 220 0" />
-      <filter id="distress"><feTurbulence baseFrequency=".045" numOctaves="3" seed="8" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="2"/><feComponentTransfer><feFuncA type="table" tableValues="0 .35 .75 1"/></feComponentTransfer></filter>
-      <mask id="worn"><rect width="320" height="320" fill="white"/><g fill="black" opacity=".36"><circle cx="58" cy="84" r="3"/><circle cx="257" cy="62" r="5"/><circle cx="232" cy="265" r="4"/><path d="M42 225h36v3H42zm194-119h48v2h-48zM88 45h22v3H88z"/></g></mask>
-    </defs>
-    <g filter="url(#distress)" mask="url(#worn)">
-      <circle cx="160" cy="160" r="145" fill="none" stroke="currentColor" strokeWidth="8"/>
-      <circle cx="160" cy="160" r="132" fill="none" stroke="currentColor" strokeWidth="2"/>
-      <circle cx="160" cy="160" r="105" fill="none" stroke="currentColor" strokeWidth="3"/>
-      <text className={styles.arc}><textPath href="#stamp-top" startOffset="50%" textAnchor="middle">ANIMAVIDI</textPath></text>
-      <text className={styles.est}><textPath href="#stamp-bottom" startOffset="50%" textAnchor="middle">EST. 2026</textPath></text>
-      <path d="M75 182h170M68 207h184" fill="none" stroke="currentColor" strokeWidth="3"/>
-      <text className={styles.explorer} x="160" y="202" textAnchor="middle">EXPLORER</text>
-      <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4">
-        <path d="M130 157c-12-1-18-8-18-20 0-22 17-39 42-39 26 0 46 16 46 40v27h-13v-25c-4 13-14 21-31 21-10 0-18-2-26-4Z"/>
-        <path d="M190 124c13 4 21 15 21 31 0 14-7 23-19 25m-58-21v22m22-20v20m-23-60c-9-7-18-5-20 3m82 2c8-4 15-1 18 6"/>
-        <path d="M233 165v-33m-18 33c5-20 11-33 18-41 7 9 14 22 20 41m-35-17h31"/>
-        <path d="M72 119q9-9 18 0m-6-11q8-8 16 0" strokeWidth="2"/>
+  return (
+    <svg aria-hidden="true" className={styles.stamp} viewBox="0 0 320 320">
+      <defs>
+        <path id="explorer-stamp-top" d="M48 160a112 112 0 0 1 224 0" />
+        <path id="explorer-stamp-bottom" d="M48 175a112 112 0 0 0 224 0" />
+        <filter id="explorer-stamp-ink" x="-12%" y="-12%" width="124%" height="124%">
+          <feTurbulence baseFrequency=".026 .095" numOctaves="3" seed="26" result="grain" />
+          <feDisplacementMap in="SourceGraphic" in2="grain" scale="2.8" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+        <mask id="explorer-stamp-wear">
+          <rect width="320" height="320" fill="white" />
+          <g fill="black" opacity=".72">
+            <path d="M33 112h29v3H33zm16 96h42v4H49zm203-103h35v3h-35zM235 239h48v4h-48zM96 42h20v4H96zm60 241h28v3h-28z" />
+            <circle cx="62" cy="75" r="4" /><circle cx="273" cy="181" r="5" /><circle cx="211" cy="51" r="3" />
+            <circle cx="94" cy="269" r="3" /><circle cx="156" cy="145" r="2.5" /><circle cx="198" cy="188" r="3" />
+          </g>
+          <g fill="none" stroke="black" strokeWidth="2" opacity=".42">
+            <path d="m46 152 18 3m174-82 23 5M91 224l31 4m92-4 27-5" />
+          </g>
+        </mask>
+      </defs>
+
+      <g filter="url(#explorer-stamp-ink)" mask="url(#explorer-stamp-wear)">
+        <circle className={styles.outerRing} cx="160" cy="160" r="141" />
+        <circle className={styles.brokenRing} cx="160" cy="160" r="132" />
+        <circle className={styles.innerRing} cx="160" cy="160" r="101" />
+
+        <text className={styles.arc}><textPath href="#explorer-stamp-top" startOffset="50%" textAnchor="middle">ANIMAVIDI</textPath></text>
+        <text className={styles.est}><textPath href="#explorer-stamp-bottom" startOffset="50%" textAnchor="middle">EST. 2026</textPath></text>
+
+        <path className={styles.star} d="m54 165 4 2 4-2-1 5 3 3-5 .5-2 4-2-4-5-.5 3-3Z" />
+        <path className={styles.star} d="m258 165 4 2 4-2-1 5 3 3-5 .5-2 4-2-4-5-.5 3-3Z" />
+
+        <g className={styles.ornament}>
+          <path d="M104 119h28m56 0h28" />
+          <path d="m146 118 4 2 4-2-1 5 3 3-5 .5-2 4-2-4-5-.5 3-3Zm22 0 4 2 4-2-1 5 3 3-5 .5-2 4-2-4-5-.5 3-3Z" />
+          <circle cx="137" cy="119" r="2.5" />
+          <circle cx="183" cy="119" r="2.5" />
+        </g>
+
+        <path className={styles.divider} d="M77 156h166M70 198h180" />
+        <text className={styles.explorer} x="160" y="187" textAnchor="middle">EXPLORER</text>
       </g>
-      <path d="m56 167 8 3 8-3-3 8 3 8-8-3-8 3 3-8Zm200 0 8 3 8-3-3 8 3 8-8-3-8 3 3-8Z" fill="currentColor"/>
-    </g>
-  </svg>
+    </svg>
+  )
 }

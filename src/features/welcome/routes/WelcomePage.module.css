@@ -65,37 +65,16 @@
   text-align: center;
 }
 
-.title {
-  margin: 0;
-  font-family: var(--font-interface);
-  font-size: clamp(1.8rem, 8vw, 2.2rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1.06;
-  white-space: nowrap;
-  text-shadow: 0 2px 20px rgb(0 0 0 / 82%);
-}
-
-.introCopy {
-  margin: 0.7rem auto 0;
-  max-inline-size: 23rem;
-  color: rgb(248 243 234 / 94%);
-  font-size: clamp(0.8rem, 3.45vw, 0.92rem);
-  line-height: 1.48;
-  text-shadow: 0 1px 12px rgb(0 0 0 / 82%);
-}
-
 .actions {
   display: grid;
   min-inline-size: 0;
   gap: 1rem;
-  margin-block-start: 1.5rem;
 }
 
 .footer {
   display: flex;
   justify-content: center;
-  padding-block: 1.4rem 0.25rem;
+  padding-block: 2.45rem 0.25rem;
 }
 .passportShortcut{display:block;margin:0 auto .75rem;color:inherit;font-size:.72rem;text-align:center;text-underline-offset:3px}
 
@@ -133,9 +112,8 @@
 @media (max-height: 47rem) {
   .page { padding-block-start: max(1.5rem, env(safe-area-inset-top)); }
   .header { transform: scale(0.84); transform-origin: top center; }
-  .title { font-size: 1.85rem; }
-  .actions { gap: .7rem; margin-block-start: 1rem; }
-  .footer { padding-block-start: 0.65rem; }
+  .actions { gap: .7rem; }
+  .footer { padding-block-start: 1.65rem; }
 }
 
 @media (min-width: 40rem) {

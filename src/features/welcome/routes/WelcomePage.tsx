@@ -1,31 +1,28 @@
 import { AppLogo } from '@/components/AppLogo/AppLogo'
 import lionSunsetHero from '@/assets/welcome/lion-sunset-hero.webp'
 import { WelcomeAction } from '@/features/welcome/components/WelcomeAction/WelcomeAction'
-import { demoMode } from '@/features/demo/config/demoMode'
+import { demoMode, getDemoUserDisplayName } from '@/features/demo/config/demoMode'
 
 import styles from './WelcomePage.module.css'
 
 export function WelcomePage() {
+  const displayName = getDemoUserDisplayName()
+
   return (
     <main className={styles.page}>
+      <h1 className="srOnly">Animavidi</h1>
       <div aria-hidden="true" className={styles.backdrop} style={{ backgroundImage: `url(${lionSunsetHero})` }} />
       <div aria-hidden="true" className={styles.overlay} />
 
       <header className={styles.header}>
         <AppLogo className={styles.logo} detailed tone="dark" />
-        <p>Jouw wildlife. Jouw verhaal. Jouw bijdrage.</p>
+        <p>{displayName ? `Welkom terug, ${displayName}.` : 'Jouw wildlife. Jouw verhaal. Jouw bijdrage.'}</p>
       </header>
 
-      <section aria-labelledby="welcome-title" className={styles.hero}>
-        <div className={styles.intro}>
-          <h1 className={styles.title} id="welcome-title">Welkom bij Animavidi</h1>
-          <p className={styles.introCopy}>Bouw jouw persoonlijke wildlife-journaal op.<br />Ontdek dieren, leer ze herkennen en bewaar<br />al jouw waarnemingen op één plek.</p>
-        </div>
-
+      <section aria-label="Start your Animavidi journey" className={styles.hero}>
         <nav aria-label="Begin your Animavidi journey" className={styles.actions}>
-          <WelcomeAction icon="account" subtitle="Start met de demo-ontdekkingsreiziger" title="Nieuwe ontdekkingsreiziger" to={demoMode.routes.newExplorer} />
-          <WelcomeAction icon="login" subtitle="Ga verder als demo-ontdekkingsreiziger" title="Verder waar ik gebleven was" to={demoMode.routes.returningExplorer} variant="ivory" />
-          <WelcomeAction icon="preview" subtitle="Ontdek eerst wat Animavidi kan doen" title="Bekijk een voorbeeld" to="/parks/kruger" variant="outline" />
+          <WelcomeAction icon="account" title="Start je eerste safari" to={demoMode.routes.newExplorer} />
+          <WelcomeAction icon="login" title="Mijn safari" to={demoMode.routes.returningExplorer} variant="ivory" />
         </nav>
       </section>
 
