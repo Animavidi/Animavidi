@@ -12,6 +12,10 @@ export type KrugerMammalChecklistEntry = {
   readonly sortName?: string
 }
 
+export function getMammalId(entry: KrugerMammalChecklistEntry): string {
+  return entry.existingId ?? entry.officialName.normalize('NFKD').replace(/[’']/g, '').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLocaleLowerCase()
+}
+
 const main = (officialName: string, scientificName: string, options: Omit<KrugerMammalChecklistEntry, 'officialName' | 'scientificName' | 'section'> = {}): KrugerMammalChecklistEntry => ({ officialName, scientificName, section: 'main', ...options })
 const small = (officialName: string, scientificName: string, smallMammalGroup: SmallMammalGroup, options: Omit<KrugerMammalChecklistEntry, 'officialName' | 'scientificName' | 'section' | 'smallMammalGroup'> = {}): KrugerMammalChecklistEntry => ({ officialName, scientificName, section: 'small-mammals', smallMammalGroup, ...options })
 

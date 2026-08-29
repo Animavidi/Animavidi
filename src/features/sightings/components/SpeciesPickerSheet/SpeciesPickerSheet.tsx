@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 import type { Mammal, MammalCategory } from '@/features/mammals/model/mammal'
+import { MammalImage } from '@/features/mammals/components/MammalImage/MammalImage'
 import { mammals } from '@/features/mammals/model/mammals'
 import { loadRecentlyObservedMammals } from '@/features/sightings/services/recentSpeciesService'
 
@@ -107,5 +108,5 @@ export function SpeciesPickerSheet({ onClose, onSelect, open }: SpeciesPickerShe
 }
 
 function SpeciesRow({ mammal, onSelect }: { mammal: Mammal; onSelect: (animalId: string) => void }) {
-  return <button className={styles.species} onClick={() => onSelect(mammal.id)} type="button"><img alt={`${mammal.commonName} in Kruger National Park`} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = mammal.imageFallback }} src={mammal.image} /><span><strong>{mammal.commonName}</strong>{mammal.scientificName ? <em>{mammal.scientificName}</em> : null}<small>{categoryLabel(mammal.categories[0])}</small></span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" /></svg></button>
+  return <button className={styles.species} onClick={() => onSelect(mammal.id)} type="button"><MammalImage mammal={mammal} /><span><strong>{mammal.commonName}</strong>{mammal.scientificName ? <em>{mammal.scientificName}</em> : null}<small>{categoryLabel(mammal.categories[0])}</small></span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" /></svg></button>
 }

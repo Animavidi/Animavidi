@@ -7,16 +7,18 @@
   "packageManager": "pnpm@11.9.0",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build --configLoader runner",
+    "build": "pnpm typecheck && vite build --configLoader runner",
     "lint": "eslint .",
     "preview": "vite preview",
-    "typecheck": "tsc -b --pretty false",
+    "typecheck": "tsc -b --pretty false && tsc -p worker/tsconfig.json --pretty false",
     "validate:mammal-images": "node scripts/validate-mammal-images.mjs",
     "validate:mammal-dataset": "node scripts/validate-mammal-dataset.mjs",
     "validate:animal-detail": "node scripts/validate-animal-detail.mjs",
     "validate:sighting-flow": "node scripts/validate-sighting-flow.mjs",
     "validate:big-five-celebration": "node scripts/validate-big-five-celebration.mjs",
-    "validate:species-achievements": "node scripts/validate-species-achievements.mjs"
+    "validate:species-achievements": "node scripts/validate-species-achievements.mjs",
+    "validate:content-admin": "node scripts/validate-content-admin.mjs",
+    "admin:hash-password": "node scripts/generate-admin-password-hash.mjs"
   },
   "dependencies": {
     "react": "^19.1.1",
@@ -35,7 +37,8 @@
     "globals": "^16.3.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.0",
-    "vite": "^7.1.0"
+    "vite": "^7.1.0",
+    "wrangler": "^4.127.0"
   },
   "engines": {
     "node": ">=20.19.0"

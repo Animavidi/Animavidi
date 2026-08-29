@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import type { Mammal } from '@/features/mammals/model/mammal'
+import { useMammalPhoto } from '@/features/mammals/components/MammalPhotoProvider/MammalPhotoProvider'
 import type { SightingPhoto } from '@/features/sightings/model/sighting'
 
 type SightingImageProps = {
@@ -23,14 +24,18 @@ export function SightingImage({ className, mammal, objectPosition, photo }: Sigh
     return () => URL.revokeObjectURL(url)
   }, [photo])
 
-  const fallback = mammal?.imageFallback ?? createMissingAnimalPlaceholder()
+  return mammal ? <KnownMammalSightingImage className={className} mammal={mammal} objectPosition={objectPosition} photoUrl={photoUrl} /> : <img alt="Saved wildlife sighting" className={className} src={photoUrl ?? createMissingAnimalPlaceholder()} />
+}
+
+function KnownMammalSightingImage({ className, mammal, objectPosition, photoUrl }: { className?: string; mammal: Mammal; objectPosition?: string; photoUrl?: string }) {
+  const resolved = useMammalPhoto(mammal)
   return (
     <img
-      alt={mammal?.imageAlt ?? 'Saved wildlife sighting'}
+      alt={mammal.imageAlt}
       className={className}
-      onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = fallback }}
-      src={photoUrl ?? mammal?.image ?? fallback}
-      style={!photo && objectPosition ? { objectPosition } : undefined}
+      onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = resolved.fallback }}
+      src={photoUrl ?? resolved.src}
+      style={!photoUrl && objectPosition ? { objectPosition } : undefined}
     />
   )
 }

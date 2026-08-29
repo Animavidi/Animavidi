@@ -1,0 +1,21 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "animavidi-content-admin",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-29",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "vars": {
+    "ADMIN_ALLOWED_ORIGINS": "https://animavidi.com,https://www.animavidi.com",
+    "MEDIA_BASE_URL": "https://media.animavidi.com"
+  },
+  "r2_buckets": [
+    {
+      "binding": "MAMMAL_PHOTOS",
+      "bucket_name": "animavidi-mammal-photos"
+    }
+  ]
+}

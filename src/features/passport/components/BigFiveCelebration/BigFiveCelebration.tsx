@@ -2,6 +2,7 @@ import { type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, useEffect
 
 import achievementTheme from '@/assets/audio/big-five-complete.wav'
 import { AppLogo } from '@/components/AppLogo/AppLogo'
+import { MammalImage } from '@/features/mammals/components/MammalImage/MammalImage'
 import type { PassportSummary } from '@/features/passport/model/passport'
 
 import styles from './BigFiveCelebration.module.css'
@@ -103,7 +104,7 @@ export function BigFiveCelebration({ completionDate, completedAnimalId, onContin
       <p className={styles.intro}>You have now observed all five of Kruger’s Big Five.</p>
       <div aria-label="Completed Big Five collection" className={styles.stamps} role="list">
         {passport.bigFive.map((entry, index) => <article className={entry.id === completedAnimalId || (entry.title === 'Rhinoceros' && completedAnimalId.includes('rhinoceros')) ? styles.newStamp : undefined} key={entry.id} role="listitem" style={{ '--stamp-index': index } as CSSProperties}>
-          <img alt="" aria-hidden="true" onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = entry.mammal.imageFallback }} src={entry.mammal.image} />
+          <MammalImage decorative mammal={entry.mammal} />
           <strong>{entry.title.replace('African ', '')}</strong><span>Observed</span>
         </article>)}
       </div>

@@ -5,6 +5,7 @@ import heroImage from '@/assets/onboarding/park-selection-lion.webp'
 import { AppLogo } from '@/components/AppLogo/AppLogo'
 import { SponsorFooter } from '@/components/SponsorFooter/SponsorFooter'
 import { MammalCard } from '@/features/mammals/components/MammalCard/MammalCard'
+import { MammalImage } from '@/features/mammals/components/MammalImage/MammalImage'
 import { MammalsBottomNav } from '@/features/mammals/components/MammalsBottomNav/MammalsBottomNav'
 import type { MammalCategory, MammalFilter } from '@/features/mammals/model/mammal'
 import { mammals } from '@/features/mammals/model/mammals'
@@ -13,14 +14,12 @@ import { AddSightingLauncher } from '@/features/sightings/components/AddSighting
 import styles from './MammalsPage.module.css'
 
 const scrollKey = 'animavidi:kruger-mammals-scroll'
-const imageFor = (id: string) => mammals.find((mammal) => mammal.id === id)?.image ?? heroImage
-
-const filters: ReadonlyArray<{ image: string; label: string; value: MammalCategory }> = [
-  { image: imageFor('african-lion'), label: 'Big Five', value: 'big-five' },
-  { image: imageFor('greater-kudu'), label: 'Antelopes', value: 'antelopes' },
-  { image: imageFor('cheetah'), label: 'Predators', value: 'predators' },
-  { image: imageFor('chacma-baboon'), label: 'Primates', value: 'primates' },
-  { image: imageFor('honey-badger'), label: 'Small mammals', value: 'small-mammals' },
+const filters: ReadonlyArray<{ mammalId: string; label: string; value: MammalCategory }> = [
+  { mammalId: 'african-lion', label: 'Big Five', value: 'big-five' },
+  { mammalId: 'greater-kudu', label: 'Antelopes', value: 'antelopes' },
+  { mammalId: 'cheetah', label: 'Predators', value: 'predators' },
+  { mammalId: 'chacma-baboon', label: 'Primates', value: 'primates' },
+  { mammalId: 'honey-badger', label: 'Small mammals', value: 'small-mammals' },
 ]
 
 const validFilters = new Set<MammalFilter>(['all', ...filters.map((filter) => filter.value)])
@@ -104,7 +103,8 @@ export function MammalsPage() {
           </div>
           <div className={styles.filterGrid}>
             {filters.map((filter) => (
-              <button aria-pressed={activeFilter === filter.value} className={activeFilter === filter.value ? styles.selectedFilter : undefined} key={filter.value} onClick={() => updateFilter(activeFilter === filter.value ? 'all' : filter.value)} style={{ backgroundImage: `url(${filter.image})` }} type="button">
+              <button aria-pressed={activeFilter === filter.value} className={activeFilter === filter.value ? styles.selectedFilter : undefined} key={filter.value} onClick={() => updateFilter(activeFilter === filter.value ? 'all' : filter.value)} type="button">
+                {mammals.find((mammal) => mammal.id === filter.mammalId) ? <MammalImage decorative mammal={mammals.find((mammal) => mammal.id === filter.mammalId)!} /> : null}
                 <span>{filter.label}</span>
               </button>
             ))}

@@ -17,8 +17,35 @@ const ParkMapPage = lazy(() => import('@/features/map/routes/ParkMapPage').then(
 const PassportPage = lazy(() => import('@/features/passport/routes/PassportPage').then((module) => ({ default: module.PassportPage })))
 const ParkInformationPage = lazy(() => import('@/features/information/routes/ParkInformationPage').then((module) => ({ default: module.ParkInformationPage })))
 const ParkInformationErrorPage = lazy(() => import('@/features/information/routes/ParkInformationPage').then((module) => ({ default: module.ParkInformationErrorPage })))
+const AdminRoot = lazy(() => import('@/features/admin/routes/AdminRoot').then((module) => ({ default: module.AdminRoot })))
+const AdminProtectedRoute = lazy(() => import('@/features/admin/routes/AdminRoot').then((module) => ({ default: module.AdminProtectedRoute })))
+const AdminShell = lazy(() => import('@/features/admin/components/AdminShell').then((module) => ({ default: module.AdminShell })))
+const AdminLoginPage = lazy(() => import('@/features/admin/routes/AdminLoginPage').then((module) => ({ default: module.AdminLoginPage })))
+const AdminHomePage = lazy(() => import('@/features/admin/routes/AdminHomePage').then((module) => ({ default: module.AdminHomePage })))
+const AdminContentPage = lazy(() => import('@/features/admin/routes/AdminContentPage').then((module) => ({ default: module.AdminContentPage })))
+const AdminAnimalsPage = lazy(() => import('@/features/admin/routes/AdminAnimalsPage').then((module) => ({ default: module.AdminAnimalsPage })))
+const AdminAnimalPage = lazy(() => import('@/features/admin/routes/AdminAnimalPage').then((module) => ({ default: module.AdminAnimalPage })))
 
 export const router = createBrowserRouter([
+  {
+    path: '/admin',
+    element: <Suspense fallback={<p role="status">Opening Content Admin…</p>}><AdminRoot /></Suspense>,
+    children: [
+      { path: 'login', element: <AdminLoginPage /> },
+      {
+        element: <AdminProtectedRoute />,
+        children: [{
+          element: <AdminShell />,
+          children: [
+            { index: true, element: <AdminHomePage /> },
+            { path: 'content', element: <AdminContentPage /> },
+            { path: 'content/animals', element: <AdminAnimalsPage /> },
+            { path: 'content/animals/:mammalId', element: <AdminAnimalPage /> },
+          ],
+        }],
+      },
+    ],
+  },
   {
     path: '/',
     element: <WelcomePage />,

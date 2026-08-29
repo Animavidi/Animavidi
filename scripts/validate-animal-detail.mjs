@@ -20,7 +20,7 @@ for (const mammal of manifest) {
 }
 if (!router.includes("path: '/parks/kruger/mammals/:animalId'")) failures.push('Production Animal Detail route is missing.')
 if (!page.includes('findMammal(animalId)')) failures.push('Selected Mammal object is not used by the detail template.')
-if (!page.includes('src={mammal.image}') || !page.includes('mammal.imageFallback')) failures.push('Hero image and fallback are not derived from the selected Mammal object.')
+if (!page.includes('<MammalImage') || !page.includes('mammal={mammal}')) failures.push('Hero image and fallback are not derived from the selected Mammal object through the central resolver.')
 if (!page.includes('/sightings/new`')) failures.push('Add sighting does not retain the selected mammal ID.')
 if (!page.includes('aggregateAnimalSightings(sightings, mammal.id)')) failures.push('Observation state is not derived through the central sighting aggregation.')
 if (!service.includes('.filter((sighting) => sighting.animalId === animalId)')) failures.push('Recent sightings are not restricted to the selected animal.')

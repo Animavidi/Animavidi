@@ -2,6 +2,7 @@ import { type KeyboardEvent as ReactKeyboardEvent, useEffect, useRef } from 'rea
 
 import type { SpeciesSightingAchievement } from '@/features/achievements/model/sightingAchievement'
 import type { Mammal } from '@/features/mammals/model/mammal'
+import { MammalImage } from '@/features/mammals/components/MammalImage/MammalImage'
 import { AchievementStampIcon } from '@/features/achievements/components/AchievementStampIcon/AchievementStampIcon'
 import { achievementSoundsKey } from '@/features/passport/components/BigFiveCelebration/BigFiveCelebration'
 
@@ -53,7 +54,7 @@ export function SightingAchievementDialog({ achievement, audioSrc, mammal, onCon
   return <section aria-labelledby="species-achievement-title" aria-live="assertive" aria-modal="true" className={`${styles.backdrop} ${legendary ? styles.legendary : styles.rare}`} role="dialog">
     <div className={styles.panel} onKeyDown={handleKeyDown} ref={panelRef} tabIndex={-1}>
       <button aria-label="Close achievement" className={styles.close} onClick={onContinue} type="button">×</button>
-      {legendary ? <div className={styles.photograph}><img alt={mammal.imageAlt} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = mammal.imageFallback }} src={mammal.image} /></div> : null}
+      {legendary ? <div className={styles.photograph}><MammalImage mammal={mammal} /></div> : null}
       <div aria-hidden="true" className={styles.badge}><AchievementStampIcon tier={achievement.tier} /><b>{legendary ? 'Legendary' : 'Rare'}</b></div>
       <p className={styles.eyebrow}>{legendary ? 'Legendary sighting' : 'Rare sighting'}</p>
       <h2 id="species-achievement-title">{mammal.commonName}</h2>

@@ -25,10 +25,11 @@
 | Expandable Add Sighting FAB | Shared active-safari navigation | Visual review pending |
 | Big Five Completion Celebration | User-created `Big 5_reverb.wav` | Visual review pending |
 | ANI-023 Complete Kruger Mammal Dataset | SANParks Kruger Mammals Checklist | Demo Approved |
+| ANI-024 Content Admin V1 | Animavidi admin architecture + existing Cloudflare R2 media domain | Visual review pending |
 
 ## Active task
 
-**ANI-023 Complete Kruger Mammal Dataset visual review** is active. Only the approved and functionally complete
+**ANI-024 Content Admin V1 visual review** is active. Only the approved and functionally complete
 Welcome, Park Selection, Kruger, Mammals, Animal Detail, New Sighting, My
 Sightings, Park Map, Park Information and Safari Passport experiences are
 reachable from the demo interface.
@@ -39,6 +40,8 @@ derived exclusively from local IndexedDB sightings. The original 22 retain their
 detailed profiles and local photographs; newly added checklist species use a
 graceful minimal editorial state and neutral Animavidi placeholder until reviewed
 content and user-managed photography are available.
+
+ANI-024 introduces a separate lazy-loaded management area for the single Animavidi administrator. Content → Animals reads the existing 148-mammal dataset and supports authenticated R2 photo add, replace and remove operations only. R2 overrides resolve centrally before the original 22 packaged photographs and the shared neutral fallback. Safari Routes, Users, Reports & Analytics, editable animal copy, species creation and D1 persistence remain deliberately deferred. Required Worker binding, secrets, exact-origin CORS and local review setup are documented in `docs/Content_Admin_Setup.md`; the deployed Worker uses the reviewed production origins and existing R2 media domain.
 
 New Sighting, Sighting Detail and Edit Sighting now share the premium memory-capture
 visual language while continuing to use the existing SightingRepository, IndexedDB

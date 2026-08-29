@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 
+import { MammalImage } from '@/features/mammals/components/MammalImage/MammalImage'
 import type { Mammal } from '@/features/mammals/model/mammal'
 
 import styles from './MammalCard.module.css'
@@ -28,15 +29,10 @@ const imagePositions: Readonly<Record<string, string>> = {
 export function MammalCard({ mammal, onSelect, returnTo }: MammalCardProps) {
   return (
     <Link className={styles.card} onClick={onSelect} state={{ returnTo }} to={`/parks/kruger/mammals/${mammal.id}`}>
-      <img
-        alt={mammal.imageAlt}
+      <MammalImage
         className={styles.image}
         loading="lazy"
-        onError={(event) => {
-          event.currentTarget.onerror = null
-          event.currentTarget.src = mammal.imageFallback
-        }}
-        src={mammal.image}
+        mammal={mammal}
         style={{ '--image-position': imagePositions[mammal.id] ?? '50% 42%' } as CSSProperties}
       />
       <span className={styles.copy}>

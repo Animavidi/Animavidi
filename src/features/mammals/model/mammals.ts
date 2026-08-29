@@ -1,5 +1,5 @@
 import { getMammalPrimaryImage } from '@/assets/mammals/mammalPrimaryImages'
-import { krugerMammalChecklist } from '@/features/mammals/data/krugerMammalChecklist'
+import { getMammalId, krugerMammalChecklist } from '@/features/mammals/data/krugerMammalChecklist'
 
 import type { Mammal, MammalCategory, MammalProfile } from './mammal'
 
@@ -59,11 +59,7 @@ function profile(introduction: string, identificationFeatures: readonly string[]
   return { behaviour, conservationStatus, demoProgress: { seen, sightingsCount }, diet, groupStructure, habitat, identificationFeatures, interestingFacts, introduction }
 }
 
-const missingPhotoFallback = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900"><defs><linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F6F3EC"/><stop offset="1" stop-color="#E7E0D2"/></linearGradient><radialGradient id="light" cx="72%" cy="18%" r="72%"><stop stop-color="#B78C45" stop-opacity=".16"/><stop offset="1" stop-color="#1E3328" stop-opacity="0"/></radialGradient><pattern id="grain" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="3" r=".7" fill="#1E3328" opacity=".045"/><circle cx="13" cy="11" r=".55" fill="#B78C45" opacity=".06"/></pattern></defs><rect width="1200" height="900" fill="url(#paper)"/><rect width="1200" height="900" fill="url(#light)"/><rect width="1200" height="900" fill="url(#grain)"/><path d="M0 690C210 625 360 718 555 661c238-69 390-12 645 65v174H0Z" fill="#1E3328" opacity=".055"/><path d="M0 756c245-55 421 30 633-15 222-47 374 6 567 59v100H0Z" fill="#B78C45" opacity=".07"/></svg>')}`
-
-function stableId(name: string): string {
-  return name.normalize('NFKD').replace(/[’']/g, '').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLocaleLowerCase()
-}
+export const missingPhotoFallback = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900"><defs><linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F6F3EC"/><stop offset="1" stop-color="#E7E0D2"/></linearGradient><radialGradient id="light" cx="72%" cy="18%" r="72%"><stop stop-color="#B78C45" stop-opacity=".16"/><stop offset="1" stop-color="#1E3328" stop-opacity="0"/></radialGradient><pattern id="grain" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="3" r=".7" fill="#1E3328" opacity=".045"/><circle cx="13" cy="11" r=".55" fill="#B78C45" opacity=".06"/></pattern></defs><rect width="1200" height="900" fill="url(#paper)"/><rect width="1200" height="900" fill="url(#light)"/><rect width="1200" height="900" fill="url(#grain)"/><path d="M0 690C210 625 360 718 555 661c238-69 390-12 645 65v174H0Z" fill="#1E3328" opacity=".055"/><path d="M0 756c245-55 421 30 633-15 222-47 374 6 567 59v100H0Z" fill="#B78C45" opacity=".07"/></svg>')}`
 
 function categoriesFor(name: string, section: Mammal['overviewSection']): readonly MammalCategory[] {
   const normalized = name.toLocaleLowerCase()
@@ -91,7 +87,7 @@ function minimalProfile(commonName: string): MammalProfile {
 }
 
 export const mammals: readonly Mammal[] = krugerMammalChecklist.map((entry) => {
-  const id = entry.existingId ?? stableId(entry.officialName)
+  const id = getMammalId(entry)
   const existing = existingMammalSummaries.find((mammal) => mammal.id === id)
   const commonName = entry.displayName ?? existing?.commonName ?? entry.officialName
   const primaryImage = getMammalPrimaryImage(id)

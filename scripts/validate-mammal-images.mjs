@@ -24,12 +24,15 @@ for (const record of manifest) {
 const mammalsSource = readFileSync(resolve(repositoryRoot, 'src/features/mammals/model/mammals.ts'), 'utf8')
 const overviewSource = readFileSync(resolve(repositoryRoot, 'src/features/mammals/components/MammalCard/MammalCard.tsx'), 'utf8')
 const detailSource = readFileSync(resolve(repositoryRoot, 'src/features/mammals/routes/MammalDetailPage.tsx'), 'utf8')
+const imageComponentSource = readFileSync(resolve(repositoryRoot, 'src/features/mammals/components/MammalImage/MammalImage.tsx'), 'utf8')
+const photoProviderSource = readFileSync(resolve(repositoryRoot, 'src/features/mammals/components/MammalPhotoProvider/MammalPhotoProvider.tsx'), 'utf8')
 if (!mammalsSource.includes('imageAlt: `${commonName} in Kruger National Park`')) failures.push('Alt text is not derived from the resolved Mammal common name.')
 if (!mammalsSource.includes('imageFallback: primaryImage ?? missingPhotoFallback')) failures.push('Image fallback does not retain the species primary image or shared neutral fallback.')
 if (!mammalsSource.includes('image: primaryImage ?? missingPhotoFallback')) failures.push('Missing photography does not resolve through the shared neutral fallback.')
 if (mammalsSource.includes('ANIMAVIDI SPECIES PLACEHOLDER') || mammalsSource.includes('<text x=')) failures.push('Missing-photo fallback still contains visible placeholder text.')
-if (!overviewSource.includes('src={mammal.image}') || !overviewSource.includes('mammal.imageFallback')) failures.push('Overview image and fallback are not sourced from the Mammal object.')
-if (!detailSource.includes('src={mammal.image}') || !detailSource.includes('mammal.imageFallback')) failures.push('Detail image and fallback are not sourced from the Mammal object.')
+if (!overviewSource.includes('<MammalImage') || !overviewSource.includes('mammal={mammal}')) failures.push('Overview image is not sourced through the selected Mammal object.')
+if (!detailSource.includes('<MammalImage') || !detailSource.includes('mammal={mammal}')) failures.push('Detail image is not sourced through the selected Mammal object.')
+if (!imageComponentSource.includes('useMammalPhoto(mammal)') || !photoProviderSource.includes('resolveMammalPhoto(getMammalPrimaryImage(mammal.id), mammal.imageFallback')) failures.push('Central image fallback is not derived from the same Mammal object.')
 
 if (failures.length) { console.error(failures.join('\n')); process.exit(1) }
 const ready = manifest.filter((record) => record.status === 'real-photo').length

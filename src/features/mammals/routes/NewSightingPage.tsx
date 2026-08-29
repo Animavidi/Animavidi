@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { AppLogo } from '@/components/AppLogo/AppLogo'
 import { SponsorFooter } from '@/components/SponsorFooter/SponsorFooter'
 import { MammalsBottomNav } from '@/features/mammals/components/MammalsBottomNav/MammalsBottomNav'
+import { MammalImage } from '@/features/mammals/components/MammalImage/MammalImage'
 import { animalDetailImagePositions } from '@/features/mammals/config/animalDetailImagePositions'
 import { findMammal } from '@/features/mammals/model/mammals'
 import { SightingAchievementDialog } from '@/features/achievements/components/SightingAchievementDialog/SightingAchievementDialog'
@@ -147,7 +148,7 @@ export function NewSightingPage() {
 
   return <main className={styles.page}>
     <header className={styles.speciesHero}>
-      <img alt={mammal.imageAlt} className={styles.heroImage} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = mammal.imageFallback }} src={mammal.image} style={{ objectPosition: animalDetailImagePositions[mammal.id] }} />
+      <MammalImage className={styles.heroImage} mammal={mammal} style={{ objectPosition: animalDetailImagePositions[mammal.id] }} />
       <Link aria-label={`Back to ${mammal.commonName}`} className={styles.back} to={`/parks/kruger/mammals/${mammal.id}`}><span aria-hidden="true" /></Link>
       <Link aria-label="Animavidi welcome" className={styles.logo} to="/"><AppLogo /></Link>
       <div className={styles.heroCopy}><p>{categoryLabel(mammal.categories)}</p><h1>New sighting</h1><strong>{mammal.commonName}</strong><em>{mammal.scientificName}</em></div>

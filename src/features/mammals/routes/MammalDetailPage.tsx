@@ -6,6 +6,7 @@ import { AppLogo } from '@/components/AppLogo/AppLogo'
 import { SponsorFooter } from '@/components/SponsorFooter/SponsorFooter'
 import { AnimalDetailIcon, type AnimalDetailIconName } from '@/features/mammals/components/AnimalDetailIcon/AnimalDetailIcon'
 import { MammalsBottomNav } from '@/features/mammals/components/MammalsBottomNav/MammalsBottomNav'
+import { MammalImage } from '@/features/mammals/components/MammalImage/MammalImage'
 import { animalDetailImagePositions } from '@/features/mammals/config/animalDetailImagePositions'
 import { findMammal } from '@/features/mammals/model/mammals'
 import { aggregateAnimalSightings, type AnimalSightingSummary } from '@/features/mammals/services/animalDetailService'
@@ -75,7 +76,7 @@ export function MammalDetailPage() {
   return (
     <main className={styles.page}>
       <header className={styles.hero} style={heroStyle}>
-        <img alt={mammal.imageAlt} className={styles.heroImage} onError={(event) => { event.currentTarget.onerror = null; event.currentTarget.src = mammal.imageFallback }} src={mammal.image} />
+        <MammalImage className={styles.heroImage} mammal={mammal} />
         <div className={styles.topbar}>
           <Link aria-label="Back to mammals" className={styles.back} to={returnTo}><span aria-hidden="true" /></Link>
           <Link aria-label="Animavidi welcome" className={styles.logoLink} to="/"><AppLogo className={styles.logo} detailed tone="dark" /></Link>

@@ -6,6 +6,9 @@ structuur van [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+- Added ANI-024 Content Admin V1 with a separate protected admin shell, server-validated single-admin sessions, complete 148-mammal photo management, Cloudflare Worker/R2 upload and removal, dynamic photo coverage/filtering, and central R2-to-packaged-to-neutral image resolution. Status: Visual review pending.
+- Added secure Worker configuration and setup documentation for the existing `animavidi-mammal-photos` bucket, exact-origin credentialed CORS, PBKDF2 password hashing, signed HttpOnly cookies, client-side 1600 px WebP preparation, server-side MIME/signature/size validation, local-only Wrangler development and no-secret frontend configuration.
+- Added a targeted Content Admin validator covering route protection, 148-species coverage, original 22 packaged photos, known-ID enforcement, auth rejection, upload/delete behavior, file validation, secret isolation and photo-resolution precedence.
 - Expanded the Kruger mammal dataset from 22 to the complete 148-species SANParks checklist, preserving all legacy IDs, photographs and detailed profiles while adding recognizable-name sorting, grouped Small Mammals, neutral per-species fallbacks, full picker/detail support and Passport progress out of 148.
 - Added a dedicated complete-dataset validator covering totals, unique stable IDs, official scientific names, Main/Small Mammal grouping, all 22 legacy records and images, and distinct Black/White Rhinoceros records.
 - Completed all five Big Five medallion reliefs in the approved classical engraving style, using individual etched linework for Lion, Elephant, Leopard, Buffalo and Rhinoceros.
