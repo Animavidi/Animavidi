@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import { krugerMammalChecklist } from '../src/features/mammals/data/krugerMammalChecklist.ts'
 
 const root = resolve(import.meta.dirname, '..')
 const manifest = JSON.parse(readFileSync(resolve(root, 'src/assets/mammals/mammal-images.json'), 'utf8'))
@@ -11,6 +12,7 @@ const crops = readFileSync(resolve(root, 'src/features/mammals/config/animalDeta
 const failures = []
 
 if (manifest.length !== 22) failures.push(`Expected 22 mammal routes, found ${manifest.length} manifest records.`)
+if (krugerMammalChecklist.length !== 148) failures.push(`Expected 148 data-driven mammal routes, found ${krugerMammalChecklist.length}.`)
 for (const mammal of manifest) {
   if (!data.includes(`id: '${mammal.id}'`)) failures.push(`${mammal.name}: missing from the typed mammals dataset.`)
   if (!data.includes(`'${mammal.id}': profile(`) && !data.includes(`${mammal.id}: profile(`)) failures.push(`${mammal.name}: missing typed profile content.`)
@@ -26,4 +28,4 @@ if (page.includes('demoProgress.seen') || page.includes('demoProgress.sightingsC
 if ((page.match(/export function MammalDetailPage/g) ?? []).length !== 1) failures.push('Animal Detail is not implemented as one reusable template.')
 
 if (failures.length) { console.error(failures.join('\n')); process.exit(1) }
-console.log('Animal Detail validation passed: one data-driven template covers all 22 mammal IDs with real sighting state.')
+console.log('Animal Detail validation passed: one data-driven template covers all 148 mammal IDs; all 22 curated profiles retain crop metadata and real sighting state.')

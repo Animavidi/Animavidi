@@ -40,7 +40,7 @@ export function KrugerHomePage() {
         </div>
 
         <dl aria-label="Kruger National Park wildlife statistics" className={styles.statistics}>
-          <div><StatisticIcon type="mammals" /><dt>147</dt><dd>Mammals</dd></div>
+          <div><StatisticIcon type="mammals" /><dt>148</dt><dd>Mammals</dd></div>
           <div><StatisticIcon type="birds" /><dt>500+</dt><dd>Birds</dd></div>
           <div><StatisticIcon type="trees" /><dt>336</dt><dd>Trees</dd></div>
         </dl>

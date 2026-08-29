@@ -12,6 +12,7 @@
     "preview": "vite preview",
     "typecheck": "tsc -b --pretty false",
     "validate:mammal-images": "node scripts/validate-mammal-images.mjs",
+    "validate:mammal-dataset": "node scripts/validate-mammal-dataset.mjs",
     "validate:animal-detail": "node scripts/validate-animal-detail.mjs",
     "validate:sighting-flow": "node scripts/validate-sighting-flow.mjs",
     "validate:big-five-celebration": "node scripts/validate-big-five-celebration.mjs",

@@ -24,8 +24,10 @@ for (const record of manifest) {
 const mammalsSource = readFileSync(resolve(repositoryRoot, 'src/features/mammals/model/mammals.ts'), 'utf8')
 const overviewSource = readFileSync(resolve(repositoryRoot, 'src/features/mammals/components/MammalCard/MammalCard.tsx'), 'utf8')
 const detailSource = readFileSync(resolve(repositoryRoot, 'src/features/mammals/routes/MammalDetailPage.tsx'), 'utf8')
-if (!mammalsSource.includes('imageAlt: `${mammal.commonName} in Kruger National Park`')) failures.push('Alt text is not derived from the Mammal common name.')
-if (!mammalsSource.includes('imageFallback: primaryImage ?? speciesPlaceholder')) failures.push('Real-photo fallback is not sourced from the same species primary image.')
+if (!mammalsSource.includes('imageAlt: `${commonName} in Kruger National Park`')) failures.push('Alt text is not derived from the resolved Mammal common name.')
+if (!mammalsSource.includes('imageFallback: primaryImage ?? missingPhotoFallback')) failures.push('Image fallback does not retain the species primary image or shared neutral fallback.')
+if (!mammalsSource.includes('image: primaryImage ?? missingPhotoFallback')) failures.push('Missing photography does not resolve through the shared neutral fallback.')
+if (mammalsSource.includes('ANIMAVIDI SPECIES PLACEHOLDER') || mammalsSource.includes('<text x=')) failures.push('Missing-photo fallback still contains visible placeholder text.')
 if (!overviewSource.includes('src={mammal.image}') || !overviewSource.includes('mammal.imageFallback')) failures.push('Overview image and fallback are not sourced from the Mammal object.')
 if (!detailSource.includes('src={mammal.image}') || !detailSource.includes('mammal.imageFallback')) failures.push('Detail image and fallback are not sourced from the Mammal object.')
 

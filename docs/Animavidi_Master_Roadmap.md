@@ -24,19 +24,21 @@
 | Animavidi Add Sighting Lion Icon | Supplied `Button.svg` | Visual review pending |
 | Expandable Add Sighting FAB | Shared active-safari navigation | Visual review pending |
 | Big Five Completion Celebration | User-created `Big 5_reverb.wav` | Visual review pending |
+| ANI-023 Complete Kruger Mammal Dataset | SANParks Kruger Mammals Checklist | Demo Approved |
 
 ## Active task
 
-**Sighting Flow v2 visual review** is active. Only the approved and functionally complete
+**ANI-023 Complete Kruger Mammal Dataset visual review** is active. Only the approved and functionally complete
 Welcome, Park Selection, Kruger, Mammals, Animal Detail, New Sighting, My
 Sightings, Park Map, Park Information and Safari Passport experiences are
 reachable from the demo interface.
 
-Animal Detail v2 is implemented as one reusable template for all 22 demo
+Animal Detail v2 is implemented as one reusable template for all 148 Kruger
 mammals. Observation status, personal statistics and recent sightings are
-derived exclusively from local IndexedDB sightings; typed Mammal profiles and
-species-specific local photographs remain the sole source for field-guide
-content and imagery.
+derived exclusively from local IndexedDB sightings. The original 22 retain their
+detailed profiles and local photographs; newly added checklist species use a
+graceful minimal editorial state and neutral Animavidi placeholder until reviewed
+content and user-managed photography are available.
 
 New Sighting, Sighting Detail and Edit Sighting now share the premium memory-capture
 visual language while continuing to use the existing SightingRepository, IndexedDB

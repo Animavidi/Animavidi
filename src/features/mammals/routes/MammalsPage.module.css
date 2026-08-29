@@ -28,6 +28,9 @@
 .quickAccess, .listSection { margin-block-start: 1.65rem; }
 .sectionHeading { display: flex; gap: 1rem; align-items: center; justify-content: space-between; }
 .sectionHeading h2, .listSection h2 { margin: 0 0 0.8rem; font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; }
+.smallGroup { margin-block-start: 2rem; }
+.smallGroup h3 { margin: 0 0 0.8rem; color: #1e3328; font: 500 1.35rem/1.15 var(--font-display); }
+.smallGroup h3 span { color: rgb(30 51 40 / 52%); font-size: 0.72em; }
 .sectionHeading button { min-block-size: 2.75rem; margin-block-end: 0.45rem; padding-inline: 0.65rem; border: 0; color: #1e3328; background: transparent; font: inherit; font-size: 0.7rem; text-decoration: underline; text-underline-offset: 0.2rem; }
 .filterGrid { display: grid; grid-auto-columns: clamp(7rem, 30vw, 7.75rem); grid-auto-flow: column; gap: 0.75rem; margin-inline: -1.3rem; padding: 0.2rem 1.3rem 1rem; overflow-x: auto; overscroll-behavior-inline: contain; scroll-padding-inline: 1.3rem; scroll-snap-type: inline mandatory; scrollbar-width: none; }
 .filterGrid::-webkit-scrollbar { display: none; }

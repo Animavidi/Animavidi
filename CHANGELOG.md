@@ -6,6 +6,8 @@ structuur van [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+- Expanded the Kruger mammal dataset from 22 to the complete 148-species SANParks checklist, preserving all legacy IDs, photographs and detailed profiles while adding recognizable-name sorting, grouped Small Mammals, neutral per-species fallbacks, full picker/detail support and Passport progress out of 148.
+- Added a dedicated complete-dataset validator covering totals, unique stable IDs, official scientific names, Main/Small Mammal grouping, all 22 legacy records and images, and distinct Black/White Rhinoceros records.
 - Completed all five Big Five medallion reliefs in the approved classical engraving style, using individual etched linework for Lion, Elephant, Leopard, Buffalo and Rhinoceros.
 - Restored the redesigned Safari Passport's Journey, Achievements, Species Discovered, Recent Memories, Animals statistic and concrete rank requirements, with working in-page collection navigation.
 - Corrected Passport responsiveness so all five Big Five medallions remain in one fluid row without horizontal scrolling, and removed the paw motif from the restrained tone-on-tone Explorer blind stamp.

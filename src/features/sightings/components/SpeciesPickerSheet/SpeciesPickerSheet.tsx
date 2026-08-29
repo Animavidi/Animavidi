@@ -24,11 +24,13 @@ const categorySections: readonly PickerSection[] = [
   { category: 'predators', id: 'predators', title: 'Predators' },
   { category: 'antelopes', id: 'antelopes', title: 'Antelopes' },
   { category: 'primates', id: 'primates', title: 'Primates' },
-  { category: 'small-mammals', id: 'small-mammals', title: 'Small mammals' },
-  { id: 'all-mammals', mammals, title: 'All mammals' },
+  { id: 'all-main-mammals', mammals: mammals.filter((mammal) => mammal.overviewSection === 'main'), title: 'All main mammals' },
+  { id: 'bats', mammals: mammals.filter((mammal) => mammal.smallMammalGroup === 'bats'), title: 'Small mammals · Bats' },
+  { id: 'rodents', mammals: mammals.filter((mammal) => mammal.smallMammalGroup === 'rodents'), title: 'Small mammals · Rodents' },
+  { id: 'shrews-moles', mammals: mammals.filter((mammal) => mammal.smallMammalGroup === 'shrews-moles'), title: 'Small mammals · Shrews & Moles' },
 ]
 
-const alphabetically = (entries: readonly Mammal[]) => entries.slice().sort((left, right) => left.commonName.localeCompare(right.commonName))
+const alphabetically = (entries: readonly Mammal[]) => entries.slice().sort((left, right) => left.sortName.localeCompare(right.sortName) || left.commonName.localeCompare(right.commonName))
 
 function categoryLabel(value?: string) {
   if (!value) return 'Kruger mammal'

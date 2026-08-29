@@ -1,36 +1,33 @@
-import informationPreview from '@/assets/parks/kruger/information-preview.webp'
-import mammalsPreview from '@/assets/parks/kruger/mammals-preview.webp'
-import mapPreview from '@/assets/parks/kruger/map-preview.webp'
-import sightingsPreview from '@/assets/parks/kruger/sightings-preview.webp'
 import { getMammalPrimaryImage } from '@/assets/mammals/mammalPrimaryImages'
+import { krugerMammalChecklist } from '@/features/mammals/data/krugerMammalChecklist'
 
-import type { Mammal, MammalProfile } from './mammal'
+import type { Mammal, MammalCategory, MammalProfile } from './mammal'
 
-type MammalSummary = Omit<Mammal, 'imageAlt' | 'imageFallback' | 'profile'>
+type ExistingMammalSummary = Pick<Mammal, 'aliases' | 'categories' | 'commonName' | 'id'>
 
-const mammalSummaries: readonly MammalSummary[] = [
-  { aliases: ['lion'], categories: ['big-five', 'predators'], commonName: 'African Lion', id: 'african-lion', image: mammalsPreview, scientificName: 'Panthera leo' },
-  { aliases: ['savanna elephant', 'elephant'], categories: ['big-five'], commonName: 'African Elephant', id: 'african-elephant', image: mammalsPreview, scientificName: 'Loxodonta africana' },
-  { aliases: ['cape buffalo', 'buffalo'], categories: ['big-five'], commonName: 'African Buffalo', id: 'african-buffalo', image: informationPreview, scientificName: 'Syncerus caffer' },
-  { aliases: ['black rhino', 'hook-lipped rhinoceros'], categories: ['big-five'], commonName: 'Black Rhinoceros', id: 'black-rhinoceros', image: informationPreview, scientificName: 'Diceros bicornis' },
-  { aliases: ['baboon'], categories: ['primates'], commonName: 'Chacma Baboon', id: 'chacma-baboon', image: mammalsPreview, scientificName: 'Papio ursinus' },
-  { aliases: ['cheetah'], categories: ['predators'], commonName: 'Cheetah', id: 'cheetah', image: sightingsPreview, scientificName: 'Acinonyx jubatus' },
-  { aliases: ['kudu'], categories: ['antelopes'], commonName: 'Greater Kudu', id: 'greater-kudu', image: informationPreview, scientificName: 'Tragelaphus strepsiceros' },
-  { aliases: ['giraffe'], categories: [], commonName: 'Giraffe', id: 'giraffe', image: mammalsPreview, scientificName: 'Giraffa camelopardalis' },
-  { aliases: ['ratel'], categories: ['predators', 'small-mammals'], commonName: 'Honey Badger', id: 'honey-badger', image: sightingsPreview, scientificName: 'Mellivora capensis' },
-  { aliases: ['impala'], categories: ['antelopes'], commonName: 'Impala', id: 'impala', image: informationPreview, scientificName: 'Aepyceros melampus' },
-  { aliases: ['leopard'], categories: ['big-five', 'predators'], commonName: 'Leopard', id: 'leopard', image: sightingsPreview, scientificName: 'Panthera pardus' },
-  { aliases: ['nyala'], categories: ['antelopes'], commonName: 'Nyala', id: 'nyala', image: informationPreview, scientificName: 'Tragelaphus angasii' },
-  { aliases: ['cape porcupine'], categories: ['small-mammals'], commonName: 'Porcupine', id: 'porcupine', image: mapPreview, scientificName: 'Hystrix africaeaustralis' },
-  { aliases: ['bushbuck'], categories: ['antelopes'], commonName: 'Southern Bushbuck', id: 'southern-bushbuck', image: informationPreview, scientificName: 'Tragelaphus sylvaticus' },
-  { aliases: ['hyena', 'hyaena'], categories: ['predators'], commonName: 'Spotted Hyena', id: 'spotted-hyena', image: sightingsPreview, scientificName: 'Crocuta crocuta' },
-  { aliases: ['steenbuck'], categories: ['antelopes'], commonName: 'Steenbok', id: 'steenbok', image: informationPreview, scientificName: 'Raphicerus campestris' },
-  { aliases: ['monkey', 'vervet'], categories: ['primates'], commonName: 'Vervet Monkey', id: 'vervet-monkey', image: mammalsPreview, scientificName: 'Chlorocebus pygerythrus' },
-  { aliases: ['warthog'], categories: [], commonName: 'Warthog', id: 'warthog', image: mapPreview, scientificName: 'Phacochoerus africanus' },
-  { aliases: ['waterbuck'], categories: ['antelopes'], commonName: 'Waterbuck', id: 'waterbuck', image: informationPreview, scientificName: 'Kobus ellipsiprymnus' },
-  { aliases: ['painted wolf', 'painted dog', 'wild dog'], categories: ['predators'], commonName: 'African Wild Dog', id: 'african-wild-dog', image: sightingsPreview, scientificName: 'Lycaon pictus' },
-  { aliases: ['white rhino', 'square-lipped rhinoceros'], categories: ['big-five'], commonName: 'White Rhinoceros', id: 'white-rhinoceros', image: informationPreview, scientificName: 'Ceratotherium simum' },
-  { aliases: ['plains zebra', 'zebra'], categories: [], commonName: 'Zebra', id: 'zebra', image: mapPreview, scientificName: 'Equus quagga' },
+const existingMammalSummaries: readonly ExistingMammalSummary[] = [
+  { aliases: ['lion'], categories: ['big-five', 'predators'], commonName: 'African Lion', id: 'african-lion' },
+  { aliases: ['savanna elephant', 'elephant'], categories: ['big-five'], commonName: 'African Elephant', id: 'african-elephant' },
+  { aliases: ['cape buffalo', 'buffalo'], categories: ['big-five'], commonName: 'African Buffalo', id: 'african-buffalo' },
+  { aliases: ['black rhino', 'hook-lipped rhinoceros'], categories: ['big-five'], commonName: 'Black Rhinoceros', id: 'black-rhinoceros' },
+  { aliases: ['baboon'], categories: ['primates'], commonName: 'Chacma Baboon', id: 'chacma-baboon' },
+  { aliases: ['cheetah'], categories: ['predators'], commonName: 'Cheetah', id: 'cheetah' },
+  { aliases: ['kudu'], categories: ['antelopes'], commonName: 'Greater Kudu', id: 'greater-kudu' },
+  { aliases: ['giraffe'], categories: [], commonName: 'Giraffe', id: 'giraffe' },
+  { aliases: ['ratel'], categories: ['predators', 'small-mammals'], commonName: 'Honey Badger', id: 'honey-badger' },
+  { aliases: ['impala'], categories: ['antelopes'], commonName: 'Impala', id: 'impala' },
+  { aliases: ['leopard'], categories: ['big-five', 'predators'], commonName: 'Leopard', id: 'leopard' },
+  { aliases: ['nyala'], categories: ['antelopes'], commonName: 'Nyala', id: 'nyala' },
+  { aliases: ['cape porcupine'], categories: ['small-mammals'], commonName: 'Porcupine', id: 'porcupine' },
+  { aliases: ['bushbuck'], categories: ['antelopes'], commonName: 'Southern Bushbuck', id: 'southern-bushbuck' },
+  { aliases: ['hyena', 'hyaena'], categories: ['predators'], commonName: 'Spotted Hyena', id: 'spotted-hyena' },
+  { aliases: ['steenbuck'], categories: ['antelopes'], commonName: 'Steenbok', id: 'steenbok' },
+  { aliases: ['monkey', 'vervet'], categories: ['primates'], commonName: 'Vervet Monkey', id: 'vervet-monkey' },
+  { aliases: ['warthog'], categories: [], commonName: 'Warthog', id: 'warthog' },
+  { aliases: ['waterbuck'], categories: ['antelopes'], commonName: 'Waterbuck', id: 'waterbuck' },
+  { aliases: ['painted wolf', 'painted dog', 'wild dog'], categories: ['predators'], commonName: 'African Wild Dog', id: 'african-wild-dog' },
+  { aliases: ['white rhino', 'square-lipped rhinoceros'], categories: ['big-five'], commonName: 'White Rhinoceros', id: 'white-rhinoceros' },
+  { aliases: ['plains zebra', 'zebra'], categories: [], commonName: 'Zebra', id: 'zebra' },
 ] as const
 
 const profiles: Readonly<Record<string, MammalProfile>> = {
@@ -62,21 +59,56 @@ function profile(introduction: string, identificationFeatures: readonly string[]
   return { behaviour, conservationStatus, demoProgress: { seen, sightingsCount }, diet, groupStructure, habitat, identificationFeatures, interestingFacts, introduction }
 }
 
-function createSpeciesPlaceholder(commonName: string): string {
-  const label = commonName.toUpperCase()
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900"><rect width="1200" height="900" fill="#F6F3EC"/><circle cx="600" cy="390" r="190" fill="#1E3328"/><circle cx="505" cy="285" r="54" fill="#B78C45"/><circle cx="695" cy="285" r="54" fill="#B78C45"/><circle cx="430" cy="380" r="48" fill="#B78C45"/><circle cx="770" cy="380" r="48" fill="#B78C45"/><ellipse cx="600" cy="470" rx="130" ry="110" fill="#B78C45"/><text x="600" y="720" text-anchor="middle" fill="#1E3328" font-family="Georgia,serif" font-size="48" letter-spacing="3">${label}</text><text x="600" y="775" text-anchor="middle" fill="#1E3328" opacity=".66" font-family="Arial,sans-serif" font-size="25">ANIMAVIDI SPECIES PLACEHOLDER</text></svg>`
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`
+const missingPhotoFallback = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900"><defs><linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F6F3EC"/><stop offset="1" stop-color="#E7E0D2"/></linearGradient><radialGradient id="light" cx="72%" cy="18%" r="72%"><stop stop-color="#B78C45" stop-opacity=".16"/><stop offset="1" stop-color="#1E3328" stop-opacity="0"/></radialGradient><pattern id="grain" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="3" r=".7" fill="#1E3328" opacity=".045"/><circle cx="13" cy="11" r=".55" fill="#B78C45" opacity=".06"/></pattern></defs><rect width="1200" height="900" fill="url(#paper)"/><rect width="1200" height="900" fill="url(#light)"/><rect width="1200" height="900" fill="url(#grain)"/><path d="M0 690C210 625 360 718 555 661c238-69 390-12 645 65v174H0Z" fill="#1E3328" opacity=".055"/><path d="M0 756c245-55 421 30 633-15 222-47 374 6 567 59v100H0Z" fill="#B78C45" opacity=".07"/></svg>')}`
+
+function stableId(name: string): string {
+  return name.normalize('NFKD').replace(/[’']/g, '').replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-|-$/g, '').toLocaleLowerCase()
 }
 
-export const mammals: readonly Mammal[] = mammalSummaries.map((mammal) => {
-  const speciesPlaceholder = createSpeciesPlaceholder(mammal.commonName)
-  const primaryImage = getMammalPrimaryImage(mammal.id)
+function categoriesFor(name: string, section: Mammal['overviewSection']): readonly MammalCategory[] {
+  const normalized = name.toLocaleLowerCase()
+  const categories: MammalCategory[] = section === 'small-mammals' ? ['small-mammals'] : []
+  if (/buffalo|elephant$|leopard|lion$|rhinoceros/.test(normalized)) categories.push('big-five')
+  if (/antelope|bushbuck|duiker|eland|grysbok|impala|klipspringer|kudu|nyala|oribi|reedbuck|rhebok|steenbok|suni|tsessebe|waterbuck/.test(normalized)) categories.push('antelopes')
+  if (/baboon|bushbaby|monkey/.test(normalized)) categories.push('primates')
+  if (/caracal|cheetah|civet|fox|genet|hyena|jackal|leopard|lion|mongoose|serval|wild cat|wild dog/.test(normalized)) categories.push('predators')
+  return categories
+}
+
+function minimalProfile(commonName: string): MammalProfile {
+  return profile(
+    `${commonName} is included in the official SANParks Kruger mammal checklist. A fuller editorial profile will be added after content review.`,
+    [],
+    '',
+    '',
+    '',
+    '',
+    '',
+    [],
+    false,
+    0,
+  )
+}
+
+export const mammals: readonly Mammal[] = krugerMammalChecklist.map((entry) => {
+  const id = entry.existingId ?? stableId(entry.officialName)
+  const existing = existingMammalSummaries.find((mammal) => mammal.id === id)
+  const commonName = entry.displayName ?? existing?.commonName ?? entry.officialName
+  const primaryImage = getMammalPrimaryImage(id)
   return {
-    ...mammal,
-    image: primaryImage ?? speciesPlaceholder,
-    imageAlt: `${mammal.commonName} in Kruger National Park`,
-    imageFallback: primaryImage ?? speciesPlaceholder,
-    profile: profiles[mammal.id],
+    aliases: [...new Set([...(existing?.aliases ?? []), ...(entry.aliases ?? []), entry.officialName, ...(existing ? [existing.commonName] : [])])],
+    categories: existing?.categories ?? categoriesFor(commonName, entry.section),
+    commonName,
+    id,
+    image: primaryImage ?? missingPhotoFallback,
+    imageAlt: `${commonName} in Kruger National Park`,
+    imageFallback: primaryImage ?? missingPhotoFallback,
+    officialCommonName: entry.officialName,
+    overviewSection: entry.section,
+    profile: profiles[id] ?? minimalProfile(commonName),
+    scientificName: entry.scientificName,
+    smallMammalGroup: entry.smallMammalGroup,
+    sortName: entry.sortName ?? commonName,
   }
 })
 

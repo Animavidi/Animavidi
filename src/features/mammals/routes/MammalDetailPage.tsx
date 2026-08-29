@@ -64,7 +64,7 @@ export function MammalDetailPage() {
     { content: mammal.profile.groupStructure, icon: 'group' as const, title: 'Group structure' },
     { content: mammal.profile.conservationStatus, icon: 'conservation' as const, title: 'Conservation' },
     { content: mammal.profile.interestingFacts.join(' · '), icon: 'spark' as const, title: 'Interesting facts' },
-  ] : [], [mammal])
+  ].filter((fact) => fact.content.trim()) : [], [mammal])
 
   if (!mammal) return <AnimalDetailError title="Mammal not found" message="This species is not available in the current Kruger collection." />
 
@@ -116,10 +116,10 @@ export function MammalDetailPage() {
           {mammal.aliases.length ? <small><strong>Also known as</strong> {mammal.aliases.join(', ')}</small> : null}
         </section>
 
-        <section aria-labelledby="facts-title" className={styles.factsCard}>
+        {facts.length ? <section aria-labelledby="facts-title" className={styles.factsCard}>
           <h2 className="srOnly" id="facts-title">Field guide information</h2>
           {facts.map((fact) => <FactRow {...fact} key={fact.title} />)}
-        </section>
+        </section> : null}
 
         <section aria-labelledby="recent-title" className={styles.recentSection}>
           <div className={styles.sectionHeading}><h2 id="recent-title">Your recent sightings</h2>{observed ? <Link to="/parks/kruger/sightings">View all</Link> : null}</div>
@@ -129,7 +129,7 @@ export function MammalDetailPage() {
           {summary.recentSightings.length ? <div className={styles.recentList}>{summary.recentSightings.map((sighting) => <Link className={styles.sightingCard} key={sighting.id} to={`/parks/kruger/sightings/${sighting.id}`}><SightingImage className={styles.sightingImage} mammal={mammal} photo={sighting.photos[0]} /><div><strong>{formatDate(sighting.date)}</strong><span>{sighting.time} · {sighting.location || 'Location not recorded'}</span><small>{sighting.count} animal{sighting.count === 1 ? '' : 's'} · {categoryLabel(sighting.behaviour)}</small></div><i aria-hidden="true" /></Link>)}</div> : null}
         </section>
 
-        <p className={styles.demoNote}>Representative demo content—not a complete or officially verified Kruger species guide.</p>
+        <p className={styles.demoNote}>Checklist inclusion follows SANParks; extended editorial profiles remain under review.</p>
         <SponsorFooter tone="light" />
       </article>
       <AddSightingLauncher />

@@ -46,8 +46,15 @@ export function MammalsPage() {
         return [mammal.commonName, mammal.scientificName ?? '', ...mammal.aliases].join(' ').toLocaleLowerCase().includes(normalizedQuery)
       })
       .slice()
-      .sort((left, right) => left.commonName.localeCompare(right.commonName))
+      .sort((left, right) => left.sortName.localeCompare(right.sortName) || left.commonName.localeCompare(right.commonName))
   }, [activeFilter, query])
+
+  const mainMammals = visibleMammals.filter((mammal) => mammal.overviewSection === 'main')
+  const smallMammalGroups = [
+    { id: 'bats', label: 'Bats' },
+    { id: 'rodents', label: 'Rodents' },
+    { id: 'shrews-moles', label: 'Shrews & Moles' },
+  ] as const
 
   function updateSearch(nextQuery: string) {
     const next = new URLSearchParams(searchParams)
@@ -78,7 +85,7 @@ export function MammalsPage() {
           <p className={styles.parkName}>Kruger National Park</p>
           <span aria-hidden="true" className={styles.goldRule} />
           <h1>Mammals</h1>
-          <p>Explore a representative collection of Kruger mammals.</p>
+          <p>Explore Kruger’s complete 148-mammal checklist.</p>
         </div>
       </header>
 
@@ -105,8 +112,14 @@ export function MammalsPage() {
         </section>
 
         <section aria-labelledby="mammal-list-title" className={styles.listSection}>
-          <h2 id="mammal-list-title">{activeFilter === 'all' ? 'All mammals' : filters.find((filter) => filter.value === activeFilter)?.label}<span> ({visibleMammals.length})</span></h2>
-          {visibleMammals.length ? <div className={styles.list}>{visibleMammals.map((mammal) => <MammalCard key={mammal.id} mammal={mammal} onSelect={rememberScrollPosition} returnTo={`${location.pathname}${location.search}`} />)}</div> : <p className={styles.empty}>No mammals match this search yet. Try another name or clear the active filter.</p>}
+          <h2 id="mammal-list-title">{activeFilter === 'all' ? 'Main mammals' : filters.find((filter) => filter.value === activeFilter)?.label}<span> ({activeFilter === 'all' ? mainMammals.length : visibleMammals.length})</span></h2>
+          {mainMammals.length ? <div className={styles.list}>{mainMammals.map((mammal) => <MammalCard key={mammal.id} mammal={mammal} onSelect={rememberScrollPosition} returnTo={`${location.pathname}${location.search}`} />)}</div> : null}
+          {smallMammalGroups.map((group) => {
+            const entries = visibleMammals.filter((mammal) => mammal.smallMammalGroup === group.id)
+            if (!entries.length) return null
+            return <section aria-labelledby={`small-${group.id}-title`} className={styles.smallGroup} key={group.id}><h3 id={`small-${group.id}-title`}>{group.label}<span> ({entries.length})</span></h3><div className={styles.list}>{entries.map((mammal) => <MammalCard key={mammal.id} mammal={mammal} onSelect={rememberScrollPosition} returnTo={`${location.pathname}${location.search}`} />)}</div></section>
+          })}
+          {!visibleMammals.length ? <p className={styles.empty}>No mammals match this search yet. Try another name or clear the active filter.</p> : null}
         </section>
 
         <SponsorFooter tone="light" />

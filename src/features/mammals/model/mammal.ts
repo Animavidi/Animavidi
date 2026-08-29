@@ -13,8 +13,12 @@ export type Mammal = {
   readonly image: string
   readonly imageAlt: string
   readonly imageFallback: string
+  readonly officialCommonName: string
+  readonly overviewSection: 'main' | 'small-mammals'
   readonly profile: MammalProfile
-  readonly scientificName?: string
+  readonly scientificName: string
+  readonly smallMammalGroup?: 'bats' | 'rodents' | 'shrews-moles'
+  readonly sortName: string
 }
 
 export type MammalProfile = {
