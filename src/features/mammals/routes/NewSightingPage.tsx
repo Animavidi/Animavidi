@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
@@ -7,6 +7,10 @@ import { SponsorFooter } from '@/components/SponsorFooter/SponsorFooter'
 import { MammalsBottomNav } from '@/features/mammals/components/MammalsBottomNav/MammalsBottomNav'
 import { animalDetailImagePositions } from '@/features/mammals/config/animalDetailImagePositions'
 import { findMammal } from '@/features/mammals/model/mammals'
+import { SightingAchievementDialog } from '@/features/achievements/components/SightingAchievementDialog/SightingAchievementDialog'
+import { speciesAchievementRepository } from '@/features/achievements/data/speciesAchievementRepository'
+import type { SpeciesSightingAchievement } from '@/features/achievements/model/sightingAchievement'
+import { createFirstSightingAchievement, getPostSaveRecognitionSequence } from '@/features/achievements/services/speciesAchievementService'
 import { BigFiveCelebration, bigFiveCelebratedKey } from '@/features/passport/components/BigFiveCelebration/BigFiveCelebration'
 import type { PassportSummary } from '@/features/passport/model/passport'
 import { shouldCelebrateBigFive } from '@/features/passport/services/bigFiveCelebration'
@@ -67,6 +71,10 @@ export function NewSightingPage() {
   const [isSaving, setIsSaving] = useState(false)
   const [savedSighting, setSavedSighting] = useState<Sighting>()
   const [celebration, setCelebration] = useState<{ completionDate: string; passport: PassportSummary }>()
+  const [speciesRecognition, setSpeciesRecognition] = useState<SpeciesSightingAchievement>()
+  const [pendingBigFive, setPendingBigFive] = useState<{ completionDate: string; passport: PassportSummary }>()
+  const [postRecognitionDestination, setPostRecognitionDestination] = useState<'passport' | 'safari'>('safari')
+  const savingRef = useRef(false)
 
   if (!mammal) return <main className={styles.notFound}><p>Mammal not found.</p><Link to="/parks/kruger/mammals">Return to mammals</Link></main>
   const mammalId = mammal.id
@@ -90,15 +98,19 @@ export function NewSightingPage() {
 
   async function saveSighting(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
+    if (savingRef.current) return
     if (!date || !time || !location.trim()) { setError('Enter a date, time and location before saving.'); return }
+    savingRef.current = true
     setIsSaving(true)
     setError('')
     let passportBefore: PassportSummary | undefined
     try { passportBefore = await loadPassport() } catch { /* Summary failures must never block the save. */ }
     try {
+      const previousSightings = await sightingRepository.countByAnimal(mammalId)
       const saved = await sightingRepository.create({ animalId: mammalId, behaviour, composition, count, date, location: location.trim(), notes: notes.trim(), parkId: 'kruger', photos: photos.map((photo) => ({ blob: photo.file, id: photo.id, name: photo.file.name, type: photo.file.type })), time })
       photos.forEach((photo) => URL.revokeObjectURL(photo.url))
-      let showCelebration = false
+      setSavedSighting(saved)
+      let nextBigFive: { completionDate: string; passport: PassportSummary } | undefined
       try {
         const alreadyCelebrated = localStorage.getItem(bigFiveCelebratedKey) === 'true'
         const beforeCount = passportBefore?.bigFive.filter((entry) => entry.seen).length
@@ -106,16 +118,31 @@ export function NewSightingPage() {
           const passportAfter = await loadPassport()
           const afterCount = passportAfter.bigFive.filter((entry) => entry.seen).length
           if (shouldCelebrateBigFive({ afterCount, alreadyCelebrated, beforeCount, savedAnimalIsBigFive: isBigFive })) {
-            setCelebration({ completionDate: saved.date, passport: passportAfter })
-            showCelebration = true
+            nextBigFive = { completionDate: saved.date, passport: passportAfter }
           }
         }
       } catch { /* Preserve the normal confirmation after an aggregation failure. */ }
-      if (!showCelebration) setSavedSighting(saved)
+      const candidate = createFirstSightingAchievement({ animalId: mammalId, date: saved.date, previousSightings, sightingId: saved.id })
+      const unlocked = candidate ? speciesAchievementRepository.unlock(candidate) : undefined
+      const newAchievement = unlocked?.isNew ? unlocked.achievement : undefined
+      const recognitionSequence = getPostSaveRecognitionSequence(newAchievement, Boolean(nextBigFive))
+      if (recognitionSequence[0] === 'species' && newAchievement) {
+        setPendingBigFive(nextBigFive)
+        setSpeciesRecognition(newAchievement)
+      } else if (recognitionSequence[0] === 'big-five' && nextBigFive) setCelebration(nextBigFive)
+      setIsSaving(false)
     } catch {
       setError('The sighting could not be saved locally. Please try again.')
       setIsSaving(false)
+      savingRef.current = false
     }
+  }
+
+  function finishSpeciesRecognition(destination: 'passport' | 'safari') {
+    setSpeciesRecognition(undefined)
+    setPostRecognitionDestination(destination)
+    if (pendingBigFive) { setCelebration(pendingBigFive); setPendingBigFive(undefined); return }
+    if (destination === 'passport') void navigate('/passport#achievements')
   }
 
   return <main className={styles.page}>
@@ -150,7 +177,8 @@ export function NewSightingPage() {
       <SponsorFooter tone="light" />
     </form>
     <MammalsBottomNav active="sightings" fixed />
-    {celebration ? <BigFiveCelebration completionDate={celebration.completionDate} completedAnimalId={mammal.id} onContinue={() => void navigate('/parks/kruger')} onViewPassport={() => void navigate('/passport')} passport={celebration.passport} /> : null}
-    {savedSighting ? <section aria-labelledby="saved-heading" aria-live="polite" className={styles.savedOverlay} role="dialog"><div className={styles.savedPanel}><span className={styles.savedMark}>✓</span><p>Saved to your Safari Passport</p><h2 id="saved-heading">A memory worth keeping</h2><dl><div><dt>Species</dt><dd>{mammal.commonName}</dd></div><div><dt>Encounter</dt><dd>{savedSighting.count} · {behaviourOptions.find((option) => option.value === savedSighting.behaviour)?.label}</dd></div><div><dt>Place</dt><dd>{savedSighting.location}</dd></div><div><dt>Date</dt><dd>{savedSighting.date} · {savedSighting.time}</dd></div></dl><button onClick={() => void navigate('/parks/kruger')} type="button">Continue safari</button><Link to={`/parks/kruger/sightings/${savedSighting.id}`}>View sighting</Link></div></section> : null}
+    {speciesRecognition ? <SightingAchievementDialog achievement={speciesRecognition} mammal={mammal} onContinue={() => finishSpeciesRecognition('safari')} onViewPassport={() => finishSpeciesRecognition('passport')} /> : null}
+    {celebration ? <BigFiveCelebration completionDate={celebration.completionDate} completedAnimalId={mammal.id} onContinue={() => void navigate(postRecognitionDestination === 'passport' ? '/passport#achievements' : '/parks/kruger')} onViewPassport={() => void navigate('/passport#achievements')} passport={celebration.passport} /> : null}
+    {savedSighting && !speciesRecognition && !celebration ? <section aria-labelledby="saved-heading" aria-live="polite" className={styles.savedOverlay} role="dialog"><div className={styles.savedPanel}><span className={styles.savedMark}>✓</span><p>Saved to your Safari Passport</p><h2 id="saved-heading">A memory worth keeping</h2><dl><div><dt>Species</dt><dd>{mammal.commonName}</dd></div><div><dt>Encounter</dt><dd>{savedSighting.count} · {behaviourOptions.find((option) => option.value === savedSighting.behaviour)?.label}</dd></div><div><dt>Place</dt><dd>{savedSighting.location}</dd></div><div><dt>Date</dt><dd>{savedSighting.date} · {savedSighting.time}</dd></div></dl><button onClick={() => void navigate('/parks/kruger')} type="button">Continue safari</button><Link to={`/parks/kruger/sightings/${savedSighting.id}`}>View sighting</Link></div></section> : null}
   </main>
 }

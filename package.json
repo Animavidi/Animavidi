@@ -14,7 +14,8 @@
     "validate:mammal-images": "node scripts/validate-mammal-images.mjs",
     "validate:animal-detail": "node scripts/validate-animal-detail.mjs",
     "validate:sighting-flow": "node scripts/validate-sighting-flow.mjs",
-    "validate:big-five-celebration": "node scripts/validate-big-five-celebration.mjs"
+    "validate:big-five-celebration": "node scripts/validate-big-five-celebration.mjs",
+    "validate:species-achievements": "node scripts/validate-species-achievements.mjs"
   },
   "dependencies": {
     "react": "^19.1.1",

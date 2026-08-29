@@ -11,6 +11,7 @@ import type { PassportSummary } from '@/features/passport/model/passport'
 import { loadPassport } from '@/features/passport/services/passportService'
 import { AddSightingLauncher } from '@/features/sightings/components/AddSightingLauncher/AddSightingLauncher'
 import { SightingImage } from '@/features/sightings/components/SightingImage/SightingImage'
+import { AchievementStampIcon } from '@/features/achievements/components/AchievementStampIcon/AchievementStampIcon'
 
 import styles from './PassportPage.module.css'
 
@@ -49,7 +50,7 @@ export function PassportPage() {
   if (!passport) return <main aria-busy="true" className={styles.loading}><div /><p>Opening your Safari Passport…</p></main>
 
   const completedBigFive = passport.bigFive.filter((item) => item.seen).length
-  const earnedAchievements = passport.achievements.filter((item) => item.earnedDate).length
+  const earnedAchievements = passport.achievements.filter((item) => item.earnedDate).length + passport.speciesAchievements.length
   const firstBigFiveDate = (animalId: string) => passport.sightings.find((sighting) => animalId === 'white-rhinoceros' ? sighting.animalId.includes('rhinoceros') : sighting.animalId === animalId)?.date
   const statistics: readonly [PassportIconName, string, string | number][] = [
     ['sightings', 'Sightings', passport.totalSightings],
@@ -62,7 +63,7 @@ export function PassportPage() {
   ]
   const navigation = [
     { href: '#journey', icon: 'countries' as PassportIconName, title: 'My Safari Journey', subtitle: `${passport.countriesExplored} destination${passport.countriesExplored === 1 ? '' : 's'}, visits and timeline` },
-    { href: '#achievements', icon: 'rank' as PassportIconName, title: 'Achievements', subtitle: `${earnedAchievements} of ${passport.achievements.length} badges earned` },
+    { href: '#achievements', icon: 'rank' as PassportIconName, title: 'Achievements', subtitle: `${earnedAchievements} achievements earned` },
     { href: '#species-discovered', icon: 'species' as PassportIconName, title: 'Species Discovered', subtitle: `${passport.uniqueSpecies} wildlife species in your collection` },
     { href: '#recent-memories', icon: 'photos' as PassportIconName, title: 'Recent Memories', subtitle: `${passport.totalSightings} journal entr${passport.totalSightings === 1 ? 'y' : 'ies'} and sightings` },
   ]
@@ -116,8 +117,9 @@ export function PassportPage() {
           </section>
 
           <section aria-labelledby="achievements-title" className={`${styles.paper} ${styles.achievementPanel}`} id="achievements">
-            <div className={styles.sectionHeading}><div><p>Official milestones</p><h2 id="achievements-title">Achievements</h2></div><span>{earnedAchievements} of {passport.achievements.length}</span></div>
+            <div className={styles.sectionHeading}><div><p>Official milestones</p><h2 id="achievements-title">Achievements</h2></div><span>{earnedAchievements} earned</span></div>
             {!earnedAchievements ? <p className={styles.emptyInline}>No stamps earned yet. Genuine progress will be celebrated here.</p> : null}
+            {passport.speciesAchievements.length ? <div aria-label="Special sighting achievements" className={styles.speciesAchievements}>{passport.speciesAchievements.map((item) => { const mammal = findMammal(item.animalId); return <Link className={item.tier === 'legendary' ? styles.legendaryAchievement : styles.rareAchievement} key={item.id} to={`/parks/kruger/mammals/${item.animalId}`}><AchievementStampIcon tier={item.tier} /><strong>{mammal?.commonName ?? item.animalId}</strong><small>{item.tier} sighting</small><time dateTime={item.date}>{formatDate(item.date)}</time></Link> })}</div> : null}
             <div className={styles.achievements}>{passport.achievements.map((item, index) => <article className={item.earnedDate ? styles.earned : styles.locked} key={item.id}><PassportIcon name={item.earnedDate ? (index % 2 ? 'photos' : 'sightings') : 'lock'} /><h3>{item.title}</h3><p>{item.requirement}</p><small>{item.earnedDate ? formatDate(item.earnedDate) : 'Locked'}</small></article>)}</div>
           </section>
         </div>

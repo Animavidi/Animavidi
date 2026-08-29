@@ -83,6 +83,7 @@
 .achievements p { margin: 0; font-size: 0.52rem; line-height: 1.25; }
 .achievements small { margin-block-start: 0.3rem; font-size: 0.5rem; }
 .achievements .locked { color: #6d6b61; background: #e6dfd2; opacity: 0.55; }
+.speciesAchievements{display:flex;gap:.6rem;margin:0 0 .8rem;padding:.15rem .1rem .45rem;overflow-x:auto;scroll-snap-type:x mandatory}.speciesAchievements a{display:grid;min-width:8rem;min-height:8rem;padding:.7rem;place-items:center;align-content:center;color:#6f3718;text-align:center;text-decoration:none;background:radial-gradient(circle at 35% 25%,#efd19b,#bd7a39 58%,#77431f);border:3px double currentcolor;border-radius:50%;box-shadow:inset 0 0 0 .25rem rgb(255 241 207/.2),0 .45rem 1rem rgb(30 20 12/.16);scroll-snap-align:start;transform:rotate(-2deg)}.speciesAchievements a:nth-child(even){transform:rotate(2deg)}.speciesAchievements .legendaryAchievement{color:#e8bd62;background:radial-gradient(circle at 35% 25%,#563063,#261632 58%,#120a18)}.speciesAchievements svg{width:2rem;height:2rem;fill:rgb(255 236 196/.14);stroke:currentcolor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}.speciesAchievements strong{font:600 .78rem/1.1 var(--font-display)}.speciesAchievements small{font-size:.5rem;font-weight:850;letter-spacing:.08em;text-transform:uppercase}.speciesAchievements time{font-size:.48rem}
 .earned { background: rgb(183 140 69 / 4%); }
 .emptyInline { color: #6b614f; font-size: 0.72rem; line-height: 1.5; }
 .species { display: flex; gap: 0.7rem; overflow-x: auto; scroll-snap-type: x mandatory; }
