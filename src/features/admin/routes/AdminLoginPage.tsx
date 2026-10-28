@@ -13,12 +13,13 @@ export function AdminLoginPage() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
-  if (auth.session) return <Navigate replace to="/admin" />
   const state = location.state as { from?: string } | null
+  const destination = state?.from?.startsWith('/admin/') && !state.from.startsWith('/admin/login') ? state.from : '/admin'
+  if (auth.session) return <Navigate replace to={destination} />
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault(); setBusy(true); setError('')
-    try { await auth.login(username, password); void navigate(state?.from ?? '/admin', { replace: true }) }
+    try { await auth.login(username, password); void navigate(destination, { replace: true }) }
     catch (reason) { setError(reason instanceof Error ? reason.message : 'Login failed.') }
     finally { setBusy(false) }
   }

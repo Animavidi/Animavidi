@@ -1,3 +1,4 @@
+import { isManagedContent, type ManagedContent } from '@/features/content/model/content'
 import { getAdminApiBaseUrl } from '@/features/mammals/services/mammalPhotoApi'
 
 export type AdminSession = { administrator: string; authenticated: true; expiresAt: number }
@@ -48,4 +49,10 @@ async function responseMessage(response: Response, fallback: string): Promise<st
     if (body && typeof body === 'object' && 'error' in body && typeof body.error === 'string') return body.error
   } catch { /* Use the safe fallback. */ }
   return fallback
+}
+
+export async function saveManagedContent(content: ManagedContent, revision: string): Promise<void> {
+  if (!isManagedContent(content)) throw new Error('Check the content fields and source URL.')
+  const response = await adminFetch(`/api/admin/content/${content.kind}/${content.id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json', 'If-Match': revision }, body: JSON.stringify(content) })
+  if (!response.ok) throw new AdminApiError(await responseMessage(response, 'Content could not be saved.'), response.status)
 }

@@ -14,8 +14,10 @@ import styles from './KrugerHomePage.module.css'
 
 const navigationCards = [
   { icon: 'mammals' as const, image: mammalsPreview, subtitle: 'Discover and learn', title: 'Mammals', to: '/parks/kruger/mammals' },
+  { icon: 'mammals' as const, image: informationPreview, subtitle: 'The complete SANParks checklist', title: 'Birds', to: '/parks/kruger/birds' },
   { icon: 'sightings' as const, image: sightingsPreview, subtitle: 'Your personal sightings', title: 'My Sightings', to: '/parks/kruger/sightings' },
   { icon: 'map' as const, image: mapPreview, subtitle: 'Explore routes and landmarks', title: 'Park Map', to: '/parks/kruger/map' },
+  { icon: 'map' as const, image: mapPreview, subtitle: 'Plan your next drive', title: 'Safari Routes', to: '/parks/kruger/routes' },
   { icon: 'information' as const, image: informationPreview, subtitle: 'Everything you need to know', title: 'Park Information', to: '/parks/kruger/information' },
 ]
 
@@ -41,7 +43,7 @@ export function KrugerHomePage() {
 
         <dl aria-label="Kruger National Park wildlife statistics" className={styles.statistics}>
           <div><StatisticIcon type="mammals" /><dt>148</dt><dd>Mammals</dd></div>
-          <div><StatisticIcon type="birds" /><dt>500+</dt><dd>Birds</dd></div>
+          <div><StatisticIcon type="birds" /><dt>546</dt><dd>Birds</dd></div>
           <div><StatisticIcon type="trees" /><dt>336</dt><dd>Trees</dd></div>
         </dl>
       </section>

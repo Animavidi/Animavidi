@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useContent } from '@/features/content/components/ContentProvider'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 
 import { useAdminAuth } from './AdminAuthProvider'
@@ -5,6 +7,8 @@ import styles from '../routes/Admin.module.css'
 
 export function AdminShell() {
   const auth = useAdminAuth()
+  const { refresh } = useContent()
+  useEffect(() => { void refresh() }, [refresh])
   const navigate = useNavigate()
   const logout = async () => { await auth.logout(); void navigate('/admin/login', { replace: true }) }
   return <div className={styles.shell}>
@@ -13,7 +17,7 @@ export function AdminShell() {
       <nav aria-label="Admin navigation">
         <NavLink end to="/admin">Home</NavLink>
         <NavLink to="/admin/content">Content</NavLink>
-        <span aria-disabled="true">Safari Routes <small>Coming later</small></span>
+        <NavLink to="/admin/routes">Safari Routes</NavLink>
         <span aria-disabled="true">Users <small>Coming later</small></span>
         <span aria-disabled="true">Reports &amp; Analytics <small>Coming later</small></span>
       </nav>

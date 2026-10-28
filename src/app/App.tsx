@@ -1,3 +1,4 @@
+import { ContentProvider } from '@/features/content/components/ContentProvider'
 import { RouterProvider } from 'react-router-dom'
 
 import { MammalPhotoProvider } from '@/features/mammals/components/MammalPhotoProvider/MammalPhotoProvider'
@@ -5,5 +6,5 @@ import { MammalPhotoProvider } from '@/features/mammals/components/MammalPhotoPr
 import { router } from './router'
 
 export function App() {
-  return <MammalPhotoProvider><RouterProvider router={router} /></MammalPhotoProvider>
+  return <ContentProvider><MammalPhotoProvider><RouterProvider router={router} /></MammalPhotoProvider></ContentProvider>
 }

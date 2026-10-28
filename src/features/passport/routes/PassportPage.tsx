@@ -3,7 +3,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 
 import { SponsorFooter } from '@/components/SponsorFooter/SponsorFooter'
 import { MammalsBottomNav } from '@/features/mammals/components/MammalsBottomNav/MammalsBottomNav'
-import { findMammal } from '@/features/mammals/model/mammals'
+import { animalPath, findMammal } from '@/features/mammals/model/mammals'
 import { BigFiveStamp } from '@/features/passport/components/BigFiveStamp/BigFiveStamp'
 import { PassportCard } from '@/features/passport/components/PassportCard/PassportCard'
 import { PassportIcon, type PassportIconName } from '@/features/passport/components/PassportIcon/PassportIcon'
@@ -126,7 +126,7 @@ export function PassportPage() {
 
         <section aria-labelledby="species-title" className={`${styles.paper} ${styles.speciesPanel}`} id="species-discovered">
           <div className={styles.sectionHeading}><div><p>Personal field record</p><h2 id="species-title">Species Discovered</h2></div><Link to="/parks/kruger/mammals">View mammals</Link></div>
-          {passport.species.length ? <div className={styles.species}>{passport.species.map((item) => <Link key={item.mammal.id} to={`/parks/kruger/mammals/${item.mammal.id}`}><SightingImage mammal={item.mammal} /><div><h3>{item.mammal.commonName}</h3><p>{item.sightings} sighting{item.sightings === 1 ? '' : 's'}</p><small>{formatDate(item.firstSeen)} — {formatDate(item.lastSeen)}</small></div></Link>)}</div> : <div className={styles.empty}><h3>No species discovered yet</h3><p>Your first recorded encounter will become the opening entry in this collection.</p><Link to="/parks/kruger/mammals">Choose a species</Link></div>}
+          {passport.species.length ? <div className={styles.species}>{passport.species.map((item) => <Link key={item.mammal.id} to={animalPath(item.mammal)}><SightingImage mammal={item.mammal} /><div><h3>{item.mammal.commonName}</h3><p>{item.sightings} sighting{item.sightings === 1 ? '' : 's'}</p><small>{formatDate(item.firstSeen)} — {formatDate(item.lastSeen)}</small></div></Link>)}</div> : <div className={styles.empty}><h3>No species discovered yet</h3><p>Your first recorded encounter will become the opening entry in this collection.</p><Link to="/parks/kruger/mammals">Choose a species</Link></div>}
         </section>
 
         <section aria-labelledby="memories-title" className={`${styles.paper} ${styles.memoriesPanel}`} id="recent-memories">

@@ -13,10 +13,14 @@ import { SightingDetailPage } from '@/features/sightings/routes/SightingDetailPa
 import { LocationPage } from '@/features/onboarding/routes/LocationPage'
 import { WelcomePage } from '@/features/welcome/routes/WelcomePage'
 
+const SafariRoutesPage = lazy(() => import('@/features/routes/routes/SafariRoutesPage').then((module) => ({ default: module.SafariRoutesPage })))
+const BirdsPage = lazy(() => import('@/features/birds/routes/BirdsPage').then((module) => ({ default: module.BirdsPage })))
+
 const ParkMapPage = lazy(() => import('@/features/map/routes/ParkMapPage').then((module) => ({ default: module.ParkMapPage })))
 const PassportPage = lazy(() => import('@/features/passport/routes/PassportPage').then((module) => ({ default: module.PassportPage })))
 const ParkInformationPage = lazy(() => import('@/features/information/routes/ParkInformationPage').then((module) => ({ default: module.ParkInformationPage })))
 const ParkInformationErrorPage = lazy(() => import('@/features/information/routes/ParkInformationPage').then((module) => ({ default: module.ParkInformationErrorPage })))
+const AdminRoutesPage = lazy(() => import('@/features/admin/routes/AdminRoutesPage').then((module) => ({ default: module.AdminRoutesPage })))
 const AdminRoot = lazy(() => import('@/features/admin/routes/AdminRoot').then((module) => ({ default: module.AdminRoot })))
 const AdminProtectedRoute = lazy(() => import('@/features/admin/routes/AdminRoot').then((module) => ({ default: module.AdminProtectedRoute })))
 const AdminShell = lazy(() => import('@/features/admin/components/AdminShell').then((module) => ({ default: module.AdminShell })))
@@ -39,6 +43,7 @@ export const router = createBrowserRouter([
           children: [
             { index: true, element: <AdminHomePage /> },
             { path: 'content', element: <AdminContentPage /> },
+            { path: 'routes', element: <AdminRoutesPage /> },
             { path: 'content/animals', element: <AdminAnimalsPage /> },
             { path: 'content/animals/:mammalId', element: <AdminAnimalPage /> },
           ],
@@ -98,6 +103,10 @@ export const router = createBrowserRouter([
     path: '/parks/kruger',
     element: <KrugerHomePage />,
   },
+  { path: '/parks/kruger/routes', element: <Suspense fallback={<p role="status">Loading routes…</p>}><SafariRoutesPage /></Suspense> },
+  { path: '/parks/kruger/birds', element: <Suspense fallback={<p role="status">Loading birds…</p>}><BirdsPage /></Suspense> },
+  { path: '/parks/kruger/birds/:animalId', element: <MammalDetailPage /> },
+  { path: '/parks/kruger/birds/:animalId/sightings/new', element: <NewSightingPage /> },
   {
     path: '/parks/kruger/mammals',
     element: <MammalsPage />,

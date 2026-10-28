@@ -1,4 +1,5 @@
 export type MammalCategory =
+  | 'birds'
   | 'antelopes'
   | 'big-five'
   | 'predators'
@@ -14,7 +15,7 @@ export type Mammal = {
   readonly imageAlt: string
   readonly imageFallback: string
   readonly officialCommonName: string
-  readonly overviewSection: 'main' | 'small-mammals'
+  readonly overviewSection: 'main' | 'small-mammals' | 'birds'
   readonly profile: MammalProfile
   readonly scientificName: string
   readonly smallMammalGroup?: 'bats' | 'rodents' | 'shrews-moles'

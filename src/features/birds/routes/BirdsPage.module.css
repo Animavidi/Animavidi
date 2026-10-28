@@ -1,0 +1,4 @@
+.hero { min-block-size: 18rem; }
+.copy { margin-block-start: 2rem; }
+
+.searchInput::-webkit-search-cancel-button { display: none; }

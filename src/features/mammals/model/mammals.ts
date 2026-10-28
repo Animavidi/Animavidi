@@ -1,3 +1,4 @@
+import { krugerBirdChecklist } from '@/features/birds/data/krugerBirdChecklist'
 import { getMammalPrimaryImage } from '@/assets/mammals/mammalPrimaryImages'
 import { getMammalId, krugerMammalChecklist } from '@/features/mammals/data/krugerMammalChecklist'
 
@@ -108,6 +109,21 @@ export const mammals: readonly Mammal[] = krugerMammalChecklist.map((entry) => {
   }
 })
 
+export const birds: readonly Mammal[] = krugerBirdChecklist.map((entry) => ({
+  aliases: [entry.commonName], categories: ['birds'], commonName: entry.commonName,
+  id: entry.id, image: missingPhotoFallback, imageAlt: entry.commonName,
+  imageFallback: missingPhotoFallback, officialCommonName: entry.commonName,
+  overviewSection: 'birds', scientificName: entry.scientificName, sortName: entry.commonName,
+  profile: profile(`${entry.commonName} is listed in the SANParks Kruger bird checklist.`, [], '', '', '', '', '', [], false, 0),
+}))
+
+export const wildlife: readonly Mammal[] = [...mammals, ...birds]
+
+// Retained API name keeps existing saved sightings and callers compatible.
 export function findMammal(id: string): Mammal | undefined {
-  return mammals.find((mammal) => mammal.id === id)
+  return wildlife.find((animal) => animal.id === id)
+}
+
+export function animalPath(animal: Mammal): string {
+  return `/parks/kruger/${animal.overviewSection === 'birds' ? 'birds' : 'mammals'}/${animal.id}`
 }
