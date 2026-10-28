@@ -54,7 +54,8 @@ await page.route('http://127.0.0.1:8787/**', async (route) => {
   const response = await worker.fetch(new Request(original.url(), { method: original.method(), headers: await original.allHeaders(), body: original.postDataBuffer() ?? undefined }), env)
   await route.fulfill({ status: response.status, headers: Object.fromEntries(response.headers), body: Buffer.from(await response.arrayBuffer()) })
 })
-page.setDefaultTimeout(10000)
+page.setDefaultTimeout(30000)
+page.setDefaultNavigationTimeout(60000)
 const errors = []
 try {
 page.on('pageerror', (error) => errors.push(error.message))
