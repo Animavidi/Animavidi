@@ -56,7 +56,8 @@ export function PassportPage() {
   const firstBigFiveDate = (animalId: string) => passport.sightings.find((sighting) => animalId === 'white-rhinoceros' ? sighting.animalId.includes('rhinoceros') : sighting.animalId === animalId)?.date
   const statistics: readonly [PassportIconName, string, string | number][] = [
     ['sightings', 'Sightings', passport.totalSightings],
-    ['species', 'Species', `${passport.uniqueSpecies}/148`],
+    ['species', 'Species', `${passport.uniqueSpecies}/${catalogue.length}`],
+    ['species', 'Bird species', passport.species.filter((item) => item.mammal.overviewSection === 'birds').length],
     ['parks', 'Parks', passport.parksVisited],
     ['countries', 'Countries', passport.countriesExplored],
     ['bigFive', 'Big Five', `${completedBigFive}/5`],
@@ -66,7 +67,7 @@ export function PassportPage() {
   const navigation = [
     { href: '#journey', icon: 'countries' as PassportIconName, title: 'My Safari Journey', subtitle: `${passport.countriesExplored} destination${passport.countriesExplored === 1 ? '' : 's'}, visits and timeline` },
     { href: '#achievements', icon: 'rank' as PassportIconName, title: 'Achievements', subtitle: `${earnedAchievements} achievements earned` },
-    { href: '#species-discovered', icon: 'species' as PassportIconName, title: 'Species Discovered', subtitle: `${passport.uniqueSpecies} of 148 Kruger mammals in your collection` },
+    { href: '#species-discovered', icon: 'species' as PassportIconName, title: 'Species Discovered', subtitle: `${passport.uniqueSpecies} of ${catalogue.length} Kruger mammal and bird species in your collection` },
     { href: '#recent-memories', icon: 'photos' as PassportIconName, title: 'Recent Memories', subtitle: `${passport.totalSightings} journal entr${passport.totalSightings === 1 ? 'y' : 'ies'} and sightings` },
   ]
 
@@ -78,6 +79,7 @@ export function PassportPage() {
         <button className={styles.share} onClick={() => void share()}><PassportIcon name="share" /> <span>Share</span></button>
       </header>
       {shareStatus ? <p className={styles.toast} role="status">{shareStatus}</p> : null}
+      <p className={styles.toast}>Beta: your sightings and photos stay in this browser on this device. There is no account or device synchronisation. Clearing browser data removes local records.</p>
 
       <div className={styles.document}>
         <PassportCard profile={passport.profile} />

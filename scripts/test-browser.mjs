@@ -181,6 +181,7 @@ console.log('Administrator browser tests passed: protected login, persisted prof
 // A separate public page submits a suggestion; no public catalogue change until review.
 await page.goto('http://127.0.0.1:5173/parks/kruger/birds/propose')
 await page.getByRole('heading', { name: 'Suggest a bird', exact: true }).waitFor()
+await page.getByLabel('Your public contributor name').fill('Browser contributor')
 await page.getByLabel('Bird name', { exact: true }).fill('Community browser bird')
 await page.getByLabel('Description', { exact: true }).fill('A distinctive bird submitted by a browser integration test.')
 await page.screenshot({ path: join(outputDirectory,'bird-proposal-form-mobile.png'),fullPage:true })

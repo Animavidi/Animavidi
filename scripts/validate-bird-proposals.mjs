@@ -14,7 +14,7 @@ const call = (path,init={}) => worker.fetch(new Request('http://worker'+path,ini
 const login = await call('/api/admin/login',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json'},body:JSON.stringify({username:env.ADMIN_USERNAME,password})})
 const cookie = login.headers.get('set-cookie').split(';')[0]
 const headers = {Origin:origin,Cookie:cookie,'Content-Type':'application/json'}
-const draft = (name) => ({commonName:name,scientificName:'',description:'A test proposal description with enough detail.',sourceUrl:'https://example.org/bird'})
+const draft = (name) => ({commonName:name,scientificName:'',description:'A test proposal description with enough detail.',sourceUrl:'https://example.org/bird',author:'Original contributor'})
 const submit = (body,overrides={}) => call('/api/bird-proposals',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json','CF-Connecting-IP':`test-${++ip}`,...overrides},body:JSON.stringify(body)})
 const review = (item,action,body=item.draft) => call(`/api/admin/bird-proposals/${item.id}`,{method:'PUT',headers:{...headers,'If-Match':item.revision},body:JSON.stringify({draft:body,action,reviewNote:'Private moderator note'})})
 const pending = async () => (await (await call('/api/admin/bird-proposals',{headers})).json()).items
@@ -28,7 +28,7 @@ assert.equal((await submit(draft('TEST-BIRD'))).status,409)
 assert.equal((await (await call('/api/birds')).json()).birds.length,0,'Pending suggestions must be private')
 let [item] = await pending()
 const originalId = item.publishedId
-assert.equal((await review(item,'save',{...item.draft,commonName:'Reviewed test bird'})).status,200)
+assert.equal((await review(item,'save',{...item.draft,commonName:'Reviewed test bird',author:'Changed by moderator'})).status,200)
 assert.equal((await review(item,'approve')).status,412,'Reject stale moderator writes')
 ;[item] = await pending()
 assert.equal((await review(item,'approve')).status,200)
@@ -36,6 +36,7 @@ assert.equal((await review(item,'approve')).status,412,'Approval is single-use')
 const catalogue = await (await call('/api/birds')).json()
 assert.equal(catalogue.birds[0].id,originalId)
 assert.equal(catalogue.birds[0].commonName,'Reviewed test bird')
+assert.equal(catalogue.birds[0].author,'Original contributor','Original authorship survives moderator edits')
 assert.equal('reviewNote' in catalogue.birds[0],false)
 assert.equal(sqlite.prepare('SELECT COUNT(*) n FROM bird_proposal_history').get().n,2)
 assert.equal((await submit(draft('Reviewed test bird'))).status,409)

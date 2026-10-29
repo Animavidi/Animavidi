@@ -2,7 +2,15 @@
 
 Status: IN PROGRESS. This branch is not a production release and does not claim that the whole Animavidi roadmap is complete.
 
-## Current bird-scope checkpoint, 29 October 2026
+## Beta scope update, 29 October 2026
+
+The latest user instruction supersedes the earlier complete-photo/profile release gate: all 546 checklist birds must work with neutral placeholders; completing the 100 starter profiles and photos is no longer a beta blocker. Production remains forbidden without explicit approval. A separate Cloudflare beta preview is authorised. Full community contributions, genuine uploads, data-preservation/browser checks and preview verification remain open.
+
+Current fixes: bird search includes existing aliases; Passport totals include birds and community additions and show a separate unique-bird count; onboarding and Passport explicitly disclose browser/device-only storage without account sync. New-bird proposals preserve original public contributor credit through moderator edits and approval. Legacy proposals without attribution remain labelled anonymous.
+
+My Animavidi and My Camps are not implemented routes in the current router. Current account/login routes enter the local demo, not a real identity service. These gaps must be resolved or clearly disclosed in the beta report.
+
+## Previous bird-scope checkpoint, 29 October 2026
 
 The user approved a first collection of **100 frequently recorded birds plus administrator-approved community additions**, replacing the requirement to fully illustrate/profile all 546 birds for the initial release. All existing checklist IDs and sightings are retained; the remaining checklist is available through All birds and global search.
 

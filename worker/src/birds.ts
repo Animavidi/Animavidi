@@ -4,7 +4,7 @@ import { krugerBirdChecklist } from '../../src/features/birds/data/krugerBirdChe
 type BirdEnv = { CONTENT_DB?: D1Database; ADMIN_SESSION_SECRET: string }
 const response = (body: unknown, status = 200) => Response.json(body, { status, headers: { 'Cache-Control': 'no-store' } })
 const knownNames = new Set(krugerBirdChecklist.flatMap((bird) => [birdNameKey(bird.commonName), birdNameKey(bird.scientificName)]))
-const normalized = (draft: BirdDraft): BirdDraft => ({ commonName: draft.commonName.trim(), scientificName: draft.scientificName.trim(), description: draft.description.trim(), sourceUrl: draft.sourceUrl.trim() })
+const normalized = (draft: BirdDraft): BirdDraft => ({ commonName: draft.commonName.trim(), scientificName: draft.scientificName.trim(), description: draft.description.trim(), sourceUrl: draft.sourceUrl.trim(), author: draft.author?.trim() || 'Anonymous contributor' })
 type ProposalRow = { proposal_no: number; id: string; body: string; status: BirdProposal['status']; revision: string; created_at: string; review_note: string; published_id: string }
 const proposal = (row: ProposalRow): BirdProposal => ({ number: row.proposal_no, id: row.id, draft: JSON.parse(row.body) as BirdDraft, status: row.status, revision: row.revision, createdAt: row.created_at, reviewNote: row.review_note, publishedId: row.published_id })
 
@@ -57,9 +57,10 @@ export async function handleBirds(request: Request, env: BirdEnv, administrator?
       const body = await boundedJson(request)
       if (!body || typeof body !== 'object' || !('draft' in body) || !isBirdDraft(body.draft) || !('action' in body) || !['save','approve','reject'].includes(String(body.action)) || !('reviewNote' in body) || typeof body.reviewNote !== 'string' || body.reviewNote.length > 1000) return response({ error: 'Invalid review fields.' },400)
       const revision = request.headers.get('If-Match'); if (!revision) return response({ error: 'Reload the proposal before reviewing.' },428)
-      const current = await db.prepare('SELECT revision,status FROM bird_proposals WHERE id = ?').bind(match[1]).first<{ revision: string; status: string }>()
+      const current = await db.prepare('SELECT revision,status,body FROM bird_proposals WHERE id = ?').bind(match[1]).first<{ revision: string; status: string; body: string }>()
       if (!current || current.revision !== revision || current.status !== 'pending') return response({ error: 'This proposal was changed or reviewed already. Reload before saving.' },412)
       const draft = normalized(body.draft)
+      draft.author = (JSON.parse(current.body) as BirdDraft).author ?? 'Anonymous contributor'
       if (body.action !== 'reject' && await duplicate(env,draft)) return response({ error: 'A bird with this name or scientific name already exists.' },409)
       const status = body.action === 'approve' ? 'approved' : body.action === 'reject' ? 'rejected' : 'pending'
       const row = await db.prepare('UPDATE bird_proposals SET body=?,name_key=?,scientific_key=?,status=?,revision=?,updated_at=?,reviewer=?,review_note=? WHERE id=? AND revision=? AND status=? RETURNING *').bind(JSON.stringify(draft),birdNameKey(draft.commonName),birdNameKey(draft.scientificName),status,crypto.randomUUID(),new Date().toISOString(),administrator,body.reviewNote.trim(),match[1],revision,'pending').first<ProposalRow>()
