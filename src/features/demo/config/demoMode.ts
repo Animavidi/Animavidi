@@ -1,3 +1,4 @@
+import {currentUserId,currentUserName} from '@/features/accounts/data/personalStorage'
 import {personalStorage} from '@/features/accounts/data/personalStorage'
 export const demoMode = {
   enabled: true,
@@ -16,11 +17,13 @@ export const demoUserDisplayNameKey = 'animavidi:demo-user-display-name'
 
 export function activateDemoUser() {
   personalStorage.setItem('animavidi:onboarding-complete', 'true')
+  if(currentUserId())return
   personalStorage.setItem('animavidi:demo-user', demoMode.user.id)
   personalStorage.setItem(demoUserDisplayNameKey, demoMode.user.displayName)
 }
 
 export function getDemoUserDisplayName() {
+  if(currentUserId())return personalStorage.getItem('animavidi:profile-name') || currentUserName() || null
   const storedName = personalStorage.getItem(demoUserDisplayNameKey)?.trim()
   if (storedName) return storedName
 

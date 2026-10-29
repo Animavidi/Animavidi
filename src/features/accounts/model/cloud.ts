@@ -3,7 +3,7 @@ export type CloudPhoto={id:string;name:string;type:string;sha256:string;size:num
 export type CloudSighting=Omit<Sighting,'photos'> & {photos:CloudPhoto[]}
 export type CloudRecord={id:string;body:CloudSighting|string;revision:number;deleted:number;updatedAt:string}
 export type CloudChange=CloudRecord & {sequence:number;kind:'sighting'|'preference'}
-export const personalKeys=['animavidi:onboarding-complete','animavidi:demo-user-display-name','animavidi:profile-name','animavidi:visited-camps','animavidi.achievementSoundsEnabled','animavidi.achievement.bigFiveCompletedCelebrated','animavidi.achievements.species.v1'] as const
+export const personalKeys=['animavidi:onboarding-complete','animavidi.addSightingFabIntroduced','animavidi:demo-user-display-name','animavidi:profile-name','animavidi:visited-camps','animavidi.achievementSoundsEnabled','animavidi.achievement.bigFiveCompletedCelebrated','animavidi.achievements.species.v1'] as const
 export function validSighting(value:unknown,id:string):value is CloudSighting {
   if(!value || typeof value!=='object')return false
   const row=value as Record<string,unknown>

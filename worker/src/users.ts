@@ -19,7 +19,9 @@ export async function handleUsers(request:Request,env:UserEnv):Promise<Response>
       }
       if(['sign-up/email','request-password-reset','send-verification-email'].some(path=>url.pathname.endsWith('/'+path)) && (!env.EMAIL || !env.AUTH_EMAIL_FROM))return json({error:'Account email delivery is not configured yet. Please retry when the administrator has enabled it.'},503)
       if(request.method==='POST'){const bytes=await bounded(request,16384);request=new Request(request,{body:bytes})}
-      return await userAuth(env,url.origin).handler(request)
+      const result=await userAuth(env,url.origin).handler(request),headers=new Headers(result.headers)
+      headers.set('Cache-Control','no-store');headers.set('X-Content-Type-Options','nosniff')
+      return new Response(result.body,{status:result.status,headers})
     }
     const user=await verifiedUser(request,env);if(!user)return json({error:'Sign in with a verified account to continue.'},401)
     if(request.headers.has('X-Animavidi-Account') && request.headers.get('X-Animavidi-Account')!==user.id)return json({error:'Account changed. Retry after signing in again.'},403)

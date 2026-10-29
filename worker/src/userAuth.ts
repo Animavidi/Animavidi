@@ -25,8 +25,7 @@ export function userAuth(env:UserEnv,origin:string) {
       const rows=await env.CONTENT_DB!.prepare('SELECT id FROM bird_proposals WHERE submitter_user_id=?').bind(user.id).all<{id:string}>()
       await env.CONTENT_DB!.prepare('INSERT INTO av_deletion_queue(user_id,ready,contributions) VALUES (?,0,?) ON CONFLICT(user_id) DO UPDATE SET contributions=excluded.contributions WHERE ready=0').bind(user.id,JSON.stringify(rows.results.map(row=>row.id))).run()
     },afterDelete:async(user)=>{
-      await env.CONTENT_DB!.prepare('UPDATE av_deletion_queue SET ready=1 WHERE user_id=?').bind(user.id).run()
-      await cleanDeletedUsers(env)
+      try{await env.CONTENT_DB!.prepare('UPDATE av_deletion_queue SET ready=1 WHERE user_id=?').bind(user.id).run();await cleanDeletedUsers(env)}catch{console.error(JSON.stringify({event:'account_erasure_queued_for_retry'}))}
     }}},
     session:{modelName:'av_session',expiresIn:60*60*24*30,updateAge:60*60*24,freshAge:60*10,cookieCache:{enabled:false}},
     account:{modelName:'av_account'},verification:{modelName:'av_verification'},
@@ -38,7 +37,7 @@ export function userAuth(env:UserEnv,origin:string) {
 
 export async function cleanDeletedUsers(env:UserEnv):Promise<void> {
   if(!env.CONTENT_DB)return
-  const rows=await env.CONTENT_DB.prepare('SELECT user_id,contributions FROM av_deletion_queue WHERE ready=1 LIMIT 20').all<{user_id:string;contributions:string}>()
+  const rows=await env.CONTENT_DB.prepare('SELECT q.user_id,q.contributions FROM av_deletion_queue q WHERE q.ready=1 OR NOT EXISTS(SELECT 1 FROM av_user u WHERE u.id=q.user_id) LIMIT 20').all<{user_id:string;contributions:string}>()
   for(const row of rows.results){
     if(await env.CONTENT_DB.prepare('SELECT id FROM av_user WHERE id=?').bind(row.user_id).first())continue
     // Prefix contains only a server-generated Better Auth ID, never a request ID.
@@ -57,11 +56,13 @@ export async function cleanDeletedUsers(env:UserEnv):Promise<void> {
         await env.CONTENT_DB.prepare("UPDATE bird_proposal_history SET body=json_set(body,'$.author','Deleted contributor') WHERE proposal_id=?").bind(id).run()
       }else{await env.CONTENT_DB.prepare('DELETE FROM bird_proposal_history WHERE proposal_id=?').bind(id).run();await env.CONTENT_DB.prepare('DELETE FROM bird_proposals WHERE id=?').bind(id).run()}
     }
-    await env.CONTENT_DB.prepare('DELETE FROM av_deletion_queue WHERE user_id=? AND ready=1').bind(row.user_id).run()
+    await env.CONTENT_DB.prepare('DELETE FROM av_deletion_queue WHERE user_id=?').bind(row.user_id).run()
   }
 }
 
 export async function verifiedUser(request:Request,env:UserEnv) {
-  const session=await userAuth(env,new URL(request.url).origin).api.getSession({headers:request.headers})
+  // Only the browser-facing auth endpoint renews expiry and returns Set-Cookie.
+  // A private API check must not renew a DB session without renewing its cookie.
+  const session=await userAuth(env,new URL(request.url).origin).api.getSession({headers:request.headers,query:{disableRefresh:true}})
   return session?.user.emailVerified ? session.user : undefined
 }

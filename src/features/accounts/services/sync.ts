@@ -21,16 +21,19 @@ async function wire(item:PendingChange,owner:string):Promise<CloudSighting|strin
   for(const photo of item.body.photos){const sha256=await digest(photo.blob);if(!item.deleted){const response=await cloud(`/api/me/photos/${photo.id}/${sha256}`,{method:'PUT',headers:{'Content-Type':photo.type},body:photo.blob},owner);if(!response.ok)throw new Error('Photo upload did not finish. The original remains on this device.')}photos.push({id:photo.id,name:photo.name,type:photo.type,sha256,size:photo.blob.size})}
   return{...item.body,photos}
 }
+const ordered=(value:unknown):unknown=>Array.isArray(value)?value.map(ordered):value&&typeof value==='object'?Object.fromEntries(Object.entries(value).sort(([left],[right])=>left.localeCompare(right)).map(([key,item])=>[key,ordered(item)])):value
 async function push(item:PendingChange,userId:string){
   const body=await wire(item,userId)
   const response=await cloud(`/api/me/${item.kind==='sighting'?'sightings':'preferences'}/${encodeURIComponent(item.id)}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({mutationId:item.mutationId,baseRevision:item.baseRevision,body,deleted:item.deleted})},userId)
   const result=await response.json() as CloudRecord & {current?:CloudRecord;error?:string}
+  const identical=response.status===409 && result.current && result.current.deleted===Number(item.deleted) && JSON.stringify(ordered(result.current.body))===JSON.stringify(ordered(body))
+  const accepted=identical?result.current!:result
   const db=await openJournal(userId)
   try{
     const tx=db.transaction(['queue','meta'],'readwrite'),done=committed(tx),request=tx.objectStore('queue').get(item.key)
     request.onsuccess=()=>{
       const current=request.result as PendingChange|undefined;if(!current)return
-      if(response.ok){tx.objectStore('meta').put({key:`revision:${item.key}`,value:result.revision});if(item.kind==='preference')tx.objectStore('meta').put({key:`value:${item.id}`,value:item.body});if(current.mutationId===item.mutationId)tx.objectStore('queue').delete(item.key);else tx.objectStore('queue').put({...current,baseRevision:result.revision})}
+      if(response.ok||identical){tx.objectStore('meta').put({key:`revision:${item.key}`,value:accepted.revision});if(item.kind==='preference')tx.objectStore('meta').put({key:`value:${item.id}`,value:item.body});if(current.mutationId===item.mutationId)tx.objectStore('queue').delete(item.key);else tx.objectStore('queue').put({...current,baseRevision:accepted.revision})}
       else if(response.status===409 && result.current)tx.objectStore('queue').put({...current,conflict:result.current})
     };await done
   }finally{db.close()}
