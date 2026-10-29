@@ -82,3 +82,10 @@ Endpoints:
 Writes require `If-Match: new` when creating a document or the last returned revision when updating. D1 performs the condition atomically. A stale revision returns HTTP 412. A SQL trigger preserves prior versions in `content_history` in the same update transaction. Request bodies are bounded to 64 KiB even when Content-Length is absent.
 
 If D1 is not bound, these new endpoints return HTTP 503. The public guide continues to use packaged data, and the admin displays the loading error instead of pretending to save locally. Production configuration, credentials and integration smoke tests remain outstanding in `Kruger_Completion_Status.md`.
+
+
+### Verified provisioning checkpoint, 29 October 2026
+
+The repository now has the real `CONTENT_DB` database binding and account ID. `0001_content.sql` was applied to the dedicated `animavidi-content` D1 database, and real D1 conditional-update/history checks passed with all temporary probe records removed. Do not create another database or reassign another application's database.
+
+Worker version 6 (`6209c60d-a0a5-44c4-a4e7-e17c7507a269`) is prepared, with D1 and all existing secrets/R2 settings verified. It has not been activated for production traffic. The earlier deployment remains live. Run actual HTTP/session/CORS/photo smoke tests before activation; this environment received HTTP 403 from the version preview.

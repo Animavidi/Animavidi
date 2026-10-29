@@ -1,4 +1,4 @@
-# Kruger completion work, 28 October 2026
+# Kruger completion work, updated 29 October 2026
 
 Status: IN PROGRESS. This branch is not a production release and does not claim that the whole Animavidi roadmap is complete.
 
@@ -32,7 +32,7 @@ Historical reopening reports establish route identity, not current availability.
 1. Images: only the original 22 packaged photographs are confirmed locally. The other 126 mammals and all 546 birds still use the existing neutral fallback unless a live R2 override exists. Public photo-manifest and Wikimedia retrieval returned HTTP 403 in this environment, so remote coverage could not be audited. No stock images or brochure artwork were substituted without a verified source and rights record.
 2. Editorial profiles: the original detailed 22 mammal profiles remain; the other profiles still need reviewed species content. The editor is functional, but empty text has not been disguised as complete content.
 3. Route coverage: three sourced guides are present; this is not a complete road network or complete northern route collection. Expand only using verified road connections and sources.
-4. Production infrastructure: Cloudflare is not connected in this work session. A real D1 database ID, binding and applied migration are required. No fake database ID is committed. Without `CONTENT_DB`, content endpoints return a deliberate 503 and packaged public content still works.
+4. Production infrastructure: Cloudflare connected on 29 October. Dedicated `animavidi-content` D1 database created and migration applied; real database/account IDs are in Worker configuration. Version 6 has the D1 binding and retains the existing R2/secret bindings, but is NOT deployed to production traffic. Production HTTP/auth/CORS smoke tests remain required; HTTP requests from this environment returned 403 even for the new version preview.
 5. Production smoke tests, authentication/CORS on actual domains, R2 upload verification, D1 binding and visual approval remain release requirements.
 6. Original broader roadmap limitations still apply, including demo identity/account flows, sync, premium/community, offline app shell and production map licensing. These features have not been represented as completed.
 
@@ -45,3 +45,12 @@ Run `pnpm typecheck`, `pnpm lint`, `pnpm build`, every `scripts/validate-*.mjs` 
 Browser checks use Chromium against a local Vite server, preserving production data. The suite is in `scripts/test-browser.mjs`. It also exercises admin login, persisted profiles, route editing and unpublishing through the real Worker handler with isolated SQLite/R2 fixtures. Install Playwright locally or supply `PLAYWRIGHT_MODULE_PATH`; optionally set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to an installed Chromium binary. No production credentials or data are used. The recorded completed checks and remaining release gates are described in the PR.
 
 No production deployment or merge is authorized by this status file. The user requested a tested complete release; the blockers above must be resolved first.
+
+## Infrastructure checkpoint, 29 October 2026
+
+- Account: the verified Luxury Safari Homes account, containing the existing Animavidi Worker and R2 binding. Other applications and their databases were not changed.
+- D1: `animavidi-content`, ID `b45bb37d-cf6d-4013-8f5f-f827d67e7d9f`. Migration verified to include both tables, history index and revision trigger. Real D1 tests passed for insert, conditional update, rejected stale update and prior-version history. Only the isolated validation record/history were deleted afterwards; the database contains no editorial documents yet.
+- Prepared Worker version: `6209c60d-a0a5-44c4-a4e7-e17c7507a269` (version 6). Metadata verification confirms all seven required bindings, including inherited secrets and `animavidi-mammal-photos`. Creating this version did not deploy it.
+- Deployment history still sends 100% of production traffic to `bcd07c8e-f840-47c8-b32f-d8566b50a112`, the previous version. No deployment call was made.
+- The connector can inspect Worker bindings and D1 but exposes no R2 bucket/object listing operation. R2 object count and photo coverage remain unknown. HTTP requests to the version preview's content/photo/session endpoints returned 403, so no successful endpoint smoke test is claimed.
+- `pnpm validate:release-images` intentionally fails while coverage is incomplete/unverified. Without a current manifest it reports 22 locally confirmed photographs out of 694 entries and 672 unverified entries (126 mammals and 546 birds). This does not claim the live bucket is empty. A current manifest is required for the coverage gate; image correctness, successful loading and approved rights still need review.

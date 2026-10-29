@@ -19,7 +19,8 @@
     "validate:species-achievements": "node scripts/validate-species-achievements.mjs",
     "validate:content-admin": "node scripts/validate-content-admin.mjs",
     "admin:hash-password": "node scripts/generate-admin-password-hash.mjs",
-    "validate:kruger-content": "node scripts/validate-kruger-content.mjs"
+    "validate:kruger-content": "node scripts/validate-kruger-content.mjs",
+    "validate:release-images": "node scripts/validate-release-images.mjs"
   },
   "dependencies": {
     "react": "^19.1.1",
