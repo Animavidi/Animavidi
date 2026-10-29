@@ -1,4 +1,4 @@
-import { listContent, saveContent } from './content.ts'
+import { listContent, listContentHistory, saveContent } from './content.ts'
 import { krugerBirdChecklist } from '../../src/features/birds/data/krugerBirdChecklist.ts'
 import { getMammalId, krugerMammalChecklist } from '../../src/features/mammals/data/krugerMammalChecklist.ts'
 
@@ -42,6 +42,11 @@ export default {
       else if (request.method === 'POST' && url.pathname === '/api/admin/logout') response = logout(request)
       else if (request.method === 'GET' && url.pathname === '/api/admin/session') response = await sessionStatus(request, env)
       else {
+        const historyMatch = url.pathname.match(/^\/api\/admin\/content\/(animal|route)\/([a-z0-9-]+)\/history$/)
+        if (historyMatch && request.method === 'GET') {
+          response = await authenticate(request, env) ? await listContentHistory(request, env, historyMatch[1], historyMatch[2]) : json({ error: 'Your admin session has expired.' }, 401)
+          return withHeaders(response, cors)
+        }
         const contentMatch = url.pathname.match(/^\/api\/admin\/content\/(animal|route)\/([a-z0-9-]+)$/)
         if (contentMatch && request.method === 'PUT') {
           response = await authenticate(request, env) ? await saveContent(request, env, contentMatch[1], contentMatch[2], knownMammalIds) : json({ error: 'Your admin session has expired.' }, 401)

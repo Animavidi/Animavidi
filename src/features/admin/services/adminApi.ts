@@ -1,4 +1,4 @@
-import { isManagedContent, type ManagedContent } from '@/features/content/model/content'
+import { isManagedContent, type ManagedContent, type ContentHistoryPage } from '@/features/content/model/content'
 import { getAdminApiBaseUrl } from '@/features/mammals/services/mammalPhotoApi'
 
 export type AdminSession = { administrator: string; authenticated: true; expiresAt: number }
@@ -55,4 +55,15 @@ export async function saveManagedContent(content: ManagedContent, revision: stri
   if (!isManagedContent(content)) throw new Error('Check the content fields and source URL.')
   const response = await adminFetch(`/api/admin/content/${content.kind}/${content.id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json', 'If-Match': revision }, body: JSON.stringify(content) })
   if (!response.ok) throw new AdminApiError(await responseMessage(response, 'Content could not be saved.'), response.status)
+}
+
+export async function fetchContentHistory(kind: ManagedContent['kind'], id: string, before?: number): Promise<ContentHistoryPage> {
+  const response = await adminFetch(`/api/admin/content/${kind}/${encodeURIComponent(id)}/history${before ? `?before=${before}` : ''}`)
+  if (!response.ok) throw new AdminApiError(await responseMessage(response, 'History could not be loaded.'), response.status)
+  const data: unknown = await response.json()
+  if (!data || typeof data !== 'object' || !('items' in data) || !Array.isArray(data.items) || !('nextCursor' in data) || !(data.nextCursor === null || (Number.isSafeInteger(data.nextCursor) && Number(data.nextCursor) > 0))) throw new Error('Invalid history response.')
+  for (const item of data.items) {
+    if (!item || typeof item !== 'object' || !isManagedContent(item.content) || item.content.kind !== kind || item.content.id !== id || typeof item.revision !== 'string' || !Number.isSafeInteger(item.historyId) || typeof item.updatedAt !== 'string') throw new Error('Invalid history record.')
+  }
+  return data as ContentHistoryPage
 }

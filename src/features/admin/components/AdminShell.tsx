@@ -19,7 +19,7 @@ export function AdminShell() {
         <NavLink to="/admin/content">Content</NavLink>
         <NavLink to="/admin/routes">Safari Routes</NavLink>
         <span aria-disabled="true">Users <small>Coming later</small></span>
-        <span aria-disabled="true">Reports &amp; Analytics <small>Coming later</small></span>
+        <NavLink to="/admin/reports">Content reports</NavLink>
       </nav>
       <div className={styles.identity}><span aria-hidden="true">A</span><div><strong>{auth.session?.administrator}</strong><small>Administrator</small></div><button onClick={() => void logout()} type="button">Log out</button></div>
     </aside>

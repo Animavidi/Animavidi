@@ -65,3 +65,12 @@ Pending this checkout's baseline tests. Historical tests are described in `../Kr
 - Browser loader now accepts Windows module paths. No multiline editor bug was found; source was already correct.
 - Brochure path supplied by user is unavailable in both current local and connector environments; waiting for accessible original.
 
+
+### Batch 2: content reports and revision recovery
+
+- Added protected /admin/reports with actual catalogue/remote-manifest coverage, profile-field/source gaps, filtering and CSV export. No visitor analytics or user records invented.
+- Added authenticated paginated history inspection (20 rows/page), field preview and restore through existing conditional writes. Restoring retains the displaced version via the existing D1 trigger; no migration or production writes required.
+- Fresh tests passed for unauthorized/disallowed-origin history access, invalid cursors, 25-version pagination without duplicates, restoration and retained history; browser passed restore-to-published and report CSV download.
+- All baseline validators passed, along with typecheck, lint, production build and Wrangler dry-run. Full-image release gate remains expected to fail for incomplete coverage.
+- Desktop/mobile report screenshots inspected; summary cards compacted afterwards.
+

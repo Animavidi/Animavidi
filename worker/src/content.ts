@@ -1,7 +1,22 @@
-import { isManagedContent, type ContentManifest } from '../../src/features/content/model/content.ts'
+import { isManagedContent, type ContentManifest, type ContentHistoryItem } from '../../src/features/content/model/content.ts'
 
 type ContentEnv = { CONTENT_DB?: D1Database }
 const maximumBodyBytes = 64 * 1024
+
+export async function listContentHistory(request: Request, env: ContentEnv, kind: string, id: string): Promise<Response> {
+  if (!env.CONTENT_DB) return response({ error: 'Content database is not configured.' }, 503)
+  const cursorText = new URL(request.url).searchParams.get('before')
+  const cursor = cursorText === null ? Number.MAX_SAFE_INTEGER : Number(cursorText)
+  if (!Number.isSafeInteger(cursor) || cursor < 1) return response({ error: 'Invalid history cursor.' }, 400)
+  const rows = await env.CONTENT_DB.prepare('SELECT history_id, kind, id, body, revision, updated_at FROM content_history WHERE kind = ? AND id = ? AND history_id < ? ORDER BY history_id DESC LIMIT 21').bind(kind, id, cursor).all<{ history_id: number; kind: string; id: string; body: string; revision: string; updated_at: string }>()
+  const items: ContentHistoryItem[] = []
+  for (const row of rows.results.slice(0, 20)) {
+    const content: unknown = JSON.parse(row.body)
+    if (!isManagedContent(content) || content.kind !== kind || content.id !== id) throw new Error('Invalid stored content history')
+    items.push({ content, revision: row.revision, historyId: row.history_id, updatedAt: row.updated_at })
+  }
+  return response({ items, nextCursor: rows.results.length > 20 ? rows.results[19].history_id : null })
+}
 
 export async function listContent(env: ContentEnv, includeDrafts = false): Promise<Response> {
   if (!env.CONTENT_DB) return response({ error: 'Content database is not configured.' }, 503)

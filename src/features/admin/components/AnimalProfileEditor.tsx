@@ -4,6 +4,7 @@ import type { AnimalEditorial } from '@/features/content/model/content'
 import type { Mammal } from '@/features/mammals/model/mammal'
 import { saveManagedContent } from '../services/adminApi'
 import styles from '../routes/Admin.module.css'
+import { ContentHistory } from './ContentHistory'
 
 export function AnimalProfileEditor({ animal }: { animal: Mammal }) {
   const { entries, loading, error, refresh } = useContent()
@@ -31,10 +32,10 @@ function ProfileForm({ initial, revision, refresh }: { initial: AnimalEditorial;
     finally { setBusy(false) }
   }
   const fields = [['introduction', 'Introduction'], ['habitat', 'Habitat'], ['behaviour', 'Behaviour'], ['diet', 'Diet'], ['groupStructure', 'Group structure'], ['conservationStatus', 'Conservation status']] as const
-  return <form className={styles.editor} onSubmit={(event) => void save(event)}><h2>Animal profile</h2><p>Changes are stored on the server. Stable species IDs and existing sightings are preserved.</p>
+  return <><form className={styles.editor} onSubmit={(event) => void save(event)}><h2>Animal profile</h2><p>Changes are stored on the server. Stable species IDs and existing sightings are preserved.</p>
     {fields.map(([field, label]) => <label key={field}>{label}<textarea maxLength={4000} rows={field === 'introduction' ? 5 : 3} value={draft[field]} onChange={(event) => setDraft({ ...draft, [field]: event.target.value })} disabled={busy} /></label>)}
     {([['identificationFeatures', 'Identification features'], ['interestingFacts', 'Interesting facts']] as const).map(([field, label]) => <label key={field}>{label} (one per line)<textarea rows={4} value={draft[field].join('\n')} onChange={(event) => setDraft({ ...draft, [field]: event.target.value.split('\n') })} disabled={busy} /></label>)}
     <label>Source URL<input type="url" required value={draft.sourceUrl} onChange={(event) => setDraft({ ...draft, sourceUrl: event.target.value })} disabled={busy} /></label>
     <button type="submit" disabled={busy}>{busy ? 'Saving…' : 'Save profile'}</button><p role="status">{message}</p>
-  </form>
+  </form><ContentHistory kind="animal" id={initial.id} revision={revision} onRestored={refresh} /></>
 }

@@ -4,7 +4,6 @@ import styles from './Admin.module.css'
 
 const futureModules = [
   ['Users', 'Manage future explorer accounts and access.'],
-  ['Reports & Analytics', 'Understand content and safari engagement.'],
 ] as const
 
 export function AdminHomePage() {
@@ -12,6 +11,7 @@ export function AdminHomePage() {
     <section aria-labelledby="modules-title"><h2 id="modules-title">Admin modules</h2><div className={styles.moduleGrid}>
       <article className={styles.activeModule}><span aria-hidden="true">01</span><h3>Content</h3><p>Manage animals and their approved photography.</p><Link to="/admin/content">Open Content</Link></article>
       <article className={styles.activeModule}><span aria-hidden="true">02</span><h3>Safari Routes</h3><p>Edit and publish sourced route guides.</p><Link to="/admin/routes">Manage Routes</Link></article>
+      <article className={styles.activeModule}><span aria-hidden="true">03</span><h3>Content reports</h3><p>Inspect missing photographs, profile fields and sources. Export the work queue.</p><Link to="/admin/reports">Open reports</Link></article>
       {futureModules.map(([title, copy], index) => <article className={styles.futureModule} key={title}><span aria-hidden="true">0{index + 2}</span><h3>{title}</h3><p>{copy}</p><small>Coming later</small></article>)}
     </div></section>
   </main>

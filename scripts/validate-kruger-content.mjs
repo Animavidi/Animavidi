@@ -71,6 +71,36 @@ assert.equal(response.status, 412)
 response = await call(`/api/admin/content/animal/${bird.id}`, { method: 'PUT', headers: { ...auth, 'If-Match': saved.revision }, body: JSON.stringify({ ...content, introduction: 'Updated' }) })
 assert.equal(response.status, 200)
 assert.equal(sqlite.prepare('SELECT COUNT(*) AS total FROM content_history WHERE kind = ? AND id = ?').get('animal', bird.id).total, 1)
+const historyPath = `/api/admin/content/animal/${bird.id}/history`
+assert.equal((await call(historyPath, { headers: { Origin: origin } })).status, 401)
+assert.equal((await call(historyPath, { headers: { ...auth, Origin: 'https://attacker.invalid' } })).status, 403)
+assert.equal((await call(`${historyPath}?before=bad`, { headers: auth })).status, 400)
+assert.equal((await call(historyPath + '?before=0', { headers: auth })).status, 400)
+const firstHistory = await (await call(historyPath, { headers: auth })).json()
+assert.equal(firstHistory.items.length, 1)
+assert.equal(firstHistory.items[0].content.introduction, content.introduction)
+assert.equal(firstHistory.nextCursor, null)
+const current = await (await call('/api/admin/content', { headers: auth })).json()
+let latestRevision = current[`animal/${bird.id}`].revision
+// Restoring is a normal conditional save, and preserves the displaced version.
+response = await call(`/api/admin/content/animal/${bird.id}`, { method: 'PUT', headers: { ...auth, 'If-Match': latestRevision }, body: JSON.stringify(firstHistory.items[0].content) })
+assert.equal(response.status, 200)
+latestRevision = (await response.json()).revision
+assert.equal((await (await call(historyPath, { headers: auth })).json()).items[0].content.introduction, 'Updated')
+for (let index = 0; index < 23; index++) {
+  response = await call(`/api/admin/content/animal/${bird.id}`, { method: 'PUT', headers: { ...auth, 'If-Match': latestRevision }, body: JSON.stringify({ ...content, introduction: `Revision ${index}` }) })
+  assert.equal(response.status, 200)
+  latestRevision = (await response.json()).revision
+}
+const newestPage = await (await call(historyPath, { headers: auth })).json()
+assert.equal(newestPage.items.length, 20)
+assert.ok(newestPage.nextCursor)
+const olderPage = await (await call(`${historyPath}?before=${newestPage.nextCursor}`, { headers: auth })).json()
+assert.equal(olderPage.items.length, 5)
+assert.equal(olderPage.nextCursor, null)
+assert.equal(new Set([...newestPage.items, ...olderPage.items].map((item) => item.historyId)).size, 25)
+assert.equal((await call('/api/content')).status, 200)
+assert.equal((await call(`/api/content/animal/${bird.id}/history`)).status, 404)
 response = await call('/api/admin/content/animal/unknown-species', { method: 'PUT', headers: auth, body: JSON.stringify({ ...content, id: 'unknown-species' }) })
 assert.equal(response.status, 404)
 response = await call(`/api/admin/content/animal/${bird.id}`, { method: 'PUT', headers: auth, body: 'x'.repeat(65537) })

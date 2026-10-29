@@ -31,6 +31,8 @@ export type SafariRoute = {
 export type ManagedContent = AnimalEditorial | SafariRoute
 export type ContentEntry = { content: ManagedContent; revision: string }
 export type ContentManifest = Record<string, ContentEntry>
+export type ContentHistoryItem = ContentEntry & { historyId: number; updatedAt: string }
+export type ContentHistoryPage = { items: ContentHistoryItem[]; nextCursor: number | null }
 
 const boundedText = (value: unknown, maximum = 4000): value is string => typeof value === 'string' && value.length <= maximum
 const textList = (value: unknown): value is string[] => Array.isArray(value) && value.length <= 30 && value.every((item) => boundedText(item, 500))

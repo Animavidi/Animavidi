@@ -27,6 +27,7 @@ const AdminProtectedRoute = lazy(() => import('@/features/admin/routes/AdminRoot
 const AdminShell = lazy(() => import('@/features/admin/components/AdminShell').then((module) => ({ default: module.AdminShell })))
 const AdminLoginPage = lazy(() => import('@/features/admin/routes/AdminLoginPage').then((module) => ({ default: module.AdminLoginPage })))
 const AdminHomePage = lazy(() => import('@/features/admin/routes/AdminHomePage').then((module) => ({ default: module.AdminHomePage })))
+const AdminReportsPage = lazy(() => import('@/features/admin/routes/AdminReportsPage').then((module) => ({ default: module.AdminReportsPage })))
 const AdminContentPage = lazy(() => import('@/features/admin/routes/AdminContentPage').then((module) => ({ default: module.AdminContentPage })))
 const AdminAnimalsPage = lazy(() => import('@/features/admin/routes/AdminAnimalsPage').then((module) => ({ default: module.AdminAnimalsPage })))
 const AdminAnimalPage = lazy(() => import('@/features/admin/routes/AdminAnimalPage').then((module) => ({ default: module.AdminAnimalPage })))
@@ -46,6 +47,7 @@ export const router = createBrowserRouter([
             { index: true, element: <AdminHomePage /> },
             { path: 'content', element: <AdminContentPage /> },
             { path: 'routes', element: <AdminRoutesPage /> },
+            { path: 'reports', element: <AdminReportsPage /> },
             { path: 'content/animals', element: <AdminAnimalsPage /> },
             { path: 'content/animals/:mammalId', element: <AdminAnimalPage /> },
           ],
