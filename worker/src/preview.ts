@@ -6,14 +6,14 @@ type PreviewEnv=Parameters<typeof api.fetch>[1] & UserEnv & {ASSETS:Fetcher}
 // Separate beta entry point. Production routes, bindings and origins stay in
 // wrangler.jsonc; this Worker uses only the isolated preview configuration.
 export default {
-  async fetch(request:Request,env:PreviewEnv):Promise<Response> {
+  async fetch(request:Request,env:PreviewEnv,context:ExecutionContext):Promise<Response> {
     const url=new URL(request.url)
     if(url.pathname.startsWith('/api/')) {
       const headers=new Headers(request.headers)
       // Same-origin browser GETs omit Origin. Sec-Fetch-Site is browser-controlled.
       if(!headers.has('Origin') && headers.get('Sec-Fetch-Site')==='same-origin')headers.set('Origin',url.origin)
       const incoming=new Request(request,{headers})
-      if(url.pathname.startsWith('/api/auth/') || url.pathname.startsWith('/api/me/'))return handleUsers(incoming,env)
+      if(url.pathname.startsWith('/api/auth/') || url.pathname.startsWith('/api/me/'))return handleUsers(incoming,env,context)
       let submitter:string|undefined
       if(url.pathname==='/api/bird-proposals' && request.method==='POST'){
         if(headers.get('Origin')!==url.origin)return Response.json({error:'Origin not allowed.'},{status:403})

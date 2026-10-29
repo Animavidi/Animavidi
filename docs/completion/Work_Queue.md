@@ -130,3 +130,12 @@ Pending this checkout's baseline tests. Historical tests are described in `../Kr
 ## Account/cloud/PWA follow-up — 29 October 2026
 
 Implementation and local/native Cloudflare tests completed; see [Account_Cloud_Status.md](Account_Cloud_Status.md) for evidence and resumable release gates. Real activation/reset email and physical-device installation remain unverified. Shared beta and production were not promoted.
+
+
+## Resend continuation — 29 October 2026
+
+- [x] Server-only Resend transport, fixed sender, bounded retries/idempotency and mock tests.
+- [x] Atomic single-use activation and reset expiry/replay tests, generic non-blocking reset responses.
+- [x] Repeat backend and integrated offline/migration/browser tests.
+- [ ] Guido: verified mail.animavidi.com and RESEND_API_KEY Worker-version secret; see Resend_Integration.md.
+- [ ] Live delivery test, physical-device install checks and controlled beta-only promotion remain gates.

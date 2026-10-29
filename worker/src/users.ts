@@ -1,10 +1,11 @@
+import {mailConfigured,tokenDigest} from './accountMail.ts'
 import { userAuth,verifiedUser,type UserEnv } from './userAuth.ts'
 import { validSighting,personalKeys } from '../../src/features/accounts/model/cloud.ts'
 const json=(body:unknown,status=200)=>Response.json(body,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}})
 const uuid=(value:string)=>/^[a-f0-9-]{36}$/.test(value)
 async function bounded(request:Request,max:number):Promise<Uint8Array>{const reader=request.body?.getReader();if(!reader)throw new Error('Missing request body.');const chunks:Uint8Array[]=[];let size=0;while(true){const part=await reader.read();if(part.done)break;size+=part.value.length;if(size>max){await reader.cancel();throw new Error('BODY_TOO_LARGE')}chunks.push(part.value)}const bytes=new Uint8Array(size);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.length}return bytes}
 
-export async function handleUsers(request:Request,env:UserEnv):Promise<Response>{
+export async function handleUsers(request:Request,env:UserEnv,background?:Pick<ExecutionContext,'waitUntil'>):Promise<Response>{
   const url=new URL(request.url),origin=request.headers.get('Origin')
   if(request.method!=='GET' && origin!==url.origin)return json({error:'Origin not allowed.'},403)
   if(!env.CONTENT_DB || !env.BETTER_AUTH_SECRET)return json({error:'User accounts are not configured.'},503)
@@ -17,9 +18,15 @@ export async function handleUsers(request:Request,env:UserEnv):Promise<Response>
         const result=await env.CONTENT_DB.prepare('INSERT INTO bird_submission_limits(client_key,window_start,attempts) VALUES (?,?,1) ON CONFLICT(client_key) DO UPDATE SET attempts=CASE WHEN window_start=excluded.window_start THEN attempts+1 ELSE 1 END,window_start=excluded.window_start RETURNING attempts').bind(client,Math.floor(Date.now()/1000/windowSize)).first<{attempts:number}>()
         if(!result||result.attempts>max)return json({error:'Too many attempts. Please try again later.'},429)
       }
-      if(['sign-up/email','request-password-reset','send-verification-email'].some(path=>url.pathname.endsWith('/'+path)) && (!env.EMAIL || !env.AUTH_EMAIL_FROM))return json({error:'Account email delivery is not configured yet. Please retry when the administrator has enabled it.'},503)
+      if(['sign-up/email','request-password-reset','send-verification-email'].some(path=>url.pathname.endsWith('/'+path)) && !mailConfigured(env))return json({error:'Account email delivery is not configured yet. Please retry when the administrator has enabled it.'},503)
       if(request.method==='POST'){const bytes=await bounded(request,16384);request=new Request(request,{body:bytes})}
-      const result=await userAuth(env,url.origin).handler(request),headers=new Headers(result.headers)
+      if(url.pathname==='/api/auth/verify-email'&&request.method==='GET'){
+        const token=url.searchParams.get('token');if(!token||token.length>4096)return json({error:'Invalid or expired activation link.'},400)
+        const id='activation-'+await tokenDigest(token)
+        const used=await env.CONTENT_DB.prepare('DELETE FROM av_verification WHERE id=? AND expiresAt>? RETURNING id').bind(id,new Date().toISOString()).first()
+        if(!used)return json({error:'Invalid or expired activation link.'},400)
+      }
+      const result=await userAuth(env,url.origin,background).handler(request),headers=new Headers(result.headers)
       headers.set('Cache-Control','no-store');headers.set('X-Content-Type-Options','nosniff')
       return new Response(result.body,{status:result.status,headers})
     }

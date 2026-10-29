@@ -1,6 +1,6 @@
 # Accounts, cloud journal and PWA — 29 October 2026
 
-Status: implemented and tested; release is blocked by real transactional email access. This document supersedes the account/offline limitations in the earlier guest-beta report. Same feature branch and draft PR #1; no merge or production deployment.
+Status: account/offline implementation tested; Resend integration is now ready for RESEND_API_KEY and live delivery testing. See [Resend_Integration.md](Resend_Integration.md) for the current mail handoff. The earlier Cloudflare Email Sending blocker below is historical; Resend is the selected provider. This document supersedes the account/offline limitations in the earlier guest-beta report. Same feature branch and draft PR #1; no merge or production deployment.
 
 ## Built
 

@@ -1,26 +1,24 @@
 import { betterAuth } from 'better-auth'
 import { D1Dialect } from 'kysely-d1'
+import {sendAccountMail,tokenDigest,type MailEnv} from './accountMail.ts'
 
-export type UserEnv = {
+export type UserEnv = MailEnv & {
   CONTENT_DB?: D1Database
   MAMMAL_PHOTOS: R2Bucket
   BETTER_AUTH_SECRET?: string
-  AUTH_EMAIL_FROM?: string
-  EMAIL?: { send(message:{to:string;from:{email:string;name:string};subject:string;text:string;html:string}):Promise<unknown> }
 }
 
-export function userAuth(env:UserEnv,origin:string) {
+export function userAuth(env:UserEnv,origin:string,background?:Pick<ExecutionContext,'waitUntil'>) {
   if(!env.CONTENT_DB || !env.BETTER_AUTH_SECRET)throw new Error('User accounts are not configured.')
   const send=async(to:string,url:string,subject:string)=>{
-    if(!env.EMAIL || !env.AUTH_EMAIL_FROM)throw new Error('Transactional email is not configured.')
     const safe=url.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;')
-    await env.EMAIL.send({to,from:{email:env.AUTH_EMAIL_FROM,name:'Animavidi'},subject,text:`${subject}\n\n${url}\n\nIf you did not request this, you can ignore this message.`,html:`<h1>Animavidi</h1><p>${subject}</p><p><a href="${safe}">Continue securely</a></p><p>If you did not request this, ignore this message.</p>`})
+    await sendAccountMail(env,{to,subject,text:`${subject}\n\n${url}\n\nThis link expires shortly and can only be used once. If you did not request this, ignore this message.`,html:`<h1>Animavidi</h1><p>${subject}</p><p><a href="${safe}">Continue securely</a></p><p>This link expires shortly and can only be used once. If you did not request this, ignore this message.</p>`})
   }
   return betterAuth({
     appName:'Animavidi',baseURL:origin,basePath:'/api/auth',secret:env.BETTER_AUTH_SECRET,
     database:{dialect:new D1Dialect({database:env.CONTENT_DB}),type:'sqlite',transaction:false},
     trustedOrigins:[origin],
-    advanced:{cookiePrefix:'animavidi_user',useSecureCookies:origin.startsWith('https:'),ipAddress:{ipAddressHeaders:['cf-connecting-ip']},defaultCookieAttributes:{sameSite:'lax',httpOnly:true}},
+    advanced:{...(background?{backgroundTasks:{handler:(task:Promise<unknown>)=>background.waitUntil(task.catch(()=>{console.error(JSON.stringify({event:'account_email_delivery_failed'}))}))}}:{}),cookiePrefix:'animavidi_user',useSecureCookies:origin.startsWith('https:'),ipAddress:{ipAddressHeaders:['cf-connecting-ip']},defaultCookieAttributes:{sameSite:'lax',httpOnly:true}},
     user:{modelName:'av_user',deleteUser:{enabled:true,beforeDelete:async(user)=>{
       const rows=await env.CONTENT_DB!.prepare('SELECT id FROM bird_proposals WHERE submitter_user_id=?').bind(user.id).all<{id:string}>()
       await env.CONTENT_DB!.prepare('INSERT INTO av_deletion_queue(user_id,ready,contributions) VALUES (?,0,?) ON CONFLICT(user_id) DO UPDATE SET contributions=excluded.contributions WHERE ready=0').bind(user.id,JSON.stringify(rows.results.map(row=>row.id))).run()
@@ -29,8 +27,13 @@ export function userAuth(env:UserEnv,origin:string) {
     }}},
     session:{modelName:'av_session',expiresIn:60*60*24*30,updateAge:60*60*24,freshAge:60*10,cookieCache:{enabled:false}},
     account:{modelName:'av_account'},verification:{modelName:'av_verification'},
-    emailAndPassword:{enabled:true,requireEmailVerification:true,minPasswordLength:12,maxPasswordLength:128,revokeSessionsOnPasswordReset:true,sendResetPassword:async({user,url})=>send(user.email,url,'Reset your Animavidi password')},
-    emailVerification:{sendOnSignUp:true,sendOnSignIn:true,expiresIn:3600,autoSignInAfterVerification:false,sendVerificationEmail:async({user,url})=>send(user.email,url,'Verify your Animavidi email address')},
+    emailAndPassword:{enabled:true,requireEmailVerification:true,minPasswordLength:12,maxPasswordLength:128,revokeSessionsOnPasswordReset:true,resetPasswordTokenExpiresIn:1800,sendResetPassword:async({user,url})=>send(user.email,url,'Reset your Animavidi password')},
+    emailVerification:{sendOnSignUp:true,sendOnSignIn:true,expiresIn:3600,autoSignInAfterVerification:false,sendVerificationEmail:async({user,url,token})=>{
+      // Better Auth signs the token; D1 atomically consumes its digest once.
+      const id='activation-'+await tokenDigest(token)
+      await env.CONTENT_DB!.prepare('INSERT INTO av_verification(id,identifier,value,expiresAt,createdAt,updatedAt) VALUES (?,?,?,?,?,?) ON CONFLICT(id) DO NOTHING').bind(id,id,'issued',new Date(Date.now()+3600000).toISOString(),new Date().toISOString(),new Date().toISOString()).run()
+      await send(user.email,url,'Verify your Animavidi email address')
+    }},
     rateLimit:{enabled:true,storage:'database',modelName:'av_auth_rate',window:60,max:60,customRules:{'/sign-in/email':{window:300,max:10},'/sign-up/email':{window:3600,max:5},'/request-password-reset':{window:3600,max:5},'/send-verification-email':{window:3600,max:5}}},
   })
 }
