@@ -31,12 +31,22 @@ for (const species of inventory.species) {
     checkpoint.candidates[species.id] = { status: 'quarantined-taxonomy', reason: 'Shared scientific name in source checklist; resolve identity before sourcing.' }
     await save(); continue
   }
-  const entry = { name: species.name, scientificName: species.scientificName, checkedAt: '2026-10-29', status: 'collecting', files: [] }
+  const entry = { name: species.name, scientificName: species.scientificName, checkedAt: new Date().toISOString().slice(0, 10), status: 'collecting', files: [] }
   checkpoint.candidates[species.id] = entry
   try {
     const api = new URL('https://commons.wikimedia.org/w/api.php')
-    api.search = new URLSearchParams({ action: 'query', format: 'json', generator: 'search', gsrsearch: `filetype:bitmap "${species.scientificName}"`, gsrnamespace: '6', gsrlimit: '5', prop: 'imageinfo', iiprop: 'url|extmetadata|size', iiurlwidth: '960' })
-    const data = await (await get(api)).json()
+    const common = { action: 'query', format: 'json', prop: 'imageinfo', iiprop: 'url|extmetadata|size', iiurlwidth: '960' }
+    // Exact taxon categories avoid unnecessary full-text search load. Their
+    // contents still require visual review; a category is not proof of identity.
+    api.search = new URLSearchParams({ ...common, generator: 'categorymembers', gcmtitle: `Category:${species.scientificName}`, gcmtype: 'file', gcmlimit: '5' })
+    let data = await (await get(api)).json()
+    entry.discovery = 'exact-commons-category'
+    if (!Object.keys(data.query?.pages ?? {}).length && !data.error) {
+      await delay(1500)
+      api.search = new URLSearchParams({ ...common, generator: 'search', gsrsearch: `filetype:bitmap "${species.scientificName}"`, gsrnamespace: '6', gsrlimit: '5' })
+      data = await (await get(api)).json()
+      entry.discovery = 'commons-search'
+    }
     if (data.error) throw new Error(`Commons: ${data.error.code}`)
     for (const page of Object.values(data.query?.pages ?? {}).sort((a, b) => a.index - b.index)) {
       const info = page.imageinfo?.[0], meta = info?.extmetadata

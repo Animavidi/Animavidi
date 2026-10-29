@@ -1,6 +1,7 @@
 import { readFile, writeFile, mkdir, access } from 'node:fs/promises'
 import { krugerBirdChecklist } from '../src/features/birds/data/krugerBirdChecklist.ts'
 import { getMammalId, krugerMammalChecklist } from '../src/features/mammals/data/krugerMammalChecklist.ts'
+import { sourcedAnimalProfiles } from '../src/features/content/data/sourcedAnimalProfiles.ts'
 
 // Repository-only evidence. Never infer live D1/R2 state from packaged files.
 const root = new URL('../', import.meta.url)
@@ -11,7 +12,7 @@ const credits = { ...JSON.parse(await read('src/assets/birds/photo-credits.json'
 const mammals = JSON.parse(await read('src/assets/mammals/mammal-images.json'))
 const species = [
   ...krugerMammalChecklist.map((entry) => ({ id: getMammalId(entry), name: entry.officialName, scientificName: entry.scientificName, group: 'mammal' })),
-  ...krugerBirdChecklist.map((entry) => ({ id: entry.id, name: entry.commonName, scientificName: entry.scientificName, group: 'bird' })),
+  ...krugerBirdChecklist.map((entry) => ({ id: entry.id, name: entry.commonName, scientificName: entry.scientificName, group: 'bird', ...('taxonomySource' in entry ? { taxonomySource: entry.taxonomySource, sourceScientificName: entry.sourceScientificName } : {}) })),
 ]
 const names = new Map()
 for (const entry of species) names.set(entry.scientificName, [...(names.get(entry.scientificName) ?? []), entry.id])
@@ -20,13 +21,14 @@ for (const entry of species) {
   try { await access(new URL(path, root)); entry.photo = 'packaged' } catch { entry.photo = 'missing' }
   entry.attribution = credits[entry.id] ? 'recorded-reviewed-photo' : entry.photo === 'packaged' ? 'legacy-rights-review-required' : 'missing'
   entry.photoSource = credits[entry.id]?.sourceUrl ?? mammals.find((photo) => photo.id === entry.id)?.source ?? ''
-  entry.profile = legacyProfiles.has(entry.id) ? 'legacy-profile-source-review-required' : 'missing-reviewed-profile'
-  entry.taxonomyReview = names.get(entry.scientificName).length > 1 ? 'shared-scientific-name' : 'not-independently-reviewed'
-  entry.tasks = [ ...(entry.photo === 'missing' ? ['source-photo', 'record-author-license', 'visual-species-review'] : []), ...(entry.attribution === 'legacy-rights-review-required' ? ['verify-legacy-photo-rights'] : []), 'verify-taxonomy', ...(entry.profile === 'missing-reviewed-profile' ? ['write-sourced-profile'] : ['verify-profile-sources']) ]
+  entry.profile = legacyProfiles.has(entry.id) ? 'legacy-profile-source-review-required' : sourcedAnimalProfiles[entry.id] ? 'sourced-profile-assessment-pending' : 'missing-reviewed-profile'
+  if (sourcedAnimalProfiles[entry.id]) { entry.profileSource = sourcedAnimalProfiles[entry.id].content.sourceUrl; entry.pendingProfileReviews = sourcedAnimalProfiles[entry.id].pending }
+  entry.taxonomyReview = entry.taxonomySource ? 'source-error-reconciled' : names.get(entry.scientificName).length > 1 ? 'shared-scientific-name' : 'not-independently-reviewed'
+  entry.tasks = [ ...(entry.photo === 'missing' ? ['source-photo', 'record-author-license', 'visual-species-review'] : []), ...(entry.attribution === 'legacy-rights-review-required' ? ['verify-legacy-photo-rights'] : []), 'verify-taxonomy', ...(entry.profile === 'missing-reviewed-profile' ? ['write-sourced-profile'] : entry.profile === 'sourced-profile-assessment-pending' ? ['verify-current-conservation-assessment'] : ['verify-profile-sources']) ]
 }
 const report = {
   schemaVersion: 1, evidence: 'packaged repository files; live content is unverified',
-  totals: { species: species.length, packagedPhotos: species.filter((s) => s.photo === 'packaged').length, missingPhotos: species.filter((s) => s.photo === 'missing').length, legacyProfiles: species.filter((s) => legacyProfiles.has(s.id)).length, missingReviewedProfiles: species.filter((s) => s.profile === 'missing-reviewed-profile').length },
+  totals: { species: species.length, packagedPhotos: species.filter((s) => s.photo === 'packaged').length, missingPhotos: species.filter((s) => s.photo === 'missing').length, legacyProfiles: species.filter((s) => legacyProfiles.has(s.id)).length, sourcedProfilesAssessmentPending: Object.keys(sourcedAnimalProfiles).length, missingReviewedProfiles: species.filter((s) => s.profile === 'missing-reviewed-profile').length },
   taxonomyCollisions: [...names].filter(([, ids]) => ids.length > 1).map(([scientificName, ids]) => ({ scientificName, ids })),
   species,
 }

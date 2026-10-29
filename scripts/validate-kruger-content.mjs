@@ -11,6 +11,16 @@ assert.equal(krugerBirdChecklist.length, 546)
 assert.equal(new Set(krugerBirdChecklist.map((item) => item.id)).size, 546)
 assert.ok(krugerBirdChecklist.every((item, index) => item.sourceChecklistNumber === index + 1))
 assert.ok(krugerBirdChecklist.every((item) => item.id.startsWith('bird-') && item.scientificName && item.source.startsWith('https://www.sanparks.org/')))
+for (const [id, scientificName, original] of [
+  ['bird-european-roller', 'Coracias garrulus', 'Coracias caudatus'],
+  ['bird-golden-weaver', 'Ploceus xanthops', 'Ploceus subaureus'],
+  ['bird-barred-owlet', 'Glaucidium capense', 'Strix varia'],
+]) {
+  const corrected = krugerBirdChecklist.find((item) => item.id === id)
+  assert.equal(corrected.scientificName, scientificName)
+  assert.equal(corrected.sourceScientificName, original)
+  assert.ok(corrected.taxonomySource.startsWith('https://'))
+}
 const objects = new Map()
 let sequence = 0
 let failPut = false

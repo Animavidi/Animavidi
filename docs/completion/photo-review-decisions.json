@@ -2,14 +2,69 @@
   "reviewedAt": "2026-10-29",
   "method": "Visual inspection of downloaded candidate contact sheet; metadata checked against Commons response. No claim that photographs were taken in Kruger.",
   "approved": {
-    "aardvark": { "fileName": "aardvark-1.jpg", "features": "Long tubular snout, large upright ears, arched back and thick tapering tail." },
-    "aardwolf": { "fileName": "aardwolf-1.jpg", "features": "Small hyena-like animal with vertical dark stripes, erect mane and large pointed ears." },
-    "banded-mongoose": { "fileName": "banded-mongoose-1.jpg", "features": "Small mongoose with repeated dark transverse bands across its back." },
-    "black-backed-jackal": { "fileName": "black-backed-jackal-1.jpg", "features": "Pointed muzzle and ears, reddish sides and contrasting dark grizzled saddle." },
-    "blue-wildebeest": { "fileName": "blue-wildebeest-1.jpg", "features": "Heavy-shouldered dark antelope, broad muzzle, curved horns and long black tail; adult with calf." },
-    "caracal": { "fileName": "caracal-1.jpg", "features": "Plain reddish coat, black-backed ears with long black tufts, dark facial markings." },
-    "hippopotamus": { "fileName": "hippopotamus-1.jpg", "features": "Large barrel-shaped grey body, short legs, broad muzzle and high-set eyes and ears." },
-    "serval": { "fileName": "serval-1.jpg", "features": "Very long legs, small head, large ears and golden coat with black spots and neck stripes." }
+    "aardvark": {
+      "fileName": "aardvark-1.jpg",
+      "features": "Long tubular snout, large upright ears, arched back and thick tapering tail."
+    },
+    "aardwolf": {
+      "fileName": "aardwolf-1.jpg",
+      "features": "Small hyena-like animal with vertical dark stripes, erect mane and large pointed ears."
+    },
+    "banded-mongoose": {
+      "fileName": "banded-mongoose-1.jpg",
+      "features": "Small mongoose with repeated dark transverse bands across its back."
+    },
+    "black-backed-jackal": {
+      "fileName": "black-backed-jackal-1.jpg",
+      "features": "Pointed muzzle and ears, reddish sides and contrasting dark grizzled saddle."
+    },
+    "blue-wildebeest": {
+      "fileName": "blue-wildebeest-1.jpg",
+      "features": "Heavy-shouldered dark antelope, broad muzzle, curved horns and long black tail; adult with calf."
+    },
+    "caracal": {
+      "fileName": "caracal-1.jpg",
+      "features": "Plain reddish coat, black-backed ears with long black tufts, dark facial markings."
+    },
+    "hippopotamus": {
+      "fileName": "hippopotamus-1.jpg",
+      "features": "Large barrel-shaped grey body, short legs, broad muzzle and high-set eyes and ears."
+    },
+    "serval": {
+      "fileName": "serval-1.jpg",
+      "features": "Very long legs, small head, large ears and golden coat with black spots and neck stripes."
+    },
+    "african-civet": {
+      "fileName": "african-civet-2.jpg",
+      "features": "Dark face mask, pale neck bands, spotted and barred body, dorsal mane and ringed tail."
+    },
+    "bat-eared-fox": {
+      "fileName": "bat-eared-fox-1.jpg",
+      "features": "Very large rounded ears, dark facial mask and legs, grey-brown coat and bushy dark-tipped tail."
+    },
+    "brown-hyena": {
+      "fileName": "brown-hyena-2.jpg",
+      "features": "Long shaggy brown coat, pale neck mantle, sloping back and striped legs."
+    },
+    "bushpig": {
+      "fileName": "bushpig-2.jpg",
+      "features": "Shaggy pig with pale face and dorsal mane, dark legs and elongated snout; lacks the prominent facial warts of warthog."
+    },
+    "common-duiker": {
+      "fileName": "common-duiker-2.jpg",
+      "features": "Small grey-brown antelope with arched back, slender legs, pointed ears and dark facial stripe."
+    },
+    "eland": {
+      "fileName": "eland-2.jpg",
+      "features": "Large tan antelope, tightly spiralled horns and deep hanging dewlap; common eland form."
+    }
   },
-  "quarantined": {}
+  "quarantined": {
+    "african-wild-cat": "Domestic-cat or hybrid identity cannot be excluded visually from the candidate.",
+    "african-clawless-otter": "Feet and diagnostic details are not sufficiently clear; second candidate is an anatomical bone plate.",
+    "bushveld-gerbil": "Similar gerbils require diagnostic/expert confirmation; not approved from external appearance.",
+    "cape-hare": "Similar Lepus species cannot be confidently distinguished from this view.",
+    "dwarf-mongoose": "Scale and diagnostic separation from similar small mongoose species need further review.",
+    "grey-rhebok": "Only rear view or distant animal; insufficient diagnostic detail."
+  }
 }

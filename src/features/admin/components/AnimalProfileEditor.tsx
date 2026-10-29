@@ -5,6 +5,7 @@ import type { Mammal } from '@/features/mammals/model/mammal'
 import { saveManagedContent } from '../services/adminApi'
 import styles from '../routes/Admin.module.css'
 import { ContentHistory } from './ContentHistory'
+import { sourcedAnimalProfiles } from '@/features/content/data/sourcedAnimalProfiles'
 
 export function AnimalProfileEditor({ animal }: { animal: Mammal }) {
   const { entries, loading, error, refresh } = useContent()
@@ -14,7 +15,7 @@ export function AnimalProfileEditor({ animal }: { animal: Mammal }) {
     identificationFeatures: [...animal.profile.identificationFeatures], interestingFacts: [...animal.profile.interestingFacts],
     habitat: animal.profile.habitat, behaviour: animal.profile.behaviour, diet: animal.profile.diet,
     groupStructure: animal.profile.groupStructure, conservationStatus: animal.profile.conservationStatus,
-    sourceUrl: animal.overviewSection === 'birds' ? 'https://www.sanparks.org/parks/kruger/explore/fauna-flora/birds/checklist' : '',
+    sourceUrl: sourcedAnimalProfiles[animal.id]?.content.sourceUrl ?? (animal.overviewSection === 'birds' ? 'https://www.sanparks.org/parks/kruger/explore/fauna-flora/birds/checklist' : ''),
   }
   if (loading) return <p role="status">Loading editorial content…</p>
   if (error) return <div role="alert"><p>{error}</p><button type="button" onClick={() => void refresh()}>Retry loading content</button></div>

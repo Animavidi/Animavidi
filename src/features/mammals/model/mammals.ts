@@ -1,4 +1,5 @@
 import { getBirdPrimaryImage } from '@/assets/birds/birdPrimaryImages'
+import { sourcedAnimalProfiles } from '@/features/content/data/sourcedAnimalProfiles'
 import { krugerBirdChecklist } from '@/features/birds/data/krugerBirdChecklist'
 import { getMammalPrimaryImage } from '@/assets/mammals/mammalPrimaryImages'
 import { getMammalId, krugerMammalChecklist } from '@/features/mammals/data/krugerMammalChecklist'
@@ -99,11 +100,11 @@ export const mammals: readonly Mammal[] = krugerMammalChecklist.map((entry) => {
     commonName,
     id,
     image: primaryImage ?? missingPhotoFallback,
-    imageAlt: `${commonName} in Kruger National Park`,
+    imageAlt: commonName,
     imageFallback: primaryImage ?? missingPhotoFallback,
     officialCommonName: entry.officialName,
     overviewSection: entry.section,
-    profile: profiles[id] ?? minimalProfile(commonName),
+    profile: profiles[id] ?? (sourcedAnimalProfiles[id] ? { ...sourcedAnimalProfiles[id].content, demoProgress: { seen: false, sightingsCount: 0 } } : minimalProfile(commonName)),
     scientificName: entry.scientificName,
     smallMammalGroup: entry.smallMammalGroup,
     sortName: entry.sortName ?? commonName,

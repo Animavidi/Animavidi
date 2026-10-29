@@ -62,8 +62,8 @@ export async function fetchContentHistory(kind: ManagedContent['kind'], id: stri
   if (!response.ok) throw new AdminApiError(await responseMessage(response, 'History could not be loaded.'), response.status)
   const data: unknown = await response.json()
   if (!data || typeof data !== 'object' || !('items' in data) || !Array.isArray(data.items) || !('nextCursor' in data) || !(data.nextCursor === null || (Number.isSafeInteger(data.nextCursor) && Number(data.nextCursor) > 0))) throw new Error('Invalid history response.')
-  for (const item of data.items) {
-    if (!item || typeof item !== 'object' || !isManagedContent(item.content) || item.content.kind !== kind || item.content.id !== id || typeof item.revision !== 'string' || !Number.isSafeInteger(item.historyId) || typeof item.updatedAt !== 'string') throw new Error('Invalid history record.')
+  for (const item of data.items as unknown[]) {
+    if (!item || typeof item !== 'object' || !('content' in item) || !isManagedContent(item.content) || item.content.kind !== kind || item.content.id !== id || !('revision' in item) || typeof item.revision !== 'string' || !('historyId' in item) || !Number.isSafeInteger(item.historyId) || !('updatedAt' in item) || typeof item.updatedAt !== 'string') throw new Error('Invalid history record.')
   }
   return data as ContentHistoryPage
 }

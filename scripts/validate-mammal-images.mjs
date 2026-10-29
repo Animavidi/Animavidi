@@ -26,7 +26,7 @@ const overviewSource = readFileSync(resolve(repositoryRoot, 'src/features/mammal
 const detailSource = readFileSync(resolve(repositoryRoot, 'src/features/mammals/routes/MammalDetailPage.tsx'), 'utf8')
 const imageComponentSource = readFileSync(resolve(repositoryRoot, 'src/features/mammals/components/MammalImage/MammalImage.tsx'), 'utf8')
 const photoProviderSource = readFileSync(resolve(repositoryRoot, 'src/features/mammals/components/MammalPhotoProvider/MammalPhotoProvider.tsx'), 'utf8')
-if (!mammalsSource.includes('imageAlt: `${commonName} in Kruger National Park`')) failures.push('Alt text is not derived from the resolved Mammal common name.')
+if (!mammalsSource.includes('imageAlt: commonName')) failures.push('Alt text must name the species without inventing the photograph location.')
 if (!mammalsSource.includes('imageFallback: primaryImage ?? missingPhotoFallback')) failures.push('Image fallback does not retain the species primary image or shared neutral fallback.')
 if (!mammalsSource.includes('image: primaryImage ?? missingPhotoFallback')) failures.push('Missing photography does not resolve through the shared neutral fallback.')
 if (mammalsSource.includes('ANIMAVIDI SPECIES PLACEHOLDER') || mammalsSource.includes('<text x=')) failures.push('Missing-photo fallback still contains visible placeholder text.')

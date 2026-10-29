@@ -2,6 +2,19 @@
 
 Status: IN PROGRESS. This branch is not a production release and does not claim that the whole Animavidi roadmap is complete.
 
+## Latest resumed checkpoint, 29 October 2026
+
+This section supersedes earlier counts and connectivity observations below; historical checkpoints are retained for audit.
+
+- Resumed from verified remote commit `9e38d30e135e72faa452eda0109eedea6d2a16ce` on the existing branch/PR. Complete per-species inventory and recovery queue: `docs/completion/Work_Queue.md`, `Species_Tasks.md` and `species-inventory.json`. Regenerate with `node scripts/inventory-completion.mjs`.
+- Packaged photographs: **44/694** (original 22, previous 8 birds, 14 newly reviewed mammals). **650 missing**: 112 mammals and 538 birds. Individual source/author/licence, transformation and checksum records are in the bird/mammal credit manifests. New image candidates are collected automatically and kept outside the app until explicit visual approval. Uncertain cat/otter/gerbil/hare/mongoose/rhebok candidates are recorded separately.
+- Four factual profile summaries now include sources, authors and checked dates, with conservation assessment/current taxonomy explicitly pending. 668 species still lack a sourced expanded profile; the original 22 profiles also need source review. These four summaries are not counted as fully reviewed complete profiles.
+- Source errors corrected without changing any stable ID: European roller → `Coracias garrulus` (BirdLife South Africa); Golden weaver → `Ploceus xanthops` (SANParks Roberts number 816 matched to SABAP account); Barred owlet → `Glaucidium capense` (Roberts 399 matched to the SABAP record). Original scientific names are retained in each record. This is not a full-catalogue taxonomy audit.
+- Admin now has a protected content report with filters and CSV export, plus authenticated paginated revision inspection and restore through existing optimistic writes/history. User accounts remain a placeholder because there is no central explorer identity store; IndexedDB sightings were not migrated or exposed. Full user/account administration and species creation remain incomplete.
+- Read-only live probes now succeed from Node: `/api/photos` returns HTTP 200 with an empty override map; `/api/admin/session` correctly returns 401 without a session from the allowed origin and 403 from an unapproved origin. `/api/content` and `/api/admin/content` return 404 on the currently deployed Worker. The branch Worker has not been deployed; no live data was written. Evidence is in `docs/completion/live-readiness.json` and `current-photo-manifest.json`.
+- The provided original brochure path `/workspace/scratch/26047b981fce/upload/Park Map.pdf` is inaccessible from both the local Windows session and connector workspace. Different 25-page guides in Downloads were not substituted. Route expansion/connectivity review awaits an accessible original; the Animavidi map remains unchanged.
+- Local checks cover the complete baseline validators, additional sourced-profile/photo checks, real multiline saves, paginated history, restore/publication, report CSV download and retained sightings/Passport. See the queue for per-batch results. The full-image release check intentionally fails while 650 species lack images. Actual authenticated-domain/R2 integration and final release tests remain outstanding.
+
 ## Implemented in this branch
 
 - 546 numbered bird checklist entries from the current SANParks page, with stable `bird-` identifiers, common/scientific name search, detail pages and the existing sighting creation flow.

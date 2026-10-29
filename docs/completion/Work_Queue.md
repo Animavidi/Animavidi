@@ -74,3 +74,17 @@ Pending this checkout's baseline tests. Historical tests are described in `../Kr
 - All baseline validators passed, along with typecheck, lint, production build and Wrangler dry-run. Full-image release gate remains expected to fail for incomplete coverage.
 - Desktop/mobile report screenshots inspected; summary cards compacted afterwards.
 
+
+### Batch 3: sourced profiles, taxonomy and live-readiness evidence
+
+- Four source-linked profile summaries added (aardvark, aardwolf, banded mongoose, black-backed jackal), with source authors/sections and review dates. Conservation assessment and current taxonomy remain pending; 668 species have no sourced expanded profile, four have partial sourced profiles and 22 legacy profiles still need source review.
+- Six additional visually approved mammal photos added; packaged total 44/694, missing 650 (112 mammals, 538 birds). Doubtful candidates and non-animal plates/maps remain quarantined.
+- Corrected the European roller, Golden weaver and Barred owlet source-name errors with primary taxonomy/Roberts evidence, preserving source names and stable IDs. All other taxonomy remains subject to review.
+- Collector now checks exact Commons taxon categories before search, stores checkpoints and backs off on overload. Added exact-hash candidate recovery after a new checkout.
+- Read-only live probes: photo manifest HTTP 200 and empty; allowed-origin unauthenticated session HTTP 401; bad-origin session HTTP 403; deployed content endpoints HTTP 404. Actual manifest is saved. No login, upload, live content write, deployment or merge attempted.
+- Final lint/typecheck/build and all local validators passed after fixing strict unknown-object validation in the new history client. Wrangler dry-run passed. Full-image release gate fails as expected. Final browser run recorded separately below.
+- Required input: original 36-page brochure must be made accessible; the supplied Linux upload path is absent from this session.
+
+
+- Final Edge browser run passed: bird sighting create/edit/delete and Passport; animal source/image/credit loading; admin multiline persistence; route unpublish and history restore; filtered report CSV export. Final mobile report screenshot inspected. No JavaScript errors.
+

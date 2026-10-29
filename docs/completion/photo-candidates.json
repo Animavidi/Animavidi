@@ -491,25 +491,38 @@
       "name": "Anchieta’s serotine",
       "scientificName": "Pipistrellus anchietai",
       "checkedAt": "2026-10-29",
-      "status": "retry-required",
-      "files": [],
-      "error": "Commons: cirrussearch-too-busy-error"
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "anchietas-serotine-1.jpg",
+          "fileTitle": "File:Distribution of Hypsugo anchietae.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Distribution_of_Hypsugo_anchietae.png",
+          "author": "A proietti",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Distribution_of_Hypsugo_anchietae.png/960px-Distribution_of_Hypsugo_anchietae.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/86/Distribution_of_Hypsugo_anchietae.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "According to Happold & Happold, 2013",
+          "sha256": "aadd47eaa791be844e7950b5ef43b1f1d457f5e890540b3d9d0a1ae6f6cc9b2c",
+          "width": 960,
+          "height": 960,
+          "status": "pending-visual-review"
+        }
+      ]
     },
     "angola-free-tailed-bat": {
       "name": "Angola free-tailed bat",
       "scientificName": "Tadarida condylura",
       "checkedAt": "2026-10-29",
-      "status": "retry-required",
-      "files": [],
-      "error": "Commons: cirrussearch-too-busy-error"
+      "status": "no-suitable-candidate",
+      "files": []
     },
     "angoni-vlei-rat": {
       "name": "Angoni vlei rat",
       "scientificName": "Otomys angoniensis",
       "checkedAt": "2026-10-29",
-      "status": "retry-required",
-      "files": [],
-      "error": "Commons: cirrussearch-too-busy-error"
+      "status": "no-suitable-candidate",
+      "files": []
     },
     "ansorges-free-tailed-bat": {
       "name": "Ansorge’s free-tailed bat",
@@ -621,9 +634,8 @@
       "name": "Botswana long-eared bat",
       "scientificName": "Laephotis botswanae",
       "checkedAt": "2026-10-29",
-      "status": "retry-required",
-      "files": [],
-      "error": "Commons: cirrussearch-too-busy-error"
+      "status": "no-suitable-candidate",
+      "files": []
     },
     "brants-climbing-mouse": {
       "name": "Brant’s climbing mouse",
@@ -781,9 +793,39 @@
       "name": "Bushveld horseshoe bat",
       "scientificName": "Rhinolophus simulator",
       "checkedAt": "2026-10-29",
-      "status": "retry-required",
-      "files": [],
-      "error": "Commons: cirrussearch-too-busy-error"
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "bushveld-horseshoe-bat-1.jpg",
+          "fileTitle": "File:Bushveld Horseshoe Bat area.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bushveld_Horseshoe_Bat_area.png",
+          "author": "Chermundy",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/0/01/Bushveld_Horseshoe_Bat_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/0/01/Bushveld_Horseshoe_Bat_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Bushveld Horseshoe Bat (Rhinolophus simulator) range",
+          "sha256": "119f47da55dbc3a9555b38b2c71099e254fd9f33a5ed6c4a570794e921881992",
+          "width": 960,
+          "height": 1076,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "bushveld-horseshoe-bat-2.jpg",
+          "fileTitle": "File:Rhinolophus simulator.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rhinolophus_simulator.jpg",
+          "author": "Unknown authorUnknown author",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Rhinolophus_simulator.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Rhinolophus_simulator.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Rhinolophus simulator",
+          "sha256": "42d017371f16bd2abfb7f531bf649e3516352f1e357c81c6425c6253ae04429a",
+          "width": 960,
+          "height": 1105,
+          "status": "pending-visual-review"
+        }
+      ]
     },
     "butterfly-bat": {
       "name": "Butterfly bat",
@@ -898,6 +940,1475 @@
           "status": "pending-visual-review"
         }
       ]
+    },
+    "cape-hare": {
+      "name": "Cape hare",
+      "scientificName": "Lepus capensis",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "cape-hare-1.jpg",
+          "fileTitle": "File:Cape Hare, near Prince Albert, Western Cape, South Africa - panoramio.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cape_Hare,_near_Prince_Albert,_Western_Cape,_South_Africa_-_panoramio.jpg",
+          "author": "Caroluspoort",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Cape_Hare%2C_near_Prince_Albert%2C_Western_Cape%2C_South_Africa_-_panoramio.jpg/960px-Cape_Hare%2C_near_Prince_Albert%2C_Western_Cape%2C_South_Africa_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Cape_Hare%2C_near_Prince_Albert%2C_Western_Cape%2C_South_Africa_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Cape Hare Lepus capensis, near Prince Albert, Western Cape, South Africa",
+          "sha256": "61307dc8dc8908cd345de50d3a683d8a2b51eaeb15a501ce7ac1119ae21b7f60",
+          "width": 960,
+          "height": 720,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "cape-hare-2.jpg",
+          "fileTitle": "File:Lepus capensis (cropped).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lepus_capensis_(cropped).jpg",
+          "author": "Haplochromis",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Lepus_capensis_%28cropped%29.jpg/960px-Lepus_capensis_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/23/Lepus_capensis_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Kaphase (Lepus capensis), Nord-Tansania",
+          "sha256": "25feb092c8cd6d71c19f3d56389dd07ec26cc4b66fbc52adc0139e031a541566",
+          "width": 960,
+          "height": 688,
+          "status": "pending-visual-review"
+        }
+      ]
+    },
+    "cape-serotine-bat": {
+      "name": "Cape serotine bat",
+      "scientificName": "Eptesicus capensis",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "cape-serotine-bat-1.jpg",
+          "fileTitle": "File:Cape Serotine (Neoromicia capensis) found in the chalet ... (51073328898).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cape_Serotine_(Neoromicia_capensis)_found_in_the_chalet_..._(51073328898).jpg",
+          "author": "Bernard DUPONT from FRANCE",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Cape_Serotine_%28Neoromicia_capensis%29_found_in_the_chalet_..._%2851073328898%29.jpg/960px-Cape_Serotine_%28Neoromicia_capensis%29_found_in_the_chalet_..._%2851073328898%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/ce/Cape_Serotine_%28Neoromicia_capensis%29_found_in_the_chalet_..._%2851073328898%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Twee Rivieren Camp, Kgalagadi Transfrontier Park, Northern Cape, SOUTH AFRICA",
+          "sha256": "22dba7827110236c85b57055b45a20974434f1bd05387c147e1ca1d9feb945f8",
+          "width": 960,
+          "height": 695,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "cape-serotine-bat-2.jpg",
+          "fileTitle": "File:Pipistrellus capensis.jpeg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pipistrellus_capensis.jpeg",
+          "author": "Simon J. Tonge",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/4/41/Pipistrellus_capensis.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/41/Pipistrellus_capensis.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Pipistrellus capensis syn. Neoromicia capensis at Dambari Field Station (Matabeleland)",
+          "sha256": "7080e696d2283ed8184c76b0d9c6317f1ffe4eca196398e3846a03ab93b54cf6",
+          "width": 960,
+          "height": 720,
+          "status": "pending-visual-review"
+        }
+      ]
+    },
+    "chestnut-climbing-mouse": {
+      "name": "Chestnut climbing mouse",
+      "scientificName": "Dendromus mystacalis",
+      "checkedAt": "2026-10-29",
+      "status": "no-suitable-candidate",
+      "files": []
+    },
+    "commersons-leaf-nosed-bat": {
+      "name": "Commerson’s leaf-nosed bat",
+      "scientificName": "Hipposideros commersoni",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "commersons-leaf-nosed-bat-1.jpg",
+          "fileTitle": "File:Commerson's leaf-nosed bat (Hipposideros commersoni).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Commerson%27s_leaf-nosed_bat_(Hipposideros_commersoni).jpg",
+          "author": "Charles J. Sharp",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Commerson%27s_leaf-nosed_bat_%28Hipposideros_commersoni%29.jpg/960px-Commerson%27s_leaf-nosed_bat_%28Hipposideros_commersoni%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Commerson%27s_leaf-nosed_bat_%28Hipposideros_commersoni%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Commerson's leaf-nosed bat (Hipposideros commersoni), Arboretum d'Antsokay, Madagascar.",
+          "sha256": "04c894d13b9331ec8662340af495f4656703974e8063d536e6e5110efb6be5c3",
+          "width": 960,
+          "height": 1440,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "commersons-leaf-nosed-bat-2.jpg",
+          "fileTitle": "File:Bat in a Cave.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bat_in_a_Cave.jpg",
+          "author": "David Dennis",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e1/Bat_in_a_Cave.jpg/960px-Bat_in_a_Cave.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Bat_in_a_Cave.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Commerson's roundleaf bat, Hipposideros commersoni\n\nI snapped this near the grounds of the Anjajavy l'Hotel. Analalava, Mahajanga, Madagascar",
+          "sha256": "8e9727cb94f187f1e8550518c9165c9cedc4f75ebeebfa56f6bebb3906de12bc",
+          "width": 960,
+          "height": 686,
+          "status": "pending-visual-review"
+        }
+      ]
+    },
+    "common-duiker": {
+      "name": "Common duiker",
+      "scientificName": "Sylvicapra grimmia",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "common-duiker-1.jpg",
+          "fileTitle": "File:Common duiker (Sylvicapra grimmia) female Maputo.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_duiker_(Sylvicapra_grimmia)_female_Maputo.jpg",
+          "author": "Charles J. Sharp",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Common_duiker_%28Sylvicapra_grimmia%29_female_Maputo.jpg/960px-Common_duiker_%28Sylvicapra_grimmia%29_female_Maputo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/88/Common_duiker_%28Sylvicapra_grimmia%29_female_Maputo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Common duiker (Sylvicapra grimmia) female Maputo National Park, Mozambique",
+          "sha256": "be204bdbd4244618076b0ecdca0d95096a0a9df80240d152c49b436b796ec029",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "common-duiker-2.jpg",
+          "fileTitle": "File:Sylvicapra grimmia 164911940.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sylvicapra_grimmia_164911940.jpg",
+          "author": "Noeleen du Toit",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Sylvicapra_grimmia_164911940.jpg/960px-Sylvicapra_grimmia_164911940.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Sylvicapra_grimmia_164911940.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Bush Duiker (Sylvicapra grimmia)",
+          "sha256": "d4a0a71d96f487901e389ca58804db2068648a4bfb3dadcbebc7d992842b55ff",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        }
+      ]
+    },
+    "common-mole-rat": {
+      "name": "Common mole rat",
+      "scientificName": "Cryptomys hottentotus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "common-mole-rat-1.jpg",
+          "fileTitle": "File:Cryptomys hottentotus - Museo Civico di Storia Naturale Giacomo Doria - Genoa, Italy - DSC02822.JPG",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cryptomys_hottentotus_-_Museo_Civico_di_Storia_Naturale_Giacomo_Doria_-_Genoa,_Italy_-_DSC02822.JPG",
+          "author": "Daderot",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/89/Cryptomys_hottentotus_-_Museo_Civico_di_Storia_Naturale_Giacomo_Doria_-_Genoa%2C_Italy_-_DSC02822.JPG/960px-Cryptomys_hottentotus_-_Museo_Civico_di_Storia_Naturale_Giacomo_Doria_-_Genoa%2C_Italy_-_DSC02822.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/89/Cryptomys_hottentotus_-_Museo_Civico_di_Storia_Naturale_Giacomo_Doria_-_Genoa%2C_Italy_-_DSC02822.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Exhibit in the Museo Civico di Storia Naturale di Genova, Via Brigata Liguria, 9, 16121, Genoa, Italy. Photography was permitted in the museum without restriction.",
+          "sha256": "b15fbd8195dd2f928b60ac504f2184f1a639a794b6030df74d1e243a6d620c2a",
+          "width": 960,
+          "height": 556,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "common-mole-rat-2.jpg",
+          "fileTitle": "File:Cryptomys hottentotus Whatmore 2.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cryptomys_hottentotus_Whatmore_2.jpg",
+          "author": "Jimmy Whatmore, South Africa",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Cryptomys_hottentotus_Whatmore_2.jpg/960px-Cryptomys_hottentotus_Whatmore_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/84/Cryptomys_hottentotus_Whatmore_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Common mole-rat, African mole-rat, Hottentot mole-rat, or Cryptomys hottentotus, photographed by Johnny Whatmore, on 31 July 2020, near Lydenburg, Mpumalanga province of South Africa",
+          "sha256": "af3b06fb27eb737ea959635e2af2772868841c3e896090cf7c70f4cb323bc178",
+          "width": 960,
+          "height": 720,
+          "status": "pending-visual-review"
+        }
+      ]
+    },
+    "damara-woolly-bat": {
+      "name": "Damara woolly bat",
+      "scientificName": "Kerivoula argentata",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "damara-woolly-bat-1.jpg",
+          "fileTitle": "File:Kerivoula argentata.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kerivoula_argentata.jpg",
+          "author": "Unknown authorUnknown author",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Kerivoula_argentata.jpg/960px-Kerivoula_argentata.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Kerivoula_argentata.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Kerivoula argentata",
+          "sha256": "967b1eb3017e5525a0fdd14d731387a9a22b35a3e7651406783dd66af6b12d20",
+          "width": 960,
+          "height": 978,
+          "status": "pending-visual-review"
+        }
+      ]
+    },
+    "darlings-horseshoe-bat": {
+      "name": "Darling’s horseshoe bat",
+      "scientificName": "Rhinolophus darlingi",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "darlings-horseshoe-bat-1.jpg",
+          "fileTitle": "File:Darling's Horseshoe Bat area.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Darling%27s_Horseshoe_Bat_area.png",
+          "author": "Chermundy",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Darling%27s_Horseshoe_Bat_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Darling%27s_Horseshoe_Bat_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Darling's Horseshoe Bat (Rhinolophus darlingi) range",
+          "sha256": "be6e223ae82426f17139aa5b56ebe427314f755e11ea4e801e0a06a181988402",
+          "width": 960,
+          "height": 1076,
+          "status": "pending-visual-review"
+        }
+      ]
+    },
+    "dwarf-mongoose": {
+      "name": "Dwarf mongoose",
+      "scientificName": "Helogale parvula",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "dwarf-mongoose-1.jpg",
+          "fileTitle": "File:Helogale parvula.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Helogale_parvula.jpg",
+          "author": "Hans Hillewaert",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Helogale_parvula.jpg/960px-Helogale_parvula.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/11/Helogale_parvula.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Common Dwarf Mongoose, at Pairi Daiza, Brugelette, Belgium",
+          "sha256": "a0bce9931bce3daa3aea3b6d04eb1548427ab2cfb8d4ac97a32c018d7aa8316f",
+          "width": 960,
+          "height": 720,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "dwarf-mongoose-2.jpg",
+          "fileTitle": "File:2024-06-06 Tarangire mammals 0334.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024-06-06_Tarangire_mammals_0334.jpg",
+          "author": "Bärbel Miemietz",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/2024-06-06_Tarangire_mammals_0334.jpg/960px-2024-06-06_Tarangire_mammals_0334.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ac/2024-06-06_Tarangire_mammals_0334.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Two mongooses on a termite mound in Tarangire National Park, Tanzania",
+          "sha256": "3dcd2de9284755aef1c0c6cc7bfaa33af86b767ca2161161b85010ca45bbe6ca",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        }
+      ]
+    },
+    "egyptian-free-tailed-bat": {
+      "name": "Egyptian free-tailed bat",
+      "scientificName": "Tadarida aegyptiaca",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "egyptian-free-tailed-bat-1.jpg",
+          "fileTitle": "File:Tadarida aegyptiaca 260302592.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Tadarida_aegyptiaca_260302592.jpg",
+          "author": "Jan Ebr",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Tadarida_aegyptiaca_260302592.jpg/960px-Tadarida_aegyptiaca_260302592.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Tadarida_aegyptiaca_260302592.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Egyptian Free-tailed Bat (Tadarida aegyptiaca)",
+          "sha256": "f314873bdee3df030b7ff9b8590b04aff15e0149d3294a03c366790976c6b04b",
+          "width": 960,
+          "height": 1911,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "egyptian-free-tailed-bat-2.jpg",
+          "fileTitle": "File:Egyptian Free-tailed Bat (Tadarida aegyptiaca) (6857006746).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Egyptian_Free-tailed_Bat_(Tadarida_aegyptiaca)_(6857006746).jpg",
+          "author": "Bernard DUPONT from FRANCE",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Egyptian_Free-tailed_Bat_%28Tadarida_aegyptiaca%29_%286857006746%29.jpg/960px-Egyptian_Free-tailed_Bat_%28Tadarida_aegyptiaca%29_%286857006746%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Egyptian_Free-tailed_Bat_%28Tadarida_aegyptiaca%29_%286857006746%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Mata-Mata Camp, Kgalagadi Transfrontier Park, SOUTH AFRICA",
+          "sha256": "8639281b9fca384bb7738602679c374b6bd01f6d5180df07e4365791844a9383",
+          "width": 960,
+          "height": 720,
+          "status": "pending-visual-review"
+        }
+      ]
+    },
+    "egyptian-fruit-bat": {
+      "name": "Egyptian fruit bat",
+      "scientificName": "Rousettus aegyptiacus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "egyptian-fruit-bat-1.jpg",
+          "fileTitle": "File:Skraidantis egipto šuo (cropped).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skraidantis_egipto_%C5%A1uo_(cropped).jpg",
+          "author": "Lietuvos zoologijos sodas",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Skraidantis_egipto_%C5%A1uo_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Skraidantis_egipto_%C5%A1uo_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Lithuanian Zoological Gardens",
+          "sha256": "5077eb4be680a0cde914d956a881077973d68c55307716b19148eb218f77fe4d",
+          "width": 960,
+          "height": 1538,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "egyptian-fruit-bat-2.jpg",
+          "fileTitle": "File:Rousettus aegyptiacus 185858.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rousettus_aegyptiacus_185858.jpg",
+          "author": "MgeniNL",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Rousettus_aegyptiacus_185858.jpg/960px-Rousettus_aegyptiacus_185858.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/71/Rousettus_aegyptiacus_185858.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Egyptian Rousette (Rousettus aegyptiacus) in Uganda",
+          "sha256": "d28267269193b9c44f9bef1415f6e70fe4e56a4e4d32adcbbb33b31c38233224",
+          "width": 960,
+          "height": 638,
+          "status": "pending-visual-review"
+        }
+      ]
+    },
+    "egyptian-slit-faced-bat": {
+      "name": "Egyptian slit-faced bat",
+      "scientificName": "Nycteris thebaica",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "egyptian-slit-faced-bat-1.jpg",
+          "fileTitle": "File:Nycteris thebaica (4538931377).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Nycteris_thebaica_(4538931377).jpg",
+          "author": "Matthew Reyes",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Nycteris_thebaica_%284538931377%29.jpg/960px-Nycteris_thebaica_%284538931377%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Nycteris_thebaica_%284538931377%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Egyptian Slit-faced Bat (Nycteris thebaica)",
+          "sha256": "65cded1a5b9241e249cc3e2c835c7f9d5a511e2c6330a10df5e2012376abf69b",
+          "width": 960,
+          "height": 639,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "egyptian-slit-faced-bat-2.jpg",
+          "fileTitle": "File:Common Slit-faced Bat (Nycteris thebaica) (7027172215).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Common_Slit-faced_Bat_(Nycteris_thebaica)_(7027172215).jpg",
+          "author": "Bernard DUPONT from FRANCE",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Common_Slit-faced_Bat_%28Nycteris_thebaica%29_%287027172215%29.jpg/960px-Common_Slit-faced_Bat_%28Nycteris_thebaica%29_%287027172215%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Common_Slit-faced_Bat_%28Nycteris_thebaica%29_%287027172215%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Nossob Camp, Kgalagadi Transfrontier Park, SOUTH AFRICA",
+          "sha256": "7eb22d0f09d9c603926c066f9b5eb3b29cf04581b0630e2264c3461ea05a8b2a",
+          "width": 960,
+          "height": 720,
+          "status": "pending-visual-review"
+        }
+      ]
+    },
+    "eland": {
+      "name": "Eland",
+      "scientificName": "Taurotragus oryx",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "eland-1.jpg",
+          "fileTitle": "File:Taurotragus oryx - young bull - Etosha 2015.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Taurotragus_oryx_-_young_bull_-_Etosha_2015.jpg",
+          "author": "Yathin S Krishnappa",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Taurotragus_oryx_-_young_bull_-_Etosha_2015.jpg/960px-Taurotragus_oryx_-_young_bull_-_Etosha_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/31/Taurotragus_oryx_-_young_bull_-_Etosha_2015.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Common eland in Etosha National Park.",
+          "sha256": "d2d423dd0a9f4a7bff864b5464031acb269d48c0117ceabf64023d61f8111f49",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "eland-2.jpg",
+          "fileTitle": "File:Eland común (Taurotragus oryx), reserva natural Masái Mara, Kenia, 2024-05-20, DD 08.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eland_com%C3%BAn_(Taurotragus_oryx),_reserva_natural_Mas%C3%A1i_Mara,_Kenia,_2024-05-20,_DD_08.jpg",
+          "author": "Diego Delso",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/91/Eland_com%C3%BAn_%28Taurotragus_oryx%29%2C_reserva_natural_Mas%C3%A1i_Mara%2C_Kenia%2C_2024-05-20%2C_DD_08.jpg/960px-Eland_com%C3%BAn_%28Taurotragus_oryx%29%2C_reserva_natural_Mas%C3%A1i_Mara%2C_Kenia%2C_2024-05-20%2C_DD_08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/91/Eland_com%C3%BAn_%28Taurotragus_oryx%29%2C_reserva_natural_Mas%C3%A1i_Mara%2C_Kenia%2C_2024-05-20%2C_DD_08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Young male of common eland (Taurotragus oryx), Masai Mara, Kenya. This large savannah and plains antelope is found in East and Southern Africa. An adult male is around 1.6 m (5.2 ft) tall at the shoulder and can weigh up to 942 kg (2,077 lb) with a typical range of 500–600 kg (1,100–1,300 lb). It is the second-largest antelope in the world, being slightly smaller on average than the giant eland. Mainly a herbivore, its diet is primarily grasses and leaves.",
+          "sha256": "8b6864f6f32f4fcfddbb78d98a9af162790b091bc4491c7d05048c06f6b6c01b",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        }
+      ]
+    },
+    "fat-mouse": {
+      "name": "Fat mouse",
+      "scientificName": "Steatomys pratensis",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "fat-mouse-1.jpg",
+          "fileTitle": "File:Steatomys pratensis 178572260.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Steatomys_pratensis_178572260.jpg",
+          "author": "Botswanabugs",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/38/Steatomys_pratensis_178572260.jpg/960px-Steatomys_pratensis_178572260.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/38/Steatomys_pratensis_178572260.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Common Fat Mouse (Steatomys pratensis) in Botswana",
+          "sha256": "63d2c9b32dad4076e27607f7258278a082c8e18c6c5676cbbadc135dbcbcca4e",
+          "width": 960,
+          "height": 1177,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "fat-mouse-2.jpg",
+          "fileTitle": "File:Steatomys pratensis 178572825.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Steatomys_pratensis_178572825.jpg",
+          "author": "Botswanabugs",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Steatomys_pratensis_178572825.jpg/960px-Steatomys_pratensis_178572825.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/40/Steatomys_pratensis_178572825.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Common Fat Mouse (Steatomys pratensis) in Botswana",
+          "sha256": "9a827e0708afc9b0ebd8cffd37496514e18a5c4ee8b134fe5c28e3ca0f315d12",
+          "width": 960,
+          "height": 446,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "four-toed-elephant-shrew": {
+      "name": "Four-toed elephant shrew",
+      "scientificName": "Petrodromus tetradactylus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "four-toed-elephant-shrew-1.jpg",
+          "fileTitle": "File:Four-toed Elephant Shrew area.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Four-toed_Elephant_Shrew_area.png",
+          "author": "Chermundy",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Four-toed_Elephant_Shrew_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Four-toed_Elephant_Shrew_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Four-toed Elephant Shrew (Petrodromus tetradactylus) range",
+          "sha256": "c75a414fa25ae9ddae1ecdf494c82e53100847eef6b0e49daa4550ac22b235c3",
+          "width": 960,
+          "height": 1076,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "four-toed-elephant-shrew-2.jpg",
+          "fileTitle": "File:Em - Petrodromus tetradactylus and Chrysochloris asiatica.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Em_-_Petrodromus_tetradactylus_and_Chrysochloris_asiatica.jpg",
+          "author": "Emőke Dénes",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Em_-_Petrodromus_tetradactylus_and_Chrysochloris_asiatica.jpg/960px-Em_-_Petrodromus_tetradactylus_and_Chrysochloris_asiatica.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/68/Em_-_Petrodromus_tetradactylus_and_Chrysochloris_asiatica.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Taxidermied animals at the Cambridge University Museum of Zoology, England. On the left four-toed elephant shrew or four-toed sengi (Petrodromus tetradactylus) and on the right Cape golden mole (Chrysochloris asiatica).",
+          "sha256": "eb484241709bb027b01d843e18266e737c63f580adaf1cfe741cd775731c2ede",
+          "width": 960,
+          "height": 1440,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "geoffroys-horseshoe-bat": {
+      "name": "Geoffroy’s horseshoe bat",
+      "scientificName": "Rhinolophus clivosus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "geoffroys-horseshoe-bat-1.jpg",
+          "fileTitle": "File:Geoffroy's Horseshoe Bat area.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Geoffroy%27s_Horseshoe_Bat_area.png",
+          "author": "Chermundy",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Geoffroy%27s_Horseshoe_Bat_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Geoffroy%27s_Horseshoe_Bat_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Geoffroy's Horseshoe Bat (Rhinolophus clivosus) range",
+          "sha256": "64323338710947848a2172ce0e73a4e012272ee595838758aab77314b9a789e4",
+          "width": 960,
+          "height": 1120,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "giant-rat": {
+      "name": "Giant rat",
+      "scientificName": "Cricetomys gambianus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "giant-rat-1.jpg",
+          "fileTitle": "File:Afr-giant-rat.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Afr-giant-rat.jpg",
+          "author": "derekkeats",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/2/24/Afr-giant-rat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/24/Afr-giant-rat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "African giant rat or Gambian pouched rat (Cricetomys gambianus)",
+          "sha256": "29b22665af3ba8a7edce085daf52d6562115cf37b787abcd63f2d1db94bb2a0f",
+          "width": 960,
+          "height": 1465,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "giant-rat-2.jpg",
+          "fileTitle": "File:Cricetomys gambianus 01 MWNH 266.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cricetomys_gambianus_01_MWNH_266.jpg",
+          "author": "Klaus Rassinger und Gerhard Cammerer, Museum Wiesbaden",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Cricetomys_gambianus_01_MWNH_266.jpg/960px-Cricetomys_gambianus_01_MWNH_266.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Cricetomys_gambianus_01_MWNH_266.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Giant pouched ratCricetomys, skull, Coll. Museum Wiesbaden",
+          "sha256": "eebc69002740e3dde9c48e5575e7e1e8ca90d8e73d2ddfd775de7bb716d5aea9",
+          "width": 960,
+          "height": 638,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "greater-dwarf-shrew": {
+      "name": "Greater dwarf shrew",
+      "scientificName": "Suncus lixus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "greater-dwarf-shrew-1.jpg",
+          "fileTitle": "File:Greater Dwarf Shrew area.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Greater_Dwarf_Shrew_area.png",
+          "author": "Chermundy",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Greater_Dwarf_Shrew_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Greater_Dwarf_Shrew_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Greater Dwarf Shrew (Suncus lixus) range",
+          "sha256": "896dd6c4890f8c6ca5f2bdd547790f77b8e5619b6adc3c7f6411a57b93d739cd",
+          "width": 960,
+          "height": 1076,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "greater-dwarf-shrew-2.jpg",
+          "fileTitle": "File:Suncus lixus dead.jpeg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Suncus_lixus_dead.jpeg",
+          "author": "Simon J. Tonge",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/31/Suncus_lixus_dead.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/31/Suncus_lixus_dead.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Suncus lixus killed by cat at Dambari Field Station (Matabeleland, Zimbabwe)",
+          "sha256": "b3aa62684c7498709cc3742d8a591d9ffad9e7b5c9228b9c8f98cb7d4e1757d3",
+          "width": 960,
+          "height": 1281,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "grey-rhebok": {
+      "name": "Grey rhebok",
+      "scientificName": "Pelea capreolus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "grey-rhebok-1.jpg",
+          "fileTitle": "File:Grey Rhebok (Pelea capreolus) (31991110114).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Grey_Rhebok_(Pelea_capreolus)_(31991110114).jpg",
+          "author": "Bernard DUPONT from FRANCE",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Grey_Rhebok_%28Pelea_capreolus%29_%2831991110114%29.jpg/960px-Grey_Rhebok_%28Pelea_capreolus%29_%2831991110114%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/88/Grey_Rhebok_%28Pelea_capreolus%29_%2831991110114%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Eastern Loop, Bontebok NP, Western Cape, SOUTH AFRICA",
+          "sha256": "244066d789a86c78b9b8e2197a99a882e11964a744a2b301c89c9101dcf7a49b",
+          "width": 960,
+          "height": 1003,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "grey-rhebok-2.jpg",
+          "fileTitle": "File:Fynbos (4575520417).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fynbos_(4575520417).jpg",
+          "author": "yakovlev.alexey from Moscow, Russia",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Fynbos_%284575520417%29.jpg/960px-Fynbos_%284575520417%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Fynbos_%284575520417%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "South Africa, Swartberg Nature Reserve.",
+          "sha256": "b4336da732a5490a0d0e4aa51de6614ea7c79571d1de53d6bd59a138a5d045eb",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "hildebrandts-horseshoe-bat": {
+      "name": "Hildebrandt’s horseshoe bat",
+      "scientificName": "Rhinolophus hildebrandtii",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "hildebrandts-horseshoe-bat-1.jpg",
+          "fileTitle": "File:Hildebrandt's Horseshoe Bat area.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Hildebrandt%27s_Horseshoe_Bat_area.png",
+          "author": "Chermundy",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/Hildebrandt%27s_Horseshoe_Bat_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/Hildebrandt%27s_Horseshoe_Bat_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Hildebrandt's Horseshoe Bat (Rhinolophus hildebrandtii) range",
+          "sha256": "9d847693c6ed33677321cae3aeb6d812026e5ef49daa8f0bb44a3cc8a0174e18",
+          "width": 960,
+          "height": 1076,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "house-mouse": {
+      "name": "House mouse",
+      "scientificName": "Mus domesticus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "house-mouse-1.jpg",
+          "fileTitle": "File:Ardea alba with prey at Sacramento National Wildlife Refuge-1670.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ardea_alba_with_prey_at_Sacramento_National_Wildlife_Refuge-1670.jpg",
+          "author": "Frank Schulenburg",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/13/Ardea_alba_with_prey_at_Sacramento_National_Wildlife_Refuge-1670.jpg/960px-Ardea_alba_with_prey_at_Sacramento_National_Wildlife_Refuge-1670.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/13/Ardea_alba_with_prey_at_Sacramento_National_Wildlife_Refuge-1670.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Great egret (Ardea alba egretta) with a California vole (Microtus californicus) in its beak at the Sacramento National Wildlife Refuge south of Willows, California",
+          "sha256": "3b5d969acb171d9e5bf8cf63db68339dcf586488d9a6fffc00790f7e6b0439f4",
+          "width": 960,
+          "height": 960,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "house-mouse-2.jpg",
+          "fileTitle": "File:Sleeping Buffalo Rock- dead mouse.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sleeping_Buffalo_Rock-_dead_mouse.jpg",
+          "author": "Thayne Tuason, user name:Biscuitroot",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Sleeping_Buffalo_Rock-_dead_mouse.jpg/960px-Sleeping_Buffalo_Rock-_dead_mouse.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/40/Sleeping_Buffalo_Rock-_dead_mouse.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Dead mouse next to the sacred rocks at Sleeping Buffalo Rock near Saco Montana. Though its great the sacred rocks have a cover on them, it seems extraordinarily insufficient.",
+          "sha256": "28dbff99dd756eff31e78a88e61a9bf119d874979cf0234c3adabf150bba211b",
+          "width": 960,
+          "height": 720,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "commons-search"
+    },
+    "julianas-golden-mole": {
+      "name": "Juliana’s golden mole",
+      "scientificName": "Amblysomus julianae",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "julianas-golden-mole-1.jpg",
+          "fileTitle": "File:Juliana's Golden Mole area.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Juliana%27s_Golden_Mole_area.png",
+          "author": "Chermundy",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/51/Juliana%27s_Golden_Mole_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/51/Juliana%27s_Golden_Mole_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Juliana's Golden Mole (Neamblysomus julianae) range",
+          "sha256": "695265d69f60ec11c1a3181f2e83dbb4c1a302d351826fd12d202a01a005b83c",
+          "width": 960,
+          "height": 1076,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "julianas-golden-mole-2.jpg",
+          "fileTitle": "File:The Juliana’s golden mole is one of Africa’s most threatened mammals Jackson.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:The_Juliana%E2%80%99s_golden_mole_is_one_of_Africa%E2%80%99s_most_threatened_mammals_Jackson.png",
+          "author": "Photograph by Craig R. Jackson, CC BY 4.0.",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/The_Juliana%E2%80%99s_golden_mole_is_one_of_Africa%E2%80%99s_most_threatened_mammals_Jackson.png/960px-The_Juliana%E2%80%99s_golden_mole_is_one_of_Africa%E2%80%99s_most_threatened_mammals_Jackson.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/45/The_Juliana%E2%80%99s_golden_mole_is_one_of_Africa%E2%80%99s_most_threatened_mammals_Jackson.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Original description, according to the source, p. 76: \"Figure 3.C (Top) The Juliana’s golden mole is one of Africa’s most threatened mammals. Photograph by Craig R. Jackson, CC BY 4.0. [...]\" Context in the source, page 74f: \"To remedy the dearth in knowledge on two endemic South African golden mole species, we analysed molecular data of individuals collected across the entire distribution range of both Juliana’s golden mole (Neamblysomus julianae, EN) and Hottentot golden mole (Amblysomus hottentotus, LC) (Figure 3.B). In contrast to the widespread Hottentot golden mole, the Juliana’s golden mole counts among South Africa’s most imperilled mammals and is known from only three range-restricted, geographically isolated populations (Maree, 2015, Maree et al., 2016; Maree, 2017; Taylor et al., 2018). These three populations, together covering less than 160 km2 occur in southeastern Pretoria (Gauteng population), the district of Modimolle (Limpopo, ~ 120 km north of Pretoria), and in southwestern Kruger National Park (Mpumalanga, ~ 400 km east of Pretoria) (Figure 3.C).\"",
+          "sha256": "eb14f5ee65127e0c750f57bc70c6ef3ba8d165158a95002f7737dcc74a98e5b8",
+          "width": 960,
+          "height": 660,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "commons-search"
+    },
+    "klipspringer": {
+      "name": "Klipspringer",
+      "scientificName": "Oreotragus oreotragus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "klipspringer-1.jpg",
+          "fileTitle": "File:Kenia 1991 (3993048893).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kenia_1991_(3993048893).jpg",
+          "author": "Udo Schmidt from Deutschland",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Kenia_1991_%283993048893%29.jpg/960px-Kenia_1991_%283993048893%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/20/Kenia_1991_%283993048893%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Klippspringer",
+          "sha256": "519beabe8d59f713ee9bf96d325a48f6d11625250da3b539f9fb687dbd41565b",
+          "width": 960,
+          "height": 632,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "klipspringer-2.jpg",
+          "fileTitle": "File:Klipspringer (16113501579).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Klipspringer_(16113501579).jpg",
+          "author": "Laika ac from UK",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/24/Klipspringer_%2816113501579%29.jpg/960px-Klipspringer_%2816113501579%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/24/Klipspringer_%2816113501579%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Klipspringer ram in the highlands of Oromia region, southern Ethiopia",
+          "sha256": "97ca2bdbf693d400f921cc70a9e2eb8da9f10b3aeafb43d28007485d91884ea9",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "kuhls-bat": {
+      "name": "Kuhl’s bat",
+      "scientificName": "Pipistrellus kuhlii",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "kuhls-bat-1.jpg",
+          "fileTitle": "File:Bat back side.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bat_back_side.jpg",
+          "author": "Salix",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Bat_back_side.jpg/960px-Bat_back_side.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/59/Bat_back_side.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Attic bat, Charente-Maritime (France)",
+          "sha256": "507f654d423aae5dbe6cbd2c031671d6f4c8eb074efde251ee6843a66408452c",
+          "width": 960,
+          "height": 416,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "kuhls-bat-2.jpg",
+          "fileTitle": "File:Bat-belly side.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Bat-belly_side.jpg",
+          "author": "Salix",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/71/Bat-belly_side.jpg/960px-Bat-belly_side.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/71/Bat-belly_side.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Belly side. Attic bat, Charente-Maritime (France)",
+          "sha256": "57b825c2f29c324576f8e656a8515b6c4ebb98b8a8749b87737c6f3dece575af",
+          "width": 960,
+          "height": 720,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "landers-horseshoe-bat": {
+      "name": "Lander’s horseshoe bat",
+      "scientificName": "Rhinolophus landeri",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "landers-horseshoe-bat-1.jpg",
+          "fileTitle": "File:Lander's Horseshoe Bat area.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lander%27s_Horseshoe_Bat_area.png",
+          "author": "Chermundy",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Lander%27s_Horseshoe_Bat_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Lander%27s_Horseshoe_Bat_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Lander's Horseshoe Bat (Rhinolophus landeri) range",
+          "sha256": "6c92ee50c03c587e8aa56624864df3e712cfdf3ed5a0f9dc607a2d7b37a700a7",
+          "width": 960,
+          "height": 1076,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "large-grey-mongoose": {
+      "name": "Large grey mongoose",
+      "scientificName": "Herpestes ichneumon",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "large-grey-mongoose-1.jpg",
+          "fileTitle": "File:Herpestes ichneumon range Map.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Herpestes_ichneumon_range_Map.png",
+          "author": "Carlos Bartolomé La Huerta",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Herpestes_ichneumon_range_Map.png/960px-Herpestes_ichneumon_range_Map.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/14/Herpestes_ichneumon_range_Map.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Herpestes ichneumon range map.",
+          "sha256": "8c09f91c07efe07e6b02cd924b887fb90d5ebf45580700c1072a57620d4cb6a9",
+          "width": 960,
+          "height": 444,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "large-grey-mongoose-2.jpg",
+          "fileTitle": "File:Egyptian Mongoose area.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Egyptian_Mongoose_area.png",
+          "author": "Chermundy",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Egyptian_Mongoose_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Egyptian_Mongoose_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Egyptian Mongoose (Herpestes ichneumon) range (green - native, red - introduced)",
+          "sha256": "04641b6c1c12a0c4abcf3948fa22e0626122e248e4da8f2c4e2ce88ef0cc3735",
+          "width": 960,
+          "height": 1113,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "large-spotted-genet": {
+      "name": "Large spotted genet",
+      "scientificName": "Genetta tigrina",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "large-spotted-genet-1.jpg",
+          "fileTitle": "File:Cape Genet area.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cape_Genet_area.png",
+          "author": "Chermundy",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Cape_Genet_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Cape_Genet_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Cape Genet (Genetta tigrina) range in South Africa. Range in the rest of Africa not shown.",
+          "sha256": "08fac133a969e056424ce5332f88c523e9cbf6b34dba7ab40f16549bc97bdcca",
+          "width": 960,
+          "height": 1046,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "large-spotted-genet-2.jpg",
+          "fileTitle": "File:Em - Genetta tigrina 1.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Em_-_Genetta_tigrina_1.jpg",
+          "author": "Emőke Dénes",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/8/82/Em_-_Genetta_tigrina_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/82/Em_-_Genetta_tigrina_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Taxidermied Cape Genet, also known as the Blotched Genet, Large-spotted Genet or muskeljaatkat in Afrikaans (Genetta tigrina) at the Natural History Museum in London, England.",
+          "sha256": "31efe8e0f0a65e1d8b3fdc3e9ac5b1ab80ba76899380a2415917d23969f45f02",
+          "width": 960,
+          "height": 720,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "lesser-bushbaby": {
+      "name": "Lesser bushbaby",
+      "scientificName": "Galago moholi",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "lesser-bushbaby-1.jpg",
+          "fileTitle": "File:Galago moholi range.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Galago_moholi_range.png",
+          "author": "Rbrausse",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Galago_moholi_range.png/960px-Galago_moholi_range.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Galago_moholi_range.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "native range of Galago moholi (Mohol bushbary)",
+          "sha256": "8b337f2d7825ba78842168e62bd2d43ca95080b2eea77c056bbdee0fc08a76de",
+          "width": 960,
+          "height": 935,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "lesser-grey-brown-musk-shrew": {
+      "name": "Lesser grey-brown musk shrew",
+      "scientificName": "Crocidura silacea",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "lesser-grey-brown-musk-shrew-1.jpg",
+          "fileTitle": "File:Lesser Gray-brown Musk Shrew area.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lesser_Gray-brown_Musk_Shrew_area.png",
+          "author": "Chermundy",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Lesser_Gray-brown_Musk_Shrew_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Lesser_Gray-brown_Musk_Shrew_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Lesser Gray-brown Musk Shrew (Crocidura silacea) range",
+          "sha256": "302501db47803c7bff2d943f7080242d82c4ff6389e649ebe2c1fffe10563070",
+          "width": 960,
+          "height": 1076,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "lesser-red-musk-shrew": {
+      "name": "Lesser red musk shrew",
+      "scientificName": "Crocidura hirta",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "lesser-red-musk-shrew-1.jpg",
+          "fileTitle": "File:Lesser Red Musk Shrew area.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lesser_Red_Musk_Shrew_area.png",
+          "author": "Chermundy",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Lesser_Red_Musk_Shrew_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Lesser_Red_Musk_Shrew_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Lesser Red Musk Shrew (Crocidura hirta) range",
+          "sha256": "2bf7eba5e56c51fc55431fe0e737eb7434870bef708ca032b11674fc26dda404",
+          "width": 960,
+          "height": 1076,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "lesser-red-musk-shrew-2.jpg",
+          "fileTitle": "File:Crocidura hirta (dead).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Crocidura_hirta_(dead).jpg",
+          "author": "Hans Hillewaert",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9d/Crocidura_hirta_%28dead%29.jpg/960px-Crocidura_hirta_%28dead%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Crocidura_hirta_%28dead%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Dead Lesser Red Musk Shrew close to Livingstone, Zambia",
+          "sha256": "6355aff4085d434035f084231d079059067757edd5dff031c58ccf5a18da5c3d",
+          "width": 960,
+          "height": 720,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "lesser-woolly-bat": {
+      "name": "Lesser woolly bat",
+      "scientificName": "Kerivoula lanosa",
+      "checkedAt": "2026-10-29",
+      "status": "no-suitable-candidate",
+      "files": [],
+      "discovery": "exact-commons-category"
+    },
+    "lesser-yellow-house-bat": {
+      "name": "Lesser yellow house bat",
+      "scientificName": "Scotophilus borbonicus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "lesser-yellow-house-bat-1.jpg",
+          "fileTitle": "File:Distribution of Scotophilus borbonicus.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Distribution_of_Scotophilus_borbonicus.png",
+          "author": "A proietti",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Distribution_of_Scotophilus_borbonicus.png/960px-Distribution_of_Scotophilus_borbonicus.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Distribution_of_Scotophilus_borbonicus.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Geographical distribution of Scotophilus borbonicus according to Museum specimens.",
+          "sha256": "c847505886b3d349597b62d47a9d21633b40c26239e9ee242be6cec251ea5d30",
+          "width": 960,
+          "height": 844,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "lesser-yellow-house-bat-2.jpg",
+          "fileTitle": "File:Scotophilus borbonicus.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Scotophilus_borbonicus.jpg",
+          "author": "Unknown authorUnknown author",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Scotophilus_borbonicus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Scotophilus_borbonicus.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Scotophilus borbonicus",
+          "sha256": "43a173c5ea012099765a635c8a97fb87cb1fee5e82bd652c19ed222771dd23e4",
+          "width": 960,
+          "height": 743,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "lichtensteins-hartebeest": {
+      "name": "Lichtenstein’s hartebeest",
+      "scientificName": "Sigmoceros lichtensteinii",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "lichtensteins-hartebeest-1.jpg",
+          "fileTitle": "File:Lichtenstein's Hartebeest.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Lichtenstein%27s_Hartebeest.jpg",
+          "author": "Photo taken and submitted by Paul Maritz (en:user:Paulmaz)",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Lichtenstein%27s_Hartebeest.jpg/960px-Lichtenstein%27s_Hartebeest.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Lichtenstein%27s_Hartebeest.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Lichtenstein's Hartebeest (Alcelaphus buselaphus lichtensteinii) at Kafue National Park, Zambia",
+          "sha256": "3e12528ce04fc6cc7b90160dacbc7066868907426bb75199e169abd17e83b8fe",
+          "width": 960,
+          "height": 985,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "lichtensteins-hartebeest-2.jpg",
+          "fileTitle": "File:Alcelaphus buselaphus lichtensteinii 50742477.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alcelaphus_buselaphus_lichtensteinii_50742477.jpg",
+          "author": "Michal Sloviak",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Alcelaphus_buselaphus_lichtensteinii_50742477.jpg/960px-Alcelaphus_buselaphus_lichtensteinii_50742477.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/48/Alcelaphus_buselaphus_lichtensteinii_50742477.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Lichtenstein's Hartebeest (Alcelaphus buselaphus lichtensteinii)",
+          "sha256": "8ba13168c0b73136ba22093e9d7eaf7ab95705846f60f07ac10827694bfc030c",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "commons-search"
+    },
+    "little-free-tailed-bat": {
+      "name": "Little free-tailed bat",
+      "scientificName": "Tadarida pumila",
+      "checkedAt": "2026-10-29",
+      "status": "no-suitable-candidate",
+      "files": [],
+      "discovery": "commons-search"
+    },
+    "long-tailed-house-bat": {
+      "name": "Long-tailed house bat",
+      "scientificName": "Eptesicus hottentotus",
+      "checkedAt": "2026-10-29",
+      "status": "no-suitable-candidate",
+      "files": [],
+      "discovery": "commons-search"
+    },
+    "madagascan-large-free-tailed-bat": {
+      "name": "Madagascan large free-tailed bat",
+      "scientificName": "Tadarida fulminans",
+      "checkedAt": "2026-10-29",
+      "status": "no-suitable-candidate",
+      "files": [],
+      "discovery": "commons-search"
+    },
+    "mauritian-tomb-bat": {
+      "name": "Mauritian tomb bat",
+      "scientificName": "Taphozous mauritianus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "mauritian-tomb-bat-1.jpg",
+          "fileTitle": "File:Mauritian Tomb Bat South Africa.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mauritian_Tomb_Bat_South_Africa.jpg",
+          "author": "Mimi neumann",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Mauritian_Tomb_Bat_South_Africa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Mauritian_Tomb_Bat_South_Africa.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Mauritian Tomb Bat sighted on 3rd March 2007 at Johannesburg, South Africa",
+          "sha256": "c9858947a738796425749f9e918719d6aa4cd597d50be9c0143cf5039bcd3943",
+          "width": 960,
+          "height": 690,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "mauritian-tomb-bat-2.jpg",
+          "fileTitle": "File:Mauritian tomb bat Sharron Reynolds.JPG",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mauritian_tomb_bat_Sharron_Reynolds.JPG",
+          "author": "Sharron Reynolds",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Mauritian_tomb_bat_Sharron_Reynolds.JPG/960px-Mauritian_tomb_bat_Sharron_Reynolds.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Mauritian_tomb_bat_Sharron_Reynolds.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Mauritian tomb bat",
+          "sha256": "572192fad9c55ed9a565e7a44d71249069b500d25c4ac91d538016037dd9080b",
+          "width": 960,
+          "height": 638,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "melcks-serotine-bat": {
+      "name": "Melck’s serotine bat",
+      "scientificName": "Neoromicia melckorum",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "melcks-serotine-bat-1.jpg",
+          "fileTitle": "File:Neoromicia melckorum range Madagascar.svg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Neoromicia_melckorum_range_Madagascar.svg",
+          "author": "Madagascar_range_map_template.svg: *derivative work: Visionholder (talk)\nBlankMap-Africa.svg: en:User:Lokal_Profil\nComoros_location_map.svg: en:User:NordNordWest\nMadagascar_rivers.svg: Esculapio\nMaps_template-fr.svg: Eric Gaba (Sting - fr:Sting)\nderivative work: Ucucha (talk)",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Neoromicia_melckorum_range_Madagascar.svg/960px-Neoromicia_melckorum_range_Madagascar.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Neoromicia_melckorum_range_Madagascar.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Known localities of the the bat Neoromicia melckorum on Madagascar (mainland African distribution not shown).\nSource: data in\n\nBates, P.J.J., Ratrimomanarivo, F.H., Harrison, D.L. and Goodman, S.M. 2006. A description of a new species of Pipistrellus (Chiroptera: Vespertilionidae) from Madagascar with a review of related Vespertilioninae from the island (subscription required). Acta Chiropterologica 8(2):299–324.\nCreated using User:Ucucha/Mapper.",
+          "sha256": "e75a9cb18f8ec366ef7feb7efbf23b071221424fd60051b2e3111b28d1e921a4",
+          "width": 960,
+          "height": 1132,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "mellers-mongoose": {
+      "name": "Meller’s mongoose",
+      "scientificName": "Rhynchogale melleri",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "mellers-mongoose-1.jpg",
+          "fileTitle": "File:Rhynchogale melleri range map.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Rhynchogale_melleri_range_map.png",
+          "author": "Udo Schröter",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/15/Rhynchogale_melleri_range_map.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/15/Rhynchogale_melleri_range_map.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Range map for Meller's Mongoose (Rhynchogale melleri), made by me with help of www.aquarius.geomar.de, Map depending on the range map at IUCN red list.",
+          "sha256": "f16a6bc90fe7754badbc15da444d715835246c3da409d01c5672918e1768681b",
+          "width": 960,
+          "height": 996,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "mellers-mongoose-2.jpg",
+          "fileTitle": "File:Meller's Mongoose area.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Meller%27s_Mongoose_area.png",
+          "author": "Chermundy",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Meller%27s_Mongoose_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Meller%27s_Mongoose_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Meller's Mongoose (Rhynchogale melleri) range (green - extant, pink - probably extant)",
+          "sha256": "7ad7cf68bfa34b54e852d3922c3c96190ec22ea45066198eefbb44a779c0b70f",
+          "width": 960,
+          "height": 1076,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "midas-free-tailed-bat": {
+      "name": "Midas free-tailed bat",
+      "scientificName": "Tadarida midas",
+      "checkedAt": "2026-10-29",
+      "status": "no-suitable-candidate",
+      "files": [],
+      "discovery": "commons-search"
+    },
+    "mountain-reedbuck": {
+      "name": "Mountain reedbuck",
+      "scientificName": "Redunca fulvorufula",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "mountain-reedbuck-1.jpg",
+          "fileTitle": "File:Redunca fulvorufula.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Redunca_fulvorufula.png",
+          "author": "User:Vardion",
+          "license": "CC0",
+          "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/38/Redunca_fulvorufula.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/38/Redunca_fulvorufula.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "מפה",
+          "sha256": "834b82494904efb197070695532522935b4775676eeffa774b69680935f812b8",
+          "width": 960,
+          "height": 1018,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "multimammate-mouse": {
+      "name": "Multimammate mouse",
+      "scientificName": "Mastomys coucha",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "multimammate-mouse-1.jpg",
+          "fileTitle": "File:Mastomys coucha.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mastomys_coucha.jpg",
+          "author": "Marcus33",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Mastomys_coucha.jpg/960px-Mastomys_coucha.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Mastomys_coucha.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Multimammate Mouse (Mastomys coucha)",
+          "sha256": "d41fd3618bd4bfd000053266865cb8b7e8de736a0d4d90565a8344c4cc340f36",
+          "width": 960,
+          "height": 720,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "multimammate-mouse-2.jpg",
+          "fileTitle": "File:Mastomys.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mastomys.jpg",
+          "author": "Marcus33",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Mastomys.jpg/960px-Mastomys.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/40/Mastomys.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Multimammate Mouse (Mastomys coucha)",
+          "sha256": "ba806fc30b0f1320d7a79f320ec2ed10d3b02f262f7d1274ed93c56a722bebe4",
+          "width": 960,
+          "height": 624,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "namaqua-rock-mouse": {
+      "name": "Namaqua rock mouse",
+      "scientificName": "Aethomys namaquensis",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "namaqua-rock-mouse-1.jpg",
+          "fileTitle": "File:Namaqua rock mouse feeding on Pagoda Lily nectar.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Namaqua_rock_mouse_feeding_on_Pagoda_Lily_nectar.jpg",
+          "author": "Petra Wester",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Namaqua_rock_mouse_feeding_on_Pagoda_Lily_nectar.jpg/960px-Namaqua_rock_mouse_feeding_on_Pagoda_Lily_nectar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Namaqua_rock_mouse_feeding_on_Pagoda_Lily_nectar.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "“A Namaqua rock mouse (Aethomys namaquensis, Muridae) getting dusted with pollen of the Pagoda Lily (Whiteheadia bifolia, Hyacinthaceae) while lapping nectar at the flowers.”",
+          "sha256": "cb3002a0c164764733b2655ac8abe5da6dd25d03068cd58ea1177ddb0abc4ec7",
+          "width": 960,
+          "height": 694,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "namaqua-rock-mouse-2.jpg",
+          "fileTitle": "File:Distribution of Micaelamys namaquensis.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Distribution_of_Micaelamys_namaquensis.png",
+          "author": "A proietti",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/Distribution_of_Micaelamys_namaquensis.png/960px-Distribution_of_Micaelamys_namaquensis.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/79/Distribution_of_Micaelamys_namaquensis.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "According to Happold, 2013",
+          "sha256": "29939143068a0b2594e87325cc52bd8eb91bc0aaec36eca81823d7ac6a57d51b",
+          "width": 960,
+          "height": 960,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "natal-multimammate-mouse": {
+      "name": "Natal multimammate mouse",
+      "scientificName": "Mastomys natalensis",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "natal-multimammate-mouse-1.jpg",
+          "fileTitle": "File:Mastomys natalensis 15434986.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mastomys_natalensis_15434986.jpg",
+          "author": "Robert Taylor",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Mastomys_natalensis_15434986.jpg/960px-Mastomys_natalensis_15434986.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Mastomys_natalensis_15434986.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Natal Multimammate Mouse (Mastomys natalensis)",
+          "sha256": "ab3a6c338348145cce4cf19133963961b2ccfb7a2d79a2e9f9beb00bf725a6da",
+          "width": 960,
+          "height": 720,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "natal-multimammate-mouse-2.jpg",
+          "fileTitle": "File:Mastomys natalensis 15434944.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mastomys_natalensis_15434944.jpg",
+          "author": "Robert Taylor",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Mastomys_natalensis_15434944.jpg/960px-Mastomys_natalensis_15434944.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Mastomys_natalensis_15434944.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Natal Multimammate Mouse (Mastomys natalensis)",
+          "sha256": "f8a726900e7e8abf40ddbd6b162d8844fb26475ef1d9d83589b189217238f7f3",
+          "width": 960,
+          "height": 720,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "natal-red-rock-hare": {
+      "name": "Natal red rock hare",
+      "scientificName": "Pronolagus crassicaudatus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "natal-red-rock-hare-1.jpg",
+          "fileTitle": "File:Natal Red Rock Hare area.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Natal_Red_Rock_Hare_area.png",
+          "author": "Chermundy",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/8/84/Natal_Red_Rock_Hare_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/84/Natal_Red_Rock_Hare_area.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Natal Red Rock Hare (Pronolagus crassicaudatus) range",
+          "sha256": "6a54f6780f55318ce98b8a1e1313a026506cfd961b3ca1f8d75eb2743c762d5a",
+          "width": 960,
+          "height": 1076,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "natal-red-rock-hare-2.jpg",
+          "fileTitle": "File:Pronolagus crassicaudatus range.svg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pronolagus_crassicaudatus_range.svg",
+          "author": "Sebastian Wallroth",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Pronolagus_crassicaudatus_range.svg/960px-Pronolagus_crassicaudatus_range.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Pronolagus_crassicaudatus_range.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Natal red rock hare (Pronolagus crassicaudatus) range.   Extant (resident)",
+          "sha256": "413e102a77f7770272c3d069ed2f5fbc9f7374d6d23ea853f1c8be9ff4ed875e",
+          "width": 960,
+          "height": 1016,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "oribi": {
+      "name": "Oribi",
+      "scientificName": "Ourebia ourebi",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "oribi-1.jpg",
+          "fileTitle": "File:Oribi Distribution Map 1996.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Oribi_Distribution_Map_1996.png",
+          "author": "The original uploader was Rooivalk at English Wikipedia.",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Oribi_Distribution_Map_1996.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/16/Oribi_Distribution_Map_1996.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Map showing countries with the Oribi (Ourebia ourebi) populations present.\nThis image was created by  Rooivalk",
+          "sha256": "b41c0642158e8ba0980e74d01d0f5dba7532a6290645e9adef8e1c3895eb7b3c",
+          "width": 960,
+          "height": 1184,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "oribi-2.jpg",
+          "fileTitle": "File:Ourebia ourebi distribution.svg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Ourebia_ourebi_distribution.svg",
+          "author": "Oona Räisänen & IUCN (International Union for Conservation of Nature); see above",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/43/Ourebia_ourebi_distribution.svg/960px-Ourebia_ourebi_distribution.svg.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/43/Ourebia_ourebi_distribution.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Geographic distribution of the Oribi (Ourebia ourebi).",
+          "sha256": "c8aa342dac14a074f7c00c2e66afd4c45a304f2d29dd6e1a3960133e40202e9d",
+          "width": 960,
+          "height": 824,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "pangolin": {
+      "name": "Pangolin",
+      "scientificName": "Manis temminckii",
+      "checkedAt": "2026-10-29",
+      "status": "retry-required",
+      "files": [],
+      "discovery": "commons-search",
+      "error": "Commons: cirrussearch-too-busy-error"
     }
   }
 }

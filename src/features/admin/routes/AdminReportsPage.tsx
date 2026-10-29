@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { getAnimalPrimaryImage } from '@/assets/wildlife/animalPrimaryImages'
 import { photoCredits } from '@/assets/wildlife/photoCredits'
 import { useContent } from '@/features/content/components/ContentProvider'
+import { sourcedAnimalProfiles } from '@/features/content/data/sourcedAnimalProfiles'
 import { useMammalPhotoContext } from '@/features/mammals/components/MammalPhotoProvider/MammalPhotoProvider'
 import { wildlife } from '@/features/mammals/model/mammals'
 import { safariRoutes } from '@/features/routes/data/safariRoutes'
@@ -21,7 +22,7 @@ export function AdminReportsPage() {
     const missing = fields.filter((field) => !profile[field].trim())
     const image = photos.manifest[animal.id] ? 'R2 override (rights review required)' : getAnimalPrimaryImage(animal.id) ? 'Packaged' : 'Missing'
     const attribution = image === 'Packaged' && recordedCredits[animal.id] ? 'Recorded' : 'Review required'
-    const source = managed?.kind === 'animal' && managed.sourceUrl ? managed.sourceUrl : ''
+    const source = managed?.kind === 'animal' ? managed.sourceUrl : sourcedAnimalProfiles[animal.id]?.content.sourceUrl ?? ''
     const completeFields = !missing.length && profile.identificationFeatures.some((value) => value.trim()) && profile.interestingFacts.some((value) => value.trim())
     return { id: animal.id, name: animal.commonName, image, attribution, missing: [...missing, ...(!profile.identificationFeatures.some((value) => value.trim()) ? ['identificationFeatures'] : []), ...(!profile.interestingFacts.some((value) => value.trim()) ? ['interestingFacts'] : [])], source, completeFields }
   }), [content.entries, photos.manifest])

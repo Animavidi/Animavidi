@@ -3,27 +3,13 @@
   "evidence": "packaged repository files; live content is unverified",
   "totals": {
     "species": 694,
-    "packagedPhotos": 38,
-    "missingPhotos": 656,
+    "packagedPhotos": 44,
+    "missingPhotos": 650,
     "legacyProfiles": 22,
-    "missingReviewedProfiles": 672
+    "sourcedProfilesAssessmentPending": 4,
+    "missingReviewedProfiles": 668
   },
-  "taxonomyCollisions": [
-    {
-      "scientificName": "Coracias caudatus",
-      "ids": [
-        "bird-european-roller",
-        "bird-lilac-breasted-roller"
-      ]
-    },
-    {
-      "scientificName": "Ploceus subaureus",
-      "ids": [
-        "bird-golden-weaver",
-        "bird-yellow-weaver"
-      ]
-    }
-  ],
+  "taxonomyCollisions": [],
   "species": [
     {
       "id": "aardvark",
@@ -33,11 +19,16 @@
       "photo": "packaged",
       "attribution": "recorded-reviewed-photo",
       "photoSource": "https://commons.wikimedia.org/wiki/File:Orycteropus_afer_175359469.jpg",
-      "profile": "missing-reviewed-profile",
+      "profile": "sourced-profile-assessment-pending",
+      "profileSource": "https://animaldiversity.org/accounts/Orycteropus_afer/",
+      "pendingProfileReviews": [
+        "Current conservation assessment",
+        "Independent current taxonomy reconciliation"
+      ],
       "taxonomyReview": "not-independently-reviewed",
       "tasks": [
         "verify-taxonomy",
-        "write-sourced-profile"
+        "verify-current-conservation-assessment"
       ]
     },
     {
@@ -48,11 +39,16 @@
       "photo": "packaged",
       "attribution": "recorded-reviewed-photo",
       "photoSource": "https://commons.wikimedia.org/wiki/File:Proteles_cristatus1.jpg",
-      "profile": "missing-reviewed-profile",
+      "profile": "sourced-profile-assessment-pending",
+      "profileSource": "https://animaldiversity.org/accounts/Proteles_cristata/",
+      "pendingProfileReviews": [
+        "Current conservation assessment",
+        "Proteles cristata / cristatus nomenclature reconciliation"
+      ],
       "taxonomyReview": "not-independently-reviewed",
       "tasks": [
         "verify-taxonomy",
-        "write-sourced-profile"
+        "verify-current-conservation-assessment"
       ]
     },
     {
@@ -94,15 +90,12 @@
       "name": "African civet",
       "scientificName": "Civettictis civetta",
       "group": "mammal",
-      "photo": "missing",
-      "attribution": "missing",
-      "photoSource": "",
+      "photo": "packaged",
+      "attribution": "recorded-reviewed-photo",
+      "photoSource": "https://commons.wikimedia.org/wiki/File:Civettictis_civetta_35635750.jpg",
       "profile": "missing-reviewed-profile",
       "taxonomyReview": "not-independently-reviewed",
       "tasks": [
-        "source-photo",
-        "record-author-license",
-        "visual-species-review",
         "verify-taxonomy",
         "write-sourced-profile"
       ]
@@ -309,11 +302,16 @@
       "photo": "packaged",
       "attribution": "recorded-reviewed-photo",
       "photoSource": "https://commons.wikimedia.org/wiki/File:Banded_Mongoose.jpg",
-      "profile": "missing-reviewed-profile",
+      "profile": "sourced-profile-assessment-pending",
+      "profileSource": "https://animaldiversity.org/accounts/Mungos_mungo/",
+      "pendingProfileReviews": [
+        "Current conservation assessment",
+        "Independent current taxonomy reconciliation"
+      ],
       "taxonomyReview": "not-independently-reviewed",
       "tasks": [
         "verify-taxonomy",
-        "write-sourced-profile"
+        "verify-current-conservation-assessment"
       ]
     },
     {
@@ -321,15 +319,12 @@
       "name": "Bat-eared fox",
       "scientificName": "Otocyon megalotis",
       "group": "mammal",
-      "photo": "missing",
-      "attribution": "missing",
-      "photoSource": "",
+      "photo": "packaged",
+      "attribution": "recorded-reviewed-photo",
+      "photoSource": "https://commons.wikimedia.org/wiki/File:Bat_eared_fox_Kenya_crop.jpg",
       "profile": "missing-reviewed-profile",
       "taxonomyReview": "not-independently-reviewed",
       "tasks": [
-        "source-photo",
-        "record-author-license",
-        "visual-species-review",
         "verify-taxonomy",
         "write-sourced-profile"
       ]
@@ -342,11 +337,16 @@
       "photo": "packaged",
       "attribution": "recorded-reviewed-photo",
       "photoSource": "https://commons.wikimedia.org/wiki/File:2012-bb-jackal-1.jpg",
-      "profile": "missing-reviewed-profile",
+      "profile": "sourced-profile-assessment-pending",
+      "profileSource": "https://animaldiversity.org/accounts/Canis_mesomelas/",
+      "pendingProfileReviews": [
+        "Current conservation assessment",
+        "Canis / Lupulella genus reconciliation"
+      ],
       "taxonomyReview": "not-independently-reviewed",
       "tasks": [
         "verify-taxonomy",
-        "write-sourced-profile"
+        "verify-current-conservation-assessment"
       ]
     },
     {
@@ -439,15 +439,12 @@
       "name": "Brown hyena",
       "scientificName": "Hyaena brunnea",
       "group": "mammal",
-      "photo": "missing",
-      "attribution": "missing",
-      "photoSource": "",
+      "photo": "packaged",
+      "attribution": "recorded-reviewed-photo",
+      "photoSource": "https://commons.wikimedia.org/wiki/File:Parahyaena_brunnea_3.jpg",
       "profile": "missing-reviewed-profile",
       "taxonomyReview": "not-independently-reviewed",
       "tasks": [
-        "source-photo",
-        "record-author-license",
-        "visual-species-review",
         "verify-taxonomy",
         "write-sourced-profile"
       ]
@@ -489,15 +486,12 @@
       "name": "Bushpig",
       "scientificName": "Potamochoerus larvatus",
       "group": "mammal",
-      "photo": "missing",
-      "attribution": "missing",
-      "photoSource": "",
+      "photo": "packaged",
+      "attribution": "recorded-reviewed-photo",
+      "photoSource": "https://commons.wikimedia.org/wiki/File:Potamochoerus_larvatus_43594615.jpg",
       "profile": "missing-reviewed-profile",
       "taxonomyReview": "not-independently-reviewed",
       "tasks": [
-        "source-photo",
-        "record-author-license",
-        "visual-species-review",
         "verify-taxonomy",
         "write-sourced-profile"
       ]
@@ -748,15 +742,12 @@
       "name": "Common duiker",
       "scientificName": "Sylvicapra grimmia",
       "group": "mammal",
-      "photo": "missing",
-      "attribution": "missing",
-      "photoSource": "",
+      "photo": "packaged",
+      "attribution": "recorded-reviewed-photo",
+      "photoSource": "https://commons.wikimedia.org/wiki/File:Sylvicapra_grimmia_164911940.jpg",
       "profile": "missing-reviewed-profile",
       "taxonomyReview": "not-independently-reviewed",
       "tasks": [
-        "source-photo",
-        "record-author-license",
-        "visual-species-review",
         "verify-taxonomy",
         "write-sourced-profile"
       ]
@@ -892,15 +883,12 @@
       "name": "Eland",
       "scientificName": "Taurotragus oryx",
       "group": "mammal",
-      "photo": "missing",
-      "attribution": "missing",
-      "photoSource": "",
+      "photo": "packaged",
+      "attribution": "recorded-reviewed-photo",
+      "photoSource": "https://commons.wikimedia.org/wiki/File:Eland_com%C3%BAn_(Taurotragus_oryx),_reserva_natural_Mas%C3%A1i_Mara,_Kenia,_2024-05-20,_DD_08.jpg",
       "profile": "missing-reviewed-profile",
       "taxonomyReview": "not-independently-reviewed",
       "tasks": [
-        "source-photo",
-        "record-author-license",
-        "visual-species-review",
         "verify-taxonomy",
         "write-sourced-profile"
       ]
@@ -3701,13 +3689,15 @@
     {
       "id": "bird-barred-owlet",
       "name": "Barred owlet",
-      "scientificName": "Strix varia",
+      "scientificName": "Glaucidium capense",
       "group": "bird",
+      "taxonomySource": "https://the-eis.com/elibrary/search/7382",
+      "sourceScientificName": "Strix varia",
       "photo": "missing",
       "attribution": "missing",
       "photoSource": "",
       "profile": "missing-reviewed-profile",
-      "taxonomyReview": "not-independently-reviewed",
+      "taxonomyReview": "source-error-reconciled",
       "tasks": [
         "source-photo",
         "record-author-license",
@@ -6167,13 +6157,15 @@
     {
       "id": "bird-european-roller",
       "name": "European roller",
-      "scientificName": "Coracias caudatus",
+      "scientificName": "Coracias garrulus",
       "group": "bird",
+      "taxonomySource": "https://www.birdlife.org.za/red-data-book/red-list/european-roller/",
+      "sourceScientificName": "Coracias caudatus",
       "photo": "missing",
       "attribution": "missing",
       "photoSource": "",
       "profile": "missing-reviewed-profile",
-      "taxonomyReview": "shared-scientific-name",
+      "taxonomyReview": "source-error-reconciled",
       "tasks": [
         "source-photo",
         "record-author-license",
@@ -6545,13 +6537,15 @@
     {
       "id": "bird-golden-weaver",
       "name": "Golden weaver",
-      "scientificName": "Ploceus subaureus",
+      "scientificName": "Ploceus xanthops",
       "group": "bird",
+      "taxonomySource": "https://sabap2.birdmap.africa/docs/sabap1/816.pdf",
+      "sourceScientificName": "Ploceus subaureus",
       "photo": "missing",
       "attribution": "missing",
       "photoSource": "",
       "profile": "missing-reviewed-profile",
-      "taxonomyReview": "shared-scientific-name",
+      "taxonomyReview": "source-error-reconciled",
       "tasks": [
         "source-photo",
         "record-author-license",
@@ -7931,7 +7925,7 @@
       "attribution": "recorded-reviewed-photo",
       "photoSource": "https://commons.wikimedia.org/wiki/File:Lilac-Breasted_Roller.jpg",
       "profile": "missing-reviewed-profile",
-      "taxonomyReview": "shared-scientific-name",
+      "taxonomyReview": "not-independently-reviewed",
       "tasks": [
         "verify-taxonomy",
         "write-sourced-profile"
@@ -12398,7 +12392,7 @@
       "attribution": "missing",
       "photoSource": "",
       "profile": "missing-reviewed-profile",
-      "taxonomyReview": "shared-scientific-name",
+      "taxonomyReview": "not-independently-reviewed",
       "tasks": [
         "source-photo",
         "record-author-license",

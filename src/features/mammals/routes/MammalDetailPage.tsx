@@ -1,4 +1,5 @@
 import { PhotoAttribution } from '@/features/media/components/PhotoAttribution'
+import { sourcedAnimalProfiles } from '@/features/content/data/sourcedAnimalProfiles'
 import { useContent } from '@/features/content/components/ContentProvider'
 import type { CSSProperties } from 'react'
 import { useEffect, useMemo, useState } from 'react'
@@ -121,6 +122,7 @@ export function MammalDetailPage() {
           <p className={!expanded && longIntroduction ? styles.clamped : undefined}>{mammal.profile.introduction}</p>
           {longIntroduction ? <button aria-expanded={expanded} onClick={() => setExpanded((value) => !value)} type="button">{expanded ? 'Show less' : 'Read more'} <span aria-hidden="true">⌄</span></button> : null}
           {mammal.aliases.length ? <small><strong>Also known as</strong> {mammal.aliases.join(', ')}</small> : null}
+          {editorial?.kind === 'animal' && editorial.sourceUrl ? <p><small><a href={editorial.sourceUrl} target="_blank" rel="noreferrer">Profile source</a></small></p> : sourcedAnimalProfiles[animalId] ? <p><small><a href={sourcedAnimalProfiles[animalId].content.sourceUrl} target="_blank" rel="noreferrer">{sourcedAnimalProfiles[animalId].sourceTitle}</a> · Checked {sourcedAnimalProfiles[animalId].checkedAt}. Current conservation assessment and taxonomy review pending.</small></p> : null}
         </section>
 
         {facts.length ? <section aria-labelledby="facts-title" className={styles.factsCard}>
