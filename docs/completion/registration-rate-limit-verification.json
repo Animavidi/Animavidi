@@ -1,0 +1,177 @@
+{
+  "checkedAt": "2026-10-29T21:18:54.061Z",
+  "beta": "https://animavidi-beta.solitary-mountain-8958.workers.dev/",
+  "sourceCommit": "6b7e840afd1e714617052b966979445d36be2680",
+  "previousVersion": "e0cf3b4d-0b1f-43ec-9da0-8e8ddc95e082",
+  "active": [
+    {
+      "version_id": "301a2eef-0c06-41ee-b465-7ac40499a387",
+      "percentage": 100
+    }
+  ],
+  "availableFromAmsterdam": "donderdag 29 oktober 2026 om 22:14:32 CET",
+  "diagnosis": {
+    "twoSignupNetworkLimiters": {
+      "max": 5,
+      "windowSeconds": 3600
+    },
+    "oldInnerIpv6Prefix": 64,
+    "hostnamesPreviouslyShared": true,
+    "previousAutomatedSignupCountInSameBucket": 1,
+    "laterFullInnerBucketCount": 5,
+    "outerRejectedAttemptCount": 6,
+    "trustedClientIpValid": true,
+    "missingIpGlobalFallbackObserved": false,
+    "cloudflareCrossZonePlaceholderObserved": false
+  },
+  "policy": {
+    "signup": {
+      "networkMax": 30,
+      "emailMax": 5,
+      "windowSeconds": 900
+    },
+    "signin": {
+      "networkMax": 60,
+      "emailMax": 10,
+      "windowSeconds": 300
+    },
+    "resetAndResend": {
+      "networkMax": 30,
+      "emailMax": 5,
+      "windowSeconds": 900
+    },
+    "previewBetaNetworkIsolation": true,
+    "inboxLimitSharedAcrossHostsAndIps": true,
+    "retryAfterHeader": true,
+    "denialsDoNotExtendWait": true,
+    "missingTrustedIpFailClosed": true
+  },
+  "nativePolicyProof": {
+    "passed": true,
+    "addressLimit429": true,
+    "networkLimit429": true,
+    "retryAfterHeader": true,
+    "clientForwardingCannotBypass": true,
+    "originIsolation": true,
+    "allPayloadsInvalidNoAccountsOrMail": true
+  },
+  "nativeRegression": {
+    "candidate": true,
+    "activeBeta": true,
+    "isolatedUsersCleaned": true,
+    "offlineRestartAndPrivatePhotos": true
+  },
+  "freshRegistration": {
+    "mobileViewport": true,
+    "status": 200,
+    "confirmationDisplayed": true,
+    "emailVerified": true,
+    "login": 200,
+    "privateApi": 200,
+    "accountRetained": true
+  },
+  "logs": {
+    "events": 126,
+    "exceptions": 0,
+    "errorLogs": 0,
+    "responses5xx": 0,
+    "outcomes": {
+      "ok": 125,
+      "canceled": 1
+    },
+    "rawPayloadsSaved": false
+  },
+  "preservation": {
+    "checkedAt": "2026-10-29T21:16:59.158Z",
+    "tables": {
+      "d1_migrations": {
+        "before": 4,
+        "after": 4,
+        "allOriginalRowsRetained": true
+      },
+      "content": {
+        "before": 0,
+        "after": 0,
+        "allOriginalRowsRetained": true
+      },
+      "content_history": {
+        "before": 0,
+        "after": 0,
+        "allOriginalRowsRetained": true
+      },
+      "bird_proposals": {
+        "before": 0,
+        "after": 0,
+        "allOriginalRowsRetained": true
+      },
+      "approved_birds": {
+        "before": 0,
+        "after": 0,
+        "allOriginalRowsRetained": true
+      },
+      "bird_proposal_history": {
+        "before": 0,
+        "after": 0,
+        "allOriginalRowsRetained": true
+      },
+      "av_user": {
+        "before": 2,
+        "after": 3,
+        "allOriginalRowsRetained": true
+      },
+      "av_session": {
+        "before": 0,
+        "after": 0,
+        "allOriginalRowsRetained": true
+      },
+      "av_account": {
+        "before": 2,
+        "after": 3,
+        "allOriginalRowsRetained": true
+      },
+      "av_verification": {
+        "before": 4,
+        "after": 4,
+        "allOriginalRowsRetained": true
+      },
+      "av_deletion_queue": {
+        "before": 0,
+        "after": 0,
+        "allOriginalRowsRetained": true
+      },
+      "av_sightings": {
+        "before": 0,
+        "after": 0,
+        "allOriginalRowsRetained": true
+      },
+      "av_preferences": {
+        "before": 0,
+        "after": 0,
+        "allOriginalRowsRetained": true
+      },
+      "av_mutations": {
+        "before": 0,
+        "after": 0,
+        "allOriginalRowsRetained": true
+      },
+      "av_changes": {
+        "before": 0,
+        "after": 0,
+        "allOriginalRowsRetained": true
+      }
+    },
+    "productionUnchanged": true,
+    "r2OriginalsRetained": true,
+    "r2Count": 0,
+    "active": [
+      {
+        "version_id": "301a2eef-0c06-41ee-b465-7ac40499a387",
+        "percentage": 100
+      }
+    ],
+    "passed": true
+  },
+  "productionUnchanged": true,
+  "main": "4d2ee0911d810909f604d5b62d1a85393e2778d5",
+  "noSchemaMigration": true
+}

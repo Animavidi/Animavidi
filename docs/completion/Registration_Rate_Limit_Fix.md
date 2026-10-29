@@ -23,3 +23,18 @@ The inner signup key contains a valid IPv6 network; it is neither no-trusted-ip 
 Typecheck, ESLint, preview build, actual Better Auth/Resend-mock tests and full account/offline/migration/conflict/export/deletion browser suite passed. PWA update preservation passed. Dedicated rate tests verify atomic simultaneous requests, bounded retry/expiry, thirty different addresses behind one IPv6 /64, isolated preview/beta network quotas, canonical email limits across IPs/hosts, independent addresses, missing/spoofed-header handling and non-sensitive logging. No test email was sent by these synthetic checks.
 
 A private current SQL backup and D1/R2 baseline were saved before changes. Existing accounts and data are excluded from destructive tests. Native candidate tests and beta deployment/mail verification outcomes will be appended after execution. The user supplied a fresh approved test mailbox; its value is retained privately, not committed.
+
+
+## Native verification and beta repair completed
+
+Source fix 6b7e840afd1e714617052b966979445d36be2680 was uploaded as Worker version 301a2eef-0c06-41ee-b465-7ac40499a387. Every existing secret binding, sender, isolated D1/R2 binding and runtime setting was preserved (explicit/default HTML handling normalised). Secret contents were not read. Native malformed-request probes created no accounts or mail and proved both positive and negative cases: per-address 429, aggregate-network 429, standard Retry-After, edge rejection/unchanged quota for forged forwarding headers, and availability of a different origin after exhausting the test alias.
+
+Native full account/privacy/photo/Cloudflare sync/offline browser-restart/PWA/deletion regressions passed on both candidate and active shared beta using fresh synthetic fixtures. Those fixture users, records and photos were removed. All original application/user rows remained intact; the only retained account addition is the freshly approved mailbox-registration test. No schema migration or existing credential reset occurred.
+
+At 22:14:32 Europe/Amsterdam the checked fix was deployed to 100% on the existing beta URL. Production and main were unchanged. The old flawed rate counters were not bulk-cleared; the corrected, namespaced policy no longer uses them. The old one-hour wait therefore does not apply after the repair. Normal users can reload and register immediately, subject to the documented new abuse quotas. Already registered addresses should use login or password recovery rather than creating another account.
+
+A fresh real registration was submitted through the mobile 384x832 interface on the active beta: HTTP 200, inbox-confirmation UI displayed and actual account row created. Its activation token was consumed, the account became email-verified in D1, login returned 200 and the private journal API returned 200. The generated test password and activation link were not shown or published; the account is retained and its automated test login was signed out.
+
+A privacy-filtered beta tail observed 126 events (125 ok, one canceled), zero exceptions, zero error logs and zero 5xx responses. Raw request/log payloads were not saved. Known deliberate 429 cases remain successful security controls, not application failures. Historical request-level attribution is not claimed beyond the counter evidence described above.
+
+See registration-rate-limit-verification.json for sanitised evidence. Rollback to e0cf3b4d remains technically available but would reintroduce the five/hour false-blocking policy; no rollback was required. Physical-device PWA acceptance remains separate from this repaired server-side registration incident.

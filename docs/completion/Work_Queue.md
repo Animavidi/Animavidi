@@ -149,3 +149,12 @@ Implementation and local/native Cloudflare tests completed; see [Account_Cloud_S
 - [x] Beta erasure retry schedule applied and read back; full native smoke suite, existing-data comparison and zero-critical-error log window passed.
 - [x] Production resources and main unchanged; prior Worker and cron configuration available for rollback.
 - [ ] Manual physical-device iOS/iPadOS/Android PWA install acceptance; natural full token lifetime waiting remains unclaimed. These are recorded acceptance limits, not a request to modify production.
+
+
+## First-use registration limiter incident — resolved 29 October 2026
+
+- [x] Duplicate five/hour IP limits and preview/beta IPv6-network quota collision diagnosed from source and private counter history.
+- [x] Atomic HMAC-scoped network limits, independent inbox quotas, bounded waits, Retry-After and fail-closed missing-IP handling implemented/tested.
+- [x] Native positive/negative abuse probes and full candidate/beta account/offline/sync/privacy regressions passed; synthetic users cleaned.
+- [x] Fix 301a2eef-0c06-41ee-b465-7ac40499a387 active on beta at 100%; fresh real mobile registration and e-mail verification/login passed.
+- [x] Original accounts/records preserved, production/main unchanged, logs and evidence saved without private identities or tokens.

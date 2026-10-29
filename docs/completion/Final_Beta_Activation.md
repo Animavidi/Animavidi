@@ -1,3 +1,5 @@
+> Latest beta update: registration-limiter fix 301a2eef-0c06-41ee-b465-7ac40499a387 is active at 100%. See [Registration_Rate_Limit_Fix.md](Registration_Rate_Limit_Fix.md). The activation record below describes the earlier e0cf3b4d release.
+
 # Final beta activation — 29 October 2026
 
 ## Pre-activation decision: critical gates passed
