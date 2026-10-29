@@ -13,7 +13,7 @@ self.addEventListener('fetch',event=>{const request=event.request,url=new URL(re
  if(url.pathname.startsWith('/api/auth/')||url.pathname.startsWith('/api/me/')||url.pathname.startsWith('/api/admin/')||url.pathname.startsWith('/api/bird-contributions/'))return;
  const publicApi=['/api/content','/api/birds','/api/photos'].includes(url.pathname);
  if(url.pathname.startsWith('/api/')&&!publicApi)return;
- if(request.mode==='navigate'){event.respondWith(fetch(request).then(async response=>response.ok?response:await caches.match('/index.html')||response).catch(()=>caches.match('/index.html')));return;}
+ if(request.mode==='navigate'){event.respondWith(fetch(request).then(async response=>response.ok?response:await caches.match('/')||response).catch(()=>caches.match('/')));return;}
  if(publicApi){event.respondWith(fetch(request).then(async response=>{if(response.ok){const cache=await caches.open(CACHE);await cache.put(request,response.clone());return response}return await caches.match(request)||response}).catch(async()=>await caches.match(request)||new Response(JSON.stringify({error:'Public content unavailable offline.'}),{status:503,headers:{'Content-Type':'application/json'}})));return;}
  if(url.pathname.startsWith('/assets/')||url.pathname.startsWith('/icons/')||url.pathname==='/manifest.webmanifest'){event.respondWith(caches.match(request).then(hit=>hit||fetch(request).then(async response=>{if(response.ok){const cache=await caches.open(CACHE);await cache.put(request,response.clone())}return response})));}
 });`
