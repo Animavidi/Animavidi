@@ -158,3 +158,11 @@ Implementation and local/native Cloudflare tests completed; see [Account_Cloud_S
 - [x] Native positive/negative abuse probes and full candidate/beta account/offline/sync/privacy regressions passed; synthetic users cleaned.
 - [x] Fix 301a2eef-0c06-41ee-b465-7ac40499a387 active on beta at 100%; fresh real mobile registration and e-mail verification/login passed.
 - [x] Original accounts/records preserved, production/main unchanged, logs and evidence saved without private identities or tokens.
+
+
+## Registration confirmation feedback — 29 October 2026
+
+- [x] Reproduced the ambiguous completion paragraph and already-verified-account flow.
+- [x] Added focused completion screen and clear sign-in/password-recovery actions, preserving generic signup privacy and credentials.
+- [x] Local full browser/PWA/rate tests and native mobile/tablet/desktop plus active-beta checks passed; synthetic fixtures cleaned.
+- [x] cb1d3e3d-59a2-42c9-9372-ac50226d8b51 active on beta only. Backend/rate policy unchanged; production untouched.

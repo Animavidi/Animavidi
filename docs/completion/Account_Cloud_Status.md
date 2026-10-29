@@ -1,3 +1,5 @@
+> Latest UI update: cb1d3e3d-59a2-42c9-9372-ac50226d8b51 is active on the beta, with a clearer registration confirmation and password-recovery actions. Backend/rate-limit repair is retained. See [Registration_Confirmation_Fix.md](Registration_Confirmation_Fix.md).
+
 > Current beta: 301a2eef-0c06-41ee-b465-7ac40499a387, including the verified registration-quota repair. See [Registration_Rate_Limit_Fix.md](Registration_Rate_Limit_Fix.md). Earlier checkpoints below are historical.
 
 > Current status: the exact Resend candidate e0cf3b4d-0b1f-43ec-9da0-8e8ddc95e082 is active at 100% on the shared beta. See [Final_Beta_Activation.md](Final_Beta_Activation.md) and final-beta-verification.json. Earlier pending-mail/promotion statements below are historical checkpoints.

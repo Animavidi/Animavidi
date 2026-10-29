@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-29T21:30:22.662Z",
+  "sourceCommit": "75fd6b3bbbea0dd88698d9d687e18f3fe76af740",
+  "active": [
+    {
+      "version_id": "cb1d3e3d-59a2-42c9-9372-ac50226d8b51",
+      "percentage": 100
+    }
+  ],
+  "deployedAtAmsterdam": "donderdag 29 oktober 2026 om 22:29:09 CET",
+  "candidateChecks": {
+    "passed": true,
+    "checks": [
+      {
+        "width": 390,
+        "confirmation": true,
+        "focused": true,
+        "passwordHidden": true,
+        "recoveryPrefilledWithoutUrl": true,
+        "originalPasswordLogin": true
+      },
+      {
+        "width": 820,
+        "confirmation": true,
+        "focused": true,
+        "passwordHidden": true,
+        "recoveryPrefilledWithoutUrl": true,
+        "originalPasswordLogin": true
+      },
+      {
+        "width": 1440,
+        "confirmation": true,
+        "focused": true,
+        "passwordHidden": true,
+        "recoveryPrefilledWithoutUrl": true,
+        "originalPasswordLogin": true
+      }
+    ],
+    "existingCredentialUnchanged": true,
+    "existingNameUnchanged": true
+  },
+  "activeBetaChecks": {
+    "passed": true,
+    "checks": [
+      {
+        "width": 390,
+        "confirmation": true,
+        "focused": true,
+        "passwordHidden": true,
+        "recoveryPrefilledWithoutUrl": true,
+        "originalPasswordLogin": true
+      }
+    ],
+    "existingCredentialUnchanged": true,
+    "existingNameUnchanged": true
+  },
+  "isolatedFixturesCleaned": true,
+  "backendScriptIdentical": true,
+  "bindingsPreserved": true,
+  "noRealUserPasswordsChanged": true,
+  "productionUnchanged": true
+}
