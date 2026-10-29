@@ -48,3 +48,20 @@ The agent can then assign the resulting version to the isolated accounts preview
 - https://resend.com/docs/api-reference/emails/send-email
 - https://resend.com/docs/dashboard/emails/idempotency-keys
 - https://better-auth.com/docs/concepts/email
+
+
+## Secret-version verification — 29 October 2026, 20:12 UTC
+
+Guido reports the Resend domain Verified and supplied Worker version e0cf3b4d-0b1f-43ec-9da0-8e8ddc95e082 after secure local secret entry. Read-only Cloudflare inspection confirms:
+
+- Script ETag matches candidate 14a3a6a7-f8c3-4dba-a764-c41010fc38de exactly (source c288448).
+- All existing bindings are present: ASSETS, AUTH_EMAIL_FROM, CONTENT_DB (same beta database), MAMMAL_PHOTOS (same beta bucket), BETTER_AUTH_SECRET and the three administrator secrets. RESEND_API_KEY is an additional secret binding. Secret values were not retrieved and cannot be compared; presence is confirmed only.
+- Compatibility date, flags, asset headers, redirects and API/media routing are retained. Cloudflare made assets.html_handling=auto-trailing-slash explicit. Read-only comparisons of /login, /login/, /passport, /passport/ and /index.html show identical status/redirect behaviour.
+- All 42 checked HTML/JS/CSS/serviceworker/manifest/icon assets match the local candidate build byte for byte.
+- Active shared beta remains 0e2cadf9-f44f-4a26-b3a5-a80758f6beee at 100 percent. Production remains bcd07c8e-f840-47c8-b32f-d8566b50a112. No deployment, alias update, migration, secret write or email request was performed in this check.
+
+Direct isolated preview: https://e0cf3b4d-animavidi-beta.solitary-mountain-8958.workers.dev/
+
+Prepared live test sequence: use only a user-approved test mailbox; register a dedicated test account on this exact origin; confirm actual receipt/from/link origin; open activation link and confirm login/replay rejection; request reset and confirm actual receipt; change the password and verify old-password/session rejection, new login and reset-link reuse rejection. Use a separate browser context without importing an existing personal journal. Retain the test account unless its cleanup is explicitly agreed; never remove existing user data. Do not record credentials, tokens or full mail links in Git or reports. Real token-expiry waiting can be separated from existing passing mocked-expiry tests and must not be claimed complete prematurely.
+
+Pending: Guido must identify the approved test email address. No real mail delivery is claimed yet. Do not activate a deployment or move an alias without his permission; this direct version URL permits the mail tests without either action.
