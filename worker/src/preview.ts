@@ -1,5 +1,7 @@
 import api from './index.ts'
-type PreviewEnv=Parameters<typeof api.fetch>[1] & {ASSETS:Fetcher}
+import { handleUsers } from './users.ts'
+import { cleanDeletedUsers, verifiedUser,type UserEnv } from './userAuth.ts'
+type PreviewEnv=Parameters<typeof api.fetch>[1] & UserEnv & {ASSETS:Fetcher}
 
 // Separate beta entry point. Production routes, bindings and origins stay in
 // wrangler.jsonc; this Worker uses only the isolated preview configuration.
@@ -10,7 +12,14 @@ export default {
       const headers=new Headers(request.headers)
       // Same-origin browser GETs omit Origin. Sec-Fetch-Site is browser-controlled.
       if(!headers.has('Origin') && headers.get('Sec-Fetch-Site')==='same-origin')headers.set('Origin',url.origin)
-      return api.fetch(new Request(request,{headers}),{...env,ADMIN_ALLOWED_ORIGINS:url.origin,MEDIA_BASE_URL:`${url.origin}/media`})
+      const incoming=new Request(request,{headers})
+      if(url.pathname.startsWith('/api/auth/') || url.pathname.startsWith('/api/me/'))return handleUsers(incoming,env)
+      let submitter:string|undefined
+      if(url.pathname==='/api/bird-proposals' && request.method==='POST'){
+        if(headers.get('Origin')!==url.origin)return Response.json({error:'Origin not allowed.'},{status:403})
+        try{const user=await verifiedUser(incoming,env);if(!user)return Response.json({error:'Sign in with a verified account to contribute.'},{status:401});submitter=user.id}catch{return Response.json({error:'Account service unavailable.'},{status:503})}
+      }
+      return api.fetch(incoming,{...env,ADMIN_ALLOWED_ORIGINS:url.origin,MEDIA_BASE_URL:`${url.origin}/media`,SUBMITTER_ID:submitter})
     }
     if(url.pathname.startsWith('/media/')) {
       if(request.method!=='GET' && request.method!=='HEAD')return new Response(null,{status:405})
@@ -28,4 +37,5 @@ export default {
     headers.set('Content-Security-Policy',"frame-ancestors 'none'; object-src 'none'; base-uri 'self'")
     return new Response(response.body,{status:response.status,headers})
   },
+  async scheduled(_event:ScheduledController,env:PreviewEnv){await cleanDeletedUsers(env)},
 } satisfies ExportedHandler<PreviewEnv>

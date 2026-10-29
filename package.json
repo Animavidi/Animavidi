@@ -7,7 +7,7 @@
   "packageManager": "pnpm@11.9.0",
   "scripts": {
     "dev": "vite",
-    "build": "pnpm typecheck && vite build --configLoader runner",
+    "build": "pnpm typecheck && vite build --configLoader runner && node scripts/build-pwa.mjs",
     "build:preview": "node scripts/build-preview.mjs",
     "test:preview": "node scripts/test-preview.mjs",
     "lint": "eslint .",
@@ -30,6 +30,9 @@
     "validate:reviewed-photos": "node scripts/validate-reviewed-photos.mjs"
   },
   "dependencies": {
+    "better-auth": "^1.7.14",
+    "kysely": "^0.29.7",
+    "kysely-d1": "^0.4.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.1"

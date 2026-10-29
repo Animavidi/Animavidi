@@ -1,7 +1,7 @@
 import { birdNameKey, isBirdDraft, type BirdDraft, type BirdProposal } from '../../src/features/birds/model/communityBird.ts'
 import { krugerBirdChecklist } from '../../src/features/birds/data/krugerBirdChecklist.ts'
 
-type BirdEnv = { CONTENT_DB?: D1Database; ADMIN_SESSION_SECRET: string; MAMMAL_PHOTOS?: R2Bucket }
+type BirdEnv = { CONTENT_DB?: D1Database; ADMIN_SESSION_SECRET: string; MAMMAL_PHOTOS?: R2Bucket; SUBMITTER_ID?:string }
 const response = (body: unknown, status = 200) => Response.json(body, { status, headers: { 'Cache-Control': 'no-store' } })
 const knownNames = new Set(krugerBirdChecklist.flatMap((bird) => [birdNameKey(bird.commonName), birdNameKey(bird.scientificName)]))
 const normalized = (draft: BirdDraft): BirdDraft => ({ commonName: draft.commonName.trim(), scientificName: draft.scientificName.trim(), description: draft.description.trim(), sourceUrl: draft.sourceUrl.trim(), author: draft.author?.trim() || 'Anonymous contributor', kind: draft.kind ?? 'new', ...(draft.targetId ? { targetId: draft.targetId } : {}) })
@@ -79,7 +79,7 @@ export async function handleBirds(request: Request, env: BirdEnv, administrator?
       if (isNew && await duplicate(env, draft)) return response({ error: 'This bird is already in the catalogue. Search the existing birds first.' }, 409)
       const id = crypto.randomUUID(), publishedId = `bird-community-${crypto.randomUUID()}`, revision = crypto.randomUUID(), now = new Date().toISOString()
       if(photo) { const stored=await env.MAMMAL_PHOTOS!.put(`contributions/${id}/photo`,photo.stream(),{httpMetadata:{contentType:'image/webp'},customMetadata:{author:draft.author!,licence:'CC BY 4.0'}}); if(!stored)return response({error:'The photo could not be stored. Please retry.'},503) }
-      try { await db.prepare('INSERT INTO bird_proposals(id,body,name_key,scientific_key,revision,published_id,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?) RETURNING id').bind(id,JSON.stringify(draft),isNew ? birdNameKey(draft.commonName) : `contribution-${id}`,isNew ? birdNameKey(draft.scientificName) : '',revision,publishedId,now,now).first() }
+      try { await db.prepare(`INSERT INTO bird_proposals(id,body,name_key,scientific_key,revision,published_id,created_at,updated_at${env.SUBMITTER_ID?',submitter_user_id':''}) VALUES (?,?,?,?,?,?,?,?${env.SUBMITTER_ID?',?':''}) RETURNING id`).bind(id,JSON.stringify(draft),isNew ? birdNameKey(draft.commonName) : `contribution-${id}`,isNew ? birdNameKey(draft.scientificName) : '',revision,publishedId,now,now,...(env.SUBMITTER_ID?[env.SUBMITTER_ID]:[])).first() }
       catch(error) { if(photo) await env.MAMMAL_PHOTOS!.delete(`contributions/${id}/photo`); throw error }
       return response({ id, status: 'pending', message: 'Submitted for administrator approval. This bird is not public yet.' }, 201)
     }

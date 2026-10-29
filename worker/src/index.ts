@@ -10,6 +10,7 @@ type AdminEnv = Omit<Env,'ADMIN_ALLOWED_ORIGINS'|'MEDIA_BASE_URL'> & {
   ADMIN_PASSWORD_HASH: string
   ADMIN_SESSION_SECRET: string
   ADMIN_USERNAME: string
+  SUBMITTER_ID?: string
 }
 
 type R2Photo = {
