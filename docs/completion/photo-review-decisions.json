@@ -1,0 +1,15 @@
+{
+  "reviewedAt": "2026-10-29",
+  "method": "Visual inspection of downloaded candidate contact sheet; metadata checked against Commons response. No claim that photographs were taken in Kruger.",
+  "approved": {
+    "aardvark": { "fileName": "aardvark-1.jpg", "features": "Long tubular snout, large upright ears, arched back and thick tapering tail." },
+    "aardwolf": { "fileName": "aardwolf-1.jpg", "features": "Small hyena-like animal with vertical dark stripes, erect mane and large pointed ears." },
+    "banded-mongoose": { "fileName": "banded-mongoose-1.jpg", "features": "Small mongoose with repeated dark transverse bands across its back." },
+    "black-backed-jackal": { "fileName": "black-backed-jackal-1.jpg", "features": "Pointed muzzle and ears, reddish sides and contrasting dark grizzled saddle." },
+    "blue-wildebeest": { "fileName": "blue-wildebeest-1.jpg", "features": "Heavy-shouldered dark antelope, broad muzzle, curved horns and long black tail; adult with calf." },
+    "caracal": { "fileName": "caracal-1.jpg", "features": "Plain reddish coat, black-backed ears with long black tufts, dark facial markings." },
+    "hippopotamus": { "fileName": "hippopotamus-1.jpg", "features": "Large barrel-shaped grey body, short legs, broad muzzle and high-set eyes and ears." },
+    "serval": { "fileName": "serval-1.jpg", "features": "Very long legs, small head, large ears and golden coat with black spots and neck stripes." }
+  },
+  "quarantined": {}
+}

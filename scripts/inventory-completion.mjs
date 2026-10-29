@@ -7,7 +7,7 @@ const root = new URL('../', import.meta.url)
 const read = async (path) => readFile(new URL(path, root), 'utf8')
 const model = await read('src/features/mammals/model/mammals.ts')
 const legacyProfiles = new Set([...model.matchAll(/^  (?:'([^']+)'|([\w-]+)): profile\(/gm)].map((match) => match[1] ?? match[2]))
-const credits = JSON.parse(await read('src/assets/birds/photo-credits.json'))
+const credits = { ...JSON.parse(await read('src/assets/birds/photo-credits.json')), ...JSON.parse(await read('src/assets/mammals/photo-credits.json')) }
 const mammals = JSON.parse(await read('src/assets/mammals/mammal-images.json'))
 const species = [
   ...krugerMammalChecklist.map((entry) => ({ id: getMammalId(entry), name: entry.officialName, scientificName: entry.scientificName, group: 'mammal' })),
@@ -18,7 +18,7 @@ for (const entry of species) names.set(entry.scientificName, [...(names.get(entr
 for (const entry of species) {
   const path = `src/assets/${entry.group === 'bird' ? 'birds' : 'mammals'}/${entry.id}/primary.webp`
   try { await access(new URL(path, root)); entry.photo = 'packaged' } catch { entry.photo = 'missing' }
-  entry.attribution = credits[entry.id] ? 'recorded-reviewed-bird' : entry.photo === 'packaged' ? 'legacy-rights-review-required' : 'missing'
+  entry.attribution = credits[entry.id] ? 'recorded-reviewed-photo' : entry.photo === 'packaged' ? 'legacy-rights-review-required' : 'missing'
   entry.photoSource = credits[entry.id]?.sourceUrl ?? mammals.find((photo) => photo.id === entry.id)?.source ?? ''
   entry.profile = legacyProfiles.has(entry.id) ? 'legacy-profile-source-review-required' : 'missing-reviewed-profile'
   entry.taxonomyReview = names.get(entry.scientificName).length > 1 ? 'shared-scientific-name' : 'not-independently-reviewed'

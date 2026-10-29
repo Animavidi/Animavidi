@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import credits from '@/assets/birds/photo-credits.json'
+import { photoCredits as credits } from '@/assets/wildlife/photoCredits'
 import { getAnimalPrimaryImage } from '@/assets/wildlife/animalPrimaryImages'
 import styles from './PhotoCreditsPage.module.css'
 

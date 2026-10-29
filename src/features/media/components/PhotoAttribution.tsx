@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import credits from '@/assets/birds/photo-credits.json'
+import { photoCredits as credits } from '@/assets/wildlife/photoCredits'
 import type { Mammal } from '@/features/mammals/model/mammal'
 import { useMammalPhoto } from '@/features/mammals/components/MammalPhotoProvider/MammalPhotoProvider'
 

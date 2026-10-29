@@ -55,3 +55,13 @@ Run inventory again after each accepted batch. Keep candidates separate from app
 ## Current validation
 
 Pending this checkout's baseline tests. Historical tests are described in `../Kruger_Completion_Status.md` and require a fresh run.
+
+### Batch 1: photo workflow and eight mammals
+
+- Eight visually checked mammal images prepared; 38 packaged photos total, 656 missing.
+- Candidate metadata and explicit review decisions saved; unapproved images remain in ignored work/photo-candidates.
+- Commons sometimes reports cirrussearch-too-busy-error. Collector saves each species, throttles requests and stops on backpressure.
+- Fresh typecheck, lint, production build, SQLite Worker tests and reviewed-photo validator passed. Browser passed on installed Edge, including real multiline profile/route persistence, bird sightings/Passport, mammal/bird image loading and public attribution.
+- Browser loader now accepts Windows module paths. No multiline editor bug was found; source was already correct.
+- Brochure path supplied by user is unavailable in both current local and connector environments; waiting for accessible original.
+

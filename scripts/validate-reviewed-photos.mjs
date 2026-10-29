@@ -4,19 +4,20 @@ import { createHash } from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { join } from 'node:path'
 import { krugerBirdChecklist } from '../src/features/birds/data/krugerBirdChecklist.ts'
+import { getMammalId, krugerMammalChecklist } from '../src/features/mammals/data/krugerMammalChecklist.ts'
 const root = fileURLToPath(new URL('../', import.meta.url))
-const credits = JSON.parse(await readFile(join(root, 'src/assets/birds/photo-credits.json'), 'utf8'))
-const ids = new Set(krugerBirdChecklist.map((bird) => bird.id))
+const credits = { ...JSON.parse(await readFile(join(root, 'src/assets/birds/photo-credits.json'), 'utf8')), ...JSON.parse(await readFile(join(root, 'src/assets/mammals/photo-credits.json'), 'utf8')) }
+const ids = new Set([...krugerBirdChecklist.map((bird) => bird.id), ...krugerMammalChecklist.map(getMammalId)])
 assert.ok(Object.keys(credits).length > 0)
 for (const [id, credit] of Object.entries(credits)) {
-  assert.ok(ids.has(id), `Unknown bird ID: ${id}`)
-  assert.equal(credit.assetPath, `src/assets/birds/${id}/primary.webp`)
+  assert.ok(ids.has(id), `Unknown species ID: ${id}`)
+  assert.equal(credit.assetPath, `src/assets/${id.startsWith('bird-') ? 'birds' : 'mammals'}/${id}/primary.webp`)
   assert.ok(credit.author && credit.fileTitle && credit.changes && credit.reviewedAt)
   assert.equal(new URL(credit.sourceUrl).hostname, 'commons.wikimedia.org')
-  assert.equal(new URL(credit.downloadUrl).hostname, 'upload.wikimedia.org')
+  assert.ok(['upload.wikimedia.org', 'thumb.wikimedia.org'].includes(new URL(credit.downloadUrl).hostname))
   assert.equal(new URL(credit.licenseUrl).hostname, 'creativecommons.org')
-  assert.match(credit.license, /^CC BY(?:-SA)? (?:2\.0|3\.0|4\.0)$/)
-  assert.match(credit.originalSha256, /^[a-f0-9]{64}$/)
+  assert.match(credit.license, /^(?:CC BY(?:-SA)? (?:2\.0|3\.0|4\.0)|CC0)$/)
+  assert.match(credit.originalSha256 ?? credit.downloadedSourceSha256, /^[a-f0-9]{64}$/)
   assert.ok(credit.width > 0 && credit.height > 0 && Math.max(credit.width, credit.height) <= 1600)
   const bytes = await readFile(join(root, credit.assetPath))
   assert.equal(bytes.subarray(0, 4).toString(), 'RIFF')
