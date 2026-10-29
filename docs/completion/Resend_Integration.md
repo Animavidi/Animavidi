@@ -65,3 +65,12 @@ Direct isolated preview: https://e0cf3b4d-animavidi-beta.solitary-mountain-8958.
 Prepared live test sequence: use only a user-approved test mailbox; register a dedicated test account on this exact origin; confirm actual receipt/from/link origin; open activation link and confirm login/replay rejection; request reset and confirm actual receipt; change the password and verify old-password/session rejection, new login and reset-link reuse rejection. Use a separate browser context without importing an existing personal journal. Retain the test account unless its cleanup is explicitly agreed; never remove existing user data. Do not record credentials, tokens or full mail links in Git or reports. Real token-expiry waiting can be separated from existing passing mocked-expiry tests and must not be claimed complete prematurely.
 
 Pending: Guido must identify the approved test email address. No real mail delivery is claimed yet. Do not activate a deployment or move an alias without his permission; this direct version URL permits the mail tests without either action.
+
+
+## Live mailbox test started — 29 October 2026
+
+The user approved a specific mailbox for actual activation/reset mail testing on version e0cf3b4d-0b1f-43ec-9da0-8e8ddc95e082 only. A read-only preflight confirmed no existing user for that mailbox before creating a dedicated test account. Registration returned 200 and the new account remains unverified. This does not prove provider acceptance or inbox delivery because mail runs in the background.
+
+The available mail connector belongs to a different mailbox; its tightly scoped search found no forwarded test message. Resend delivery logs are not connected. The user has been asked to confirm actual receipt (including spam) and open the activation link without sharing it. Activation remains pending in D1. Password reset is prepared for the next step after activation; no reset or existing-user changes have been performed. Private test credentials and state are confined to ignored local work files and are not included here.
+
+Both active Worker version sets were rechecked unchanged. No Worker version, alias, binding, migration or production setting was changed. Resume from work/resend-real-mail-state.json and use work/check-real-mail-test.mjs to verify only this test account after the user activates it. Do not rerun registration or replace/delete this account. Live link/replay/expiry tests remain pending and must not be reported as passed.
