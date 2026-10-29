@@ -74,3 +74,10 @@ The user approved a specific mailbox for actual activation/reset mail testing on
 The available mail connector belongs to a different mailbox; its tightly scoped search found no forwarded test message. Resend delivery logs are not connected. The user has been asked to confirm actual receipt (including spam) and open the activation link without sharing it. Activation remains pending in D1. Password reset is prepared for the next step after activation; no reset or existing-user changes have been performed. Private test credentials and state are confined to ignored local work files and are not included here.
 
 Both active Worker version sets were rechecked unchanged. No Worker version, alias, binding, migration or production setting was changed. Resume from work/resend-real-mail-state.json and use work/check-real-mail-test.mjs to verify only this test account after the user activates it. Do not rerun registration or replace/delete this account. Live link/replay/expiry tests remain pending and must not be reported as passed.
+
+
+## Live activation confirmed — 29 October 2026
+
+The user confirmed receipt/opening and supplied a screenshot showing Email verified at the isolated version's login callback. D1 now confirms the dedicated test account is verified. Actual login returned 200 and its private journal API returned 200. Both active Worker version sets remain unchanged.
+
+A single password-reset request for the same test account returned the generic 200 response. Actual reset-mail receipt and opening are awaiting the user's confirmation. The user has been asked to open the reset form without submitting a password or sharing a token/address-bar screenshot. A private local continuation script is prepared to consume only this test account's reset token, reject a second use, check old-session revocation and old-password rejection, and verify new login. No reset submission has yet been made. Natural passage of token lifetime has not been tested live; earlier mocked expiration tests are separate evidence.
