@@ -3,7 +3,7 @@ import {createContext,useCallback,useContext,useEffect,useState,useRef,type Reac
 import {currentUserId,currentUserName,setActiveUserId} from '../data/personalStorage'
 import {resetSyncStatus,startSynchronisation} from '../services/sync'
 import {finishLegacyMigration} from '../services/legacyMigration'
-export type ExplorerUser={id:string;name:string;email:string;emailVerified:boolean;createdAt?:string}
+export type ExplorerUser={id:string;name:string;email:string;emailVerified:boolean;createdAt?:string|number}
 type AccountState={user:ExplorerUser|null;loading:boolean;offline:boolean;refresh:()=>Promise<void>;logout:()=>Promise<void>}
 const AccountContext=createContext<AccountState|null>(null)
 const cacheKey='animavidi:verified-offline-session',logoutKey='animavidi:logout-pending'

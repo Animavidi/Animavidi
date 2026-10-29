@@ -3,7 +3,7 @@ let activeUserId:string|undefined
 let activeName:string|undefined
 let activeSince:string|undefined
 export const currentUserId=()=>activeUserId
-export function setActiveUserId(id:string|undefined,name?:string,createdAt?:string){activeUserId=id;activeName=name;activeSince=createdAt?.slice(0,4)}
+export function setActiveUserId(id:string|undefined,name?:string,createdAt?:string|number){activeUserId=id;activeName=name;const date=createdAt===undefined?null:new Date(createdAt);activeSince=date&&!Number.isNaN(date.getTime())?String(date.getUTCFullYear()):undefined}
 export const currentUserName=()=>activeName
 export const currentUserSince=()=>activeSince
 const scoped=(key:string)=>activeUserId?`animavidi:user:${activeUserId}:${key}`:null
