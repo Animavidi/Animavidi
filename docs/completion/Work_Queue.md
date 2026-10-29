@@ -125,3 +125,8 @@ Pending this checkout's baseline tests. Historical tests are described in `../Kr
 
 - Final checks: lint, typecheck/build, all functional validators and Wrangler dry-run passed. Full browser suite passed for default100/full546 toggle, existing flows, moderation across separate visitor/admin contexts, and Passport reload with simulated catalogue outage. Mobile submission/review screenshots inspected. Strict starter content/image gates correctly remain failing (10 photos,2 profiles;46/248 starter-scope image records including mammals).
 
+
+
+## Account/cloud/PWA follow-up — 29 October 2026
+
+Implementation and local/native Cloudflare tests completed; see [Account_Cloud_Status.md](Account_Cloud_Status.md) for evidence and resumable release gates. Real activation/reset email and physical-device installation remain unverified. Shared beta and production were not promoted.
