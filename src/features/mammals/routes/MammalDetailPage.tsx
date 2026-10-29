@@ -1,4 +1,5 @@
 import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
+import { BirdContributions } from '@/features/birds/components/BirdContributions'
 import { PhotoAttribution } from '@/features/media/components/PhotoAttribution'
 import { sourcedAnimalProfiles } from '@/features/content/data/sourcedAnimalProfiles'
 import { getReviewedBirdContent } from '@/features/birds/data/reviewedBirdContent'
@@ -98,9 +99,10 @@ export function MammalDetailPage() {
       </header>
 
       <article className={styles.content}>
+          {mammal.overviewSection === 'birds' ? <BirdContributions animalId={animalId} /> : null}
         <PhotoAttribution animal={mammal} />
         {getReviewedBirdContent(animalId) && editorial?.kind !== 'animal' ? <p><small><a href={getReviewedBirdContent(animalId)?.sourceUrl} target="_blank" rel="noreferrer">BirdLife South Africa profile source</a> · Checked 29 October 2026.</small></p> : null}
-        {findApprovedBird(animalId) ? <p><small>Community suggestion · Approved by the administrator. {findApprovedBird(animalId)?.sourceUrl ? <a href={findApprovedBird(animalId)?.sourceUrl} target="_blank" rel="noreferrer">Submitted source</a> : null}</small></p> : null}
+        {findApprovedBird(animalId) ? <p><small>Community suggestion by {findApprovedBird(animalId)?.author ?? 'Anonymous contributor'} · Approved by the administrator. {findApprovedBird(animalId)?.sourceUrl ? <a href={findApprovedBird(animalId)?.sourceUrl} target="_blank" rel="noreferrer">Submitted source</a> : null}</small></p> : null}
         {searchParams.get('sighting') === 'created' ? <p className={styles.success} role="status">Sighting saved locally.</p> : null}
 
         <section aria-labelledby="observation-title" className={styles.observationCard}>

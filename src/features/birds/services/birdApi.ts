@@ -7,8 +7,14 @@ async function call(path: string, init?: RequestInit, admin = false): Promise<un
   if (!response.ok) throw new Error(data && typeof data === 'object' && 'error' in data && typeof data.error === 'string' ? data.error : 'The bird service is unavailable.')
   return data
 }
-export async function submitBird(draft: BirdDraft): Promise<void> {
-  await call('/api/bird-proposals',{ method: 'POST',headers: { 'Content-Type': 'application/json' },body: JSON.stringify(draft) })
+export async function submitBird(draft: BirdDraft, photo?: Blob): Promise<void> {
+  if(photo) { const form = new FormData(); form.set('draft',JSON.stringify(draft)); form.set('photo',photo,'contribution.webp'); await call('/api/bird-proposals',{method:'POST',body:form}) }
+  else await call('/api/bird-proposals',{ method: 'POST',headers: { 'Content-Type': 'application/json' },body: JSON.stringify(draft) })
+}
+export async function loadBirdContributions(targetId:string): Promise<{id:string;draft:BirdDraft;approvedAt:string}[]> {
+  const data = await call(`/api/bird-contributions?target=${encodeURIComponent(targetId)}`)
+  if(!data || typeof data !== 'object' || !('items' in data) || !Array.isArray(data.items)) throw new Error('Invalid contribution response.')
+  return data.items.filter((item:unknown): item is {id:string;draft:BirdDraft;approvedAt:string} => Boolean(item && typeof item === 'object' && 'id' in item && typeof item.id === 'string' && 'draft' in item && isBirdDraft(item.draft) && 'approvedAt' in item && typeof item.approvedAt === 'string'))
 }
 function isProposal(value: unknown): value is BirdProposal {
   if (!value || typeof value !== 'object') return false

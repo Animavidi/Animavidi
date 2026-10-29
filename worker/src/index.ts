@@ -3,7 +3,9 @@ import { handleBirds, isApprovedBird } from './birds.ts'
 import { krugerBirdChecklist } from '../../src/features/birds/data/krugerBirdChecklist.ts'
 import { getMammalId, krugerMammalChecklist } from '../../src/features/mammals/data/krugerMammalChecklist.ts'
 
-type AdminEnv = Env & {
+type AdminEnv = Omit<Env,'ADMIN_ALLOWED_ORIGINS'|'MEDIA_BASE_URL'> & {
+  ADMIN_ALLOWED_ORIGINS: string
+  MEDIA_BASE_URL: string
   CONTENT_DB?: D1Database
   ADMIN_PASSWORD_HASH: string
   ADMIN_SESSION_SECRET: string
@@ -36,6 +38,7 @@ export default {
       const url = new URL(request.url)
       let response: Response
       if (url.pathname.startsWith('/api/admin/') && !isAllowedOrigin(origin, env)) response = json({ error: 'Origin not allowed.' }, 403)
+      else if (url.pathname.startsWith('/api/bird-contributions') && request.method === 'GET') response = await handleBirds(request, env)
       else if (url.pathname === '/api/birds' && request.method === 'GET') response = await handleBirds(request, env)
       else if (url.pathname === '/api/bird-proposals' && request.method === 'POST') response = isAllowedOrigin(origin, env) ? await handleBirds(request, env) : json({ error: 'Origin not allowed.' },403)
       else if (url.pathname.startsWith('/api/admin/bird-proposals')) { const session = await authenticate(request,env); response = session ? await handleBirds(request,env,session.sub) : json({ error: 'Your admin session has expired.' },401) }
@@ -73,6 +76,12 @@ export default {
 async function login(request: Request, env: AdminEnv): Promise<Response> {
   const body = await readJson(request)
   if (!body || typeof body.username !== 'string' || typeof body.password !== 'string') return json({ error: 'Enter your administrator credentials.' }, 400)
+  if (env.CONTENT_DB) {
+    const client = `login:${await sign(request.headers.get('CF-Connecting-IP') ?? 'local',env.ADMIN_SESSION_SECRET)}`
+    const window = Math.floor(Date.now()/3600000)
+    const limit = await env.CONTENT_DB.prepare('INSERT INTO bird_submission_limits(client_key,window_start,attempts) VALUES (?,?,1) ON CONFLICT(client_key) DO UPDATE SET attempts = CASE WHEN window_start = excluded.window_start THEN attempts + 1 ELSE 1 END, window_start = excluded.window_start RETURNING attempts').bind(client,window).first<{attempts:number}>()
+    if(!limit || limit.attempts>20) return json({error:'Too many login attempts. Try again in an hour.'},429)
+  }
   const usernameValid = await secureEqual(body.username, env.ADMIN_USERNAME)
   const passwordValid = await verifyPassword(body.password, env.ADMIN_PASSWORD_HASH)
   if (!usernameValid || !passwordValid) return json({ error: 'The administrator credentials are not valid.' }, 401)
@@ -98,7 +107,11 @@ async function uploadPhoto(request: Request, env: AdminEnv, mammalId: string): P
   const contentLength = Number(request.headers.get('Content-Length') ?? '0')
   if (contentLength > maxUploadBytes + 1024 * 128) return json({ error: 'The photo is larger than 10 MB.' }, 413)
 
-  const form = await request.formData()
+  const reader=request.body?.getReader(); if(!reader) return json({error:'Choose a photo to upload.'},400)
+  const chunks:Uint8Array[]=[]; let length=0
+  while(true) { const part=await reader.read(); if(part.done)break; length+=part.value.length; if(length>maxUploadBytes+128*1024) { await reader.cancel(); return json({error:'The upload is larger than 10 MB.'},413) } chunks.push(part.value) }
+  const upload=new Uint8Array(length); let offset=0; for(const chunk of chunks) {upload.set(chunk,offset);offset+=chunk.length}
+  const form = await new Response(upload,{headers:{'Content-Type':request.headers.get('Content-Type') ?? ''}}).formData()
   const photo = form.get('photo')
   if (!(photo instanceof File)) return json({ error: 'Choose a photo to upload.' }, 400)
   const extension = allowedImageTypes.get(photo.type)

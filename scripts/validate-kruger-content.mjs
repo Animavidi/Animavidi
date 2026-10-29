@@ -43,7 +43,7 @@ const encode = (value) => Buffer.from(value).toString('base64url')
 const passwordKey = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveBits'])
 const hash = await crypto.subtle.deriveBits({ name: 'PBKDF2', salt, iterations: 100000, hash: 'SHA-256' }, passwordKey, 256)
 const sqlite = new DatabaseSync(':memory:')
-sqlite.exec(readFileSync(new URL('../worker/migrations/0001_content.sql', import.meta.url), 'utf8'))
+for(const migration of ['0001_content.sql','0002_bird_proposals.sql','0003_bird_contributions.sql'])sqlite.exec(readFileSync(new URL('../worker/migrations/'+migration, import.meta.url), 'utf8'))
 const database = {
   prepare(sql) {
     const statement = sqlite.prepare(sql)

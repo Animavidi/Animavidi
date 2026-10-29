@@ -29,3 +29,10 @@ Current starter content: **10/100 attributed, visually reviewed photographs and 
 `pnpm validate:starter-birds` is the strict 100-bird content gate and intentionally fails until content is complete. `--inventory-only` checks the selected IDs and reports progress without approving a release. `pnpm validate:release-starter-images -- --manifest=...` explicitly checks 148 mammals plus 100 selected birds. The old full-checklist image audit remains available; it is not silently changed to pass. Community suggestions require name/description and approval; photographs are optional and remain a separate administrator photo workflow.
 
 Do not label 100 profiles/photos complete merely because a priority list exists. Do not mark the old whole-checklist image gate passed by excluding species silently; document the revised release set and its validation explicitly.
+
+
+## Beta implementation update, 29 October 2026
+
+All checklist birds remain usable without full profiles or photography. Moderated contributions now cover missing species, photo uploads, name corrections and supplementary information. Existing-species contributions attach to stable IDs as credited community material; official checklist names and IDs remain intact. Only approved rows are public. Original author, target, contribution kind and photo permission cannot be changed by moderator edits. Photos require a declared ownership grant under CC BY 4.0, browser re-encoding, bounded server upload and visual administrator review; pending/rejected image URLs return 404 publicly. Migration 0003 narrows catalogue publication to new-species approvals while preserving the original queue and history.
+
+Verified locally: private submission, origin/session/body/rate checks, text and photo approval/rejection, stale-write protection, duplicate identities, immutable author/rights, binary photo round-trip, failed storage, catalogue pagination and browser image decoding. Actual Cloudflare preview validation remains pending. Local journals have no cloud identity or automatic device sync.
