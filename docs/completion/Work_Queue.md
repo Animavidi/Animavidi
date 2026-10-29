@@ -2,7 +2,21 @@
 
 Baseline: `9e38d30e135e72faa452eda0109eedea6d2a16ce`, branch `feat/complete-kruger-content`, existing draft PR #1. No production release until all gates pass. Existing IDs, IndexedDB records and map remain authoritative.
 
-## Checkpoint 2026-10-29
+## Beta checkpoint 2026-10-29
+
+The latest user instruction makes functionality and an accessible isolated beta the delivery gate; completing all photography/profiles is deferred. See `Beta_Verification.md` for the final tested scope, preview URL, limitations and evidence.
+
+- [x] All checklist birds usable with placeholders; alias search and correct Passport totals.
+- [x] Moderated new birds, photos, corrections and information; immutable author/rights; private review and public approval.
+- [x] My Animavidi, visited camps, private photo backups and additive import.
+- [x] Existing validators and browser checks; real preview D1/R2/auth and responsive UI.
+- [x] Data survives browser reopen, repeat deployment and admin logout/login.
+- [x] Real Big Five/rare/legendary browser transitions; cloud CMS/history/conflict checks.
+- [x] Remove exact isolated test fixtures and verify removal.
+- [ ] Complete deferred photo/profile coverage and original asset rights review before the definitive release.
+- [ ] Obtain explicit permission before a production release.
+
+## Original full-content checkpoint (historical)
 
 - [x] Verify remote branch and PR match the supplied commit; clone exact branch.
 - [x] Read saved completion notes, roadmap, content models and admin modules.

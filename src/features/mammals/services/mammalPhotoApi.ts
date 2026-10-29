@@ -1,6 +1,7 @@
 import type { MammalPhotoManifest } from './mammalPhotoResolution'
 
-const apiBaseUrl = (import.meta.env.VITE_ADMIN_API_BASE_URL as string | undefined)?.replace(/\/$/, '')
+const configuredBaseUrl = (import.meta.env.VITE_ADMIN_API_BASE_URL as string | undefined)?.replace(/\/$/, '')
+const apiBaseUrl = configuredBaseUrl === 'same-origin' ? window.location.origin : configuredBaseUrl
 
 export function getAdminApiBaseUrl(): string | undefined {
   return apiBaseUrl

@@ -113,8 +113,15 @@ export const mammals: readonly Mammal[] = krugerMammalChecklist.map((entry) => {
   }
 })
 
+// These three common-name mappings were verified against the companion Birda
+// checklist's scientific names; see docs/completion/Bird_Community_Plan.md.
+const reviewedBirdAliases: Record<string, readonly string[]> = {
+  'bird-cape-glossy-starling': ['Cape Starling'],
+  'bird-hadeda-ibis': ['Hadada Ibis'],
+  'bird-green-backed-heron': ['Striated Heron'],
+}
 export let birds: readonly Mammal[] = krugerBirdChecklist.map((entry) => ({
-  aliases: [entry.commonName], categories: ['birds'], commonName: entry.commonName,
+  aliases: [entry.commonName, ...(reviewedBirdAliases[entry.id] ?? [])], categories: ['birds'], commonName: entry.commonName,
   id: entry.id, image: getBirdPrimaryImage(entry.id) ?? missingPhotoFallback, imageAlt: entry.commonName,
   imageFallback: missingPhotoFallback, officialCommonName: entry.commonName,
   overviewSection: 'birds', scientificName: entry.scientificName, sortName: entry.commonName,

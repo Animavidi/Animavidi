@@ -1,6 +1,6 @@
 # Kruger completion work, updated 29 October 2026
 
-Status: IN PROGRESS. This branch is not a production release and does not claim that the whole Animavidi roadmap is complete.
+Status: FUNCTIONAL BETA VERIFIED; full-content/production work remains open. This branch is not a production release and does not claim that the whole Animavidi roadmap is complete.
 
 ## Beta scope update, 29 October 2026
 
@@ -100,3 +100,6 @@ This is an initial reviewed batch, not complete image coverage. Current packaged
 - Added My Animavidi with an editable local explorer name, My Camps visit checklist and private JSON backup/import including original photo bytes. Existing sighting IDs are merged additively in one IndexedDB transaction; existing records/preferences are not replaced.
 - Local browser tests passed for private photo export and import into an empty browser, repeat import without duplicates, saved profile and camp selections after reload. No account/device sync is implemented; the UI explicitly says so and warns that a different origin/browser has separate storage.
 - Community contribution and personal-data browser flows pass with the real Worker handler and isolated test SQLite/R2 adapters. Cloudflare verification is still pending; local success is not claimed as remote validation.
+
+
+Final functional beta evidence and limitations: `docs/completion/Beta_Verification.md`. Cloud tests and persistence checks passed; isolated test fixtures were removed. No production deployment or merge was performed.

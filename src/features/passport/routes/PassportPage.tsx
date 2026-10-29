@@ -79,8 +79,7 @@ export function PassportPage() {
         <button className={styles.share} onClick={() => void share()}><PassportIcon name="share" /> <span>Share</span></button>
       </header>
       {shareStatus ? <p className={styles.toast} role="status">{shareStatus}</p> : null}
-      <p className={styles.toast}>Beta: your sightings and photos stay in this browser on this device. There is no account or device synchronisation. Clearing browser data removes local records.</p>
-      <p className={styles.toast}><Link to="/my-animavidi">My Animavidi: profile, My Camps and personal backups</Link></p>
+      <aside className={styles.localNotice}><p>Beta: your sightings and photos stay in this browser on this device. There is no account or device synchronisation. Clearing browser data removes local records.</p><Link to="/my-animavidi">My Animavidi: profile, My Camps and personal backups</Link></aside>
 
       <div className={styles.document}>
         <PassportCard profile={passport.profile} />
