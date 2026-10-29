@@ -81,3 +81,21 @@ Both active Worker version sets were rechecked unchanged. No Worker version, ali
 The user confirmed receipt/opening and supplied a screenshot showing Email verified at the isolated version's login callback. D1 now confirms the dedicated test account is verified. Actual login returned 200 and its private journal API returned 200. Both active Worker version sets remain unchanged.
 
 A single password-reset request for the same test account returned the generic 200 response. Actual reset-mail receipt and opening are awaiting the user's confirmation. The user has been asked to open the reset form without submitting a password or sharing a token/address-bar screenshot. A private local continuation script is prepared to consume only this test account's reset token, reject a second use, check old-session revocation and old-password rejection, and verify new login. No reset submission has yet been made. Natural passage of token lifetime has not been tested live; earlier mocked expiration tests are separate evidence.
+
+
+## Live activation and reset outcome — 29 October 2026
+
+Test version remained exclusively e0cf3b4d-0b1f-43ec-9da0-8e8ddc95e082. The approved mailbox had no pre-existing account; only the dedicated test account was used. The user confirmed activation-mail receipt/opening by supplying the verified callback screenshot, and supplied the reset-mail link. No mail links, tokens, credentials or mailbox address are recorded here.
+
+Observed live results:
+
+- Activation persisted as verified in D1; login and authenticated private API both returned 200.
+- The reset-mail callback redirected to the correct isolated origin and reset route with its matching test token. A private headless browser rendered Choose a new password successfully.
+- Submitting the unused reset token returned 200. Repeating reset with the same token returned 400. Opening the callback again rejected it as INVALID_TOKEN. No unused reset token remained for this test account.
+- The previous private session returned 401; the previous password was rejected. New-password login and its private API returned 200.
+- The temporary automated test session was signed out after testing. The test account was retained; existing journals and other users were not changed.
+- Shared beta and production active version sets were rechecked unchanged. No new Worker version, deployment, alias change, migration or production write was performed.
+
+Mailbox receipt evidence is user-supplied; no independent Resend delivery-event log or spam-placement inspection was available. The posted reset link was consumed during testing and is now invalid. Its sensitive value has not been copied into reports or Git.
+
+Expiry limit: live one-use invalidation is proven. Full natural waiting of the one-hour activation and thirty-minute reset TTLs has not been performed; prior local/mock expiry and concurrent-replay tests passed. Do not label elapsed-time expiry or physical iOS/Android installation as live-tested. The isolated test account remains available without disclosing its generated test passwords.
