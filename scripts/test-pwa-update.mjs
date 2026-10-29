@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict'
+import {createServer} from 'node:http'
+import {readFileSync,existsSync} from 'node:fs'
+import {resolve,extname} from 'node:path'
+import {chromium} from 'playwright'
+const root=resolve('dist'),base='http://127.0.0.1:4176';let generation=0
+const server=createServer((req,res)=>{const url=new URL(req.url,base);if(url.pathname.startsWith('/api/')){res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end('null');return}let path=resolve(root,'.'+url.pathname);if(!path.startsWith(root)||!existsSync(path)||url.pathname==='/')path=resolve(root,'index.html');let body=readFileSync(path);if(url.pathname==='/sw.js'&&generation)body=Buffer.from(body.toString().replace("const CACHE='animavidi-public-","const CACHE='animavidi-public-update-fixture-"));const type={'.html':'text/html','.js':'application/javascript','.css':'text/css','.webmanifest':'application/manifest+json','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml'}[extname(path)]??'application/octet-stream';res.writeHead(200,{'Content-Type':type,'Cache-Control':'no-store'});res.end(body)})
+await new Promise(resolve=>server.listen(4176,'127.0.0.1',resolve));const browser=await chromium.launch({headless:true,executablePath:process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH??(process.platform==='win32'?'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe':undefined)}),context=await browser.newContext(),page=await context.newPage()
+try{
+  await page.goto(base+'/login');await page.evaluate(()=>navigator.serviceWorker.ready);await page.waitForFunction(()=>navigator.serviceWorker.controller)
+  await page.getByLabel('Email address',{exact:true}).fill('update-fixture@example.invalid')
+  await page.evaluate(async()=>{window.__updateMarker='waiting';localStorage.setItem('animavidi:update-fixture','retained');const db=await new Promise((resolve,reject)=>{const r=indexedDB.open('animavidi-account-update-fixture',1);r.onupgradeneeded=()=>r.result.createObjectStore('queue',{keyPath:'id'});r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(new Error('Fixture open failed'))});await new Promise((resolve,reject)=>{const tx=db.transaction('queue','readwrite');tx.oncomplete=resolve;tx.onerror=()=>reject(new Error('Fixture save failed'));tx.objectStore('queue').put({id:'pending',photo:new Blob(['original photo bytes'],{type:'image/png'})})});db.close()})
+  generation=1;await page.evaluate(async()=>{await(await navigator.serviceWorker.getRegistration()).update()});await page.getByRole('button',{name:'Apply update',exact:true}).waitFor()
+  assert.equal(await page.evaluate(()=>window.__updateMarker),'waiting','No forced reload while update waits');assert.equal(await page.getByLabel('Email address',{exact:true}).inputValue(),'update-fixture@example.invalid')
+  await page.getByRole('button',{name:'Apply update',exact:true}).click();await page.waitForFunction(()=>window.__updateMarker===undefined)
+  const retained=await page.evaluate(async()=>{const db=await new Promise(resolve=>{const r=indexedDB.open('animavidi-account-update-fixture',1);r.onsuccess=()=>resolve(r.result)});const record=await new Promise(resolve=>{const r=db.transaction('queue').objectStore('queue').get('pending');r.onsuccess=()=>resolve(r.result)});db.close();return{setting:localStorage.getItem('animavidi:update-fixture'),photo:await record.photo.text()}})
+  assert.deepEqual(retained,{setting:'retained',photo:'original photo bytes'});console.log('PWA update test passed: new cache waits for explicit consent, open form survives waiting, explicit update reloads, saved queue/photo bytes and settings survive.')
+}finally{await browser.close();await new Promise(resolve=>server.close(resolve))}

@@ -12,7 +12,7 @@ const routeCount = safariRoutes.filter((route) => route.published).length
 const creditCount = Object.keys(JSON.parse(readFileSync(new URL('../src/assets/birds/photo-credits.json', import.meta.url)))).length + Object.keys(JSON.parse(readFileSync(new URL('../src/assets/mammals/photo-credits.json', import.meta.url)))).length
 const projectRoot = fileURLToPath(new URL('../', import.meta.url))
 const outputDirectory = mkdtempSync(join(tmpdir(), 'animavidi-browser-'))
-const server = await createServer({ root: projectRoot, configLoader: 'runner', define: { 'import.meta.env.VITE_ADMIN_API_BASE_URL': JSON.stringify('http://127.0.0.1:8787') }, server: { host: '127.0.0.1', port: 5173 } })
+const server = await createServer({ root: projectRoot, configLoader: 'runner', define: { 'import.meta.env.VITE_ADMIN_API_BASE_URL': JSON.stringify('http://127.0.0.1:8787') }, server: { host: '127.0.0.1', port: 5173, watch: { ignored: ['**/work/**','**/outputs/**'] } } })
 await server.listen()
 const playwrightModule = process.env.PLAYWRIGHT_MODULE_PATH ?? (process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES ? process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES + '/playwright/index.mjs' : 'playwright')
 const { chromium } = await import(/^[A-Za-z]:[\\/]/.test(playwrightModule) ? pathToFileURL(playwrightModule).href : playwrightModule)
