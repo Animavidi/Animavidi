@@ -93,3 +93,10 @@ The user's dashboard screenshots show one object in `animavidi-mammal-photos`: `
 Eight bird images have now been downloaded from their Commons sources, visually reviewed for the depicted species, resized (no source crop) to at most 1600 pixels, converted to WebP, and included in the existing photo-resolution/admin/sighting flow: African fish eagle, Lilac-breasted roller, Kori bustard, Lappet-faced vulture, Martial eagle, Pel's fishing owl, Saddle-billed stork and Southern ground hornbill. `src/assets/birds/photo-credits.json` retains authors, source pages, selected licences, transformation notes and original/optimized checksums. Detail pages and `/photo-credits` provide public attribution; the same recorded licence applies to each WebP derivative.
 
 This is an initial reviewed batch, not complete image coverage. Current packaged coverage is 30/694 entries; 664 still have no approved species image (126 mammals, 538 birds). Existing elephant/lion/cheetah source-rights checks recorded in the original mammal asset manifest also remain open. `validate:reviewed-photos` checks source links, author/licence fields and image hashes. The full-image release gate remains blocked until complete coverage and runtime verification.
+
+
+## Functional beta checkpoint
+
+- Added My Animavidi with an editable local explorer name, My Camps visit checklist and private JSON backup/import including original photo bytes. Existing sighting IDs are merged additively in one IndexedDB transaction; existing records/preferences are not replaced.
+- Local browser tests passed for private photo export and import into an empty browser, repeat import without duplicates, saved profile and camp selections after reload. No account/device sync is implemented; the UI explicitly says so and warns that a different origin/browser has separate storage.
+- Community contribution and personal-data browser flows pass with the real Worker handler and isolated test SQLite/R2 adapters. Cloudflare verification is still pending; local success is not claimed as remote validation.

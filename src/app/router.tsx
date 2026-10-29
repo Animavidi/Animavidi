@@ -21,6 +21,7 @@ const AdminBirdProposalsPage = lazy(() => import('@/features/admin/routes/AdminB
 
 const ParkMapPage = lazy(() => import('@/features/map/routes/ParkMapPage').then((module) => ({ default: module.ParkMapPage })))
 const PassportPage = lazy(() => import('@/features/passport/routes/PassportPage').then((module) => ({ default: module.PassportPage })))
+const MyAnimavidiPage = lazy(() => import('@/features/passport/routes/MyAnimavidiPage').then((module) => ({ default: module.MyAnimavidiPage })))
 const ParkInformationPage = lazy(() => import('@/features/information/routes/ParkInformationPage').then((module) => ({ default: module.ParkInformationPage })))
 const ParkInformationErrorPage = lazy(() => import('@/features/information/routes/ParkInformationPage').then((module) => ({ default: module.ParkInformationErrorPage })))
 const AdminRoutesPage = lazy(() => import('@/features/admin/routes/AdminRoutesPage').then((module) => ({ default: module.AdminRoutesPage })))
@@ -35,6 +36,8 @@ const AdminAnimalsPage = lazy(() => import('@/features/admin/routes/AdminAnimals
 const AdminAnimalPage = lazy(() => import('@/features/admin/routes/AdminAnimalPage').then((module) => ({ default: module.AdminAnimalPage })))
 
 export const router = createBrowserRouter([
+  { path: '/my-animavidi',element:<Suspense fallback={<p role="status">Opening your journal settings…</p>}><MyAnimavidiPage /></Suspense> },
+  { path: '/my-camps',element:<Navigate replace to="/my-animavidi#my-camps" /> },
   { path: '/parks/kruger/birds/propose', element: <Suspense fallback={<p role="status">Opening bird proposal…</p>}><ProposeBirdPage /></Suspense> },
   { path: '/photo-credits', element: <Suspense fallback={<p role="status">Loading photo credits…</p>}><PhotoCreditsPage /></Suspense> },
   {

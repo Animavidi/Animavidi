@@ -56,6 +56,7 @@ export function KrugerHomePage() {
             <span aria-hidden="true" className={styles.chevron} />
           </Link>
           {navigationCards.map((card) => <ParkNavigationCard key={card.title} {...card} />)}
+          <Link className={styles.passportLink} to="/my-animavidi">My Animavidi · Profile, My Camps &amp; Backups</Link>
         </nav>
 
         <Link className={styles.startButton} to="/parks/kruger/mammals"><span aria-hidden="true">→</span><strong>Start your safari</strong></Link>

@@ -9,6 +9,7 @@ export type SightingRepository = {
   getAll(): Promise<readonly Sighting[]>
   getById(id: string): Promise<Sighting | undefined>
   update(input: UpdateSightingInput): Promise<Sighting>
+  mergeBackup(items: readonly Sighting[]): Promise<number>
 }
 
 const databaseName = 'animavidi'
@@ -38,6 +39,18 @@ function requestResult<T>(request: IDBRequest<T>): Promise<T> {
 }
 
 export const sightingRepository: SightingRepository = {
+  async mergeBackup(items) {
+    const database=await openDatabase()
+    try {
+      return await new Promise<number>((resolve,reject)=>{
+        const transaction=database.transaction(storeName,'readwrite'), store=transaction.objectStore(storeName)
+        let added=0
+        transaction.oncomplete=()=>resolve(added)
+        transaction.onabort=()=>reject(transaction.error ?? new Error('Import failed; no sightings were changed.'))
+        for(const item of items) { const request=store.get(item.id); request.onsuccess=()=>{if(!request.result){store.add(item);added++}} }
+      })
+    } finally { database.close() }
+  },
   async countByAnimal(animalId) {
     const database = await openDatabase()
     try {

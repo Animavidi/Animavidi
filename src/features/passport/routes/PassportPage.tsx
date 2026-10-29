@@ -80,6 +80,7 @@ export function PassportPage() {
       </header>
       {shareStatus ? <p className={styles.toast} role="status">{shareStatus}</p> : null}
       <p className={styles.toast}>Beta: your sightings and photos stay in this browser on this device. There is no account or device synchronisation. Clearing browser data removes local records.</p>
+      <p className={styles.toast}><Link to="/my-animavidi">My Animavidi: profile, My Camps and personal backups</Link></p>
 
       <div className={styles.document}>
         <PassportCard profile={passport.profile} />
