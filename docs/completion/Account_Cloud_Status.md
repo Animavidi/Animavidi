@@ -1,3 +1,5 @@
+> Current status: the exact Resend candidate e0cf3b4d-0b1f-43ec-9da0-8e8ddc95e082 is active at 100% on the shared beta. See [Final_Beta_Activation.md](Final_Beta_Activation.md) and final-beta-verification.json. Earlier pending-mail/promotion statements below are historical checkpoints.
+
 # Accounts, cloud journal and PWA — 29 October 2026
 
 Status: account/offline implementation tested; Resend integration is now ready for RESEND_API_KEY and live delivery testing. See [Resend_Integration.md](Resend_Integration.md) for the current mail handoff. The earlier Cloudflare Email Sending blocker below is historical; Resend is the selected provider. This document supersedes the account/offline limitations in the earlier guest-beta report. Same feature branch and draft PR #1; no merge or production deployment.

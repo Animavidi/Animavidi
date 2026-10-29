@@ -38,3 +38,16 @@ If the prepared erasure cron is activated, restore the privately recorded prior 
 Physical iOS/iPadOS/Android installation has not been tested; browser manifest/icons/installability, offline launch, standalone declaration and responsive navigation are tested. Full natural passage of the one-hour activation / thirty-minute reset lifetime was not awaited; local expiry and live one-use invalidation passed. Photo/profile coverage remains the previously agreed beta scope (placeholders allowed); no complete offline first-visit photograph catalogue or GPS route guarantee is claimed.
 
 Activation and post-activation smoke results will be appended after the recorded version is promoted. No production activation or merge is authorised.
+
+
+## Activation completed and verified
+
+At 21:42:02 Europe/Amsterdam, the existing checked version e0cf3b4d-0b1f-43ec-9da0-8e8ddc95e082 was deployed to 100% of animavidi-beta using wrangler versions deploy. No Worker build or version upload occurred. The erasure retry schedule */30 * * * * was applied only to this beta and read back. Its first scheduled invocation has not yet been observed; direct authenticated erasure and cleanup were tested successfully.
+
+Post-activation smoke on https://animavidi-beta.solitary-mountain-8958.workers.dev/ passed the same native Cloudflare account/privacy/D1/R2/two-browser/conflict/offline-photo/browser-restart/installability/deletion suite with fresh isolated synthetic users. Those users were deleted and their records/photos removed. Homepage, login, registration, forgot-password, manifest and serviceworker returned 200 and were byte-identical to the checked version URL; anonymous private/Admin APIs returned 401. Administrator login remained functional and separate.
+
+The approved retained mail-test account was used for one additional reset request on the beta URL (200). Its new test token had the configured 30-minute lifetime. Only that token's expiry was backdated for an explicit expired-record test; reset was rejected, the password credential remained unchanged, and the expired test record was removed. This is a controlled expiry test, not natural elapsed-time evidence. The extra smoke mail may arrive with an intentionally invalid test link; no action is required on it. Prior received activation/reset evidence belongs to exactly the active Worker version.
+
+A beta-only tail received 107 events during the smoke window: 105 ok, 2 canceled during browser/offline exercises, zero exceptions, zero error-level logs and zero 5xx responses. Raw request/log payloads were not saved. A final canonical comparison confirmed all pre-existing application/user rows and R2 metadata unchanged, excluding expected operational rate-limit counters. Production Worker and main were rechecked unchanged.
+
+See final-beta-verification.json for sanitised evidence. Rollback remains available to 0e2cadf9-f44f-4a26-b3a5-a80758f6beee; the previous empty cron configuration is retained privately. No merge was performed. Physical-device installation remains the explicit user acceptance test; no critical failure was observed that requires rollback.

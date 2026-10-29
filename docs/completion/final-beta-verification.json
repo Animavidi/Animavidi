@@ -1,0 +1,200 @@
+{
+  "checkedAt": "2026-10-29T20:46:21.471Z",
+  "betaUrl": "https://animavidi-beta.solitary-mountain-8958.workers.dev/",
+  "previousBeta": [
+    {
+      "version_id": "0e2cadf9-f44f-4a26-b3a5-a80758f6beee",
+      "percentage": 100
+    }
+  ],
+  "activeBeta": [
+    {
+      "version_id": "e0cf3b4d-0b1f-43ec-9da0-8e8ddc95e082",
+      "percentage": 100
+    }
+  ],
+  "activatedAtAmsterdam": "donderdag 29 oktober 2026 om 21:42:02 CET",
+  "sourceCodeCommit": "c288448ce06a108cb6d0c7c4457740f66825dcf6",
+  "preActivationEvidenceCommit": "07e1851e3e184eae1eed8ddb06ba7432ccbe7f0e",
+  "productionUnchanged": true,
+  "main": "4d2ee0911d810909f604d5b62d1a85393e2778d5",
+  "nativeCandidate": {
+    "passed": true,
+    "syntheticUsersCleaned": true,
+    "normalBrowserInstallability": true,
+    "offlineMammalBirdPhotoAfterBrowserRestart": true
+  },
+  "activeBetaSmoke": {
+    "passed": true,
+    "syntheticUsersCleaned": true,
+    "normalBrowserInstallability": true,
+    "offlineMammalBirdPhotoAfterBrowserRestart": true,
+    "pages": [
+      {
+        "path": "/",
+        "status": 200,
+        "identicalToCandidate": true
+      },
+      {
+        "path": "/login",
+        "status": 200,
+        "identicalToCandidate": true
+      },
+      {
+        "path": "/account/create",
+        "status": 200,
+        "identicalToCandidate": true
+      },
+      {
+        "path": "/account/forgot",
+        "status": 200,
+        "identicalToCandidate": true
+      },
+      {
+        "path": "/manifest.webmanifest",
+        "status": 200,
+        "identicalToCandidate": true
+      },
+      {
+        "path": "/sw.js",
+        "status": 200,
+        "identicalToCandidate": true
+      }
+    ],
+    "anonymousPrivateApi": 401,
+    "anonymousAdmin": 401
+  },
+  "dataPreservation": {
+    "checkedAt": "2026-10-29T20:44:50.401Z",
+    "preserved": {
+      "d1_migrations": {
+        "before": 4,
+        "after": 4,
+        "identical": true
+      },
+      "content": {
+        "before": 0,
+        "after": 0,
+        "identical": true
+      },
+      "content_history": {
+        "before": 0,
+        "after": 0,
+        "identical": true
+      },
+      "bird_proposals": {
+        "before": 0,
+        "after": 0,
+        "identical": true
+      },
+      "approved_birds": {
+        "before": 0,
+        "after": 0,
+        "identical": true
+      },
+      "bird_proposal_history": {
+        "before": 0,
+        "after": 0,
+        "identical": true
+      },
+      "av_user": {
+        "before": 1,
+        "after": 1,
+        "identical": true
+      },
+      "av_session": {
+        "before": 0,
+        "after": 0,
+        "identical": true
+      },
+      "av_account": {
+        "before": 1,
+        "after": 1,
+        "identical": true
+      },
+      "av_verification": {
+        "before": 0,
+        "after": 0,
+        "identical": true
+      },
+      "av_deletion_queue": {
+        "before": 0,
+        "after": 0,
+        "identical": true
+      },
+      "av_sightings": {
+        "before": 0,
+        "after": 0,
+        "identical": true
+      },
+      "av_preferences": {
+        "before": 0,
+        "after": 0,
+        "identical": true
+      },
+      "av_mutations": {
+        "before": 0,
+        "after": 0,
+        "identical": true
+      },
+      "av_changes": {
+        "before": 0,
+        "after": 0,
+        "identical": true
+      }
+    },
+    "ignoredOperationalCounters": [
+      "av_auth_rate",
+      "bird_submission_limits"
+    ],
+    "active": {
+      "animavidi-beta": [
+        {
+          "version_id": "e0cf3b4d-0b1f-43ec-9da0-8e8ddc95e082",
+          "percentage": 100
+        }
+      ],
+      "animavidi-content-admin": [
+        {
+          "version_id": "bcd07c8e-f840-47c8-b32f-d8566b50a112",
+          "percentage": 100
+        }
+      ]
+    },
+    "r2": {
+      "before": 0,
+      "after": 0,
+      "identical": true
+    },
+    "passed": true
+  },
+  "workerLogs": {
+    "received": 107,
+    "exceptions": 0,
+    "errorLogs": 0,
+    "responses5xx": 0,
+    "outcomes": {
+      "ok": 105,
+      "canceled": 2
+    },
+    "windowStart": "2026-10-29T20:41:40.664Z",
+    "windowEnd": "2026-10-29T20:44:58.016Z",
+    "rawLogPayloadsSaved": false
+  },
+  "postActivationResetSmoke": {
+    "request": 200,
+    "configuredLifetimeMinutes": 30,
+    "expiredTestRecordRejected": true,
+    "credentialUnchanged": true,
+    "testTokenRemoved": true,
+    "receiptIndependentlyVerified": false
+  },
+  "betaCron": "*/30 * * * *",
+  "previousBetaCrons": [],
+  "rollbackAvailable": true,
+  "acceptanceLimits": [
+    "Physical iOS/iPadOS/Android installation remains manual acceptance.",
+    "Natural passage of full activation/reset TTL was not awaited; mock expiry, controlled expired D1 reset record and live one-use invalidation passed.",
+    "Existing photo/profile scope and GPS limitations remain."
+  ]
+}

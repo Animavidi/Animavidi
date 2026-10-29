@@ -139,3 +139,13 @@ Implementation and local/native Cloudflare tests completed; see [Account_Cloud_S
 - [x] Repeat backend and integrated offline/migration/browser tests.
 - [ ] Guido: verified mail.animavidi.com and RESEND_API_KEY Worker-version secret; see Resend_Integration.md.
 - [ ] Live delivery test, physical-device install checks and controlled beta-only promotion remain gates.
+
+
+## Final beta activation — 29 October 2026
+
+- [x] Exact candidate audited; source/secret/binding correspondence and private rollback backup recorded.
+- [x] Account, existing CMS/catalogue, privacy, two-browser sync, conflict, offline bird/mammal/photo browser-restart and PWA update/installability gates passed.
+- [x] Candidate e0cf3b4d-0b1f-43ec-9da0-8e8ddc95e082 activated on the existing beta URL at 100%, with no new build/upload or main merge.
+- [x] Beta erasure retry schedule applied and read back; full native smoke suite, existing-data comparison and zero-critical-error log window passed.
+- [x] Production resources and main unchanged; prior Worker and cron configuration available for rollback.
+- [ ] Manual physical-device iOS/iPadOS/Android PWA install acceptance; natural full token lifetime waiting remains unclaimed. These are recorded acceptance limits, not a request to modify production.
