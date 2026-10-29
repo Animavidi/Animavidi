@@ -1,9 +1,16 @@
+import { listContent, listContentHistory, saveContent } from './content.ts'
+import { handleBirds, isApprovedBird } from './birds.ts'
+import { krugerBirdChecklist } from '../../src/features/birds/data/krugerBirdChecklist.ts'
 import { getMammalId, krugerMammalChecklist } from '../../src/features/mammals/data/krugerMammalChecklist.ts'
 
-type AdminEnv = Env & {
+type AdminEnv = Omit<Env,'ADMIN_ALLOWED_ORIGINS'|'MEDIA_BASE_URL'> & {
+  ADMIN_ALLOWED_ORIGINS: string
+  MEDIA_BASE_URL: string
+  CONTENT_DB?: D1Database
   ADMIN_PASSWORD_HASH: string
   ADMIN_SESSION_SECRET: string
   ADMIN_USERNAME: string
+  SUBMITTER_ID?: string
 }
 
 type R2Photo = {
@@ -12,7 +19,7 @@ type R2Photo = {
   url: string
 }
 
-const knownMammalIds = new Set(krugerMammalChecklist.map(getMammalId))
+const knownMammalIds = new Set([...krugerMammalChecklist.map(getMammalId), ...krugerBirdChecklist.map((bird) => bird.id)])
 const allowedImageTypes = new Map([
   ['image/jpeg', 'jpg'],
   ['image/png', 'png'],
@@ -32,11 +39,28 @@ export default {
       const url = new URL(request.url)
       let response: Response
       if (url.pathname.startsWith('/api/admin/') && !isAllowedOrigin(origin, env)) response = json({ error: 'Origin not allowed.' }, 403)
+      else if (url.pathname.startsWith('/api/bird-contributions') && request.method === 'GET') response = await handleBirds(request, env)
+      else if (url.pathname === '/api/birds' && request.method === 'GET') response = await handleBirds(request, env)
+      else if (url.pathname === '/api/bird-proposals' && request.method === 'POST') response = isAllowedOrigin(origin, env) ? await handleBirds(request, env) : json({ error: 'Origin not allowed.' },403)
+      else if (url.pathname.startsWith('/api/admin/bird-proposals')) { const session = await authenticate(request,env); response = session ? await handleBirds(request,env,session.sub) : json({ error: 'Your admin session has expired.' },401) }
+      else if (request.method === 'GET' && url.pathname === '/api/content') response = await listContent(env)
+      else if (request.method === 'GET' && url.pathname === '/api/admin/content') response = await authenticate(request, env) ? await listContent(env, true) : json({ error: 'Your admin session has expired.' }, 401)
       else if (request.method === 'GET' && url.pathname === '/api/photos') response = await listPhotos(env)
       else if (request.method === 'POST' && url.pathname === '/api/admin/login') response = await login(request, env)
       else if (request.method === 'POST' && url.pathname === '/api/admin/logout') response = logout(request)
       else if (request.method === 'GET' && url.pathname === '/api/admin/session') response = await sessionStatus(request, env)
       else {
+        const historyMatch = url.pathname.match(/^\/api\/admin\/content\/(animal|route)\/([a-z0-9-]+)\/history$/)
+        if (historyMatch && request.method === 'GET') {
+          response = await authenticate(request, env) ? await listContentHistory(request, env, historyMatch[1], historyMatch[2]) : json({ error: 'Your admin session has expired.' }, 401)
+          return withHeaders(response, cors)
+        }
+        const contentMatch = url.pathname.match(/^\/api\/admin\/content\/(animal|route)\/([a-z0-9-]+)$/)
+        if (contentMatch && request.method === 'PUT') {
+          if (!await authenticate(request,env)) response = json({ error: 'Your admin session has expired.' },401)
+          else { const ids = contentMatch[1] === 'animal' && await isApprovedBird(env,contentMatch[2]) ? new Set([...knownMammalIds,contentMatch[2]]) : knownMammalIds; response = await saveContent(request,env,contentMatch[1],contentMatch[2],ids) }
+          return withHeaders(response, cors)
+        }
         const match = url.pathname.match(/^\/api\/admin\/mammals\/([^/]+)\/photo$/)
         if (match && request.method === 'PUT') response = await uploadPhoto(request, env, decodeURIComponent(match[1]))
         else if (match && request.method === 'DELETE') response = await deletePhoto(request, env, decodeURIComponent(match[1]))
@@ -53,13 +77,19 @@ export default {
 async function login(request: Request, env: AdminEnv): Promise<Response> {
   const body = await readJson(request)
   if (!body || typeof body.username !== 'string' || typeof body.password !== 'string') return json({ error: 'Enter your administrator credentials.' }, 400)
+  if (env.CONTENT_DB) {
+    const client = `login:${await sign(request.headers.get('CF-Connecting-IP') ?? 'local',env.ADMIN_SESSION_SECRET)}`
+    const window = Math.floor(Date.now()/3600000)
+    const limit = await env.CONTENT_DB.prepare('INSERT INTO bird_submission_limits(client_key,window_start,attempts) VALUES (?,?,1) ON CONFLICT(client_key) DO UPDATE SET attempts = CASE WHEN window_start = excluded.window_start THEN attempts + 1 ELSE 1 END, window_start = excluded.window_start RETURNING attempts').bind(client,window).first<{attempts:number}>()
+    if(!limit || limit.attempts>20) return json({error:'Too many login attempts. Try again in an hour.'},429)
+  }
   const usernameValid = await secureEqual(body.username, env.ADMIN_USERNAME)
   const passwordValid = await verifyPassword(body.password, env.ADMIN_PASSWORD_HASH)
   if (!usernameValid || !passwordValid) return json({ error: 'The administrator credentials are not valid.' }, 401)
 
   const expiresAt = Math.floor(Date.now() / 1000) + sessionDurationSeconds
   const token = await createSessionToken(env.ADMIN_USERNAME, expiresAt, env.ADMIN_SESSION_SECRET)
-  return json({ administrator: env.ADMIN_USERNAME, expiresAt }, 200, { 'Set-Cookie': cookieValue(token, sessionDurationSeconds, new URL(request.url).protocol === 'https:') })
+  return json({ authenticated: true, administrator: env.ADMIN_USERNAME, expiresAt }, 200, { 'Set-Cookie': cookieValue(token, sessionDurationSeconds, new URL(request.url).protocol === 'https:') })
 }
 
 function logout(request: Request): Response {
@@ -74,11 +104,15 @@ async function sessionStatus(request: Request, env: AdminEnv): Promise<Response>
 
 async function uploadPhoto(request: Request, env: AdminEnv, mammalId: string): Promise<Response> {
   if (!await authenticate(request, env)) return json({ error: 'Your admin session has expired.' }, 401)
-  if (!knownMammalIds.has(mammalId)) return json({ error: 'Unknown mammal ID.' }, 404)
+  if (!knownMammalIds.has(mammalId) && !await isApprovedBird(env,mammalId)) return json({ error: 'Unknown species ID.' }, 404)
   const contentLength = Number(request.headers.get('Content-Length') ?? '0')
   if (contentLength > maxUploadBytes + 1024 * 128) return json({ error: 'The photo is larger than 10 MB.' }, 413)
 
-  const form = await request.formData()
+  const reader=request.body?.getReader(); if(!reader) return json({error:'Choose a photo to upload.'},400)
+  const chunks:Uint8Array[]=[]; let length=0
+  while(true) { const part=await reader.read(); if(part.done)break; length+=part.value.length; if(length>maxUploadBytes+128*1024) { await reader.cancel(); return json({error:'The upload is larger than 10 MB.'},413) } chunks.push(part.value) }
+  const upload=new Uint8Array(length); let offset=0; for(const chunk of chunks) {upload.set(chunk,offset);offset+=chunk.length}
+  const form = await new Response(upload,{headers:{'Content-Type':request.headers.get('Content-Type') ?? ''}}).formData()
   const photo = form.get('photo')
   if (!(photo instanceof File)) return json({ error: 'Choose a photo to upload.' }, 400)
   const extension = allowedImageTypes.get(photo.type)
@@ -88,13 +122,13 @@ async function uploadPhoto(request: Request, env: AdminEnv, mammalId: string): P
   if (!matchesImageSignature(new Uint8Array(bytes), photo.type)) return json({ error: 'The file content does not match its image type.' }, 415)
 
   const key = photoKey(mammalId, extension)
-  await deletePhotoVariants(env, mammalId)
   const uploadedAt = new Date().toISOString()
   const stored = await env.MAMMAL_PHOTOS.put(key, bytes, {
     httpMetadata: { cacheControl: 'public, max-age=3600', contentType: photo.type },
     customMetadata: { mammalId, uploadedAt },
   })
   if (!stored) return json({ error: 'The photo could not be stored.' }, 500)
+  await env.MAMMAL_PHOTOS.delete([...allowedImageTypes.values()].filter((candidate) => candidate !== extension).map((candidate) => photoKey(mammalId, candidate)))
   return json({ mammalId, photo: photoResponse(env, key, photo.type, uploadedAt, stored.etag) })
 }
 
@@ -106,7 +140,7 @@ function matchesImageSignature(bytes: Uint8Array, contentType: string): boolean 
 
 async function deletePhoto(request: Request, env: AdminEnv, mammalId: string): Promise<Response> {
   if (!await authenticate(request, env)) return json({ error: 'Your admin session has expired.' }, 401)
-  if (!knownMammalIds.has(mammalId)) return json({ error: 'Unknown mammal ID.' }, 404)
+  if (!knownMammalIds.has(mammalId) && !await isApprovedBird(env,mammalId)) return json({ error: 'Unknown species ID.' }, 404)
   await deletePhotoVariants(env, mammalId)
   return json({ mammalId, removed: true })
 }
@@ -118,7 +152,7 @@ async function listPhotos(env: AdminEnv): Promise<Response> {
     const page = await env.MAMMAL_PHOTOS.list({ cursor, include: ['customMetadata', 'httpMetadata'], prefix: 'mammals/' })
     for (const object of page.objects) {
       const match = object.key.match(/^mammals\/([^/]+)\/primary\.(?:jpg|png|webp)$/)
-      if (!match || !knownMammalIds.has(match[1])) continue
+      if (!match || (!knownMammalIds.has(match[1]) && !await isApprovedBird(env,match[1]))) continue
       const contentType = object.httpMetadata?.contentType ?? contentTypeForKey(object.key)
       const uploadedAt = object.customMetadata?.uploadedAt ?? object.uploaded.toISOString()
       photos[match[1]] = photoResponse(env, object.key, contentType, uploadedAt, object.etag)
@@ -232,7 +266,7 @@ function isSessionPayload(value: unknown): value is SessionPayload {
 function corsHeaders(origin: string | null, env: AdminEnv): Headers {
   const headers = new Headers({
     'Access-Control-Allow-Credentials': 'true',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Headers': 'Content-Type,If-Match',
     'Access-Control-Allow-Methods': 'DELETE,GET,POST,PUT,OPTIONS',
     'Access-Control-Max-Age': '86400',
     'Vary': 'Origin',

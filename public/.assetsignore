@@ -1,0 +1,3 @@
+# Workers preview uses assets.not_found_handling for SPA routing.
+# Keep the existing redirect file for other hosting targets.
+_redirects

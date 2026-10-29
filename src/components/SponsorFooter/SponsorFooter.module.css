@@ -1,6 +1,8 @@
 .footer {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 1rem;
   padding-block: 0.55rem;
 }
 
@@ -27,3 +29,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) { .footer a { transition: none; } }
+
+.footer .credits { padding-inline: .65rem; color: #173328; background: #f6f3ec; text-decoration: underline; }

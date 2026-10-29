@@ -18,7 +18,10 @@ const ids = krugerMammalChecklist.map(getMammalId)
 
 assert.equal(ids.length, 148, 'Admin must expose all 148 checklist mammals')
 assert.equal(new Set(ids).size, 148, 'Admin stable IDs must be unique')
-assert.equal(photoIds.size, 22, 'Original packaged-photo coverage must remain 22')
+const legacyPhotoIds = JSON.parse(readFileSync(join(projectRoot, 'src/assets/mammals/mammal-images.json'), 'utf8')).map((entry) => entry.id)
+const reviewedPhotoIds = Object.keys(JSON.parse(readFileSync(join(projectRoot, 'src/assets/mammals/photo-credits.json'), 'utf8')))
+assert.equal(photoIds.size, new Set([...legacyPhotoIds, ...reviewedPhotoIds]).size, 'Every packaged photo must be legacy or explicitly reviewed')
+for (const id of legacyPhotoIds) assert.ok(photoIds.has(id), `Retain original photo ${id}`)
 for (const id of photoIds) assert.ok(ids.includes(id), `Packaged photo ${id} must resolve to a known mammal`)
 
 const override = { contentType: 'image/webp', uploadedAt: '2026-08-29T00:00:00.000Z', url: 'https://media.animavidi.com/mammals/aardvark/primary.webp?v=1' }
@@ -88,7 +91,7 @@ const frontendSources = [
 ].map((path) => readFileSync(join(projectRoot, path), 'utf8')).join('\n')
 assert.equal(/ADMIN_PASSWORD_HASH|ADMIN_SESSION_SECRET|local-test-password/.test(frontendSources), false, 'Frontend must not contain admin secrets')
 
-console.log('Content Admin validator passed: 148 species, 22 packaged photos, protected Worker CRUD, manifest, validation, and R2/local/fallback precedence.')
+console.log(`Content Admin validator passed: 148 mammals, ${photoIds.size} packaged mammal photos, protected Worker CRUD, manifest, validation, and R2/local/fallback precedence.`)
 
 async function createPasswordHash(value) {
   const iterations = 120_000

@@ -1,7 +1,9 @@
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
+import { AnimalProfileEditor } from '../components/AnimalProfileEditor'
 import { useRef, useState, type ChangeEvent } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-import { getMammalPrimaryImage } from '@/assets/mammals/mammalPrimaryImages'
+import { getAnimalPrimaryImage as getMammalPrimaryImage } from '@/assets/wildlife/animalPrimaryImages'
 import { MammalImage } from '@/features/mammals/components/MammalImage/MammalImage'
 import { useMammalPhotoContext } from '@/features/mammals/components/MammalPhotoProvider/MammalPhotoProvider'
 import { findMammal } from '@/features/mammals/model/mammals'
@@ -12,6 +14,7 @@ import { getSightingAchievementTier } from '@/features/achievements/config/sight
 import styles from './Admin.module.css'
 
 export function AdminAnimalPage() {
+  useWildlifeCatalogue()
   const { mammalId = '' } = useParams()
   const mammal = findMammal(mammalId)
   const { manifest, refresh } = useMammalPhotoContext()
@@ -59,9 +62,10 @@ export function AdminAnimalPage() {
         {message ? <p className={styles.successMessage} role="status">{message}</p> : null}{error ? <p className={styles.formError} role="alert">{error}</p> : null}
       </section>
       <aside className={styles.readOnlyPanel}><div><p>Animal</p><h2>Approved dataset</h2></div><dl>
-        <ReadOnly label="Name" value={mammal.commonName} /><ReadOnly label="Scientific name" value={mammal.scientificName} /><ReadOnly label="Official/common name" value={mammal.officialCommonName} /><ReadOnly label="Aliases" value={mammal.aliases.join(', ') || 'None'} /><ReadOnly label="Group" value={mammal.overviewSection === 'main' ? 'Main Mammal' : `Small Mammal · ${mammal.smallMammalGroup?.replace('-', ' & ')}`} /><ReadOnly label="Achievement tier" value={tier.charAt(0).toUpperCase() + tier.slice(1)} /><ReadOnly label="Stable ID" value={mammal.id} />
-      </dl><p>These fields remain read-only in ANI-024. Text editing will use a future approved content source.</p></aside>
+        <ReadOnly label="Name" value={mammal.commonName} /><ReadOnly label="Scientific name" value={mammal.scientificName} /><ReadOnly label="Official/common name" value={mammal.officialCommonName} /><ReadOnly label="Aliases" value={mammal.aliases.join(', ') || 'None'} /><ReadOnly label="Group" value={mammal.overviewSection === 'birds' ? 'Bird' : mammal.overviewSection === 'main' ? 'Main Mammal' : `Small Mammal · ${mammal.smallMammalGroup?.replace('-', ' & ')}`} /><ReadOnly label="Achievement tier" value={tier.charAt(0).toUpperCase() + tier.slice(1)} /><ReadOnly label="Stable ID" value={mammal.id} />
+      </dl><p>Species identity stays fixed to preserve saved sightings. Edit the public profile below.</p></aside>
     </div>
+    <AnimalProfileEditor animal={mammal} />
   </main>
 }
 

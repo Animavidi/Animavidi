@@ -14,8 +14,10 @@ import styles from './KrugerHomePage.module.css'
 
 const navigationCards = [
   { icon: 'mammals' as const, image: mammalsPreview, subtitle: 'Discover and learn', title: 'Mammals', to: '/parks/kruger/mammals' },
+  { icon: 'mammals' as const, image: informationPreview, subtitle: 'The complete SANParks checklist', title: 'Birds', to: '/parks/kruger/birds' },
   { icon: 'sightings' as const, image: sightingsPreview, subtitle: 'Your personal sightings', title: 'My Sightings', to: '/parks/kruger/sightings' },
   { icon: 'map' as const, image: mapPreview, subtitle: 'Explore routes and landmarks', title: 'Park Map', to: '/parks/kruger/map' },
+  { icon: 'map' as const, image: mapPreview, subtitle: 'Plan your next drive', title: 'Safari Routes', to: '/parks/kruger/routes' },
   { icon: 'information' as const, image: informationPreview, subtitle: 'Everything you need to know', title: 'Park Information', to: '/parks/kruger/information' },
 ]
 
@@ -35,13 +37,13 @@ export function KrugerHomePage() {
 
         <div className={styles.heroContent}>
           <h1 id="kruger-title">Kruger<br />National Park</h1>
-          <p className={styles.location}>South Africa <span aria-hidden="true" /></p>
+          <small style={{color:"#d6bd85",letterSpacing:".12em"}}>BETA</small><p className={styles.location}>South Africa <span aria-hidden="true" /></p>
           <p className={styles.introduction}>The greatest wildlife<br />destination in Africa.</p>
         </div>
 
         <dl aria-label="Kruger National Park wildlife statistics" className={styles.statistics}>
           <div><StatisticIcon type="mammals" /><dt>148</dt><dd>Mammals</dd></div>
-          <div><StatisticIcon type="birds" /><dt>500+</dt><dd>Birds</dd></div>
+          <div><StatisticIcon type="birds" /><dt>546</dt><dd>Birds</dd></div>
           <div><StatisticIcon type="trees" /><dt>336</dt><dd>Trees</dd></div>
         </dl>
       </section>
@@ -54,6 +56,7 @@ export function KrugerHomePage() {
             <span aria-hidden="true" className={styles.chevron} />
           </Link>
           {navigationCards.map((card) => <ParkNavigationCard key={card.title} {...card} />)}
+          <Link className={styles.passportLink} to="/my-animavidi">My Animavidi · Profile, My Camps &amp; Backups</Link>
         </nav>
 
         <Link className={styles.startButton} to="/parks/kruger/mammals"><span aria-hidden="true">→</span><strong>Start your safari</strong></Link>

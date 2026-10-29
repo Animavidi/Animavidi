@@ -3,7 +3,9 @@
   "name": "animavidi-content-admin",
   "main": "src/index.ts",
   "compatibility_date": "2026-08-29",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1
@@ -16,6 +18,15 @@
     {
       "binding": "MAMMAL_PHOTOS",
       "bucket_name": "animavidi-mammal-photos"
+    }
+  ],
+  "account_id": "b775aad4f66b51091e4b1467896a0a4a",
+  "d1_databases": [
+    {
+      "binding": "CONTENT_DB",
+      "database_name": "animavidi-content",
+      "database_id": "b45bb37d-cf6d-4013-8f5f-f827d67e7d9f",
+      "migrations_dir": "migrations"
     }
   ]
 }

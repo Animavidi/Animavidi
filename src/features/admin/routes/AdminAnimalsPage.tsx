@@ -1,10 +1,10 @@
 import { useMemo, useState } from 'react'
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { Link } from 'react-router-dom'
 
 import { MammalImage } from '@/features/mammals/components/MammalImage/MammalImage'
 import { useMammalPhotoContext } from '@/features/mammals/components/MammalPhotoProvider/MammalPhotoProvider'
-import { mammals } from '@/features/mammals/model/mammals'
-import { getMammalPrimaryImage } from '@/assets/mammals/mammalPrimaryImages'
+import { getAnimalPrimaryImage as getMammalPrimaryImage } from '@/assets/wildlife/animalPrimaryImages'
 
 import { PageHeading } from './AdminHomePage'
 import styles from './Admin.module.css'
@@ -12,6 +12,7 @@ import styles from './Admin.module.css'
 type PhotoFilter = 'all' | 'added' | 'missing'
 
 export function AdminAnimalsPage() {
+  const mammals = useWildlifeCatalogue()
   const { error, loading, manifest } = useMammalPhotoContext()
   const [query, setQuery] = useState('')
   const [filter, setFilter] = useState<PhotoFilter>('all')
@@ -22,10 +23,10 @@ export function AdminAnimalsPage() {
       const hasPhoto = Boolean(manifest[mammal.id] || getMammalPrimaryImage(mammal.id))
       return (filter === 'all' || (filter === 'added' ? hasPhoto : !hasPhoto)) && (!normalized || [mammal.commonName, mammal.scientificName, mammal.officialCommonName, ...mammal.aliases].join(' ').toLocaleLowerCase().includes(normalized))
     }).slice().sort((left, right) => left.sortName.localeCompare(right.sortName) || left.commonName.localeCompare(right.commonName))
-  }, [filter, manifest, query])
+  }, [filter, manifest, query,mammals])
 
-  return <main className={styles.adminPage}><PageHeading eyebrow="Content · Animals" title="Animals" copy="Manage primary photography without changing the approved 148-species dataset." />
-    <div className={styles.listSummary}><strong>{totalPhotos} of {mammals.length} photos added</strong><button disabled title="Adding species will be available in a future release" type="button">Add animal <small>Coming later</small></button></div>
+  return <main className={styles.adminPage}><PageHeading eyebrow="Content · Animals" title="Animals" copy="Manage photographs and profiles for Kruger mammals and birds." />
+    <div className={styles.listSummary}><strong>{totalPhotos} of {mammals.length} photos added</strong><span>148 mammals · 546 birds</span></div>
     {loading ? <p role="status">Checking R2 photo overrides…</p> : null}{error ? <p className={styles.notice} role="status">R2 is unavailable. Packaged photos remain visible; remote status may be incomplete.</p> : null}
     <div className={styles.listTools}><label><span className="srOnly">Search animals</span><input onChange={(event) => setQuery(event.target.value)} placeholder="Search name, scientific name or alias…" type="search" value={query} /></label><div aria-label="Photo status" className={styles.filters}>{(['all', 'missing', 'added'] as const).map((value) => <button aria-pressed={filter === value} key={value} onClick={() => setFilter(value)} type="button">{value === 'all' ? 'All' : value === 'missing' ? 'Missing photo' : 'Photo added'}</button>)}</div></div>
     <p className={styles.resultCount} role="status">{visible.length} animal{visible.length === 1 ? '' : 's'}</p>

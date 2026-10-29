@@ -1,3 +1,8 @@
+import { getBirdPrimaryImage } from '@/assets/birds/birdPrimaryImages'
+import type { PublishedBird } from '@/features/birds/model/communityBird'
+import { getReviewedBirdContent } from '@/features/birds/data/reviewedBirdContent'
+import { sourcedAnimalProfiles } from '@/features/content/data/sourcedAnimalProfiles'
+import { krugerBirdChecklist } from '@/features/birds/data/krugerBirdChecklist'
 import { getMammalPrimaryImage } from '@/assets/mammals/mammalPrimaryImages'
 import { getMammalId, krugerMammalChecklist } from '@/features/mammals/data/krugerMammalChecklist'
 
@@ -97,17 +102,59 @@ export const mammals: readonly Mammal[] = krugerMammalChecklist.map((entry) => {
     commonName,
     id,
     image: primaryImage ?? missingPhotoFallback,
-    imageAlt: `${commonName} in Kruger National Park`,
+    imageAlt: commonName,
     imageFallback: primaryImage ?? missingPhotoFallback,
     officialCommonName: entry.officialName,
     overviewSection: entry.section,
-    profile: profiles[id] ?? minimalProfile(commonName),
+    profile: profiles[id] ?? (sourcedAnimalProfiles[id] ? { ...sourcedAnimalProfiles[id].content, demoProgress: { seen: false, sightingsCount: 0 } } : minimalProfile(commonName)),
     scientificName: entry.scientificName,
     smallMammalGroup: entry.smallMammalGroup,
     sortName: entry.sortName ?? commonName,
   }
 })
 
+// These three common-name mappings were verified against the companion Birda
+// checklist's scientific names; see docs/completion/Bird_Community_Plan.md.
+const reviewedBirdAliases: Record<string, readonly string[]> = {
+  'bird-cape-glossy-starling': ['Cape Starling'],
+  'bird-hadeda-ibis': ['Hadada Ibis'],
+  'bird-green-backed-heron': ['Striated Heron'],
+}
+export let birds: readonly Mammal[] = krugerBirdChecklist.map((entry) => ({
+  aliases: [entry.commonName, ...(reviewedBirdAliases[entry.id] ?? [])], categories: ['birds'], commonName: entry.commonName,
+  id: entry.id, image: getBirdPrimaryImage(entry.id) ?? missingPhotoFallback, imageAlt: entry.commonName,
+  imageFallback: missingPhotoFallback, officialCommonName: entry.commonName,
+  overviewSection: 'birds', scientificName: entry.scientificName, sortName: entry.commonName,
+  profile: getReviewedBirdContent(entry.id) ? { ...getReviewedBirdContent(entry.id)!,demoProgress: { seen:false,sightingsCount:0 } } : profile(`${entry.commonName} is listed in the SANParks Kruger bird checklist.`, [], '', '', '', '', '', [], false, 0),
+}))
+
+const checklistBirds = birds
+let approvedBirdRecords: readonly PublishedBird[] = []
+export const findApprovedBird = (id: string) => approvedBirdRecords.find((bird) => bird.id === id)
+export let wildlife: readonly Mammal[] = [...mammals, ...birds]
+const catalogueListeners = new Set<() => void>()
+export const subscribeWildlife = (listener: () => void) => { catalogueListeners.add(listener); return () => { catalogueListeners.delete(listener) } }
+export const getWildlifeSnapshot = () => wildlife
+export function registerApprovedBirds(entries: readonly PublishedBird[]): void {
+  if (JSON.stringify(entries) === JSON.stringify(approvedBirdRecords)) return
+  approvedBirdRecords = entries
+  const ids = new Set(checklistBirds.map((bird) => bird.id))
+  const added: Mammal[] = []
+  for (const entry of entries) {
+    if (ids.has(entry.id)) continue
+    ids.add(entry.id)
+    added.push({ id: entry.id, commonName: entry.commonName, officialCommonName: entry.commonName, scientificName: entry.scientificName, aliases: [], categories: ['birds'], overviewSection: 'birds', sortName: entry.commonName, image: missingPhotoFallback, imageFallback: missingPhotoFallback, imageAlt: entry.commonName, profile: profile(entry.description, [], '', '', '', '', '', [], false, 0) })
+  }
+  birds = [...checklistBirds, ...added]
+  wildlife = [...mammals, ...birds]
+  catalogueListeners.forEach((listener) => listener())
+}
+
+// Retained API name keeps existing saved sightings and callers compatible.
 export function findMammal(id: string): Mammal | undefined {
-  return mammals.find((mammal) => mammal.id === id)
+  return wildlife.find((animal) => animal.id === id)
+}
+
+export function animalPath(animal: Mammal): string {
+  return `/parks/kruger/${animal.overviewSection === 'birds' ? 'birds' : 'mammals'}/${animal.id}`
 }

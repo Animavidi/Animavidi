@@ -3,7 +3,8 @@
   z-index: 10;
   bottom: 0;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(8, minmax(2.75rem, 1fr));
+  overflow-x: auto;
   padding: 0.45rem 0.35rem calc(0.45rem + env(safe-area-inset-bottom));
   background: linear-gradient(135deg, #1e3328, #1e3328);
   border-radius: 1.35rem 1.35rem 0 0;
@@ -41,12 +42,12 @@
 }
 
 .navigation .active {
-  color: var(--color-safari-gold);
+  color: var(--color-safari-gold, #b78c45);
   background: rgb(183 140 69 / 8%);
   border-color: rgb(183 140 69 / 28%);
 }
 
 .navigation a:focus-visible {
-  outline: 2px solid var(--color-safari-gold);
+  outline: 2px solid var(--color-safari-gold, #b78c45);
   outline-offset: -2px;
 }

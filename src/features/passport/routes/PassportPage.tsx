@@ -1,9 +1,11 @@
+import {useJournalRevision} from '@/features/accounts/components/useJournalRevision'
 import { useCallback, useEffect, useState } from 'react'
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 
 import { SponsorFooter } from '@/components/SponsorFooter/SponsorFooter'
 import { MammalsBottomNav } from '@/features/mammals/components/MammalsBottomNav/MammalsBottomNav'
-import { findMammal } from '@/features/mammals/model/mammals'
+import { animalPath, findMammal } from '@/features/mammals/model/mammals'
 import { BigFiveStamp } from '@/features/passport/components/BigFiveStamp/BigFiveStamp'
 import { PassportCard } from '@/features/passport/components/PassportCard/PassportCard'
 import { PassportIcon, type PassportIconName } from '@/features/passport/components/PassportIcon/PassportIcon'
@@ -20,6 +22,8 @@ const formatDate = (date?: string) => date
   : 'Not yet recorded'
 
 export function PassportPage() {
+  const journalRevision=useJournalRevision()
+  const catalogue = useWildlifeCatalogue()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const [passport, setPassport] = useState<PassportSummary>()
@@ -30,7 +34,7 @@ export function PassportPage() {
     void loadPassport().then(setPassport).catch(() => setError('Your local Passport could not be opened. Your data remains on this device.'))
   }, [])
 
-  useEffect(refresh, [refresh])
+  useEffect(refresh, [refresh,catalogue,journalRevision])
 
   const share = async () => {
     if (!passport) return
@@ -54,7 +58,8 @@ export function PassportPage() {
   const firstBigFiveDate = (animalId: string) => passport.sightings.find((sighting) => animalId === 'white-rhinoceros' ? sighting.animalId.includes('rhinoceros') : sighting.animalId === animalId)?.date
   const statistics: readonly [PassportIconName, string, string | number][] = [
     ['sightings', 'Sightings', passport.totalSightings],
-    ['species', 'Species', `${passport.uniqueSpecies}/148`],
+    ['species', 'Species', `${passport.uniqueSpecies}/${catalogue.length}`],
+    ['species', 'Bird species', passport.species.filter((item) => item.mammal.overviewSection === 'birds').length],
     ['parks', 'Parks', passport.parksVisited],
     ['countries', 'Countries', passport.countriesExplored],
     ['bigFive', 'Big Five', `${completedBigFive}/5`],
@@ -64,7 +69,7 @@ export function PassportPage() {
   const navigation = [
     { href: '#journey', icon: 'countries' as PassportIconName, title: 'My Safari Journey', subtitle: `${passport.countriesExplored} destination${passport.countriesExplored === 1 ? '' : 's'}, visits and timeline` },
     { href: '#achievements', icon: 'rank' as PassportIconName, title: 'Achievements', subtitle: `${earnedAchievements} achievements earned` },
-    { href: '#species-discovered', icon: 'species' as PassportIconName, title: 'Species Discovered', subtitle: `${passport.uniqueSpecies} of 148 Kruger mammals in your collection` },
+    { href: '#species-discovered', icon: 'species' as PassportIconName, title: 'Species Discovered', subtitle: `${passport.uniqueSpecies} of ${catalogue.length} Kruger mammal and bird species in your collection` },
     { href: '#recent-memories', icon: 'photos' as PassportIconName, title: 'Recent Memories', subtitle: `${passport.totalSightings} journal entr${passport.totalSightings === 1 ? 'y' : 'ies'} and sightings` },
   ]
 
@@ -76,6 +81,7 @@ export function PassportPage() {
         <button className={styles.share} onClick={() => void share()}><PassportIcon name="share" /> <span>Share</span></button>
       </header>
       {shareStatus ? <p className={styles.toast} role="status">{shareStatus}</p> : null}
+      <aside className={styles.localNotice}><p>Your private journal synchronises with your account. Offline observations and photos stay safely on this device until synchronisation succeeds.</p><Link to="/my-animavidi">My Animavidi: profile, My Camps and personal backups</Link></aside>
 
       <div className={styles.document}>
         <PassportCard profile={passport.profile} />
@@ -126,7 +132,7 @@ export function PassportPage() {
 
         <section aria-labelledby="species-title" className={`${styles.paper} ${styles.speciesPanel}`} id="species-discovered">
           <div className={styles.sectionHeading}><div><p>Personal field record</p><h2 id="species-title">Species Discovered</h2></div><Link to="/parks/kruger/mammals">View mammals</Link></div>
-          {passport.species.length ? <div className={styles.species}>{passport.species.map((item) => <Link key={item.mammal.id} to={`/parks/kruger/mammals/${item.mammal.id}`}><SightingImage mammal={item.mammal} /><div><h3>{item.mammal.commonName}</h3><p>{item.sightings} sighting{item.sightings === 1 ? '' : 's'}</p><small>{formatDate(item.firstSeen)} — {formatDate(item.lastSeen)}</small></div></Link>)}</div> : <div className={styles.empty}><h3>No species discovered yet</h3><p>Your first recorded encounter will become the opening entry in this collection.</p><Link to="/parks/kruger/mammals">Choose a species</Link></div>}
+          {passport.species.length ? <div className={styles.species}>{passport.species.map((item) => <Link key={item.mammal.id} to={animalPath(item.mammal)}><SightingImage mammal={item.mammal} /><div><h3>{item.mammal.commonName}</h3><p>{item.sightings} sighting{item.sightings === 1 ? '' : 's'}</p><small>{formatDate(item.firstSeen)} — {formatDate(item.lastSeen)}</small></div></Link>)}</div> : <div className={styles.empty}><h3>No species discovered yet</h3><p>Your first recorded encounter will become the opening entry in this collection.</p><Link to="/parks/kruger/mammals">Choose a species</Link></div>}
         </section>
 
         <section aria-labelledby="memories-title" className={`${styles.paper} ${styles.memoriesPanel}`} id="recent-memories">

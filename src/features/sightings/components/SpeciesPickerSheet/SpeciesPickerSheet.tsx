@@ -2,7 +2,8 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 
 import type { Mammal, MammalCategory } from '@/features/mammals/model/mammal'
 import { MammalImage } from '@/features/mammals/components/MammalImage/MammalImage'
-import { mammals } from '@/features/mammals/model/mammals'
+import { mammals, birds } from '@/features/mammals/model/mammals'
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { loadRecentlyObservedMammals } from '@/features/sightings/services/recentSpeciesService'
 
 import styles from './SpeciesPickerSheet.module.css'
@@ -21,6 +22,7 @@ type PickerSection = {
 }
 
 const categorySections: readonly PickerSection[] = [
+  { id: 'birds', mammals: birds, title: 'Birds' },
   { category: 'big-five', id: 'big-five', title: 'Big Five' },
   { category: 'predators', id: 'predators', title: 'Predators' },
   { category: 'antelopes', id: 'antelopes', title: 'Antelopes' },
@@ -39,13 +41,14 @@ function categoryLabel(value?: string) {
 }
 
 export function SpeciesPickerSheet({ onClose, onSelect, open }: SpeciesPickerSheetProps) {
+  const catalogue = useWildlifeCatalogue()
   const dialogRef = useRef<HTMLDialogElement>(null)
   const searchRef = useRef<HTMLInputElement>(null)
   const [query, setQuery] = useState('')
   const [recentMammals, setRecentMammals] = useState<readonly Mammal[]>([])
   const normalizedQuery = query.trim().toLocaleLowerCase()
-  const searchResults = useMemo(() => alphabetically(mammals.filter((mammal) => !normalizedQuery || [mammal.commonName, mammal.scientificName ?? '', ...mammal.aliases].join(' ').toLocaleLowerCase().includes(normalizedQuery))), [normalizedQuery])
-  const sections = useMemo<readonly PickerSection[]>(() => recentMammals.length ? [{ id: 'recently-observed', mammals: recentMammals, title: 'Recently observed' }, ...categorySections] : categorySections, [recentMammals])
+  const searchResults = useMemo(() => alphabetically(catalogue.filter((mammal) => !normalizedQuery || [mammal.commonName, mammal.scientificName ?? '', ...mammal.aliases].join(' ').toLocaleLowerCase().includes(normalizedQuery))), [normalizedQuery,catalogue])
+  const sections = useMemo<readonly PickerSection[]>(() => { const categories = categorySections.map((section) => section.id === 'birds' ? { ...section,mammals: catalogue.filter((animal) => animal.overviewSection === 'birds') } : section); return recentMammals.length ? [{ id: 'recently-observed', mammals: recentMammals, title: 'Recently observed' }, ...categories] : categories }, [recentMammals,catalogue])
 
   useEffect(() => {
     if (!open) return

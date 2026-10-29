@@ -1,3 +1,4 @@
+import { animalPath } from '@/features/mammals/model/mammals'
 import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -13,6 +14,9 @@ type MammalCardProps = {
 }
 
 const imagePositions: Readonly<Record<string, string>> = {
+  'bird-african-fish-eagle': '70% 35%',
+  'bird-lilac-breasted-roller': '100% 45%',
+  'bird-martial-eagle': '50% 28%',
   'african-buffalo': '43% 48%',
   'african-lion': '52% 37%',
   'african-wild-dog': '50% 40%',
@@ -28,7 +32,7 @@ const imagePositions: Readonly<Record<string, string>> = {
 
 export function MammalCard({ mammal, onSelect, returnTo }: MammalCardProps) {
   return (
-    <Link className={styles.card} onClick={onSelect} state={{ returnTo }} to={`/parks/kruger/mammals/${mammal.id}`}>
+    <Link className={styles.card} onClick={onSelect} state={{ returnTo }} to={animalPath(mammal)}>
       <MammalImage
         className={styles.image}
         loading="lazy"

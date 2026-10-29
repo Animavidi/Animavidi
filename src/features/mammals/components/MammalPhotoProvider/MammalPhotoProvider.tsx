@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components -- Provider and its colocated hooks share one photo-resolution boundary. */
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react'
 
-import { getMammalPrimaryImage } from '@/assets/mammals/mammalPrimaryImages'
+import { getAnimalPrimaryImage as getMammalPrimaryImage } from '@/assets/wildlife/animalPrimaryImages'
 import type { Mammal } from '@/features/mammals/model/mammal'
 import { fetchMammalPhotoManifest } from '@/features/mammals/services/mammalPhotoApi'
 import { resolveMammalPhoto, type MammalPhotoManifest, type ResolvedMammalPhoto } from '@/features/mammals/services/mammalPhotoResolution'

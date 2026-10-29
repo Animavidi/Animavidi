@@ -7,6 +7,7 @@ const projectRoot = fileURLToPath(new URL('.', import.meta.url))
 export default defineConfig({
   root: projectRoot,
   plugins: [react()],
+  build: { rollupOptions: { output: { manualChunks: { 'react-vendor': ['react', 'react-dom', 'react-router-dom'] } } } },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

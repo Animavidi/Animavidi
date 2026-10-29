@@ -24,8 +24,8 @@ function StatisticIcon({ type }: StatisticIconProps) {
 }
 
 const statistics = [
-  { icon: 'mammals' as const, label: 'Mammals', value: '147' },
-  { icon: 'birds' as const, label: 'Birds', value: '500+' },
+  { icon: 'mammals' as const, label: 'Mammals', value: '148' },
+  { icon: 'birds' as const, label: 'Birds', value: '546' },
   { icon: 'trees' as const, label: 'Trees', value: '336' },
 ]
 
@@ -80,6 +80,7 @@ export function LocationPage() {
           <span aria-hidden="true" className={styles.arrow}>→</span>
           <span>Start your safari</span>
         </button>
+        <p>Your verified account keeps your Safari Passport and sightings together across devices. Offline changes are saved on this device until you reconnect.</p>
 
         <section className={styles.otherParks}>
           <div className={styles.sectionTitle}><span /> <h2>Other Parks</h2> <span /></div>

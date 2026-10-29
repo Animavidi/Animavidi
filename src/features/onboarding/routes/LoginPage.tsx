@@ -1,3 +1,4 @@
+import {personalStorage} from '@/features/accounts/data/personalStorage'
 import type { FormEvent } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -13,7 +14,7 @@ export function LoginPage() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    localStorage.setItem(onboardingCompletionKey, 'true')
+    personalStorage.setItem(onboardingCompletionKey, 'true')
     void navigate('/passport?flow=continue')
   }
 

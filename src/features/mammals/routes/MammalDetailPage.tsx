@@ -1,3 +1,10 @@
+import {useJournalRevision} from '@/features/accounts/components/useJournalRevision'
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
+import { BirdContributions } from '@/features/birds/components/BirdContributions'
+import { PhotoAttribution } from '@/features/media/components/PhotoAttribution'
+import { sourcedAnimalProfiles } from '@/features/content/data/sourcedAnimalProfiles'
+import { getReviewedBirdContent } from '@/features/birds/data/reviewedBirdContent'
+import { useContent } from '@/features/content/components/ContentProvider'
 import type { CSSProperties } from 'react'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom'
@@ -8,7 +15,7 @@ import { AnimalDetailIcon, type AnimalDetailIconName } from '@/features/mammals/
 import { MammalsBottomNav } from '@/features/mammals/components/MammalsBottomNav/MammalsBottomNav'
 import { MammalImage } from '@/features/mammals/components/MammalImage/MammalImage'
 import { animalDetailImagePositions } from '@/features/mammals/config/animalDetailImagePositions'
-import { findMammal } from '@/features/mammals/model/mammals'
+import { animalPath, findMammal, findApprovedBird } from '@/features/mammals/model/mammals'
 import { aggregateAnimalSightings, type AnimalSightingSummary } from '@/features/mammals/services/animalDetailService'
 import { SightingImage } from '@/features/sightings/components/SightingImage/SightingImage'
 import { AddSightingLauncher } from '@/features/sightings/components/AddSightingLauncher/AddSightingLauncher'
@@ -29,15 +36,20 @@ function categoryLabel(value: string) {
 }
 
 export function MammalDetailPage() {
+  const journalRevision=useJournalRevision()
+  useWildlifeCatalogue()
   const location = useLocation()
   const [searchParams] = useSearchParams()
   const { animalId = '' } = useParams()
-  const mammal = findMammal(animalId)
+  const { entries } = useContent()
+  const original = findMammal(animalId)
+  const editorial = entries[`animal/${animalId}`]?.content
+  const mammal = useMemo(() => original && editorial?.kind === 'animal' ? { ...original, profile: { ...original.profile, ...editorial } } : original, [original, editorial])
   const [summary, setSummary] = useState<AnimalSightingSummary>(emptySummary)
   const [loadState, setLoadState] = useState<'error' | 'loading' | 'ready'>('loading')
   const [expanded, setExpanded] = useState(false)
   const detailState = location.state as { returnTo?: string } | null
-  const returnTo = detailState?.returnTo ?? '/parks/kruger/mammals'
+  const returnTo = detailState?.returnTo ?? (mammal?.overviewSection === 'birds' ? '/parks/kruger/birds' : '/parks/kruger/mammals')
 
   useEffect(() => {
     if (!mammal) return
@@ -53,7 +65,7 @@ export function MammalDetailPage() {
       setLoadState('error')
     })
     return () => { isCurrent = false }
-  }, [mammal])
+  }, [mammal,journalRevision])
 
   useEffect(() => setExpanded(false), [animalId])
 
@@ -89,6 +101,10 @@ export function MammalDetailPage() {
       </header>
 
       <article className={styles.content}>
+          {mammal.overviewSection === 'birds' ? <BirdContributions animalId={animalId} /> : null}
+        <PhotoAttribution animal={mammal} />
+        {getReviewedBirdContent(animalId) && editorial?.kind !== 'animal' ? <p><small><a href={getReviewedBirdContent(animalId)?.sourceUrl} target="_blank" rel="noreferrer">BirdLife South Africa profile source</a> · Checked 29 October 2026.</small></p> : null}
+        {findApprovedBird(animalId) ? <p><small>Community suggestion by {findApprovedBird(animalId)?.author ?? 'Anonymous contributor'} · Approved by the administrator. {findApprovedBird(animalId)?.sourceUrl ? <a href={findApprovedBird(animalId)?.sourceUrl} target="_blank" rel="noreferrer">Submitted source</a> : null}</small></p> : null}
         {searchParams.get('sighting') === 'created' ? <p className={styles.success} role="status">Sighting saved locally.</p> : null}
 
         <section aria-labelledby="observation-title" className={styles.observationCard}>
@@ -98,7 +114,7 @@ export function MammalDetailPage() {
           </div>
           {loadState === 'error' ? <p className={styles.inlineError} role="alert">Your local sightings could not be read. You can still browse this field guide and add a sighting.</p> : null}
           <div className={styles.observationActions}>
-            <Link className={styles.addSighting} to={`/parks/kruger/mammals/${mammal.id}/sightings/new`}><span aria-hidden="true">+</span> Add sighting</Link>
+            <Link className={styles.addSighting} to={`${animalPath(mammal)}/sightings/new`}><span aria-hidden="true">+</span> Add sighting</Link>
             {observed ? <Link className={styles.viewSightings} to="/parks/kruger/sightings">View my sightings</Link> : null}
           </div>
         </section>
@@ -115,6 +131,7 @@ export function MammalDetailPage() {
           <p className={!expanded && longIntroduction ? styles.clamped : undefined}>{mammal.profile.introduction}</p>
           {longIntroduction ? <button aria-expanded={expanded} onClick={() => setExpanded((value) => !value)} type="button">{expanded ? 'Show less' : 'Read more'} <span aria-hidden="true">⌄</span></button> : null}
           {mammal.aliases.length ? <small><strong>Also known as</strong> {mammal.aliases.join(', ')}</small> : null}
+          {editorial?.kind === 'animal' && editorial.sourceUrl ? <p><small><a href={editorial.sourceUrl} target="_blank" rel="noreferrer">Profile source</a></small></p> : sourcedAnimalProfiles[animalId] ? <p><small><a href={sourcedAnimalProfiles[animalId].content.sourceUrl} target="_blank" rel="noreferrer">{sourcedAnimalProfiles[animalId].sourceTitle}</a> · Checked {sourcedAnimalProfiles[animalId].checkedAt}. Current conservation assessment and taxonomy review pending.</small></p> : null}
         </section>
 
         {facts.length ? <section aria-labelledby="facts-title" className={styles.factsCard}>
@@ -126,7 +143,7 @@ export function MammalDetailPage() {
           <div className={styles.sectionHeading}><h2 id="recent-title">Your recent sightings</h2>{observed ? <Link to="/parks/kruger/sightings">View all</Link> : null}</div>
           {loadState === 'loading' ? <p className={styles.recentState} role="status">Opening your safari journal…</p> : null}
           {loadState === 'error' ? <p className={styles.recentState}>Recent sightings are temporarily unavailable.</p> : null}
-          {loadState === 'ready' && !summary.recentSightings.length ? <div className={styles.emptyRecent}><p>No sightings recorded for {mammal.commonName} yet.</p><Link to={`/parks/kruger/mammals/${mammal.id}/sightings/new`}>Add first sighting</Link></div> : null}
+          {loadState === 'ready' && !summary.recentSightings.length ? <div className={styles.emptyRecent}><p>No sightings recorded for {mammal.commonName} yet.</p><Link to={`${animalPath(mammal)}/sightings/new`}>Add first sighting</Link></div> : null}
           {summary.recentSightings.length ? <div className={styles.recentList}>{summary.recentSightings.map((sighting) => <Link className={styles.sightingCard} key={sighting.id} to={`/parks/kruger/sightings/${sighting.id}`}><SightingImage className={styles.sightingImage} mammal={mammal} photo={sighting.photos[0]} /><div><strong>{formatDate(sighting.date)}</strong><span>{sighting.time} · {sighting.location || 'Location not recorded'}</span><small>{sighting.count} animal{sighting.count === 1 ? '' : 's'} · {categoryLabel(sighting.behaviour)}</small></div><i aria-hidden="true" /></Link>)}</div> : null}
         </section>
 

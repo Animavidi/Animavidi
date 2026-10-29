@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-10-29T13:38:44.796Z",
+  "target": "https://admin-api.animavidi.com",
+  "mode": "read-only; no login or writes attempted",
+  "results": [
+    {
+      "path": "/api/photos",
+      "expected": 200,
+      "status": 200,
+      "passed": true,
+      "allowOrigin": null
+    },
+    {
+      "path": "/api/content",
+      "expected": 200,
+      "status": 404,
+      "passed": false,
+      "allowOrigin": null
+    },
+    {
+      "path": "/api/admin/session",
+      "expected": 401,
+      "origin": "https://animavidi.com",
+      "status": 401,
+      "passed": true,
+      "allowOrigin": "https://animavidi.com"
+    },
+    {
+      "path": "/api/admin/content",
+      "expected": 401,
+      "origin": "https://animavidi.com",
+      "status": 404,
+      "passed": false,
+      "allowOrigin": "https://animavidi.com"
+    },
+    {
+      "path": "/api/admin/session",
+      "expected": 403,
+      "origin": "https://unapproved.invalid",
+      "status": 403,
+      "passed": true,
+      "allowOrigin": null
+    }
+  ],
+  "limitations": [
+    "No successful authenticated session tested",
+    "No production upload or content mutation attempted",
+    "This checks the current live Worker, not undeployed branch code"
+  ]
+}

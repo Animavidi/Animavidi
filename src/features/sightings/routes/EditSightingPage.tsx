@@ -1,3 +1,4 @@
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
@@ -15,6 +16,7 @@ const compositions: readonly SightingComposition[] = ['unknown', 'single', 'pair
 const behaviours: readonly SightingBehaviour[] = ['resting', 'walking', 'feeding', 'drinking', 'hunting', 'playing', 'calling', 'other']
 
 export function EditSightingPage() {
+  useWildlifeCatalogue()
   const navigate = useNavigate()
   const { sightingId = '' } = useParams()
   const [sighting, setSighting] = useState<Sighting>()

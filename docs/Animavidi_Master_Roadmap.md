@@ -29,6 +29,10 @@
 
 ## Active task
 
+As of 2026-10-28, the user has requested completion of the existing application. The current implementation and explicit release blockers are tracked in [Kruger Completion Status](Kruger_Completion_Status.md). The branch adds the official bird checklist, initial route guides and D1 editorial management. It is not yet a complete or published release.
+
+### Previous ANI-024 milestone
+
 **ANI-024 Content Admin V1 visual review** is active. Only the approved and functionally complete
 Welcome, Park Selection, Kruger, Mammals, Animal Detail, New Sighting, My
 Sightings, Park Map, Park Information and Safari Passport experiences are

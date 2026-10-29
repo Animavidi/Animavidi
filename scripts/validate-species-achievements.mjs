@@ -37,9 +37,12 @@ for (const [animalId, expectedTier] of [['black-rhinoceros', 'legendary'], ['whi
 }
 
 const repository = await readFile(new URL('../src/features/achievements/data/speciesAchievementRepository.ts', import.meta.url), 'utf8')
-for (const contract of ['speciesAchievementsStorageKey', 'animalId === achievement.animalId', 'localStorage.setItem']) {
+for (const contract of ['speciesAchievementsStorageKey', 'animalId === achievement.animalId', 'personalStorage.setItem']) {
   if (!repository.includes(contract)) throw new Error(`Missing persistence contract: ${contract}`)
 }
+
+const scopedStorage=await readFile(new URL('../src/features/accounts/data/personalStorage.ts',import.meta.url),'utf8')
+if(!scopedStorage.includes('animavidi:user:')||!scopedStorage.includes('animavidi:preference'))throw new Error('Achievement persistence must be account-scoped and queued for synchronisation.')
 
 const newSighting = await readFile(new URL('../src/features/mammals/routes/NewSightingPage.tsx', import.meta.url), 'utf8')
 for (const contract of ['countByAnimal(mammalId)', 'savingRef.current', 'setPendingBigFive(nextBigFive)', "finishSpeciesRecognition('safari')"]) {

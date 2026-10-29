@@ -1,3 +1,4 @@
+import { isManagedContent, type ManagedContent, type ContentHistoryPage } from '@/features/content/model/content'
 import { getAdminApiBaseUrl } from '@/features/mammals/services/mammalPhotoApi'
 
 export type AdminSession = { administrator: string; authenticated: true; expiresAt: number }
@@ -48,4 +49,21 @@ async function responseMessage(response: Response, fallback: string): Promise<st
     if (body && typeof body === 'object' && 'error' in body && typeof body.error === 'string') return body.error
   } catch { /* Use the safe fallback. */ }
   return fallback
+}
+
+export async function saveManagedContent(content: ManagedContent, revision: string): Promise<void> {
+  if (!isManagedContent(content)) throw new Error('Check the content fields and source URL.')
+  const response = await adminFetch(`/api/admin/content/${content.kind}/${content.id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json', 'If-Match': revision }, body: JSON.stringify(content) })
+  if (!response.ok) throw new AdminApiError(await responseMessage(response, 'Content could not be saved.'), response.status)
+}
+
+export async function fetchContentHistory(kind: ManagedContent['kind'], id: string, before?: number): Promise<ContentHistoryPage> {
+  const response = await adminFetch(`/api/admin/content/${kind}/${encodeURIComponent(id)}/history${before ? `?before=${before}` : ''}`)
+  if (!response.ok) throw new AdminApiError(await responseMessage(response, 'History could not be loaded.'), response.status)
+  const data: unknown = await response.json()
+  if (!data || typeof data !== 'object' || !('items' in data) || !Array.isArray(data.items) || !('nextCursor' in data) || !(data.nextCursor === null || (Number.isSafeInteger(data.nextCursor) && Number(data.nextCursor) > 0))) throw new Error('Invalid history response.')
+  for (const item of data.items as unknown[]) {
+    if (!item || typeof item !== 'object' || !('content' in item) || !isManagedContent(item.content) || item.content.kind !== kind || item.content.id !== id || !('revision' in item) || typeof item.revision !== 'string' || !('historyId' in item) || !Number.isSafeInteger(item.historyId) || !('updatedAt' in item) || typeof item.updatedAt !== 'string') throw new Error('Invalid history record.')
+  }
+  return data as ContentHistoryPage
 }

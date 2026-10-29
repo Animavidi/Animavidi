@@ -1,3 +1,4 @@
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -15,6 +16,7 @@ import type { Sighting } from '@/features/sightings/model/sighting'
 import styles from './ParkMapPage.module.css'
 
 export function ParkMapPage() {
+  useWildlifeCatalogue()
   const [sightings, setSightings] = useState<readonly Sighting[]>([])
   const [filter, setFilter] = useState<MapFilter>('all')
   const [selected, setSelected] = useState<PrototypePoi>()

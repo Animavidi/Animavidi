@@ -1,10 +1,11 @@
+import {personalStorage} from '@/features/accounts/data/personalStorage'
 import type { SpeciesSightingAchievement } from '@/features/achievements/model/sightingAchievement'
 
 export const speciesAchievementsStorageKey = 'animavidi.achievements.species.v1'
 
 function read(): SpeciesSightingAchievement[] {
   try {
-    const value: unknown = JSON.parse(localStorage.getItem(speciesAchievementsStorageKey) ?? '[]')
+    const value: unknown = JSON.parse(personalStorage.getItem(speciesAchievementsStorageKey) ?? '[]')
     if (!Array.isArray(value)) return []
     return value.filter((item): item is SpeciesSightingAchievement => {
       if (!item || typeof item !== 'object') return false
@@ -24,7 +25,7 @@ export const speciesAchievementRepository = {
     const existing = current.find((item) => item.animalId === achievement.animalId)
     if (existing) return { achievement: existing, isNew: false }
     try {
-      localStorage.setItem(speciesAchievementsStorageKey, JSON.stringify([...current, achievement]))
+      personalStorage.setItem(speciesAchievementsStorageKey, JSON.stringify([...current, achievement]))
       return { achievement, isNew: true }
     } catch { return { achievement, isNew: false } }
   },

@@ -1,8 +1,9 @@
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { useRef, useState } from 'react'
 import { matchPath, useLocation, useNavigate } from 'react-router-dom'
 
 import addSightingIcon from '@/assets/icons/animavidi-add-sighting-final.svg'
-import { findMammal } from '@/features/mammals/model/mammals'
+import { animalPath, findMammal } from '@/features/mammals/model/mammals'
 import { AddSightingFab } from '@/features/sightings/components/AddSightingFab/AddSightingFab'
 import { SpeciesPickerSheet } from '@/features/sightings/components/SpeciesPickerSheet/SpeciesPickerSheet'
 
@@ -12,14 +13,15 @@ type AddSightingLauncherProps = {
   disabled?: boolean
 }
 
-const pickerRoutes = new Set(['/parks/kruger', '/parks/kruger/mammals', '/parks/kruger/sightings', '/parks/kruger/map', '/parks/kruger/information', '/passport'])
+const pickerRoutes = new Set(['/parks/kruger', '/parks/kruger/mammals', '/parks/kruger/birds', '/parks/kruger/routes', '/parks/kruger/sightings', '/parks/kruger/map', '/parks/kruger/information', '/passport'])
 
 export function AddSightingLauncher({ disabled = false }: AddSightingLauncherProps) {
+  useWildlifeCatalogue()
   const buttonRef = useRef<HTMLButtonElement>(null)
   const location = useLocation()
   const navigate = useNavigate()
   const [pickerOpen, setPickerOpen] = useState(false)
-  const detailMatch = matchPath({ end: true, path: '/parks/kruger/mammals/:animalId' }, location.pathname)
+  const detailMatch = matchPath({ end: true, path: '/parks/kruger/mammals/:animalId' }, location.pathname) ?? matchPath({ end: true, path: '/parks/kruger/birds/:animalId' }, location.pathname)
   const directAnimalId = detailMatch?.params.animalId && findMammal(detailMatch.params.animalId) ? detailMatch.params.animalId : undefined
   const visible = !disabled && (pickerRoutes.has(location.pathname) || Boolean(directAnimalId))
 
@@ -31,13 +33,13 @@ export function AddSightingLauncher({ disabled = false }: AddSightingLauncherPro
   }
 
   function launch() {
-    if (directAnimalId) void navigate(`/parks/kruger/mammals/${directAnimalId}/sightings/new`)
+    if (directAnimalId) void navigate(`${animalPath(findMammal(directAnimalId)!)}/sightings/new`)
     else setPickerOpen(true)
   }
 
   function selectSpecies(animalId: string) {
     setPickerOpen(false)
-    void navigate(`/parks/kruger/mammals/${animalId}/sightings/new`)
+    void navigate(`${animalPath(findMammal(animalId)!)}/sightings/new`)
   }
 
   const clearanceClassName = location.pathname === '/parks/kruger' ? `${styles.clearance} ${styles.withoutNavigation}` : styles.clearance
