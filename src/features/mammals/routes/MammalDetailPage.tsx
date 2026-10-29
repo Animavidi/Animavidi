@@ -1,3 +1,4 @@
+import { PhotoAttribution } from '@/features/media/components/PhotoAttribution'
 import { useContent } from '@/features/content/components/ContentProvider'
 import type { CSSProperties } from 'react'
 import { useEffect, useMemo, useState } from 'react'
@@ -93,6 +94,7 @@ export function MammalDetailPage() {
       </header>
 
       <article className={styles.content}>
+        <PhotoAttribution animal={mammal} />
         {searchParams.get('sighting') === 'created' ? <p className={styles.success} role="status">Sighting saved locally.</p> : null}
 
         <section aria-labelledby="observation-title" className={styles.observationCard}>

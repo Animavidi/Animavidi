@@ -10,9 +10,11 @@ const species = [
   ...krugerBirdChecklist.map((entry) => ({ id: entry.id, name: entry.commonName, group: 'bird' })),
 ]
 const packaged = new Set()
-for (const entry of await readdir(join(root, 'src/assets/mammals'), { withFileTypes: true })) {
-  if (!entry.isDirectory()) continue
-  try { if ((await readFile(join(root, 'src/assets/mammals', entry.name, 'primary.webp'))).byteLength > 0) packaged.add(entry.name) } catch { /* Not a confirmed image. */ }
+for (const category of ['mammals', 'birds']) {
+  for (const entry of await readdir(join(root, `src/assets/${category}`), { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue
+    try { if ((await readFile(join(root, `src/assets/${category}`, entry.name, 'primary.webp'))).byteLength > 0) packaged.add(entry.name) } catch { /* Not a confirmed image. */ }
+  }
 }
 const manifestPath = process.argv.find((arg) => arg.startsWith('--manifest='))?.slice('--manifest='.length)
 let photos = {}

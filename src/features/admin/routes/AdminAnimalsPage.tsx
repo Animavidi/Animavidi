@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { MammalImage } from '@/features/mammals/components/MammalImage/MammalImage'
 import { useMammalPhotoContext } from '@/features/mammals/components/MammalPhotoProvider/MammalPhotoProvider'
 import { wildlife as mammals } from '@/features/mammals/model/mammals'
-import { getMammalPrimaryImage } from '@/assets/mammals/mammalPrimaryImages'
+import { getAnimalPrimaryImage as getMammalPrimaryImage } from '@/assets/wildlife/animalPrimaryImages'
 
 import { PageHeading } from './AdminHomePage'
 import styles from './Admin.module.css'

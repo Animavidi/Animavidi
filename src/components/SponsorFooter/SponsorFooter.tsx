@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styles from './SponsorFooter.module.css'
 
 type SponsorFooterProps = {
@@ -11,6 +12,7 @@ export function SponsorFooter({ tone = 'dark' }: SponsorFooterProps) {
         Sponsored by LuxurySafariHomes.com
         <span className="srOnly"> (opens in a new tab)</span>
       </a>
+      <Link className={styles.credits} to="/photo-credits">Photo credits</Link>
     </footer>
   )
 }

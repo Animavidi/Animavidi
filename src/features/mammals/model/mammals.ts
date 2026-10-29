@@ -1,3 +1,4 @@
+import { getBirdPrimaryImage } from '@/assets/birds/birdPrimaryImages'
 import { krugerBirdChecklist } from '@/features/birds/data/krugerBirdChecklist'
 import { getMammalPrimaryImage } from '@/assets/mammals/mammalPrimaryImages'
 import { getMammalId, krugerMammalChecklist } from '@/features/mammals/data/krugerMammalChecklist'
@@ -111,7 +112,7 @@ export const mammals: readonly Mammal[] = krugerMammalChecklist.map((entry) => {
 
 export const birds: readonly Mammal[] = krugerBirdChecklist.map((entry) => ({
   aliases: [entry.commonName], categories: ['birds'], commonName: entry.commonName,
-  id: entry.id, image: missingPhotoFallback, imageAlt: entry.commonName,
+  id: entry.id, image: getBirdPrimaryImage(entry.id) ?? missingPhotoFallback, imageAlt: entry.commonName,
   imageFallback: missingPhotoFallback, officialCommonName: entry.commonName,
   overviewSection: 'birds', scientificName: entry.scientificName, sortName: entry.commonName,
   profile: profile(`${entry.commonName} is listed in the SANParks Kruger bird checklist.`, [], '', '', '', '', '', [], false, 0),

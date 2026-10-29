@@ -2,7 +2,7 @@ import { AnimalProfileEditor } from '../components/AnimalProfileEditor'
 import { useRef, useState, type ChangeEvent } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-import { getMammalPrimaryImage } from '@/assets/mammals/mammalPrimaryImages'
+import { getAnimalPrimaryImage as getMammalPrimaryImage } from '@/assets/wildlife/animalPrimaryImages'
 import { MammalImage } from '@/features/mammals/components/MammalImage/MammalImage'
 import { useMammalPhotoContext } from '@/features/mammals/components/MammalPhotoProvider/MammalPhotoProvider'
 import { findMammal } from '@/features/mammals/model/mammals'

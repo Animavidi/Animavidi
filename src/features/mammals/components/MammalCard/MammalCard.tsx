@@ -14,6 +14,9 @@ type MammalCardProps = {
 }
 
 const imagePositions: Readonly<Record<string, string>> = {
+  'bird-african-fish-eagle': '70% 35%',
+  'bird-lilac-breasted-roller': '100% 45%',
+  'bird-martial-eagle': '50% 28%',
   'african-buffalo': '43% 48%',
   'african-lion': '52% 37%',
   'african-wild-dog': '50% 40%',

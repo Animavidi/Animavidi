@@ -13,6 +13,7 @@ import { SightingDetailPage } from '@/features/sightings/routes/SightingDetailPa
 import { LocationPage } from '@/features/onboarding/routes/LocationPage'
 import { WelcomePage } from '@/features/welcome/routes/WelcomePage'
 
+const PhotoCreditsPage = lazy(() => import('@/features/media/routes/PhotoCreditsPage').then((module) => ({ default: module.PhotoCreditsPage })))
 const SafariRoutesPage = lazy(() => import('@/features/routes/routes/SafariRoutesPage').then((module) => ({ default: module.SafariRoutesPage })))
 const BirdsPage = lazy(() => import('@/features/birds/routes/BirdsPage').then((module) => ({ default: module.BirdsPage })))
 
@@ -31,6 +32,7 @@ const AdminAnimalsPage = lazy(() => import('@/features/admin/routes/AdminAnimals
 const AdminAnimalPage = lazy(() => import('@/features/admin/routes/AdminAnimalPage').then((module) => ({ default: module.AdminAnimalPage })))
 
 export const router = createBrowserRouter([
+  { path: '/photo-credits', element: <Suspense fallback={<p role="status">Loading photo credits…</p>}><PhotoCreditsPage /></Suspense> },
   {
     path: '/admin',
     element: <Suspense fallback={<p role="status">Opening Content Admin…</p>}><AdminRoot /></Suspense>,

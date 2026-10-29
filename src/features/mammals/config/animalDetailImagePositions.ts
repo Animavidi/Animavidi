@@ -1,4 +1,7 @@
 export const animalDetailImagePositions: Readonly<Record<string, string>> = {
+  'bird-african-fish-eagle': '70% 40%',
+  'bird-lilac-breasted-roller': '100% 40%',
+  'bird-martial-eagle': '50% 28%',
   'african-buffalo': '43% 42%',
   'african-elephant': '50% 38%',
   'african-lion': '52% 34%',
