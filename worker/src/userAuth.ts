@@ -1,5 +1,6 @@
 import { betterAuth } from 'better-auth'
 import { D1Dialect } from 'kysely-d1'
+import {consumeAuthLimit,authRules} from './authRateLimit.ts'
 import {sendAccountMail,tokenDigest,type MailEnv} from './accountMail.ts'
 
 export type UserEnv = MailEnv & {
@@ -34,7 +35,7 @@ export function userAuth(env:UserEnv,origin:string,background?:Pick<ExecutionCon
       await env.CONTENT_DB!.prepare('INSERT INTO av_verification(id,identifier,value,expiresAt,createdAt,updatedAt) VALUES (?,?,?,?,?,?) ON CONFLICT(id) DO NOTHING').bind(id,id,'issued',new Date(Date.now()+3600000).toISOString(),new Date().toISOString(),new Date().toISOString()).run()
       await send(user.email,url,'Verify your Animavidi email address')
     }},
-    rateLimit:{enabled:true,storage:'database',modelName:'av_auth_rate',window:60,max:60,customRules:{'/sign-in/email':{window:300,max:10},'/sign-up/email':{window:3600,max:5},'/request-password-reset':{window:3600,max:5},'/send-verification-email':{window:3600,max:5}}},
+    rateLimit:{enabled:true,storage:'database',modelName:'av_auth_rate',window:60,max:60,customStorage:{consume:(key,rule)=>consumeAuthLimit(env,'network',JSON.stringify([origin,key]),rule)},customRules:{'/sign-in/email':authRules.signin,'/sign-up/email':authRules.signup,'/request-password-reset':authRules.mail,'/send-verification-email':authRules.mail}},
   })
 }
 

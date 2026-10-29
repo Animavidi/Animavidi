@@ -10,6 +10,7 @@
     "build": "pnpm typecheck && vite build --configLoader runner && node scripts/build-pwa.mjs",
     "build:preview": "node scripts/build-preview.mjs",
     "test:preview": "node scripts/test-preview.mjs",
+    "test:auth-rate-limit": "node scripts/test-auth-rate-limit.mjs",
     "test:pwa-update": "node scripts/test-pwa-update.mjs",
     "test:resend": "node scripts/test-resend.mjs",
     "test:accounts": "pnpm build:preview && node scripts/test-resend.mjs && node scripts/test-user-cloud.mjs && node scripts/test-accounts-browser.mjs",

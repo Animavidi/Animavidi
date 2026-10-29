@@ -1,3 +1,4 @@
+import {consumeAuthLimit,rateLimitedResponse,trustedClientIp} from './authRateLimit.ts'
 import {mailConfigured,tokenDigest} from './accountMail.ts'
 import { userAuth,verifiedUser,type UserEnv } from './userAuth.ts'
 import { validSighting,personalKeys } from '../../src/features/accounts/model/cloud.ts'
@@ -11,16 +12,23 @@ export async function handleUsers(request:Request,env:UserEnv,background?:Pick<E
   if(!env.CONTENT_DB || !env.BETTER_AUTH_SECRET)return json({error:'User accounts are not configured.'},503)
   try{
     if(url.pathname.startsWith('/api/auth/')){
-      if(request.method==='POST' && /\/(sign-in\/email|sign-up\/email|request-password-reset|send-verification-email)$/.test(url.pathname)){
-        const windowSize=url.pathname.endsWith('sign-in/email')?300:3600,max=url.pathname.endsWith('sign-in/email')?20:5
-        const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(env.BETTER_AUTH_SECRET),{name:'HMAC',hash:'SHA-256'},false,['sign'])
-        const bytes=await crypto.subtle.sign('HMAC',key,new TextEncoder().encode(`${request.headers.get('CF-Connecting-IP') ?? 'local'}:${url.pathname}`)),client='user-auth:'+Array.from(new Uint8Array(bytes),byte=>byte.toString(16).padStart(2,'0')).join('')
-        const result=await env.CONTENT_DB.prepare('INSERT INTO bird_submission_limits(client_key,window_start,attempts) VALUES (?,?,1) ON CONFLICT(client_key) DO UPDATE SET attempts=CASE WHEN window_start=excluded.window_start THEN attempts+1 ELSE 1 END,window_start=excluded.window_start RETURNING attempts').bind(client,Math.floor(Date.now()/1000/windowSize)).first<{attempts:number}>()
-        if(!result||result.attempts>max)return json({error:'Too many attempts. Please try again later.'},429)
+      const authPath=url.pathname.replace(/\/+$/,'')
+      if(request.method==='POST'){
+        const bytes=await bounded(request,16384);request=new Request(request,{body:bytes})
+        const sensitive=/\/(sign-in\/email|sign-up\/email|request-password-reset|send-verification-email)$/.test(authPath)
+        if(sensitive){
+          if(!trustedClientIp(request)){console.error(JSON.stringify({event:'auth_trusted_ip_missing'}));return json({message:'The account service could not confirm your network. Please retry shortly.'},503)}
+          const input:unknown=JSON.parse(new TextDecoder().decode(bytes))
+          const email=input&&typeof input==='object'&&'email'in input&&typeof input.email==='string'?input.email.trim().toLowerCase():''
+          if(email&&email.length<=254){
+            const signin=authPath.endsWith('sign-in/email'),action=authPath.split('/').slice(-2).join('/')
+            const decision=await consumeAuthLimit(env,'email',JSON.stringify([action,email]),{window:signin?300:900,max:signin?10:5})
+            if(!decision.allowed){console.warn(JSON.stringify({event:'auth_rate_limited',scope:'email',action,retryAfterSeconds:decision.retryAfter}));return rateLimitedResponse(decision.retryAfter!)}
+          }
+        }
       }
-      if(['sign-up/email','request-password-reset','send-verification-email'].some(path=>url.pathname.endsWith('/'+path)) && !mailConfigured(env))return json({error:'Account email delivery is not configured yet. Please retry when the administrator has enabled it.'},503)
-      if(request.method==='POST'){const bytes=await bounded(request,16384);request=new Request(request,{body:bytes})}
-      if(url.pathname==='/api/auth/verify-email'&&request.method==='GET'){
+      if(['sign-up/email','request-password-reset','send-verification-email'].some(path=>authPath.endsWith('/'+path)) && !mailConfigured(env))return json({error:'Account email delivery is not configured yet. Please retry when the administrator has enabled it.'},503)
+      if(authPath==='/api/auth/verify-email'&&request.method==='GET'){
         const token=url.searchParams.get('token');if(!token||token.length>4096)return json({error:'Invalid or expired activation link.'},400)
         const id='activation-'+await tokenDigest(token)
         const used=await env.CONTENT_DB.prepare('DELETE FROM av_verification WHERE id=? AND expiresAt>? RETURNING id').bind(id,new Date().toISOString()).first()
@@ -28,6 +36,7 @@ export async function handleUsers(request:Request,env:UserEnv,background?:Pick<E
       }
       const result=await userAuth(env,url.origin,background).handler(request),headers=new Headers(result.headers)
       headers.set('Cache-Control','no-store');headers.set('X-Content-Type-Options','nosniff')
+      if(result.status===429){const retry=Number(headers.get('X-Retry-After')??headers.get('Retry-After')??60);console.warn(JSON.stringify({event:'auth_rate_limited',scope:'network',action:authPath.endsWith('sign-up/email')?'signup':'auth',ipSource:'cloudflare',retryAfterSeconds:retry}));return rateLimitedResponse(Number.isFinite(retry)?retry:60)}
       return new Response(result.body,{status:result.status,headers})
     }
     const user=await verifiedUser(request,env);if(!user)return json({error:'Sign in with a verified account to continue.'},401)
