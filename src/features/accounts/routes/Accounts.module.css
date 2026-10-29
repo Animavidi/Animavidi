@@ -9,3 +9,15 @@
 .eyebrow { font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:#89662f; }.state { padding:3rem; text-align:center; }
 .syncPill { position:fixed; bottom:calc(5.1rem + env(safe-area-inset-bottom)); left:.6rem; z-index:20; max-width:65vw; padding:.35rem .65rem; border-radius:1rem; background:#f8f5edf0; color:#213c2b; box-shadow:0 .2rem .6rem #0002; font-size:.7rem; }
 .migrationNotice { padding:.7rem 1rem; background:#eee3ca; color:#20372a; font-size:.85rem; }
+
+.confirmation { padding:1rem; margin:1rem 0; background:#e7efe4; border:1px solid #718766; border-radius:.8rem; color:#173321; }
+.confirmation h2,.existingAccount h2 { font-size:1.05rem; margin:0 0 .5rem; }
+.confirmation p { margin:.5rem 0 0; }
+.existingAccount { margin:1.2rem 0; }
+.existingAccount p { margin:.5rem 0; }
+.accountActions { display:grid; gap:.65rem; }
+.accountActions a { display:block; padding:.9rem 1rem; border:1px solid #b99455; border-radius:.7rem; text-align:center; text-decoration:none; font-weight:600; }
+.primaryAction { background:#1d3828; color:#fff; }
+.secondaryAction { background:#fff9; color:#1d3828; }
+.accountError { padding:.85rem; border:1px solid #af5747; border-radius:.7rem; background:#fff0ea; color:#762d22; }
+.panel h1:focus-visible { outline:2px solid #b99455; outline-offset:.35rem; }
