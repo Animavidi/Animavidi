@@ -20,6 +20,7 @@
     "validate:content-admin": "node scripts/validate-content-admin.mjs",
     "admin:hash-password": "node scripts/generate-admin-password-hash.mjs",
     "validate:kruger-content": "node scripts/validate-kruger-content.mjs",
+    "validate:safari-routes": "node scripts/validate-safari-routes.mjs",
     "validate:release-images": "node scripts/validate-release-images.mjs",
     "validate:reviewed-photos": "node scripts/validate-reviewed-photos.mjs"
   },

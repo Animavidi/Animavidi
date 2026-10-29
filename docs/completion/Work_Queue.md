@@ -12,8 +12,8 @@ Baseline: `9e38d30e135e72faa452eda0109eedea6d2a16ce`, branch `feat/complete-krug
 - [ ] Review every candidate visually; approve only identifiable species with suitable rights.
 - [ ] Resolve checklist taxonomy collisions before name-based photo matching.
 - [ ] Complete reviewed species profiles using the format below and per-claim sources.
-- [ ] Obtain the original 36-page `Park Map.pdf`; path requested from user. Absent from checkout and Codex work folders.
-- [ ] Audit every existing route junction against brochure; expand southern, central and northern coverage.
+- [x] Obtain the original 36-page `Park Map.pdf`; now available from the user-provided Windows Downloads path. Identity and review recorded in `Route_Review.md`.
+- [x] Audit the three existing guides and add seven main-road guides across southern, central and northern Kruger. Broader road-network coverage remains incomplete.
 - [ ] Test current admin, photo operations, persistence and concurrency locally.
 - [ ] Finish missing admin functions and test them with isolated fixtures.
 - [ ] Verify real API origins, auth/CORS, D1 and R2 integration; preserve all live data.
@@ -23,7 +23,7 @@ Baseline: `9e38d30e135e72faa452eda0109eedea6d2a16ce`, branch `feat/complete-krug
 
 Stable ID, common/scientific name and taxonomy references; introduction; identification features; habitat; behaviour; diet; group structure; conservation status with assessment source/date; interesting facts. Record checked date and source URLs for every factual section. Rewrite factual summaries; do not copy source prose. Unknown/unverified fields stay visibly pending. Checklists prove inclusion, not all profile claims.
 
-## Route inventory
+## Initial route inventory (superseded by Route_Review.md)
 
 | Existing guide | Roads currently declared | Outstanding verification |
 | --- | --- | --- |
@@ -87,4 +87,13 @@ Pending this checkout's baseline tests. Historical tests are described in `../Kr
 
 
 - Final Edge browser run passed: bird sighting create/edit/delete and Passport; animal source/image/credit loading; admin multiline persistence; route unpublish and history restore; filtered report CSV export. Final mobile report screenshot inspected. No JavaScript errors.
+
+
+### Batch 4: original brochure and ten reviewed route guides
+
+- Original Park Map.pdf received at the supplied Windows Downloads path; 36 pages, identity hash and printed/PDF page offset recorded in Route_Review.md. Missing-file blocker resolved.
+- Visually inspected printed map pages 7–16, enlarged Satara/Tshokwane junctions and cross-page northern connections. Added seven guides; ten total (3 south, 3 central, 4 north). Corrected existing approach/connector descriptions and the Tshokwane H1-3 out-and-back.
+- Added machine-readable route evidence and validator for endpoint/stop sequences, road order and critical connector regressions. This is reviewed planning-level topology, not surveyed navigation or current access certification.
+- Added dated official Skukuza access notice and linked current park information. No brochure artwork/scans/photos copied into the app. Animavidi map files, sighting persistence and user data remain unchanged.
+- Validation passed: route validator, ESLint, typecheck/production build and full Edge browser suite (all region filters, northern guide, corrected Tshokwane text, existing admin save/unpublish/history restore, reports and sightings). Desktop route screenshot inspected. No deployment or merge.
 

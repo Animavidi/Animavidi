@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-29",
+  "brochure": {
+    "fileName": "Park Map.pdf",
+    "sha256": "757f5095149e5502bdfbd1cb4db44a550618703d80ede0cbef151c8e2cc41468",
+    "pdfPageCount": 36,
+    "printedToPdfPageOffset": 1,
+    "method": "Visual tracing of numbered roads, junctions and signed facility approaches on printed map pages 7–16; OCR not used as connectivity proof.",
+    "limitations": "Historical brochure; not current closures, surveyed geometry, GPS navigation or access permission. Unnumbered camp/facility access is explicit. No brochure artwork or photographs redistributed."
+  },
+  "routes": [
+    {
+      "id": "sabie-river-road", "printedPages": [7, 8],
+      "nodes": ["Skukuza", "Skukuza H4-1 approach", "Nkuhlu access", "Nkuhlu picnic site", "Nkuhlu access", "Lower Sabie approach", "Lower Sabie"],
+      "roads": [null, "H4-1", null, null, "H4-1", null],
+      "notes": "Camp and picnic-site access spurs are unnumbered in this guide; they are not invented road numbers."
+    },
+    {
+      "id": "orpen-to-satara", "printedPages": [9, 10],
+      "nodes": ["Orpen Gate", "H7 / H1-4 / H1-3 junction", "Satara approach", "Satara"],
+      "roads": ["H7", "H1-4", null],
+      "notes": "H7 ends east of Satara; the final main-road approach turns north."
+    },
+    {
+      "id": "skukuza-tshokwane-lower-sabie", "printedPages": [8, 10],
+      "nodes": ["Skukuza", "Skukuza H1-2 approach", "H1-2 / H1-3 / H10 junction", "Tshokwane access", "Tshokwane picnic site", "Tshokwane access", "H1-2 / H1-3 / H10 junction", "Lower Sabie approach", "Lower Sabie"],
+      "roads": [null, "H1-2", "H1-3", null, null, "H1-3", "H10", null],
+      "notes": "Picnic site north of H10 junction; H1-3 is travelled in both directions. H10 is not a direct picnic-site exit."
+    },
+    {
+      "id": "lower-sabie-crocodile-bridge", "printedPages": [8],
+      "nodes": ["Lower Sabie", "Lower Sabie H10 approach", "H10 / H4-2 junction south of Sabie bridge", "Crocodile Bridge approach", "Crocodile Bridge"],
+      "roads": [null, "H10", "H4-2", null],
+      "notes": "Includes the H10 river bridge connector rather than claiming H4-2 starts at the camp gate."
+    },
+    {
+      "id": "satara-nwanetsi", "printedPages": [10],
+      "nodes": ["Satara", "Satara approach", "H7 / H1-4 / H1-3 junction", "H1-3 / H6 junction", "N’wanetsi approach", "N’wanetsi picnic site"],
+      "roads": [null, "H1-4", "H1-3", "H6", null],
+      "notes": "Camp access, short main-road connector and final picnic-site spur are explicit. H6 does not begin at the Satara gate."
+    },
+    {
+      "id": "olifants-letaba", "printedPages": [12],
+      "nodes": ["Olifants", "Olifants H8 approach", "H8 / H1-5 junction", "H1-5 / H1-6 / H9 junction", "Letaba approach", "Letaba"],
+      "roads": [null, "H8", "H1-5", "H1-6", null],
+      "notes": "Uses the main-road connection; S44/S46/S93/S94 river alternatives are not included."
+    },
+    {
+      "id": "letaba-mopani", "printedPages": [12, 13, 14],
+      "nodes": ["Letaba", "Letaba approach", "H1-6 / H15 junction", "Mopani approach", "Mopani"],
+      "roads": [null, "H1-6", "H1-6", null],
+      "notes": "Cross-page H1-6 continuation checked. H15 towards Giriyondo is not taken."
+    },
+    {
+      "id": "mopani-shingwedzi", "printedPages": [13, 14],
+      "nodes": ["Mopani", "Mopani approach", "H1-6 / S143 junction", "H1-6 / S144 junction", "Shingwedzi approach", "Shingwedzi"],
+      "roads": [null, "H1-6", "H1-6", "H1-6", null],
+      "notes": "Camp access is distinct from the gravel loops."
+    },
+    {
+      "id": "shingwedzi-babalala", "printedPages": [14, 15, 16],
+      "nodes": ["Shingwedzi", "Shingwedzi approach", "H1-6 / H1-7 transition", "Babalala access at northern S56 junction", "Babalala picnic site"],
+      "roads": [null, "H1-6", "H1-7", null],
+      "notes": "Northward H1-7 continuation across the map-spread boundary checked; S56 gravel loop excluded."
+    },
+    {
+      "id": "punda-maria-pafuri-gates", "printedPages": [15, 16],
+      "nodes": ["Punda Maria Gate", "H13-1 / H1-7 / H1-8 junction", "H1-8 / H1-9 junction north of Luvuvhu", "Pafuri Gate"],
+      "roads": ["H13-1", "H1-8", "H1-9"],
+      "notes": "Ends at western park entrance, not eastern international border post. No Punda Maria camp or S63 picnic detour implied."
+    }
+  ]
+}
