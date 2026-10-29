@@ -1,9 +1,10 @@
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 
 import { SponsorFooter } from '@/components/SponsorFooter/SponsorFooter'
 import { MammalsBottomNav } from '@/features/mammals/components/MammalsBottomNav/MammalsBottomNav'
-import { findMammal, mammals } from '@/features/mammals/model/mammals'
+import { findMammal, wildlife as mammals } from '@/features/mammals/model/mammals'
 import { SightingImage } from '@/features/sightings/components/SightingImage/SightingImage'
 import { AddSightingLauncher } from '@/features/sightings/components/AddSightingLauncher/AddSightingLauncher'
 import { sightingRepository } from '@/features/sightings/data/sightingRepository'
@@ -14,6 +15,7 @@ import styles from './SightingsPages.module.css'
 type SortOrder = 'newest' | 'oldest' | 'species'
 
 export function MySightingsPage() {
+  useWildlifeCatalogue()
   const [searchParams] = useSearchParams()
   const [sightings, setSightings] = useState<readonly Sighting[]>([])
   const [total, setTotal] = useState(0)

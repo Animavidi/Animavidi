@@ -21,6 +21,9 @@
     "admin:hash-password": "node scripts/generate-admin-password-hash.mjs",
     "validate:kruger-content": "node scripts/validate-kruger-content.mjs",
     "validate:safari-routes": "node scripts/validate-safari-routes.mjs",
+    "validate:bird-proposals": "node scripts/validate-bird-proposals.mjs",
+    "validate:starter-birds": "node scripts/validate-starter-birds.mjs",
+    "validate:release-starter-images": "node scripts/validate-release-images.mjs --scope=starter",
     "validate:release-images": "node scripts/validate-release-images.mjs",
     "validate:reviewed-photos": "node scripts/validate-reviewed-photos.mjs"
   },

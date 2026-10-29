@@ -1,17 +1,19 @@
 import { useMemo, useState } from 'react'
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { Link } from 'react-router-dom'
 import { getAnimalPrimaryImage } from '@/assets/wildlife/animalPrimaryImages'
 import { photoCredits } from '@/assets/wildlife/photoCredits'
 import { useContent } from '@/features/content/components/ContentProvider'
 import { sourcedAnimalProfiles } from '@/features/content/data/sourcedAnimalProfiles'
+import { getReviewedBirdContent } from '@/features/birds/data/reviewedBirdContent'
 import { useMammalPhotoContext } from '@/features/mammals/components/MammalPhotoProvider/MammalPhotoProvider'
-import { wildlife } from '@/features/mammals/model/mammals'
 import { safariRoutes } from '@/features/routes/data/safariRoutes'
 import { PageHeading } from './AdminHomePage'
 import styles from './Admin.module.css'
 
 const recordedCredits: Readonly<Record<string, unknown>> = photoCredits
 export function AdminReportsPage() {
+  const wildlife = useWildlifeCatalogue()
   const content = useContent(), photos = useMammalPhotoContext()
   const [query, setQuery] = useState('')
   const [missingOnly, setMissingOnly] = useState(true)
@@ -22,10 +24,10 @@ export function AdminReportsPage() {
     const missing = fields.filter((field) => !profile[field].trim())
     const image = photos.manifest[animal.id] ? 'R2 override (rights review required)' : getAnimalPrimaryImage(animal.id) ? 'Packaged' : 'Missing'
     const attribution = image === 'Packaged' && recordedCredits[animal.id] ? 'Recorded' : 'Review required'
-    const source = managed?.kind === 'animal' ? managed.sourceUrl : sourcedAnimalProfiles[animal.id]?.content.sourceUrl ?? ''
+    const source = managed?.kind === 'animal' ? managed.sourceUrl : getReviewedBirdContent(animal.id)?.sourceUrl ?? sourcedAnimalProfiles[animal.id]?.content.sourceUrl ?? ''
     const completeFields = !missing.length && profile.identificationFeatures.some((value) => value.trim()) && profile.interestingFacts.some((value) => value.trim())
     return { id: animal.id, name: animal.commonName, image, attribution, missing: [...missing, ...(!profile.identificationFeatures.some((value) => value.trim()) ? ['identificationFeatures'] : []), ...(!profile.interestingFacts.some((value) => value.trim()) ? ['interestingFacts'] : [])], source, completeFields }
-  }), [content.entries, photos.manifest])
+  }), [content.entries, photos.manifest,wildlife])
   const visible = rows.filter((row) => (!missingOnly || row.image === 'Missing' || !row.completeFields || !row.source || row.attribution !== 'Recorded') && `${row.id} ${row.name}`.toLowerCase().includes(query.trim().toLowerCase()))
   const routes = new Map(safariRoutes.map((route) => [route.id, route]))
   for (const entry of Object.values(content.entries)) if (entry.content.kind === 'route') routes.set(entry.content.id, entry.content)

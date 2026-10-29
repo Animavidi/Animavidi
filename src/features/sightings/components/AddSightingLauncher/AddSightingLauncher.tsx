@@ -1,3 +1,4 @@
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { useRef, useState } from 'react'
 import { matchPath, useLocation, useNavigate } from 'react-router-dom'
 
@@ -15,6 +16,7 @@ type AddSightingLauncherProps = {
 const pickerRoutes = new Set(['/parks/kruger', '/parks/kruger/mammals', '/parks/kruger/birds', '/parks/kruger/routes', '/parks/kruger/sightings', '/parks/kruger/map', '/parks/kruger/information', '/passport'])
 
 export function AddSightingLauncher({ disabled = false }: AddSightingLauncherProps) {
+  useWildlifeCatalogue()
   const buttonRef = useRef<HTMLButtonElement>(null)
   const location = useLocation()
   const navigate = useNavigate()

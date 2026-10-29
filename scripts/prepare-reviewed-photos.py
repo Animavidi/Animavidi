@@ -11,16 +11,23 @@ from PIL import Image, ImageOps
 root = Path(__file__).resolve().parents[1]
 queue = json.loads((root / 'docs/completion/photo-candidates.json').read_text(encoding='utf-8'))
 decisions = json.loads((root / 'docs/completion/photo-review-decisions.json').read_text(encoding='utf-8'))
-credits_path = root / 'src/assets/mammals/photo-credits.json'
-credits = json.loads(credits_path.read_text(encoding='utf-8')) if credits_path.exists() else {}
+inventory = json.loads((root / 'docs/completion/species-inventory.json').read_text(encoding='utf-8'))
+groups = {entry['id']: 'birds' if entry['group'] == 'bird' else 'mammals' for entry in inventory['species']}
+credit_sets = {}
+for group in ['birds', 'mammals']:
+    path = root / f'src/assets/{group}/photo-credits.json'
+    credit_sets[group] = json.loads(path.read_text(encoding='utf-8')) if path.exists() else {}
 for species_id, decision in decisions['approved'].items():
+    group = groups[species_id]
+    credits_path = root / f'src/assets/{group}/photo-credits.json'
+    credits = credit_sets[group]
     entry = queue['candidates'][species_id]
     candidate = next(item for item in entry['files'] if item['fileName'] == decision['fileName'])
     source = root / 'work/photo-candidates' / candidate['fileName']
     source_hash = hashlib.sha256(source.read_bytes()).hexdigest()
     if source_hash != candidate['sha256']:
         raise ValueError(f'Reviewed source changed: {species_id}')
-    asset_path = f'src/assets/mammals/{species_id}/primary.webp'
+    asset_path = f'src/assets/{group}/{species_id}/primary.webp'
     output = root / asset_path
     if output.exists():
         if species_id in credits and hashlib.sha256(output.read_bytes()).hexdigest() == credits[species_id]['sha256']:

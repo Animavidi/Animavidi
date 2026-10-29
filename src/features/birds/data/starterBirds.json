@@ -1,0 +1,1129 @@
+{
+  "schemaVersion": 1,
+  "sourceUrl": "https://birda.org/kruger-national-park-birding-checklist/",
+  "sourceTableSha256": "d3009209f950d89f7b8bd44d4a9d18e79aa495524beb972819eda60698662318",
+  "sourcePublishedAt": null,
+  "checkedAt": "2026-10-29",
+  "method": "Highest 100 confidently name-matched Kruger SABAP2 observation counts in the published Birda table. Unresolved names are excluded rather than guessed. Count order is editorial priority, not current abundance.",
+  "limitations": "Historical published snapshot; observation period and sampling effort are not supplied per row. Seasonal/region/observer bias applies. This is not a current 2026 top-100 estimate. High-count Northern Red-billed Hornbill, White-browed Coucal and Eurasian Hoopoe require taxonomy reconciliation before their counts can be assigned to retained Kruger records.",
+  "unmatchedSourceRows": [
+    {
+      "sourceName": "Northern Red-billed Hornbill",
+      "observations": 12974
+    },
+    {
+      "sourceName": "White-browed Coucal",
+      "observations": 8531
+    },
+    {
+      "sourceName": "Eurasian Hoopoe",
+      "observations": 7483
+    },
+    {
+      "sourceName": "Western Cattle Egret",
+      "observations": 4644
+    },
+    {
+      "sourceName": "Blackpoll Warbler",
+      "observations": 4342
+    },
+    {
+      "sourceName": "Yellow-throated Bush Sparrow",
+      "observations": 3418
+    },
+    {
+      "sourceName": "Mourning Collared Dove",
+      "observations": 2927
+    },
+    {
+      "sourceName": "Northern Carmine Bee-eater",
+      "observations": 2670
+    },
+    {
+      "sourceName": "African Wattled Lapwing",
+      "observations": 1726
+    },
+    {
+      "sourceName": "Common buzzard",
+      "observations": 1513
+    },
+    {
+      "sourceName": "Ethiopian Boubou",
+      "observations": 1504
+    },
+    {
+      "sourceName": "Holub’s Golden Weaver",
+      "observations": 1210
+    },
+    {
+      "sourceName": "Common House Martin",
+      "observations": 1200
+    },
+    {
+      "sourceName": "Common Buttonquail",
+      "observations": 957
+    },
+    {
+      "sourceName": "Yellow-rumped Tinkerbird",
+      "observations": 939
+    },
+    {
+      "sourceName": "African Barred Owlet",
+      "observations": 922
+    },
+    {
+      "sourceName": "Lazy Cisticola",
+      "observations": 884
+    },
+    {
+      "sourceName": "Cape Parrot",
+      "observations": 660
+    },
+    {
+      "sourceName": "Intermediate egret",
+      "observations": 594
+    },
+    {
+      "sourceName": "Southern White-faced Owl",
+      "observations": 582
+    },
+    {
+      "sourceName": "African Yellow Warbler",
+      "observations": 374
+    },
+    {
+      "sourceName": "Northern Yellow White-eye",
+      "observations": 298
+    },
+    {
+      "sourceName": "Quailfinch",
+      "observations": 268
+    },
+    {
+      "sourceName": "Black-and-white Mannikin",
+      "observations": 264
+    },
+    {
+      "sourceName": "Crowned Eagle",
+      "observations": 259
+    },
+    {
+      "sourceName": "Mountain Wagtail",
+      "observations": 246
+    },
+    {
+      "sourceName": "Olive Sunbird",
+      "observations": 230
+    },
+    {
+      "sourceName": "Western Osprey",
+      "observations": 221
+    },
+    {
+      "sourceName": "Brown Firefinch",
+      "observations": 160
+    },
+    {
+      "sourceName": "Cape Canary",
+      "observations": 122
+    },
+    {
+      "sourceName": "Southern Bald Ibis",
+      "observations": 57
+    },
+    {
+      "sourceName": "American Flamingo",
+      "observations": 56
+    },
+    {
+      "sourceName": "Olive Thrush",
+      "observations": 56
+    },
+    {
+      "sourceName": "Western Swamphen",
+      "observations": 49
+    },
+    {
+      "sourceName": "Fan-tailed Grassbird",
+      "observations": 47
+    },
+    {
+      "sourceName": "Mallard",
+      "observations": 42
+    },
+    {
+      "sourceName": "Magpie Mannikin",
+      "observations": 39
+    },
+    {
+      "sourceName": "Cape Eagle-Owl",
+      "observations": 38
+    },
+    {
+      "sourceName": "Cape Teal",
+      "observations": 35
+    },
+    {
+      "sourceName": "African Skimmer",
+      "observations": 33
+    },
+    {
+      "sourceName": "Chorister Robin-Chat",
+      "observations": 32
+    },
+    {
+      "sourceName": "Hottentot Teal",
+      "observations": 31
+    },
+    {
+      "sourceName": "Fawn-colored Lark",
+      "observations": 30
+    },
+    {
+      "sourceName": "Lesser Jacana",
+      "observations": 26
+    },
+    {
+      "sourceName": "Sedge Warbler",
+      "observations": 23
+    },
+    {
+      "sourceName": "Drakensberg Prinia",
+      "observations": 22
+    },
+    {
+      "sourceName": "Swallow-tailed Bee-eater",
+      "observations": 21
+    },
+    {
+      "sourceName": "Common Square-tailed Drongo",
+      "observations": 18
+    },
+    {
+      "sourceName": "Eastern Golden Weaver",
+      "observations": 17
+    },
+    {
+      "sourceName": "Common Whitethroat",
+      "observations": 15
+    },
+    {
+      "sourceName": "Karoo Thrush",
+      "observations": 15
+    },
+    {
+      "sourceName": "Southern red-billed hornbill",
+      "observations": 15
+    },
+    {
+      "sourceName": "Damara Red-billed Hornbill",
+      "observations": 13
+    },
+    {
+      "sourceName": "Northern Wheatear",
+      "observations": 12
+    },
+    {
+      "sourceName": "Indian Peafowl",
+      "observations": 10
+    },
+    {
+      "sourceName": "Banded martin",
+      "observations": 9
+    },
+    {
+      "sourceName": "Scaly-feathered Weaver",
+      "observations": 9
+    },
+    {
+      "sourceName": "Black-chested Prinia",
+      "observations": 6
+    },
+    {
+      "sourceName": "Madagascan Cuckoo",
+      "observations": 5
+    },
+    {
+      "sourceName": "Malachite Sunbird",
+      "observations": 5
+    },
+    {
+      "sourceName": "Black-throated Canary",
+      "observations": 4
+    },
+    {
+      "sourceName": "Rose-ringed Parakeet",
+      "observations": 4
+    },
+    {
+      "sourceName": "African Broadbill",
+      "observations": 3
+    },
+    {
+      "sourceName": "Barratt’s Warbler",
+      "observations": 3
+    },
+    {
+      "sourceName": "Black-winged Pratincole",
+      "observations": 3
+    },
+    {
+      "sourceName": "Chestnut-banded Plover",
+      "observations": 3
+    },
+    {
+      "sourceName": "Miombo Blue-eared Starling",
+      "observations": 3
+    },
+    {
+      "sourceName": "Northern Grey-headed Sparrow",
+      "observations": 3
+    },
+    {
+      "sourceName": "Black-winged Lapwing",
+      "observations": 2
+    },
+    {
+      "sourceName": "Long-tailed Widowbird",
+      "observations": 2
+    },
+    {
+      "sourceName": "Southern Tchagra",
+      "observations": 2
+    },
+    {
+      "sourceName": "Wailing Cisticola",
+      "observations": 2
+    },
+    {
+      "sourceName": "Bar-tailed Godwit",
+      "observations": 1
+    },
+    {
+      "sourceName": "Common Tern",
+      "observations": 1
+    },
+    {
+      "sourceName": "Dark-backed Weaver",
+      "observations": 1
+    },
+    {
+      "sourceName": "Double-banded courser",
+      "observations": 1
+    },
+    {
+      "sourceName": "Grey Waxbill",
+      "observations": 1
+    },
+    {
+      "sourceName": "Red-winged francolin",
+      "observations": 1
+    },
+    {
+      "sourceName": "South African Cliff Swallow",
+      "observations": 1
+    }
+  ],
+  "birds": [
+    {
+      "rank": 1,
+      "id": "bird-fork-tailed-drongo",
+      "commonName": "Fork-tailed drongo",
+      "sourceName": "Fork-tailed Drongo",
+      "scientificName": "Dicrurus adsimilis",
+      "historicalObservations": 21319
+    },
+    {
+      "rank": 2,
+      "id": "bird-ring-necked-dove",
+      "commonName": "Ring-necked dove",
+      "sourceName": "Ring-necked Dove",
+      "scientificName": "Streptopelia capicola",
+      "historicalObservations": 20339
+    },
+    {
+      "rank": 3,
+      "id": "bird-laughing-dove",
+      "commonName": "Laughing dove",
+      "sourceName": "Laughing dove",
+      "scientificName": "Streptopelia senegalensis",
+      "historicalObservations": 18164
+    },
+    {
+      "rank": 4,
+      "id": "bird-southern-yellow-billed-hornbill",
+      "commonName": "Southern yellow-billed hornbill",
+      "sourceName": "Southern Yellow-billed Hornbill",
+      "scientificName": "Tockus leucomelas",
+      "historicalObservations": 18102
+    },
+    {
+      "rank": 5,
+      "id": "bird-grey-go-away-bird",
+      "commonName": "Grey go-away-bird",
+      "sourceName": "Grey Go-away-bird",
+      "scientificName": "Corythaixoides concolor",
+      "historicalObservations": 16946
+    },
+    {
+      "rank": 6,
+      "id": "bird-lilac-breasted-roller",
+      "commonName": "Lilac-breasted roller",
+      "sourceName": "Lilac-breasted Roller",
+      "scientificName": "Coracias caudatus",
+      "historicalObservations": 16355
+    },
+    {
+      "rank": 7,
+      "id": "bird-dark-capped-bulbul",
+      "commonName": "Dark-capped bulbul",
+      "sourceName": "Dark-capped bulbul",
+      "scientificName": "Pycnonotus tricolor",
+      "historicalObservations": 16330
+    },
+    {
+      "rank": 8,
+      "id": "bird-emerald-spotted-wood-dove",
+      "commonName": "Emerald-spotted wood dove",
+      "sourceName": "Emerald-spotted Wood Dove",
+      "scientificName": "Turtur chalcospilos",
+      "historicalObservations": 16173
+    },
+    {
+      "rank": 9,
+      "id": "bird-natal-spurfowl",
+      "commonName": "Natal spurfowl",
+      "sourceName": "Natal spurfowl",
+      "scientificName": "Pternistis natalensis",
+      "historicalObservations": 16068
+    },
+    {
+      "rank": 10,
+      "id": "bird-blue-waxbill",
+      "commonName": "Blue waxbill",
+      "sourceName": "Blue Waxbill",
+      "scientificName": "Uraeginthus angolensis",
+      "historicalObservations": 16031
+    },
+    {
+      "rank": 11,
+      "id": "bird-black-backed-puffback",
+      "commonName": "Black-backed puffback",
+      "sourceName": "Black-backed Puffback",
+      "scientificName": "Dryoscopus cubla",
+      "historicalObservations": 15649
+    },
+    {
+      "rank": 12,
+      "id": "bird-rattling-cisticola",
+      "commonName": "Rattling cisticola",
+      "sourceName": "Rattling Cisticola",
+      "scientificName": "Cisticola chiniana",
+      "historicalObservations": 15558
+    },
+    {
+      "rank": 13,
+      "id": "bird-arrow-marked-babbler",
+      "commonName": "Arrow-marked babbler",
+      "sourceName": "Arrow-marked Babbler",
+      "scientificName": "Turdoides jardineii",
+      "historicalObservations": 15396
+    },
+    {
+      "rank": 14,
+      "id": "bird-egyptian-goose",
+      "commonName": "Egyptian goose",
+      "sourceName": "Egyptian Goose",
+      "scientificName": "Alopochen aegyptiaca",
+      "historicalObservations": 14574
+    },
+    {
+      "rank": 15,
+      "id": "bird-chinspot-batis",
+      "commonName": "Chinspot batis",
+      "sourceName": "Chinspot Batis",
+      "scientificName": "Batis molitor",
+      "historicalObservations": 14497
+    },
+    {
+      "rank": 16,
+      "id": "bird-tawny-flanked-prinia",
+      "commonName": "Tawny-flanked prinia",
+      "sourceName": "Tawny-flanked Prinia",
+      "scientificName": "Prinia subflava",
+      "historicalObservations": 14121
+    },
+    {
+      "rank": 17,
+      "id": "bird-red-billed-oxpecker",
+      "commonName": "Red-billed oxpecker",
+      "sourceName": "Red-billed oxpecker",
+      "scientificName": "Buphagus erythrorhynchus",
+      "historicalObservations": 13974
+    },
+    {
+      "rank": 18,
+      "id": "bird-blacksmith-lapwing",
+      "commonName": "Blacksmith lapwing",
+      "sourceName": "Blacksmith Lapwing",
+      "scientificName": "Vanellus armatus",
+      "historicalObservations": 13943
+    },
+    {
+      "rank": 19,
+      "id": "bird-cape-glossy-starling",
+      "commonName": "Cape glossy starling",
+      "sourceName": "Cape Starling",
+      "scientificName": "Lamprotornis nitens",
+      "historicalObservations": 13839
+    },
+    {
+      "rank": 20,
+      "id": "bird-bateleur",
+      "commonName": "Bateleur",
+      "sourceName": "Bateleur",
+      "scientificName": "Terathopius ecaudatus",
+      "historicalObservations": 13748
+    },
+    {
+      "rank": 21,
+      "id": "bird-southern-grey-headed-sparrow",
+      "commonName": "Southern grey-headed sparrow",
+      "sourceName": "Southern Grey-headed Sparrow",
+      "scientificName": "Passer diffusus",
+      "historicalObservations": 13463
+    },
+    {
+      "rank": 22,
+      "id": "bird-long-billed-crombec",
+      "commonName": "Long-billed crombec",
+      "sourceName": "Long-billed Crombec",
+      "scientificName": "Sylvietta rufescens",
+      "historicalObservations": 13461
+    },
+    {
+      "rank": 23,
+      "id": "bird-african-grey-hornbill",
+      "commonName": "African grey hornbill",
+      "sourceName": "African grey hornbill",
+      "scientificName": "Tockus nasutus",
+      "historicalObservations": 12991
+    },
+    {
+      "rank": 24,
+      "id": "bird-white-browed-scrub-robin",
+      "commonName": "White-browed scrub robin",
+      "sourceName": "White-browed scrub robin",
+      "scientificName": "Cercotrichas leucophrys",
+      "historicalObservations": 12968
+    },
+    {
+      "rank": 25,
+      "id": "bird-black-headed-oriole",
+      "commonName": "Black-headed oriole",
+      "sourceName": "Black-headed Oriole",
+      "scientificName": "Oriolus larvatus",
+      "historicalObservations": 12533
+    },
+    {
+      "rank": 26,
+      "id": "bird-magpie-shrike",
+      "commonName": "Magpie shrike",
+      "sourceName": "Magpie Shrike",
+      "scientificName": "Corvinella melanoleuca",
+      "historicalObservations": 12527
+    },
+    {
+      "rank": 27,
+      "id": "bird-crested-francolin",
+      "commonName": "Crested francolin",
+      "sourceName": "Crested Francolin",
+      "scientificName": "Dendroperdix sephaena",
+      "historicalObservations": 12137
+    },
+    {
+      "rank": 28,
+      "id": "bird-crested-barbet",
+      "commonName": "Crested barbet",
+      "sourceName": "Crested Barbet",
+      "scientificName": "Trachyphonus vaillantii",
+      "historicalObservations": 12102
+    },
+    {
+      "rank": 29,
+      "id": "bird-white-backed-vulture",
+      "commonName": "White-backed vulture",
+      "sourceName": "White-backed Vulture",
+      "scientificName": "Gyps africanus",
+      "historicalObservations": 11998
+    },
+    {
+      "rank": 30,
+      "id": "bird-brown-hooded-kingfisher",
+      "commonName": "Brown-hooded kingfisher",
+      "sourceName": "Brown-hooded Kingfisher",
+      "scientificName": "Halcyon albiventris",
+      "historicalObservations": 11723
+    },
+    {
+      "rank": 31,
+      "id": "bird-african-fish-eagle",
+      "commonName": "African fish eagle",
+      "sourceName": "African Fish Eagle",
+      "scientificName": "Haliaeetus vocifer",
+      "historicalObservations": 11310
+    },
+    {
+      "rank": 32,
+      "id": "bird-white-bellied-sunbird",
+      "commonName": "White-bellied sunbird",
+      "sourceName": "White-bellied Sunbird",
+      "scientificName": "Cinnyris talatala",
+      "historicalObservations": 11187
+    },
+    {
+      "rank": 33,
+      "id": "bird-helmeted-guineafowl",
+      "commonName": "Helmeted guineafowl",
+      "sourceName": "Helmeted Guineafowl",
+      "scientificName": "Numida meleagris",
+      "historicalObservations": 10721
+    },
+    {
+      "rank": 34,
+      "id": "bird-southern-black-tit",
+      "commonName": "Southern black tit",
+      "sourceName": "Southern black tit",
+      "scientificName": "Parus niger",
+      "historicalObservations": 10614
+    },
+    {
+      "rank": 35,
+      "id": "bird-orange-breasted-bushshrike",
+      "commonName": "Orange-breasted bushshrike",
+      "sourceName": "Orange-breasted Bushshrike",
+      "scientificName": "Telophorus sulfureopectus",
+      "historicalObservations": 10444
+    },
+    {
+      "rank": 36,
+      "id": "bird-swainsons-spurfowl",
+      "commonName": "Swainson’s spurfowl",
+      "sourceName": "Swainson’s spurfowl",
+      "scientificName": "Pternistis swainsonii",
+      "historicalObservations": 10362
+    },
+    {
+      "rank": 37,
+      "id": "bird-barn-swallow",
+      "commonName": "Barn swallow",
+      "sourceName": "Barn Swallow",
+      "scientificName": "Hirundo rustica",
+      "historicalObservations": 10169
+    },
+    {
+      "rank": 38,
+      "id": "bird-hadeda-ibis",
+      "commonName": "Hadeda ibis",
+      "sourceName": "Hadada Ibis",
+      "scientificName": "Bostrychia hagedash",
+      "historicalObservations": 10154
+    },
+    {
+      "rank": 39,
+      "id": "bird-little-swift",
+      "commonName": "Little swift",
+      "sourceName": "Little Swift",
+      "scientificName": "Apus affinis",
+      "historicalObservations": 9929
+    },
+    {
+      "rank": 40,
+      "id": "bird-black-collared-barbet",
+      "commonName": "Black-collared barbet",
+      "sourceName": "Black-collared Barbet",
+      "scientificName": "Lybius torquatus",
+      "historicalObservations": 9911
+    },
+    {
+      "rank": 41,
+      "id": "bird-greater-blue-eared-starling",
+      "commonName": "Greater blue-eared starling",
+      "sourceName": "Greater Blue-eared Starling",
+      "scientificName": "Lamprotornis chalybaeus",
+      "historicalObservations": 9706
+    },
+    {
+      "rank": 42,
+      "id": "bird-green-wood-hoopoe",
+      "commonName": "Green wood hoopoe",
+      "sourceName": "Green Wood Hoopoe",
+      "scientificName": "Phoeniculus purpureus",
+      "historicalObservations": 9599
+    },
+    {
+      "rank": 43,
+      "id": "bird-burchells-starling",
+      "commonName": "Burchell’s starling",
+      "sourceName": "Burchell’s Starling",
+      "scientificName": "Lamprotornis australis",
+      "historicalObservations": 9487
+    },
+    {
+      "rank": 44,
+      "id": "bird-three-banded-plover",
+      "commonName": "Three-banded plover",
+      "sourceName": "Three-banded Plover",
+      "scientificName": "Charadrius tricollaris",
+      "historicalObservations": 9425
+    },
+    {
+      "rank": 45,
+      "id": "bird-lesser-striped-swallow",
+      "commonName": "Lesser striped swallow",
+      "sourceName": "Lesser Striped Swallow",
+      "scientificName": "Hirundo abyssinica",
+      "historicalObservations": 9187
+    },
+    {
+      "rank": 46,
+      "id": "bird-black-crowned-tchagra",
+      "commonName": "Black-crowned tchagra",
+      "sourceName": "Black-crowned Tchagra",
+      "scientificName": "Tchagra senegalus",
+      "historicalObservations": 9117
+    },
+    {
+      "rank": 47,
+      "id": "bird-woodland-kingfisher",
+      "commonName": "Woodland kingfisher",
+      "sourceName": "Woodland Kingfisher",
+      "scientificName": "Halcyon senegalensis",
+      "historicalObservations": 8860
+    },
+    {
+      "rank": 48,
+      "id": "bird-red-billed-quelea",
+      "commonName": "Red-billed quelea",
+      "sourceName": "Red-billed Quelea",
+      "scientificName": "Quelea quelea",
+      "historicalObservations": 8667
+    },
+    {
+      "rank": 49,
+      "id": "bird-african-pied-wagtail",
+      "commonName": "African pied wagtail",
+      "sourceName": "African Pied Wagtail",
+      "scientificName": "Motacilla aguimp",
+      "historicalObservations": 8508
+    },
+    {
+      "rank": 50,
+      "id": "bird-water-thick-knee",
+      "commonName": "Water thick-knee",
+      "sourceName": "Water Thick-knee",
+      "scientificName": "Burhinus vermiculatus",
+      "historicalObservations": 8286
+    },
+    {
+      "rank": 51,
+      "id": "bird-red-eyed-dove",
+      "commonName": "Red-eyed dove",
+      "sourceName": "Red-eyed Dove",
+      "scientificName": "Streptopelia semitorquata",
+      "historicalObservations": 8145
+    },
+    {
+      "rank": 52,
+      "id": "bird-grey-headed-bushshrike",
+      "commonName": "Grey-headed bushshrike",
+      "sourceName": "Grey-headed Bushshrike",
+      "scientificName": "Malaconotus blanchoti",
+      "historicalObservations": 8051
+    },
+    {
+      "rank": 53,
+      "id": "bird-brown-headed-parrot",
+      "commonName": "Brown-headed parrot",
+      "sourceName": "Brown-headed Parrot",
+      "scientificName": "Poicephalus cryptoxanthus",
+      "historicalObservations": 8033
+    },
+    {
+      "rank": 54,
+      "id": "bird-brubru",
+      "commonName": "Brubru",
+      "sourceName": "Brubru",
+      "scientificName": "Nilaus afer",
+      "historicalObservations": 7989
+    },
+    {
+      "rank": 55,
+      "id": "bird-european-bee-eater",
+      "commonName": "European bee-eater",
+      "sourceName": "European Bee-eater",
+      "scientificName": "Merops apiaster",
+      "historicalObservations": 7963
+    },
+    {
+      "rank": 56,
+      "id": "bird-grey-heron",
+      "commonName": "Grey heron",
+      "sourceName": "Grey Heron",
+      "scientificName": "Ardea cinerea",
+      "historicalObservations": 7949
+    },
+    {
+      "rank": 57,
+      "id": "bird-yellow-breasted-apalis",
+      "commonName": "Yellow-breasted apalis",
+      "sourceName": "Yellow-breasted Apalis",
+      "scientificName": "Apalis flavida",
+      "historicalObservations": 7933
+    },
+    {
+      "rank": 58,
+      "id": "bird-african-palm-swift",
+      "commonName": "African palm swift",
+      "sourceName": "African Palm Swift",
+      "scientificName": "Cypsiurus parvus",
+      "historicalObservations": 7805
+    },
+    {
+      "rank": 59,
+      "id": "bird-red-billed-buffalo-weaver",
+      "commonName": "Red-billed buffalo weaver",
+      "sourceName": "Red-billed Buffalo Weaver",
+      "scientificName": "Bubalornis niger",
+      "historicalObservations": 7669
+    },
+    {
+      "rank": 60,
+      "id": "bird-pied-kingfisher",
+      "commonName": "Pied kingfisher",
+      "sourceName": "Pied Kingfisher",
+      "scientificName": "Ceryle rudis",
+      "historicalObservations": 7511
+    },
+    {
+      "rank": 61,
+      "id": "bird-brown-crowned-tchagra",
+      "commonName": "Brown-crowned tchagra",
+      "sourceName": "Brown-crowned Tchagra",
+      "scientificName": "Tchagra australis",
+      "historicalObservations": 7466
+    },
+    {
+      "rank": 62,
+      "id": "bird-green-backed-camaroptera",
+      "commonName": "Green-backed camaroptera",
+      "sourceName": "Green-backed Camaroptera",
+      "scientificName": "Camaroptera brachyura",
+      "historicalObservations": 7422
+    },
+    {
+      "rank": 63,
+      "id": "bird-kurrichane-thrush",
+      "commonName": "Kurrichane thrush",
+      "sourceName": "Kurrichane Thrush",
+      "scientificName": "Turdus libonyanus",
+      "historicalObservations": 7366
+    },
+    {
+      "rank": 64,
+      "id": "bird-golden-breasted-bunting",
+      "commonName": "Golden-breasted bunting",
+      "sourceName": "Golden-breasted Bunting",
+      "scientificName": "Emberiza flaviventris",
+      "historicalObservations": 7330
+    },
+    {
+      "rank": 65,
+      "id": "bird-red-faced-mousebird",
+      "commonName": "Red-faced mousebird",
+      "sourceName": "Red-faced Mousebird",
+      "scientificName": "Urocolius indicus",
+      "historicalObservations": 7218
+    },
+    {
+      "rank": 66,
+      "id": "bird-wire-tailed-swallow",
+      "commonName": "Wire-tailed swallow",
+      "sourceName": "Wire-tailed Swallow",
+      "scientificName": "Hirundo smithii",
+      "historicalObservations": 7051
+    },
+    {
+      "rank": 67,
+      "id": "bird-african-green-pigeon",
+      "commonName": "African green pigeon",
+      "sourceName": "African Green Pigeon",
+      "scientificName": "Treron calvus",
+      "historicalObservations": 7025
+    },
+    {
+      "rank": 68,
+      "id": "bird-hamerkop",
+      "commonName": "Hamerkop",
+      "sourceName": "Hamerkop",
+      "scientificName": "Scopus umbretta",
+      "historicalObservations": 6958
+    },
+    {
+      "rank": 69,
+      "id": "bird-red-crested-korhaan",
+      "commonName": "Red-crested korhaan",
+      "sourceName": "Red-crested Korhaan",
+      "scientificName": "Lophotis ruficrista",
+      "historicalObservations": 6943
+    },
+    {
+      "rank": 70,
+      "id": "bird-white-fronted-bee-eater",
+      "commonName": "White-fronted bee-eater",
+      "sourceName": "White-fronted Bee-eater",
+      "scientificName": "Merops bullockoides",
+      "historicalObservations": 6926
+    },
+    {
+      "rank": 71,
+      "id": "bird-golden-tailed-woodpecker",
+      "commonName": "Golden-tailed woodpecker",
+      "sourceName": "Golden-tailed Woodpecker",
+      "scientificName": "Campethera abingoni",
+      "historicalObservations": 6875
+    },
+    {
+      "rank": 72,
+      "id": "bird-red-backed-shrike",
+      "commonName": "Red-backed shrike",
+      "sourceName": "Red-backed Shrike",
+      "scientificName": "Lanius collurio",
+      "historicalObservations": 6863
+    },
+    {
+      "rank": 73,
+      "id": "bird-southern-black-flycatcher",
+      "commonName": "Southern black flycatcher",
+      "sourceName": "Southern Black Flycatcher",
+      "scientificName": "Melaenornis pammelaina",
+      "historicalObservations": 6836
+    },
+    {
+      "rank": 74,
+      "id": "bird-sombre-greenbul",
+      "commonName": "Sombre greenbul",
+      "sourceName": "Sombre Greenbul",
+      "scientificName": "Andropadus importunus",
+      "historicalObservations": 6674
+    },
+    {
+      "rank": 75,
+      "id": "bird-european-roller",
+      "commonName": "European roller",
+      "sourceName": "European Roller",
+      "scientificName": "Coracias garrulus",
+      "historicalObservations": 6526
+    },
+    {
+      "rank": 76,
+      "id": "bird-crowned-lapwing",
+      "commonName": "Crowned lapwing",
+      "sourceName": "Crowned Lapwing",
+      "scientificName": "Vanellus coronatus",
+      "historicalObservations": 6321
+    },
+    {
+      "rank": 77,
+      "id": "bird-cardinal-woodpecker",
+      "commonName": "Cardinal woodpecker",
+      "sourceName": "Cardinal Woodpecker",
+      "scientificName": "Dendropicos fuscescens",
+      "historicalObservations": 6191
+    },
+    {
+      "rank": 78,
+      "id": "bird-sabota-lark",
+      "commonName": "Sabota lark",
+      "sourceName": "Sabota Lark",
+      "scientificName": "Calendulauda sabota",
+      "historicalObservations": 6180
+    },
+    {
+      "rank": 79,
+      "id": "bird-african-paradise-flycatcher",
+      "commonName": "African paradise flycatcher",
+      "sourceName": "African Paradise Flycatcher",
+      "scientificName": "Terpsiphone viridis",
+      "historicalObservations": 6060
+    },
+    {
+      "rank": 80,
+      "id": "bird-spectacled-weaver",
+      "commonName": "Spectacled weaver",
+      "sourceName": "Spectacled Weaver",
+      "scientificName": "Ploceus ocularis",
+      "historicalObservations": 6058
+    },
+    {
+      "rank": 81,
+      "id": "bird-speckled-mousebird",
+      "commonName": "Speckled mousebird",
+      "sourceName": "Speckled Mousebird",
+      "scientificName": "Colius striatus",
+      "historicalObservations": 6020
+    },
+    {
+      "rank": 82,
+      "id": "bird-white-browed-robin-chat",
+      "commonName": "White-browed robin-chat",
+      "sourceName": "White-browed Robin-Chat",
+      "scientificName": "Cossypha heuglini",
+      "historicalObservations": 5765
+    },
+    {
+      "rank": 83,
+      "id": "bird-wahlbergs-eagle",
+      "commonName": "Wahlberg’s eagle",
+      "sourceName": "Wahlberg’s Eagle",
+      "scientificName": "Aquila wahlbergi",
+      "historicalObservations": 5577
+    },
+    {
+      "rank": 84,
+      "id": "bird-violet-backed-starling",
+      "commonName": "Violet-backed starling",
+      "sourceName": "Violet-backed Starling",
+      "scientificName": "Cinnyricinclus leucogaster",
+      "historicalObservations": 5469
+    },
+    {
+      "rank": 85,
+      "id": "bird-red-faced-cisticola",
+      "commonName": "Red-faced cisticola",
+      "sourceName": "Red-faced Cisticola",
+      "scientificName": "Cisticola erythrops",
+      "historicalObservations": 5439
+    },
+    {
+      "rank": 86,
+      "id": "bird-common-scimitarbill",
+      "commonName": "Common scimitarbill",
+      "sourceName": "Common Scimitarbill",
+      "scientificName": "Rhinopomastus cyanomelas",
+      "historicalObservations": 5427
+    },
+    {
+      "rank": 87,
+      "id": "bird-tawny-eagle",
+      "commonName": "Tawny eagle",
+      "sourceName": "Tawny Eagle",
+      "scientificName": "Aquila rapax",
+      "historicalObservations": 5393
+    },
+    {
+      "rank": 88,
+      "id": "bird-green-backed-heron",
+      "commonName": "Green-backed heron",
+      "sourceName": "Striated Heron",
+      "scientificName": "Butorides striata",
+      "historicalObservations": 5366
+    },
+    {
+      "rank": 89,
+      "id": "bird-diederik-cuckoo",
+      "commonName": "Diederik cuckoo",
+      "sourceName": "Diederik Cuckoo",
+      "scientificName": "Chrysococcyx caprius",
+      "historicalObservations": 5358
+    },
+    {
+      "rank": 90,
+      "id": "bird-white-crested-helmetshrike",
+      "commonName": "White-crested helmetshrike",
+      "sourceName": "White-crested Helmetshrike",
+      "scientificName": "Prionops plumatus",
+      "historicalObservations": 5302
+    },
+    {
+      "rank": 91,
+      "id": "bird-brown-snake-eagle",
+      "commonName": "Brown snake eagle",
+      "sourceName": "Brown Snake Eagle",
+      "scientificName": "Circaetus cinereus",
+      "historicalObservations": 5065
+    },
+    {
+      "rank": 92,
+      "id": "bird-pearl-spotted-owlet",
+      "commonName": "Pearl-spotted owlet",
+      "sourceName": "Pearl-spotted Owlet",
+      "scientificName": "Glaucidium perlatum",
+      "historicalObservations": 5014
+    },
+    {
+      "rank": 93,
+      "id": "bird-african-jacana",
+      "commonName": "African jacana",
+      "sourceName": "African Jacana",
+      "scientificName": "Actophilornis africanus",
+      "historicalObservations": 4964
+    },
+    {
+      "rank": 94,
+      "id": "bird-black-crake",
+      "commonName": "Black crake",
+      "sourceName": "Black crake",
+      "scientificName": "Zapornia flavirostra",
+      "historicalObservations": 4877
+    },
+    {
+      "rank": 95,
+      "id": "bird-little-bee-eater",
+      "commonName": "Little bee-eater",
+      "sourceName": "Little Bee-eater",
+      "scientificName": "Merops pusillus",
+      "historicalObservations": 4767
+    },
+    {
+      "rank": 96,
+      "id": "bird-southern-boubou",
+      "commonName": "Southern boubou",
+      "sourceName": "Southern Boubou",
+      "scientificName": "Laniarius ferrugineus",
+      "historicalObservations": 4766
+    },
+    {
+      "rank": 97,
+      "id": "bird-marico-sunbird",
+      "commonName": "Marico sunbird",
+      "sourceName": "Marico Sunbird",
+      "scientificName": "Cinnyris mariquensis",
+      "historicalObservations": 4736
+    },
+    {
+      "rank": 98,
+      "id": "bird-southern-masked-weaver",
+      "commonName": "Southern masked weaver",
+      "sourceName": "Southern Masked Weaver",
+      "scientificName": "Ploceus velatus",
+      "historicalObservations": 4691
+    },
+    {
+      "rank": 99,
+      "id": "bird-house-sparrow",
+      "commonName": "House sparrow",
+      "sourceName": "House Sparrow",
+      "scientificName": "Passer domesticus",
+      "historicalObservations": 4673
+    },
+    {
+      "rank": 100,
+      "id": "bird-saddle-billed-stork",
+      "commonName": "Saddle-billed stork",
+      "sourceName": "Saddle-billed Stork",
+      "scientificName": "Ephippiorhynchus senegalensis",
+      "historicalObservations": 4552
+    }
+  ]
+}

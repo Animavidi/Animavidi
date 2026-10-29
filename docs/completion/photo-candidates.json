@@ -2409,6 +2409,396 @@
       "files": [],
       "discovery": "commons-search",
       "error": "Commons: cirrussearch-too-busy-error"
+    },
+    "bird-african-green-pigeon": {
+      "name": "African green pigeon",
+      "scientificName": "Treron calvus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "bird-african-green-pigeon-1.jpg",
+          "fileTitle": "File:African Green Pigeon (Treron calva) in fruit-bearing tree.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:African_Green_Pigeon_(Treron_calva)_in_fruit-bearing_tree.jpg",
+          "author": "Joaquim Maceira from Lisboa, Portugal",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/2/28/African_Green_Pigeon_%28Treron_calva%29_in_fruit-bearing_tree.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/28/African_Green_Pigeon_%28Treron_calva%29_in_fruit-bearing_tree.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "African Green Pigeon in fruit-bearing wild fig (Ficus) in western Gambia. (Note: An incorrect binomial name appears in the title, a mistake I made when uploading it to the Commons.)",
+          "sha256": "b3f6ffccf587c12f34d9fc5466f5ea07fffb1517676785257358e91d74503404",
+          "width": 960,
+          "height": 760,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "bird-african-green-pigeon-2.jpg",
+          "fileTitle": "File:African Green Pigeon (22911316911).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:African_Green_Pigeon_(22911316911).jpg",
+          "author": "gisela gerson lohman-braun",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/African_Green_Pigeon_%2822911316911%29.jpg/960px-African_Green_Pigeon_%2822911316911%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/17/African_Green_Pigeon_%2822911316911%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "With the excellent bird guide Yankuba in Marakissa, Gambia April 2015. Very rare this Green Pigenon.",
+          "sha256": "3e678e0a03eeb05bcb023a9cdb6e2a4fdbb3dbdd931173a0cdcbfd47933b1b93",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "bird-african-grey-hornbill": {
+      "name": "African grey hornbill",
+      "scientificName": "Tockus nasutus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "bird-african-grey-hornbill-1.jpg",
+          "fileTitle": "File:African Grey Hornbill (Lophoceros nasutus epirhinus) female.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:African_Grey_Hornbill_(Lophoceros_nasutus_epirhinus)_female.jpg",
+          "author": "Charles J. Sharp",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/African_Grey_Hornbill_%28Lophoceros_nasutus_epirhinus%29_female.jpg/960px-African_Grey_Hornbill_%28Lophoceros_nasutus_epirhinus%29_female.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d3/African_Grey_Hornbill_%28Lophoceros_nasutus_epirhinus%29_female.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "African Grey Hornbill (Tockus nasutus epirhinus) female, Etosha National Park, Namibia",
+          "sha256": "e3b4ddfd976a13e615a34d327af4891d3c665cbe09f9fcd7d15f663d23470436",
+          "width": 960,
+          "height": 728,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "bird-african-grey-hornbill-2.jpg",
+          "fileTitle": "File:African grey hornbill (Tockus nasutus nasutus) male.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:African_grey_hornbill_(Tockus_nasutus_nasutus)_male.jpg",
+          "author": "Charles J. Sharp",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/African_grey_hornbill_%28Tockus_nasutus_nasutus%29_male.jpg/960px-African_grey_hornbill_%28Tockus_nasutus_nasutus%29_male.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/11/African_grey_hornbill_%28Tockus_nasutus_nasutus%29_male.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "African grey hornbill (Tockus nasutus nasutus) male, Senegal",
+          "sha256": "cdc7f21c941bdc4c9b54841a24388f0b59dcd9c5d51e6b6fa2b402c40029d0fc",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "commons-search"
+    },
+    "bird-african-jacana": {
+      "name": "African jacana",
+      "scientificName": "Actophilornis africanus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "bird-african-jacana-1.jpg",
+          "fileTitle": "File:Actophilornis africanus in Malawi 444013349.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Actophilornis_africanus_in_Malawi_444013349.jpg",
+          "author": "William Stephens",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/Actophilornis_africanus_in_Malawi_444013349.jpg/960px-Actophilornis_africanus_in_Malawi_444013349.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/6/60/Actophilornis_africanus_in_Malawi_444013349.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "African Jacana (Actophilornis africanus) in Malawi",
+          "sha256": "6735ef84e0e6e01db26fb92f54e5f345ed6f39f0573246aa18d77fc2c0504b2e",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "bird-african-jacana-2.jpg",
+          "fileTitle": "File:Actophilornis africanus - Forest Botial-Jarvis - 716628038.jpeg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Actophilornis_africanus_-_Forest_Botial-Jarvis_-_716628038.jpeg",
+          "author": "Forest Botial-Jarvis",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Actophilornis_africanus_-_Forest_Botial-Jarvis_-_716628038.jpeg/960px-Actophilornis_africanus_-_Forest_Botial-Jarvis_-_716628038.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Actophilornis_africanus_-_Forest_Botial-Jarvis_-_716628038.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Actophilornis africanus, Naivasha, Kenya, 2026-04-11 (iNaturalist).",
+          "sha256": "e098d5422b782bfec1bbaf7c4a7a8d875f377b92c453d8b5d7aa11015467f05d",
+          "width": 960,
+          "height": 645,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "bird-african-palm-swift": {
+      "name": "African palm swift",
+      "scientificName": "Cypsiurus parvus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "bird-african-palm-swift-1.jpg",
+          "fileTitle": "File:CypsiurusParvusDistribution.png",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:CypsiurusParvusDistribution.png",
+          "author": "Cactus26",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5c/CypsiurusParvusDistribution.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5c/CypsiurusParvusDistribution.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Distribution of African Palm Swift (Cypsiurus parvus) and Malagasy Palm Swift (Cypsiurus gracilis).   dark green: Cypsiurus parvus   bright red: Cypsiurus gracilisX: Some isolated records shown with crosses.Data Source: [1]",
+          "sha256": "b2b7cb0dfc64107da15bf94c5e66b7ee52cfe1a48e237a444783a830c185352d",
+          "width": 960,
+          "height": 1031,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "bird-african-palm-swift-2.jpg",
+          "fileTitle": "File:African palm swifts (Cypsiurus parvus) showing them around their palm (Hyphaene petersiana) habitat. - 52735043332.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:African_palm_swifts_(Cypsiurus_parvus)_showing_them_around_their_palm_(Hyphaene_petersiana)_habitat._-_52735043332.jpg",
+          "author": "Derek Keats",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/African_palm_swifts_%28Cypsiurus_parvus%29_showing_them_around_their_palm_%28Hyphaene_petersiana%29_habitat._-_52735043332.jpg/960px-African_palm_swifts_%28Cypsiurus_parvus%29_showing_them_around_their_palm_%28Hyphaene_petersiana%29_habitat._-_52735043332.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/75/African_palm_swifts_%28Cypsiurus_parvus%29_showing_them_around_their_palm_%28Hyphaene_petersiana%29_habitat._-_52735043332.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Something I have been trying to get to work for years, photos of African palm swifts (Cypsiurus parvus) that show them around their palm (Hyphaene petersiana) habitat. This species is found over most of sub-Saharan Africa, and is very common in South Africa. I took these yesterday, in the parking lot at Babalala Picnic site north of Shingwedzi Rest Camp in Kruger National Park. The wind direction meant that they slowed a bit as they passed the trees, and I was able to capture some images showing the palm leaves in the background.",
+          "sha256": "53caceb8aaf1896539610f6f052f6079734a1f99e1c2feed57d1364568207e3b",
+          "width": 960,
+          "height": 781,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "bird-african-paradise-flycatcher": {
+      "name": "African paradise flycatcher",
+      "scientificName": "Terpsiphone viridis",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "bird-african-paradise-flycatcher-1.jpg",
+          "fileTitle": "File:Terpsiphone viridis03.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Terpsiphone_viridis03.jpg",
+          "author": "Heather Aspeling",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Terpsiphone_viridis03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Terpsiphone_viridis03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Terpsiphone viridis - Paradise Flycatcher - Lydenburg, South Africa",
+          "sha256": "86511e4493cfebde5983e13ba45e77eba7baed0699a59325d0ed8cf81312ccae",
+          "width": 960,
+          "height": 761,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "bird-african-paradise-flycatcher-2.jpg",
+          "fileTitle": "File:2024-06-11 Manyara birds 0568.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:2024-06-11_Manyara_birds_0568.jpg",
+          "author": "Bärbel Miemietz",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/2024-06-11_Manyara_birds_0568.jpg/960px-2024-06-11_Manyara_birds_0568.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/85/2024-06-11_Manyara_birds_0568.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "African paradise flycatcher in Lake Manyara National Park in,Tanzania",
+          "sha256": "b1210f83d602273c258fc4933e2162907c09e9724ffea2541d4d694ba08e23e0",
+          "width": 960,
+          "height": 1440,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "bird-african-pied-wagtail": {
+      "name": "African pied wagtail",
+      "scientificName": "Motacilla aguimp",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "bird-african-pied-wagtail-1.jpg",
+          "fileTitle": "File:African Pied Wagtail (28106755091).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:African_Pied_Wagtail_(28106755091).jpg",
+          "author": "Becky Matsubara from El Sobrante, California",
+          "license": "CC BY 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/96/African_Pied_Wagtail_%2828106755091%29.jpg/960px-African_Pied_Wagtail_%2828106755091%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/9/96/African_Pied_Wagtail_%2828106755091%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Tarangire National Park, Tanzania",
+          "sha256": "3b2a29cb7d38376c2cfe0b1b9e89cc3ad3d46873b884aad43cc0b4e238e97005",
+          "width": 960,
+          "height": 641,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "bird-african-pied-wagtail-2.jpg",
+          "fileTitle": "File:African Pied Wagtail (6577638837).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:African_Pied_Wagtail_(6577638837).jpg",
+          "author": "Mike's Birds from Riverside, CA, US",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d7/African_Pied_Wagtail_%286577638837%29.jpg/960px-African_Pied_Wagtail_%286577638837%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d7/African_Pied_Wagtail_%286577638837%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "South Africa\n\nDec 2011",
+          "sha256": "79fd96bee095e7fc1d7313ba987c4462932a64cdf7985712d20009eb8ec96212",
+          "width": 960,
+          "height": 964,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "bird-arrow-marked-babbler": {
+      "name": "Arrow-marked babbler",
+      "scientificName": "Turdoides jardineii",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "bird-arrow-marked-babbler-1.jpg",
+          "fileTitle": "File:Arrow-marked Babbler (Turdoides jardineii) (17070824827).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arrow-marked_Babbler_(Turdoides_jardineii)_(17070824827).jpg",
+          "author": "Bernard DUPONT from FRANCE",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/10/Arrow-marked_Babbler_%28Turdoides_jardineii%29_%2817070824827%29.jpg/960px-Arrow-marked_Babbler_%28Turdoides_jardineii%29_%2817070824827%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/10/Arrow-marked_Babbler_%28Turdoides_jardineii%29_%2817070824827%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Letaba Camp, Kruger NP, SOUTH AFRICA",
+          "sha256": "f75f8e320eab4a33859175651e060807c1577676e2aecf74f9530cd3ab885157",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "bird-arrow-marked-babbler-2.jpg",
+          "fileTitle": "File:Arrow-marked Babbler (Turdoides jardineii) (12800127784).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Arrow-marked_Babbler_(Turdoides_jardineii)_(12800127784).jpg",
+          "author": "Bernard DUPONT from FRANCE",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Arrow-marked_Babbler_%28Turdoides_jardineii%29_%2812800127784%29.jpg/960px-Arrow-marked_Babbler_%28Turdoides_jardineii%29_%2812800127784%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Arrow-marked_Babbler_%28Turdoides_jardineii%29_%2812800127784%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Lower Sabie Camp, Kruger NP, SOUTH AFRICA",
+          "sha256": "689949e00b5ba6b7d464874dbfcf39d9536989ff9a298e1de9596bb88426208e",
+          "width": 960,
+          "height": 684,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "bird-barn-swallow": {
+      "name": "Barn swallow",
+      "scientificName": "Hirundo rustica",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "bird-barn-swallow-1.jpg",
+          "fileTitle": "File:20260508 barn swallow bafflin audubon PD00191.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:20260508_barn_swallow_bafflin_audubon_PD00191.jpg",
+          "author": "Paul Danese",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/20260508_barn_swallow_bafflin_audubon_PD00191.jpg/960px-20260508_barn_swallow_bafflin_audubon_PD00191.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4a/20260508_barn_swallow_bafflin_audubon_PD00191.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Barn swallow. Bafflin Audubon Sanctuary. Pomfret, CT USA",
+          "sha256": "4756537b49e71ba33a7c984480ba57d0e3fb27448c4f115fa2cfc72e34e2b49d",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "bird-barn-swallow-2.jpg",
+          "fileTitle": "File:20260817 barn swallow rocky hill meadows PD04914.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:20260817_barn_swallow_rocky_hill_meadows_PD04914.jpg",
+          "author": "Paul Danese",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/20260817_barn_swallow_rocky_hill_meadows_PD04914.jpg/960px-20260817_barn_swallow_rocky_hill_meadows_PD04914.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e5/20260817_barn_swallow_rocky_hill_meadows_PD04914.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Barn swallow. Rocky Hill Meadows. Rocky Hill, CT USA",
+          "sha256": "c5d1d74dcb844f42a28b94249f87bfbd1d5fdea88736ef172e8b92bd68eb1ae5",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "bird-bateleur": {
+      "name": "Bateleur",
+      "scientificName": "Terathopius ecaudatus",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "bird-bateleur-1.jpg",
+          "fileTitle": "File:Aigle bateleur couple RBG (1).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aigle_bateleur_couple_RBG_(1).jpg",
+          "author": "Alpha0111",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fa/Aigle_bateleur_couple_RBG_%281%29.jpg/960px-Aigle_bateleur_couple_RBG_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Aigle_bateleur_couple_RBG_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Le bateleur des savanes est un aigle Africain aux longues ailes mais à la queue très courte. C'est un rapace très coloré.",
+          "sha256": "45c1e33e0b55eeefb1baf2e4ed93bc8c3f86800cf4b0d56c1c90e00549a819bf",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "bird-bateleur-2.jpg",
+          "fileTitle": "File:Aigle bateleur couple RBG (11).jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:Aigle_bateleur_couple_RBG_(11).jpg",
+          "author": "Alpha0111",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "downloadUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Aigle_bateleur_couple_RBG_%2811%29.jpg/960px-Aigle_bateleur_couple_RBG_%2811%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Aigle_bateleur_couple_RBG_%2811%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Le bateleur des savanes est un aigle Africain aux longues ailes mais à la queue très courte. C'est un rapace très coloré.",
+          "sha256": "35cd866a92a2ae9a6bd354780333212ebbfab182e3d4979ae4cefcb3397d38bb",
+          "width": 960,
+          "height": 640,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
+    },
+    "bird-black-backed-puffback": {
+      "name": "Black-backed puffback",
+      "scientificName": "Dryoscopus cubla",
+      "checkedAt": "2026-10-29",
+      "status": "pending-visual-review",
+      "files": [
+        {
+          "fileName": "bird-black-backed-puffback-1.jpg",
+          "fileTitle": "File:690V4679 - Flickr - Lip Kee.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:690V4679_-_Flickr_-_Lip_Kee.jpg",
+          "author": "Lip Kee from Singapore, Republic of Singapore",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/1/15/690V4679_-_Flickr_-_Lip_Kee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/1/15/690V4679_-_Flickr_-_Lip_Kee.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Black-backed puffback (Dryoscopus cubla), taken on August 9, 2011 in Makgadikgadi Pans National Park in northern Botswana, using a Canon EOS-1D Mark III",
+          "sha256": "5e35bbcc7186d35ffaecf8997a472a0606d4be257e4a4f0825df957cc96fe8cd",
+          "width": 960,
+          "height": 768,
+          "status": "pending-visual-review"
+        },
+        {
+          "fileName": "bird-black-backed-puffback-2.jpg",
+          "fileTitle": "File:690V4679 - Flickr - Lip Kee, crop.jpg",
+          "sourceUrl": "https://commons.wikimedia.org/wiki/File:690V4679_-_Flickr_-_Lip_Kee,_crop.jpg",
+          "author": "Lip Kee from Singapore, Republic of Singapore",
+          "license": "CC BY-SA 2.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+          "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/38/690V4679_-_Flickr_-_Lip_Kee%2C_crop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+          "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/3/38/690V4679_-_Flickr_-_Lip_Kee%2C_crop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "description": "Black-backed puffback (Dryoscopus cubla), taken on August 9, 2011 in Makgadikgadi Pans National Park in northern Botswana, using a Canon EOS-1D Mark III",
+          "sha256": "df4722d04f55ea5b6627f806060f979f2060c4ddf8dd12f054a0b5e8bf1f654e",
+          "width": 960,
+          "height": 746,
+          "status": "pending-visual-review"
+        }
+      ],
+      "discovery": "exact-commons-category"
     }
   }
 }

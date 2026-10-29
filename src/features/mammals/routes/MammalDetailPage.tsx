@@ -1,5 +1,7 @@
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { PhotoAttribution } from '@/features/media/components/PhotoAttribution'
 import { sourcedAnimalProfiles } from '@/features/content/data/sourcedAnimalProfiles'
+import { getReviewedBirdContent } from '@/features/birds/data/reviewedBirdContent'
 import { useContent } from '@/features/content/components/ContentProvider'
 import type { CSSProperties } from 'react'
 import { useEffect, useMemo, useState } from 'react'
@@ -11,7 +13,7 @@ import { AnimalDetailIcon, type AnimalDetailIconName } from '@/features/mammals/
 import { MammalsBottomNav } from '@/features/mammals/components/MammalsBottomNav/MammalsBottomNav'
 import { MammalImage } from '@/features/mammals/components/MammalImage/MammalImage'
 import { animalDetailImagePositions } from '@/features/mammals/config/animalDetailImagePositions'
-import { animalPath, findMammal } from '@/features/mammals/model/mammals'
+import { animalPath, findMammal, findApprovedBird } from '@/features/mammals/model/mammals'
 import { aggregateAnimalSightings, type AnimalSightingSummary } from '@/features/mammals/services/animalDetailService'
 import { SightingImage } from '@/features/sightings/components/SightingImage/SightingImage'
 import { AddSightingLauncher } from '@/features/sightings/components/AddSightingLauncher/AddSightingLauncher'
@@ -32,6 +34,7 @@ function categoryLabel(value: string) {
 }
 
 export function MammalDetailPage() {
+  useWildlifeCatalogue()
   const location = useLocation()
   const [searchParams] = useSearchParams()
   const { animalId = '' } = useParams()
@@ -96,6 +99,8 @@ export function MammalDetailPage() {
 
       <article className={styles.content}>
         <PhotoAttribution animal={mammal} />
+        {getReviewedBirdContent(animalId) && editorial?.kind !== 'animal' ? <p><small><a href={getReviewedBirdContent(animalId)?.sourceUrl} target="_blank" rel="noreferrer">BirdLife South Africa profile source</a> · Checked 29 October 2026.</small></p> : null}
+        {findApprovedBird(animalId) ? <p><small>Community suggestion · Approved by the administrator. {findApprovedBird(animalId)?.sourceUrl ? <a href={findApprovedBird(animalId)?.sourceUrl} target="_blank" rel="noreferrer">Submitted source</a> : null}</small></p> : null}
         {searchParams.get('sighting') === 'created' ? <p className={styles.success} role="status">Sighting saved locally.</p> : null}
 
         <section aria-labelledby="observation-title" className={styles.observationCard}>

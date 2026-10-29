@@ -1,3 +1,4 @@
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
@@ -16,6 +17,7 @@ import styles from './SightingsPages.module.css'
 function readable(value: string) { return value ? value.replaceAll('-', ' ') : 'Not recorded' }
 
 export function SightingDetailPage() {
+  useWildlifeCatalogue()
   const navigate = useNavigate()
   const { sightingId = '' } = useParams()
   const [sighting, setSighting] = useState<Sighting>()

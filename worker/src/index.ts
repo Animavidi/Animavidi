@@ -1,4 +1,5 @@
 import { listContent, listContentHistory, saveContent } from './content.ts'
+import { handleBirds, isApprovedBird } from './birds.ts'
 import { krugerBirdChecklist } from '../../src/features/birds/data/krugerBirdChecklist.ts'
 import { getMammalId, krugerMammalChecklist } from '../../src/features/mammals/data/krugerMammalChecklist.ts'
 
@@ -35,6 +36,9 @@ export default {
       const url = new URL(request.url)
       let response: Response
       if (url.pathname.startsWith('/api/admin/') && !isAllowedOrigin(origin, env)) response = json({ error: 'Origin not allowed.' }, 403)
+      else if (url.pathname === '/api/birds' && request.method === 'GET') response = await handleBirds(request, env)
+      else if (url.pathname === '/api/bird-proposals' && request.method === 'POST') response = isAllowedOrigin(origin, env) ? await handleBirds(request, env) : json({ error: 'Origin not allowed.' },403)
+      else if (url.pathname.startsWith('/api/admin/bird-proposals')) { const session = await authenticate(request,env); response = session ? await handleBirds(request,env,session.sub) : json({ error: 'Your admin session has expired.' },401) }
       else if (request.method === 'GET' && url.pathname === '/api/content') response = await listContent(env)
       else if (request.method === 'GET' && url.pathname === '/api/admin/content') response = await authenticate(request, env) ? await listContent(env, true) : json({ error: 'Your admin session has expired.' }, 401)
       else if (request.method === 'GET' && url.pathname === '/api/photos') response = await listPhotos(env)
@@ -49,7 +53,8 @@ export default {
         }
         const contentMatch = url.pathname.match(/^\/api\/admin\/content\/(animal|route)\/([a-z0-9-]+)$/)
         if (contentMatch && request.method === 'PUT') {
-          response = await authenticate(request, env) ? await saveContent(request, env, contentMatch[1], contentMatch[2], knownMammalIds) : json({ error: 'Your admin session has expired.' }, 401)
+          if (!await authenticate(request,env)) response = json({ error: 'Your admin session has expired.' },401)
+          else { const ids = contentMatch[1] === 'animal' && await isApprovedBird(env,contentMatch[2]) ? new Set([...knownMammalIds,contentMatch[2]]) : knownMammalIds; response = await saveContent(request,env,contentMatch[1],contentMatch[2],ids) }
           return withHeaders(response, cors)
         }
         const match = url.pathname.match(/^\/api\/admin\/mammals\/([^/]+)\/photo$/)
@@ -89,7 +94,7 @@ async function sessionStatus(request: Request, env: AdminEnv): Promise<Response>
 
 async function uploadPhoto(request: Request, env: AdminEnv, mammalId: string): Promise<Response> {
   if (!await authenticate(request, env)) return json({ error: 'Your admin session has expired.' }, 401)
-  if (!knownMammalIds.has(mammalId)) return json({ error: 'Unknown mammal ID.' }, 404)
+  if (!knownMammalIds.has(mammalId) && !await isApprovedBird(env,mammalId)) return json({ error: 'Unknown species ID.' }, 404)
   const contentLength = Number(request.headers.get('Content-Length') ?? '0')
   if (contentLength > maxUploadBytes + 1024 * 128) return json({ error: 'The photo is larger than 10 MB.' }, 413)
 
@@ -121,7 +126,7 @@ function matchesImageSignature(bytes: Uint8Array, contentType: string): boolean 
 
 async function deletePhoto(request: Request, env: AdminEnv, mammalId: string): Promise<Response> {
   if (!await authenticate(request, env)) return json({ error: 'Your admin session has expired.' }, 401)
-  if (!knownMammalIds.has(mammalId)) return json({ error: 'Unknown mammal ID.' }, 404)
+  if (!knownMammalIds.has(mammalId) && !await isApprovedBird(env,mammalId)) return json({ error: 'Unknown species ID.' }, 404)
   await deletePhotoVariants(env, mammalId)
   return json({ mammalId, removed: true })
 }
@@ -133,7 +138,7 @@ async function listPhotos(env: AdminEnv): Promise<Response> {
     const page = await env.MAMMAL_PHOTOS.list({ cursor, include: ['customMetadata', 'httpMetadata'], prefix: 'mammals/' })
     for (const object of page.objects) {
       const match = object.key.match(/^mammals\/([^/]+)\/primary\.(?:jpg|png|webp)$/)
-      if (!match || !knownMammalIds.has(match[1])) continue
+      if (!match || (!knownMammalIds.has(match[1]) && !await isApprovedBird(env,match[1]))) continue
       const contentType = object.httpMetadata?.contentType ?? contentTypeForKey(object.key)
       const uploadedAt = object.customMetadata?.uploadedAt ?? object.uploaded.toISOString()
       photos[match[1]] = photoResponse(env, object.key, contentType, uploadedAt, object.etag)

@@ -97,3 +97,17 @@ Pending this checkout's baseline tests. Historical tests are described in `../Kr
 - Added dated official Skukuza access notice and linked current park information. No brochure artwork/scans/photos copied into the app. Animavidi map files, sighting persistence and user data remain unchanged.
 - Validation passed: route validator, ESLint, typecheck/production build and full Edge browser suite (all region filters, northern guide, corrected Tshokwane text, existing admin save/unpublish/history restore, reports and sightings). Desktop route screenshot inspected. No deployment or merge.
 
+
+### Batch 5: approved 100-bird scope and community moderation
+
+- User-approved first-release scope: 100 frequently recorded birds plus community additions after administrator approval; retain all 546 checklist IDs and all saved sightings.
+- Added central pending/rejected/approved proposal lifecycle, private editing/review notes, atomic approval/publication, history, fixed IDs, duplicate checks, exact-origin writes, bounded bodies, submission limits and stale-review protection. Additive migration 0002 is local only; no remote migration or deployment.
+- Public approved catalogue integrated with list/search/picker/details/sightings/map labels/Passport and offline public-catalogue cache. Initial browse uses selected100 plus approved birds; full checklist/search retained. Existing clients refresh on focus/entry and every30 seconds while visible.
+- Reproducible100-ID priority list sourced from531 published historical Kruger SABAP2-count rows at Birda. Date/effort of snapshot not established; not labelled current2026 abundance. Three verified common-name aliases used; uncertain split taxa/source names remain unmapped.
+- Seven bird photographs visually approved and credited; uncertain swift/swallow/distant eagle candidates quarantined. Starter coverage10/100 photos,2/100 sourced complete profiles. BirdLife2025 regional/global assessment distinctions retained.
+- Added explicit starter content/image gates; both remain blocked for incomplete content. Overall inventory51 packaged photos,643 missing; old exhaustive bird content requirement superseded for first release.
+- Backend tests passed for privacy, moderation, stable IDs, history, duplicates, optimistic revisions, body/origin/auth/rate checks and catalogue pagination. Browser passed independent visitor visibility only after approval, direct links/search, sighting creation and Passport after reload. Final source/visual checks recorded below.
+
+
+- Final checks: lint, typecheck/build, all functional validators and Wrangler dry-run passed. Full browser suite passed for default100/full546 toggle, existing flows, moderation across separate visitor/admin contexts, and Passport reload with simulated catalogue outage. Mobile submission/review screenshots inspected. Strict starter content/image gates correctly remain failing (10 photos,2 profiles;46/248 starter-scope image records including mammals).
+

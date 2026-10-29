@@ -10,6 +10,7 @@ await mkdir(directory, { recursive: true })
 const limit = Number(process.argv.find((arg) => arg.startsWith('--limit='))?.split('=')[1] ?? 10)
 if (!Number.isInteger(limit) || limit < 1 || limit > 1000) throw new Error('Use --limit=1..1000')
 const selectedIds = process.argv.find((arg) => arg.startsWith('--ids='))?.slice(6).split(',')
+const starterSelection = process.argv.includes('--starter') ? new Set(JSON.parse(await readFile(new URL('src/features/birds/data/starterBirds.json',root),'utf8')).birds.map((bird)=>bird.id)) : null
 const userAgent = 'AnimavidiContentReview/1.0 (https://github.com/Animavidi/Animavidi)'
 const plain = (text = '') => text.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"').trim()
 const approvedLicenses = new Set(['CC BY 2.0', 'CC BY 3.0', 'CC BY 4.0', 'CC BY-SA 2.0', 'CC BY-SA 3.0', 'CC BY-SA 4.0', 'CC0'])
@@ -24,6 +25,7 @@ async function get(url) {
 }
 let completed = 0
 for (const species of inventory.species) {
+  if (starterSelection && !starterSelection.has(species.id)) continue
   if (selectedIds ? !selectedIds.includes(species.id) : species.photo !== 'missing') continue
   if (checkpoint.candidates[species.id]?.status === 'pending-visual-review' || checkpoint.candidates[species.id]?.status === 'no-suitable-candidate') continue
   if (completed >= limit) break

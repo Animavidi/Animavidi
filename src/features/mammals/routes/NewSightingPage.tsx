@@ -1,3 +1,4 @@
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
@@ -56,6 +57,7 @@ const behaviourOptions: ReadonlyArray<{ label: string; value: SightingBehaviour 
 ]
 
 export function NewSightingPage() {
+  useWildlifeCatalogue()
   const navigate = useNavigate()
   const { animalId = '' } = useParams()
   const mammal = findMammal(animalId)

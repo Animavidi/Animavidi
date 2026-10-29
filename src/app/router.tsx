@@ -16,6 +16,8 @@ import { WelcomePage } from '@/features/welcome/routes/WelcomePage'
 const PhotoCreditsPage = lazy(() => import('@/features/media/routes/PhotoCreditsPage').then((module) => ({ default: module.PhotoCreditsPage })))
 const SafariRoutesPage = lazy(() => import('@/features/routes/routes/SafariRoutesPage').then((module) => ({ default: module.SafariRoutesPage })))
 const BirdsPage = lazy(() => import('@/features/birds/routes/BirdsPage').then((module) => ({ default: module.BirdsPage })))
+const ProposeBirdPage = lazy(() => import('@/features/birds/routes/ProposeBirdPage').then((module) => ({ default: module.ProposeBirdPage })))
+const AdminBirdProposalsPage = lazy(() => import('@/features/admin/routes/AdminBirdProposalsPage').then((module) => ({ default: module.AdminBirdProposalsPage })))
 
 const ParkMapPage = lazy(() => import('@/features/map/routes/ParkMapPage').then((module) => ({ default: module.ParkMapPage })))
 const PassportPage = lazy(() => import('@/features/passport/routes/PassportPage').then((module) => ({ default: module.PassportPage })))
@@ -33,6 +35,7 @@ const AdminAnimalsPage = lazy(() => import('@/features/admin/routes/AdminAnimals
 const AdminAnimalPage = lazy(() => import('@/features/admin/routes/AdminAnimalPage').then((module) => ({ default: module.AdminAnimalPage })))
 
 export const router = createBrowserRouter([
+  { path: '/parks/kruger/birds/propose', element: <Suspense fallback={<p role="status">Opening bird proposal…</p>}><ProposeBirdPage /></Suspense> },
   { path: '/photo-credits', element: <Suspense fallback={<p role="status">Loading photo credits…</p>}><PhotoCreditsPage /></Suspense> },
   {
     path: '/admin',
@@ -48,6 +51,7 @@ export const router = createBrowserRouter([
             { path: 'content', element: <AdminContentPage /> },
             { path: 'routes', element: <AdminRoutesPage /> },
             { path: 'reports', element: <AdminReportsPage /> },
+            { path: 'bird-proposals', element: <AdminBirdProposalsPage /> },
             { path: 'content/animals', element: <AdminAnimalsPage /> },
             { path: 'content/animals/:mammalId', element: <AdminAnimalPage /> },
           ],

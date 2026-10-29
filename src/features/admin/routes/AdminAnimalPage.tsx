@@ -1,3 +1,4 @@
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { AnimalProfileEditor } from '../components/AnimalProfileEditor'
 import { useRef, useState, type ChangeEvent } from 'react'
 import { Link, useParams } from 'react-router-dom'
@@ -13,6 +14,7 @@ import { getSightingAchievementTier } from '@/features/achievements/config/sight
 import styles from './Admin.module.css'
 
 export function AdminAnimalPage() {
+  useWildlifeCatalogue()
   const { mammalId = '' } = useParams()
   const mammal = findMammal(mammalId)
   const { manifest, refresh } = useMammalPhotoContext()

@@ -1,4 +1,6 @@
 import { getBirdPrimaryImage } from '@/assets/birds/birdPrimaryImages'
+import type { PublishedBird } from '@/features/birds/model/communityBird'
+import { getReviewedBirdContent } from '@/features/birds/data/reviewedBirdContent'
 import { sourcedAnimalProfiles } from '@/features/content/data/sourcedAnimalProfiles'
 import { krugerBirdChecklist } from '@/features/birds/data/krugerBirdChecklist'
 import { getMammalPrimaryImage } from '@/assets/mammals/mammalPrimaryImages'
@@ -111,15 +113,35 @@ export const mammals: readonly Mammal[] = krugerMammalChecklist.map((entry) => {
   }
 })
 
-export const birds: readonly Mammal[] = krugerBirdChecklist.map((entry) => ({
+export let birds: readonly Mammal[] = krugerBirdChecklist.map((entry) => ({
   aliases: [entry.commonName], categories: ['birds'], commonName: entry.commonName,
   id: entry.id, image: getBirdPrimaryImage(entry.id) ?? missingPhotoFallback, imageAlt: entry.commonName,
   imageFallback: missingPhotoFallback, officialCommonName: entry.commonName,
   overviewSection: 'birds', scientificName: entry.scientificName, sortName: entry.commonName,
-  profile: profile(`${entry.commonName} is listed in the SANParks Kruger bird checklist.`, [], '', '', '', '', '', [], false, 0),
+  profile: getReviewedBirdContent(entry.id) ? { ...getReviewedBirdContent(entry.id)!,demoProgress: { seen:false,sightingsCount:0 } } : profile(`${entry.commonName} is listed in the SANParks Kruger bird checklist.`, [], '', '', '', '', '', [], false, 0),
 }))
 
-export const wildlife: readonly Mammal[] = [...mammals, ...birds]
+const checklistBirds = birds
+let approvedBirdRecords: readonly PublishedBird[] = []
+export const findApprovedBird = (id: string) => approvedBirdRecords.find((bird) => bird.id === id)
+export let wildlife: readonly Mammal[] = [...mammals, ...birds]
+const catalogueListeners = new Set<() => void>()
+export const subscribeWildlife = (listener: () => void) => { catalogueListeners.add(listener); return () => { catalogueListeners.delete(listener) } }
+export const getWildlifeSnapshot = () => wildlife
+export function registerApprovedBirds(entries: readonly PublishedBird[]): void {
+  if (JSON.stringify(entries) === JSON.stringify(approvedBirdRecords)) return
+  approvedBirdRecords = entries
+  const ids = new Set(checklistBirds.map((bird) => bird.id))
+  const added: Mammal[] = []
+  for (const entry of entries) {
+    if (ids.has(entry.id)) continue
+    ids.add(entry.id)
+    added.push({ id: entry.id, commonName: entry.commonName, officialCommonName: entry.commonName, scientificName: entry.scientificName, aliases: [], categories: ['birds'], overviewSection: 'birds', sortName: entry.commonName, image: missingPhotoFallback, imageFallback: missingPhotoFallback, imageAlt: entry.commonName, profile: profile(entry.description, [], '', '', '', '', '', [], false, 0) })
+  }
+  birds = [...checklistBirds, ...added]
+  wildlife = [...mammals, ...birds]
+  catalogueListeners.forEach((listener) => listener())
+}
 
 // Retained API name keeps existing saved sightings and callers compatible.
 export function findMammal(id: string): Mammal | undefined {

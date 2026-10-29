@@ -2,7 +2,17 @@
 
 Status: IN PROGRESS. This branch is not a production release and does not claim that the whole Animavidi roadmap is complete.
 
-## Latest resumed checkpoint, 29 October 2026
+## Current bird-scope checkpoint, 29 October 2026
+
+The user approved a first collection of **100 frequently recorded birds plus administrator-approved community additions**, replacing the requirement to fully illustrate/profile all 546 birds for the initial release. All existing checklist IDs and sightings are retained; the remaining checklist is available through All birds and global search.
+
+- The 100-ID shortlist is reproducible from a published historical Kruger SABAP2 observation table. It is the highest 100 confidently matched source rows, not a current 2026 abundance ranking. Unresolved source taxonomy is kept apart. See `docs/completion/Bird_Community_Plan.md` and `src/features/birds/data/starterBirds.json`.
+- Starter coverage is **10/100 attributed reviewed photos and 2/100 complete sourced profiles**. Seven additional bird photos and two BirdLife South Africa profiles were added. Overall packaged image inventory is 51; complete-bird content remains unfinished.
+- The central public suggestion form and protected moderation queue are implemented. Name/description proposals are private until administrator approval; edits/rejection, duplicate checks, atomic publication, stable IDs, history, request limits and stale-write protection are covered locally. Approved birds flow into search, details, sighting creation, map labels and Passport. Public clients refresh on entry/focus and every 30 seconds while visible; the server exposes approved records immediately after approval.
+- Additive migration `0002_bird_proposals.sql` is prepared and locally tested. It has **not** been applied to the live database; no Worker/frontend deployment or production data change occurred. New forms will work live only after the coordinated migration/Worker/frontend release and integration checks.
+- Strict starter content/image release gates remain blocked. The 446 other checklist birds are retained but do not require fully expanded content for the initial release. Other mammal, map-rights and release requirements remain open. Earlier whole-catalogue coverage numbers below are historical.
+
+## Earlier resumed checkpoint, 29 October 2026
 
 This section supersedes earlier counts and connectivity observations below; historical checkpoints are retained for audit.
 

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 
 import { SponsorFooter } from '@/components/SponsorFooter/SponsorFooter'
@@ -20,6 +21,7 @@ const formatDate = (date?: string) => date
   : 'Not yet recorded'
 
 export function PassportPage() {
+  const catalogue = useWildlifeCatalogue()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const [passport, setPassport] = useState<PassportSummary>()
@@ -30,7 +32,7 @@ export function PassportPage() {
     void loadPassport().then(setPassport).catch(() => setError('Your local Passport could not be opened. Your data remains on this device.'))
   }, [])
 
-  useEffect(refresh, [refresh])
+  useEffect(refresh, [refresh,catalogue])
 
   const share = async () => {
     if (!passport) return

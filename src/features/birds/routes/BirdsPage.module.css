@@ -2,3 +2,4 @@
 .copy { margin-block-start: 2rem; }
 
 .searchInput::-webkit-search-cancel-button { display: none; }
+.views { display: flex; flex-wrap: wrap; gap: .5rem; margin-block: 1.5rem; }.views button { min-height: 2.75rem; padding: .6rem 1rem; border: 1px solid #173328; border-radius: 2rem; color: #173328; background: white; }.views button[aria-pressed=true] { color: white; background: #173328; }

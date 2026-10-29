@@ -5,10 +5,17 @@ import { krugerBirdChecklist } from '../src/features/birds/data/krugerBirdCheckl
 import { getMammalId, krugerMammalChecklist } from '../src/features/mammals/data/krugerMammalChecklist.ts'
 
 const root = fileURLToPath(new URL('../', import.meta.url))
-const species = [
+let species = [
   ...krugerMammalChecklist.map((entry) => ({ id: getMammalId(entry), name: entry.officialName, group: 'mammal' })),
   ...krugerBirdChecklist.map((entry) => ({ id: entry.id, name: entry.commonName, group: 'bird' })),
 ]
+if (process.argv.includes('--scope=starter')) {
+  const selection = JSON.parse(await readFile(join(root,'src/features/birds/data/starterBirds.json'),'utf8'))
+  const selected = new Set(selection.birds.map((bird)=>bird.id))
+  if(selected.size!==100)throw new Error('Expected 100 explicitly selected bird IDs')
+  species = species.filter((entry)=>entry.group==='mammal' || selected.has(entry.id))
+  console.log('Explicit starter release scope: 148 mammals + 100 selected birds. Remaining checklist species are retained, but not required to have complete imagery in this release.')
+}
 const packaged = new Set()
 for (const category of ['mammals', 'birds']) {
   for (const entry of await readdir(join(root, `src/assets/${category}`), { withFileTypes: true })) {

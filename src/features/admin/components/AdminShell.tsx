@@ -18,6 +18,7 @@ export function AdminShell() {
         <NavLink end to="/admin">Home</NavLink>
         <NavLink to="/admin/content">Content</NavLink>
         <NavLink to="/admin/routes">Safari Routes</NavLink>
+        <NavLink to="/admin/bird-proposals">Bird proposals</NavLink>
         <span aria-disabled="true">Users <small>Coming later</small></span>
         <NavLink to="/admin/reports">Content reports</NavLink>
       </nav>

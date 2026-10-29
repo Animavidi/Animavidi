@@ -1,0 +1,35 @@
+{
+  "bird-african-fish-eagle": {
+    "checkedAt": "2026-10-29",
+    "sources": [{"url":"https://www.birdlife.org.za/red-data-book/red-list/african-fish-eagle/","title":"BirdLife South Africa, 2025 Red Data Book: African Fish Eagle","authors":"Dalton Gibbs and Maria Paul","sections":["Identification","Ecology","Current Assessment Status","Taxonomy"]}],
+    "taxonomyNote": "The checklist retains Haliaeetus vocifer. BirdLife South Africa lists Icthyophaga vocifer for IOC and Haliaeetus vocifer for BirdLife International; these refer to the same species in this account.",
+    "content": {
+      "kind":"animal", "id":"bird-african-fish-eagle",
+      "introduction":"A waterside eagle whose adult white head contrasts with a brown body and dark wings.",
+      "identificationFeatures":["Adults have a white head, breast and tail","Yellow bare face and feet; juveniles are browner"],
+      "habitat":"Rivers, lakes and reservoirs with suitable hunting perches; also some coastal waters.",
+      "behaviour":"Hunts from perches, dives for fish and may steal prey from other waterbirds.",
+      "diet":"Mainly fish, with birds and other small animals also taken.",
+      "groupStructure":"Breeding pairs rear young; dispersing juveniles may gather together.",
+      "conservationStatus":"Regional: Least Concern (BirdLife South Africa, 2025). Its 2024 global-status table also reports Least Concern, citing BirdLife International 2020.",
+      "interestingFacts":["Rough structures on the feet help it grip slippery prey."],
+      "sourceUrl":"https://www.birdlife.org.za/red-data-book/red-list/african-fish-eagle/"
+    }
+  },
+  "bird-saddle-billed-stork": {
+    "checkedAt": "2026-10-29",
+    "sources": [{"url":"https://www.birdlife.org.za/red-data-book/red-list/saddle-billed-stork/","title":"BirdLife South Africa, 2025 Red Data Book: Saddle-billed Stork","authors":"Anonymous assessor; reviewers Andre Botha, Colleen Downs and Sanjo Rose","sections":["Identification","Ecology","Current Assessment Status","Distribution"]}],
+    "content": {
+      "kind":"animal", "id":"bird-saddle-billed-stork",
+      "introduction":"A tall black-and-white wetland stork with long legs and a striking multicoloured bill.",
+      "identificationFeatures":["Adults have contrasting black-and-white plumage and a long colourful bill","Adult males have dark irises; females have yellow irises"],
+      "habitat":"Rivers, floodplains, wetlands and pans; nests and roosts in large trees.",
+      "behaviour":"Stabs at aquatic prey in open water or flooded vegetation; generally resident, with local movements as water conditions change.",
+      "diet":"Mostly fish, supplemented by amphibians, small reptiles and other aquatic animals.",
+      "groupStructure":"Usually seen alone or in pairs.",
+      "conservationStatus":"Regional: Endangered (BirdLife South Africa, 2025). Its 2024 global-status table reports Least Concern, citing BirdLife International 2016; regional and global categories differ.",
+      "interestingFacts":["Kruger and adjacent areas form a core part of its South African range."],
+      "sourceUrl":"https://www.birdlife.org.za/red-data-book/red-list/saddle-billed-stork/"
+    }
+  }
+}

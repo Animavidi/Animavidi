@@ -57,6 +57,34 @@
     "eland": {
       "fileName": "eland-2.jpg",
       "features": "Large tan antelope, tightly spiralled horns and deep hanging dewlap; common eland form."
+    },
+    "bird-african-green-pigeon": {
+      "fileName": "bird-african-green-pigeon-2.jpg",
+      "features": "Green pigeon with maroon shoulder patch, red bill base and contrasting pale bill tip; candidate source identity matches."
+    },
+    "bird-african-grey-hornbill": {
+      "fileName": "bird-african-grey-hornbill-1.jpg",
+      "features": "Grey hornbill with pale eyebrow, long graduated tail, curved dark bill and pale casque markings."
+    },
+    "bird-african-jacana": {
+      "fileName": "bird-african-jacana-2.jpg",
+      "features": "Chestnut body, black rear crown/neck, white face, golden fore-neck and blue frontal shield."
+    },
+    "bird-african-paradise-flycatcher": {
+      "fileName": "bird-african-paradise-flycatcher-2.jpg",
+      "features": "Glossy blue-black head with blue eye-ring and bill, rufous plumage and greatly elongated rufous tail."
+    },
+    "bird-african-pied-wagtail": {
+      "fileName": "bird-african-pied-wagtail-1.jpg",
+      "features": "Black upperparts, broad white eyebrow and white wing panels, black breast and long black-and-white tail."
+    },
+    "bird-arrow-marked-babbler": {
+      "fileName": "bird-arrow-marked-babbler-1.jpg",
+      "features": "Brown-grey babbler with red-orange eye and conspicuous pale arrow-shaped markings over breast and throat."
+    },
+    "bird-black-backed-puffback": {
+      "fileName": "bird-black-backed-puffback-1.jpg",
+      "features": "Small bird with black cap/back, white underparts, pale-edged wings, red eye and compact black bill."
     }
   },
   "quarantined": {
@@ -65,6 +93,9 @@
     "bushveld-gerbil": "Similar gerbils require diagnostic/expert confirmation; not approved from external appearance.",
     "cape-hare": "Similar Lepus species cannot be confidently distinguished from this view.",
     "dwarf-mongoose": "Scale and diagnostic separation from similar small mongoose species need further review.",
-    "grey-rhebok": "Only rear view or distant animal; insufficient diagnostic detail."
+    "grey-rhebok": "Only rear view or distant animal; insufficient diagnostic detail.",
+    "bird-african-palm-swift": "First candidate is a range map. Flight view in second candidate lacks enough diagnostic details for confident species identification.",
+    "bird-barn-swallow": "Candidate birds appear immature; diagnostic throat/breast/tail details require a clearer view or further review.",
+    "bird-bateleur": "Distant nest view; image clarity and diagnostic features insufficient for promotion."
   }
 }

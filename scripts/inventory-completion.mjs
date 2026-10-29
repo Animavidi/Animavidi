@@ -7,6 +7,7 @@ import { sourcedAnimalProfiles } from '../src/features/content/data/sourcedAnima
 const root = new URL('../', import.meta.url)
 const read = async (path) => readFile(new URL(path, root), 'utf8')
 const model = await read('src/features/mammals/model/mammals.ts')
+const reviewedBirdProfiles = JSON.parse(await read('src/features/birds/data/reviewedBirdProfiles.json'))
 const legacyProfiles = new Set([...model.matchAll(/^  (?:'([^']+)'|([\w-]+)): profile\(/gm)].map((match) => match[1] ?? match[2]))
 const credits = { ...JSON.parse(await read('src/assets/birds/photo-credits.json')), ...JSON.parse(await read('src/assets/mammals/photo-credits.json')) }
 const mammals = JSON.parse(await read('src/assets/mammals/mammal-images.json'))
@@ -21,10 +22,11 @@ for (const entry of species) {
   try { await access(new URL(path, root)); entry.photo = 'packaged' } catch { entry.photo = 'missing' }
   entry.attribution = credits[entry.id] ? 'recorded-reviewed-photo' : entry.photo === 'packaged' ? 'legacy-rights-review-required' : 'missing'
   entry.photoSource = credits[entry.id]?.sourceUrl ?? mammals.find((photo) => photo.id === entry.id)?.source ?? ''
-  entry.profile = legacyProfiles.has(entry.id) ? 'legacy-profile-source-review-required' : sourcedAnimalProfiles[entry.id] ? 'sourced-profile-assessment-pending' : 'missing-reviewed-profile'
+  entry.profile = legacyProfiles.has(entry.id) ? 'legacy-profile-source-review-required' : reviewedBirdProfiles[entry.id] ? 'reviewed-profile' : sourcedAnimalProfiles[entry.id] ? 'sourced-profile-assessment-pending' : 'missing-reviewed-profile'
+  if (reviewedBirdProfiles[entry.id]) entry.profileSource = reviewedBirdProfiles[entry.id].content.sourceUrl
   if (sourcedAnimalProfiles[entry.id]) { entry.profileSource = sourcedAnimalProfiles[entry.id].content.sourceUrl; entry.pendingProfileReviews = sourcedAnimalProfiles[entry.id].pending }
   entry.taxonomyReview = entry.taxonomySource ? 'source-error-reconciled' : names.get(entry.scientificName).length > 1 ? 'shared-scientific-name' : 'not-independently-reviewed'
-  entry.tasks = [ ...(entry.photo === 'missing' ? ['source-photo', 'record-author-license', 'visual-species-review'] : []), ...(entry.attribution === 'legacy-rights-review-required' ? ['verify-legacy-photo-rights'] : []), 'verify-taxonomy', ...(entry.profile === 'missing-reviewed-profile' ? ['write-sourced-profile'] : entry.profile === 'sourced-profile-assessment-pending' ? ['verify-current-conservation-assessment'] : ['verify-profile-sources']) ]
+  entry.tasks = [ ...(entry.photo === 'missing' ? ['source-photo', 'record-author-license', 'visual-species-review'] : []), ...(entry.attribution === 'legacy-rights-review-required' ? ['verify-legacy-photo-rights'] : []), 'verify-taxonomy', ...(entry.profile === 'missing-reviewed-profile' ? ['write-sourced-profile'] : entry.profile === 'sourced-profile-assessment-pending' ? ['verify-current-conservation-assessment'] : entry.profile === 'reviewed-profile' ? [] : ['verify-profile-sources']) ]
 }
 const report = {
   schemaVersion: 1, evidence: 'packaged repository files; live content is unverified',
