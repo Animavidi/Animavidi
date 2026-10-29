@@ -1,3 +1,5 @@
+import {currentUserId} from '@/features/accounts/data/personalStorage'
+import {openJournal,committed,queueChange} from '@/features/accounts/data/journalDb'
 import type { CreateSightingInput, Sighting, UpdateSightingInput } from '@/features/sightings/model/sighting'
 
 export type SightingRepository = {
@@ -12,24 +14,8 @@ export type SightingRepository = {
   mergeBackup(items: readonly Sighting[]): Promise<number>
 }
 
-const databaseName = 'animavidi'
 const storeName = 'sightings'
-
-function openDatabase(): Promise<IDBDatabase> {
-  return new Promise((resolve, reject) => {
-    const request = indexedDB.open(databaseName, 1)
-    request.onerror = () => reject(request.error ?? new Error('Unable to open the local sightings database.'))
-    request.onsuccess = () => resolve(request.result)
-    request.onupgradeneeded = () => {
-      const database = request.result
-      if (!database.objectStoreNames.contains(storeName)) {
-        const store = database.createObjectStore(storeName, { keyPath: 'id' })
-        store.createIndex('animalId', 'animalId')
-        store.createIndex('createdAt', 'createdAt')
-      }
-    }
-  })
-}
+const openDatabase = openJournal
 
 function requestResult<T>(request: IDBRequest<T>): Promise<T> {
   return new Promise((resolve, reject) => {
@@ -43,11 +29,11 @@ export const sightingRepository: SightingRepository = {
     const database=await openDatabase()
     try {
       return await new Promise<number>((resolve,reject)=>{
-        const transaction=database.transaction(storeName,'readwrite'), store=transaction.objectStore(storeName)
+        const transaction=database.transaction([storeName,'queue','meta'],'readwrite'), store=transaction.objectStore(storeName)
         let added=0
         transaction.oncomplete=()=>resolve(added)
         transaction.onabort=()=>reject(transaction.error ?? new Error('Import failed; no sightings were changed.'))
-        for(const item of items) { const request=store.get(item.id); request.onsuccess=()=>{if(!request.result){store.add(item);added++}} }
+        for(const item of items) { const request=store.get(item.id); request.onsuccess=()=>{if(!request.result){store.add(item);queueChange(transaction,'sighting',item.id,item);added++}} }
       })
     } finally { database.close() }
   },
@@ -84,7 +70,7 @@ export const sightingRepository: SightingRepository = {
     }
     const database = await openDatabase()
     try {
-      await requestResult(database.transaction(storeName, 'readwrite').objectStore(storeName).add(sighting))
+      const tx=database.transaction([storeName,'queue','meta'],'readwrite'),done=committed(tx);tx.objectStore(storeName).add(sighting);queueChange(tx,'sighting',sighting.id,sighting);await done;window.dispatchEvent(new Event('animavidi:journal-changed'))
       return sighting
     } finally {
       database.close()
@@ -92,9 +78,11 @@ export const sightingRepository: SightingRepository = {
   },
 
   async delete(id) {
-    const database = await openDatabase()
+    const owner=currentUserId()
+    const original=await this.getById(id);if(!original)return
+    const database = await openDatabase(owner)
     try {
-      await requestResult(database.transaction(storeName, 'readwrite').objectStore(storeName).delete(id))
+      const tx=database.transaction([storeName,'queue','meta'],'readwrite'),done=committed(tx);tx.objectStore(storeName).delete(id);queueChange(tx,'sighting',id,original,true);await done;window.dispatchEvent(new Event('animavidi:journal-changed'))
     } finally { database.close() }
   },
 
@@ -113,12 +101,13 @@ export const sightingRepository: SightingRepository = {
   },
 
   async update(input) {
+    const owner=currentUserId()
     const existing = await this.getById(input.id)
     if (!existing) throw new Error('Sighting not found.')
     const sighting: Sighting = { ...input, createdAt: existing.createdAt, syncStatus: 'local', updatedAt: new Date().toISOString() }
-    const database = await openDatabase()
+    const database = await openDatabase(owner)
     try {
-      await requestResult(database.transaction(storeName, 'readwrite').objectStore(storeName).put(sighting))
+      const tx=database.transaction([storeName,'queue','meta'],'readwrite'),done=committed(tx);tx.objectStore(storeName).put(sighting);queueChange(tx,'sighting',sighting.id,sighting);await done;window.dispatchEvent(new Event('animavidi:journal-changed'))
       return sighting
     } finally { database.close() }
   },

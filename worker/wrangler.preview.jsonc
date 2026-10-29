@@ -6,7 +6,8 @@
   "compatibility_date": "2026-08-29",
   "compatibility_flags": ["nodejs_compat"],
   "workers_dev": true,
-  "preview_urls": false,
+  "triggers": {"crons":["*/30 * * * *"]},
+  "preview_urls": true,
   "assets": {"directory":"../dist","binding":"ASSETS","not_found_handling":"single-page-application","run_worker_first":["/api/*","/media/*"]},
   "d1_databases": [{"binding":"CONTENT_DB","database_name":"animavidi-beta-content","database_id":"590d8dc0-5132-4088-9e43-350f0cf489e1","migrations_dir":"migrations"}],
   "r2_buckets": [{"binding":"MAMMAL_PHOTOS","bucket_name":"animavidi-beta-photos"}]

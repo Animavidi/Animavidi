@@ -37,7 +37,7 @@ export function KrugerHomePage() {
 
         <div className={styles.heroContent}>
           <h1 id="kruger-title">Kruger<br />National Park</h1>
-          <p className={styles.location}>South Africa <span aria-hidden="true" /></p>
+          <small style={{color:"#d6bd85",letterSpacing:".12em"}}>BETA</small><p className={styles.location}>South Africa <span aria-hidden="true" /></p>
           <p className={styles.introduction}>The greatest wildlife<br />destination in Africa.</p>
         </div>
 

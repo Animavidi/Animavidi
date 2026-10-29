@@ -17,7 +17,21 @@ await server.listen()
 const playwrightModule = process.env.PLAYWRIGHT_MODULE_PATH ?? (process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES ? process.env.CODEX_PRIMARY_RUNTIME_NODE_MODULES + '/playwright/index.mjs' : 'playwright')
 const { chromium } = await import(/^[A-Za-z]:[\\/]/.test(playwrightModule) ? pathToFileURL(playwrightModule).href : playwrightModule)
 const browser = await chromium.launch({ headless: true, executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH, args: ['--no-sandbox'] })
+// This older catalogue/CMS visual suite uses a verified-user fixture.
+// Real Better Auth, isolation, offline queues and migration run in test-accounts-browser.mjs.
+async function attachUserFixture(context,id){
+  await context.route('http://127.0.0.1:5173/api/**',async(route)=>{
+    const request=route.request(),url=new URL(request.url())
+    let body={}
+    if(url.pathname==='/api/auth/get-session')body={user:{id,name:'UI regression explorer',email:id+'@example.invalid',emailVerified:true},session:{expiresAt:'2030-01-01T00:00:00.000Z'}}
+    else if(url.pathname==='/api/me/changes')body={changes:[],cursor:0,more:false}
+    else if(url.pathname==='/api/me/contributions')body={items:[]}
+    else if(request.method()==='PUT' && /^\/api\/me\/(sightings|preferences)\//.test(url.pathname)){const value=request.postDataJSON();body={id:decodeURIComponent(url.pathname.split('/').at(-1)),body:value.body,revision:value.baseRevision+1,deleted:value.deleted?1:0,updatedAt:new Date().toISOString()}}
+    await route.fulfill({status:200,contentType:'application/json',body:JSON.stringify(body)})
+  })
+}
 const page = await browser.newPage({ viewport: { width: 390, height: 844 } })
+await attachUserFixture(page.context(),'ui-regression-main')
 const objects = new Map()
 let sequence = 0
 let failPut = false
@@ -201,6 +215,7 @@ await page.getByText('No pending proposals.', { exact: true }).waitFor()
 const communityId = sqlite.prepare('SELECT id FROM approved_birds').get().id
 // New browser context has neither the admin cookie nor the catalogue cache.
 const visitorContext = await browser.newContext()
+await attachUserFixture(visitorContext,'ui-regression-visitor')
 const visitor = await visitorContext.newPage()
 await visitor.route('http://127.0.0.1:8787/**', async (route) => {
   const original = route.request()
@@ -258,22 +273,23 @@ await page.getByLabel('Explorer name').fill('Local test explorer')
 await page.getByRole('button',{name:'Save profile',exact:true}).click()
 await page.getByRole('checkbox',{name:'Skukuza',exact:true}).check()
 const backupDownload=page.waitForEvent('download')
-await page.getByRole('button',{name:'Download personal backup',exact:true}).click()
+await page.getByRole('button',{name:'Download device backup',exact:true}).click()
 const backupPath=await (await backupDownload).path()
 const backup=JSON.parse(readFileSync(backupPath,'utf8'))
 assert.equal(backup.sightings.length,1);assert.equal(backup.sightings[0].photos.length,1)
 assert.match(backup.sightings[0].photos[0].data,/^data:image\/png;base64,/)
 await page.getByLabel('Import an Animavidi backup').setInputFiles(backupPath)
-await page.getByText(/Imported 0 sightings/).waitFor()
+await page.getByText(/Imported 0 observations/).waitFor()
 await page.reload()
 assert.equal(await page.getByLabel('Explorer name').inputValue(),'Local test explorer')
 assert.equal(await page.getByRole('checkbox',{name:'Skukuza',exact:true}).isChecked(),true)
 const restoreContext=await browser.newContext()
+await attachUserFixture(restoreContext,'ui-regression-restore')
 const restorePage=await restoreContext.newPage()
 await restorePage.goto('http://127.0.0.1:5173/my-animavidi')
 await restorePage.getByLabel('Import an Animavidi backup').setInputFiles(backupPath)
-await restorePage.getByText(/Imported 1 sightings/).waitFor()
-const restored=await restorePage.evaluate(()=>new Promise((resolve,reject)=>{const request=indexedDB.open('animavidi',1);request.onsuccess=()=>{const db=request.result;const rows=db.transaction('sightings').objectStore('sightings').getAll();rows.onsuccess=async()=>{resolve({count:rows.result.length,photoBytes:Array.from(new Uint8Array(await rows.result[0].photos[0].blob.arrayBuffer()))});db.close()};rows.onerror=()=>reject(rows.error)}}))
+await restorePage.getByText(/Imported 1 observations/).waitFor()
+const restored=await restorePage.evaluate(()=>new Promise((resolve,reject)=>{const request=indexedDB.open('animavidi-account-ui-regression-restore',1);request.onsuccess=()=>{const db=request.result;const rows=db.transaction('sightings').objectStore('sightings').getAll();rows.onsuccess=async()=>{resolve({count:rows.result.length,photoBytes:Array.from(new Uint8Array(await rows.result[0].photos[0].blob.arrayBuffer()))});db.close()};rows.onerror=()=>reject(rows.error)}}))
 assert.equal(restored.count,1);assert.deepEqual(Buffer.from(restored.photoBytes),Buffer.from(png,'base64'))
 await restoreContext.close()
 console.log('Contribution photo moderation, immutable attribution, private/public image decoding, profile/camps persistence and lossless private-photo backup/import passed.')

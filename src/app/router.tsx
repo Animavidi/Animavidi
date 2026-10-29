@@ -1,3 +1,7 @@
+import {InstallPage} from '@/features/accounts/routes/InstallPage'
+import {AccountGuard} from '@/features/accounts/components/AccountGuard'
+import {AccountAccessPage} from '@/features/accounts/routes/AccountAccessPage'
+import type {RouteObject} from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 
@@ -35,7 +39,7 @@ const AdminContentPage = lazy(() => import('@/features/admin/routes/AdminContent
 const AdminAnimalsPage = lazy(() => import('@/features/admin/routes/AdminAnimalsPage').then((module) => ({ default: module.AdminAnimalsPage })))
 const AdminAnimalPage = lazy(() => import('@/features/admin/routes/AdminAnimalPage').then((module) => ({ default: module.AdminAnimalPage })))
 
-export const router = createBrowserRouter([
+const existingRoutes:RouteObject[] = [
   { path: '/my-animavidi',element:<Suspense fallback={<p role="status">Opening your journal settings…</p>}><MyAnimavidiPage /></Suspense> },
   { path: '/my-camps',element:<Navigate replace to="/my-animavidi#my-camps" /> },
   { path: '/parks/kruger/birds/propose', element: <Suspense fallback={<p role="status">Opening bird proposal…</p>}><ProposeBirdPage /></Suspense> },
@@ -159,4 +163,16 @@ export const router = createBrowserRouter([
     path: '*',
     element: <DemoUnavailablePage />,
   },
+]
+
+const publicPaths=new Set(['/','/admin'])
+const replacedPaths=new Set(['/login','/account/create'])
+export const router=createBrowserRouter([
+  {path:'/install',element:<InstallPage />},
+  {path:'/login',element:<AccountAccessPage />},
+  {path:'/account/create',element:<AccountAccessPage />},
+  {path:'/account/forgot',element:<AccountAccessPage />},
+  {path:'/account/reset',element:<AccountAccessPage />},
+  ...existingRoutes.filter(route=>publicPaths.has(route.path ?? '')),
+  {element:<AccountGuard />,children:existingRoutes.filter(route=>!publicPaths.has(route.path ?? '')&&!replacedPaths.has(route.path ?? ''))},
 ])

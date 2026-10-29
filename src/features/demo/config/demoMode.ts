@@ -1,3 +1,4 @@
+import {personalStorage} from '@/features/accounts/data/personalStorage'
 export const demoMode = {
   enabled: true,
   user: {
@@ -5,8 +6,8 @@ export const demoMode = {
     displayName: 'Animavidi Explorer',
   },
   routes: {
-    newExplorer: '/demo/new-explorer',
-    returningExplorer: '/demo/returning-explorer',
+    newExplorer: '/account/create',
+    returningExplorer: '/login',
     unavailable: '/full-version',
   },
 } as const
@@ -14,15 +15,15 @@ export const demoMode = {
 export const demoUserDisplayNameKey = 'animavidi:demo-user-display-name'
 
 export function activateDemoUser() {
-  localStorage.setItem('animavidi:onboarding-complete', 'true')
-  localStorage.setItem('animavidi:demo-user', demoMode.user.id)
-  localStorage.setItem(demoUserDisplayNameKey, demoMode.user.displayName)
+  personalStorage.setItem('animavidi:onboarding-complete', 'true')
+  personalStorage.setItem('animavidi:demo-user', demoMode.user.id)
+  personalStorage.setItem(demoUserDisplayNameKey, demoMode.user.displayName)
 }
 
 export function getDemoUserDisplayName() {
-  const storedName = localStorage.getItem(demoUserDisplayNameKey)?.trim()
+  const storedName = personalStorage.getItem(demoUserDisplayNameKey)?.trim()
   if (storedName) return storedName
 
-  const storedUserId = localStorage.getItem('animavidi:demo-user')
+  const storedUserId = personalStorage.getItem('animavidi:demo-user')
   return storedUserId === demoMode.user.id ? demoMode.user.displayName : null
 }

@@ -2,7 +2,7 @@ import { spawnSync } from 'node:child_process'
 import { readFileSync,writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 const root=fileURLToPath(new URL('../',import.meta.url))
-const result=spawnSync(process.platform==='win32' ? 'pnpm.cmd' : 'pnpm',['build'],{cwd:root,stdio:'inherit',shell:process.platform==='win32',env:{...process.env,VITE_ADMIN_API_BASE_URL:'same-origin'}})
+const result=spawnSync(process.platform==='win32' ? 'pnpm.cmd build' : 'pnpm',process.platform==='win32'?[]:['build'],{cwd:root,stdio:'inherit',shell:process.platform==='win32',env:{...process.env,VITE_ADMIN_API_BASE_URL:'same-origin'}})
 if(result.status!==0)process.exit(result.status ?? 1)
 // Wrangler parses _redirects even when excluded from the uploaded assets.
 // Override only the generated file. public/_redirects stays intact for Vercel.

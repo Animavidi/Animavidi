@@ -1,3 +1,4 @@
+import {useJournalRevision} from '@/features/accounts/components/useJournalRevision'
 import { useCallback, useEffect, useState } from 'react'
 import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
@@ -21,6 +22,7 @@ const formatDate = (date?: string) => date
   : 'Not yet recorded'
 
 export function PassportPage() {
+  const journalRevision=useJournalRevision()
   const catalogue = useWildlifeCatalogue()
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
@@ -32,7 +34,7 @@ export function PassportPage() {
     void loadPassport().then(setPassport).catch(() => setError('Your local Passport could not be opened. Your data remains on this device.'))
   }, [])
 
-  useEffect(refresh, [refresh,catalogue])
+  useEffect(refresh, [refresh,catalogue,journalRevision])
 
   const share = async () => {
     if (!passport) return
@@ -79,7 +81,7 @@ export function PassportPage() {
         <button className={styles.share} onClick={() => void share()}><PassportIcon name="share" /> <span>Share</span></button>
       </header>
       {shareStatus ? <p className={styles.toast} role="status">{shareStatus}</p> : null}
-      <aside className={styles.localNotice}><p>Beta: your sightings and photos stay in this browser on this device. There is no account or device synchronisation. Clearing browser data removes local records.</p><Link to="/my-animavidi">My Animavidi: profile, My Camps and personal backups</Link></aside>
+      <aside className={styles.localNotice}><p>Your private journal synchronises with your account. Offline observations and photos stay safely on this device until synchronisation succeeds.</p><Link to="/my-animavidi">My Animavidi: profile, My Camps and personal backups</Link></aside>
 
       <div className={styles.document}>
         <PassportCard profile={passport.profile} />

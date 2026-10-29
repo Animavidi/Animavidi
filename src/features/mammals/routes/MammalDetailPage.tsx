@@ -1,3 +1,4 @@
+import {useJournalRevision} from '@/features/accounts/components/useJournalRevision'
 import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { BirdContributions } from '@/features/birds/components/BirdContributions'
 import { PhotoAttribution } from '@/features/media/components/PhotoAttribution'
@@ -35,6 +36,7 @@ function categoryLabel(value: string) {
 }
 
 export function MammalDetailPage() {
+  const journalRevision=useJournalRevision()
   useWildlifeCatalogue()
   const location = useLocation()
   const [searchParams] = useSearchParams()
@@ -63,7 +65,7 @@ export function MammalDetailPage() {
       setLoadState('error')
     })
     return () => { isCurrent = false }
-  }, [mammal])
+  }, [mammal,journalRevision])
 
   useEffect(() => setExpanded(false), [animalId])
 

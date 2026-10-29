@@ -7,7 +7,7 @@ CREATE INDEX av_account_user ON av_account(userId);
 CREATE TABLE av_verification(id TEXT PRIMARY KEY,identifier TEXT NOT NULL,value TEXT NOT NULL,expiresAt INTEGER NOT NULL,createdAt INTEGER NOT NULL,updatedAt INTEGER NOT NULL);
 CREATE INDEX av_verification_identifier ON av_verification(identifier);
 CREATE TABLE av_auth_rate(id TEXT PRIMARY KEY,key TEXT NOT NULL UNIQUE,count INTEGER NOT NULL,lastRequest INTEGER NOT NULL);
-CREATE TABLE av_deletion_queue(user_id TEXT PRIMARY KEY,ready INTEGER NOT NULL DEFAULT 0);
+CREATE TABLE av_deletion_queue(user_id TEXT PRIMARY KEY,ready INTEGER NOT NULL DEFAULT 0,contributions TEXT NOT NULL DEFAULT '[]');
 
 CREATE TABLE av_sightings(user_id TEXT NOT NULL REFERENCES av_user(id) ON DELETE CASCADE,id TEXT NOT NULL,body TEXT NOT NULL CHECK(json_valid(body)),revision INTEGER NOT NULL DEFAULT 1,deleted INTEGER NOT NULL DEFAULT 0,mutation_id TEXT NOT NULL,updated_at TEXT NOT NULL,PRIMARY KEY(user_id,id));
 CREATE TABLE av_preferences(user_id TEXT NOT NULL REFERENCES av_user(id) ON DELETE CASCADE,id TEXT NOT NULL,body TEXT NOT NULL CHECK(json_valid(body)),revision INTEGER NOT NULL DEFAULT 1,deleted INTEGER NOT NULL DEFAULT 0,mutation_id TEXT NOT NULL,updated_at TEXT NOT NULL,PRIMARY KEY(user_id,id));

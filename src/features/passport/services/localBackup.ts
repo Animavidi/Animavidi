@@ -1,17 +1,23 @@
+import {currentUserId} from '@/features/accounts/data/personalStorage'
+import {personalStorage} from '@/features/accounts/data/personalStorage'
 import { sightingRepository } from '@/features/sightings/data/sightingRepository'
 import type { Sighting, SightingPhoto } from '@/features/sightings/model/sighting'
 
 const toDataUrl=(blob:Blob)=>new Promise<string>((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>typeof reader.result==='string' ? resolve(reader.result) : reject(new Error('Invalid photograph export.'));reader.onerror=()=>reject(new Error('Could not export a photograph.'));reader.readAsDataURL(blob)})
 const preferenceKeys=['animavidi:onboarding-complete','animavidi:demo-user-display-name','animavidi:profile-name','animavidi:visited-camps','animavidi.achievementSoundsEnabled','animavidi.achievement.bigFiveCompletedCelebrated','animavidi.achievements.species.v1']
 export async function exportLocalBackup():Promise<Blob> {
-  const sightings=await sightingRepository.getAll()
+  const owner=currentUserId();const sightings=await sightingRepository.getAll()
+  if(currentUserId()!==owner)throw new Error('Account changed; export stopped.')
   const rows=await Promise.all(sightings.map(async(item)=>({...item,photos:await Promise.all(item.photos.map(async(photo)=>({id:photo.id,name:photo.name,type:photo.type,data:await toDataUrl(photo.blob)})))})))
-  return new Blob([JSON.stringify({format:'animavidi-local-backup',version:1,exportedAt:new Date().toISOString(),sightings:rows,preferences:Object.fromEntries(preferenceKeys.map((key)=>[key,localStorage.getItem(key)]))})],{type:'application/json'})
+  if(currentUserId()!==owner)throw new Error('Account changed; export stopped.')
+  return new Blob([JSON.stringify({format:'animavidi-local-backup',version:1,exportedAt:new Date().toISOString(),sightings:rows,preferences:Object.fromEntries(preferenceKeys.map((key)=>[key,personalStorage.getItem(key)]))})],{type:'application/json'})
 }
 export async function importLocalBackup(file:File):Promise<number> {
+  const owner=currentUserId()
   if(file.size>100*1024*1024)throw new Error('Backup exceeds the 100 MB import limit.')
   const data:unknown=JSON.parse(await file.text())
   if(!data || typeof data!=='object' || !('format' in data) || data.format!=='animavidi-local-backup' || !('version' in data) || data.version!==1 || !('sightings' in data) || !Array.isArray(data.sightings) || data.sightings.length>10000)throw new Error('Choose a supported Animavidi backup.')
+  if(currentUserId()!==owner)throw new Error('Account changed; import stopped.')
   const rows:Sighting[]=[];const ids=new Set<string>()
   for(const raw of data.sightings as unknown[]) {
     if(!raw || typeof raw!=='object')throw new Error('Invalid sighting in backup.')
@@ -29,8 +35,10 @@ export async function importLocalBackup(file:File):Promise<number> {
     }
     rows.push({...item,photos,syncStatus:'local'} as unknown as Sighting)
   }
+  if(currentUserId()!==owner)throw new Error('Account changed; import stopped.')
   const count=await sightingRepository.mergeBackup(rows)
+  if(currentUserId()!==owner)throw new Error('Account changed; imported rows remain isolated in the original account.')
   // Existing local preferences always win. A backup cannot replace another journal.
-  if('preferences' in data && data.preferences && typeof data.preferences==='object')for(const key of preferenceKeys){const value=(data.preferences as Record<string,unknown>)[key];if(typeof value==='string' && localStorage.getItem(key)===null)try{localStorage.setItem(key,value)}catch{/* Sightings are already safely committed. */}}
+  if('preferences' in data && data.preferences && typeof data.preferences==='object')for(const key of preferenceKeys){const value=(data.preferences as Record<string,unknown>)[key];if(typeof value==='string' && personalStorage.getItem(key)===null)try{personalStorage.setItem(key,value)}catch{/* Sightings are already safely committed. */}}
   return count
 }

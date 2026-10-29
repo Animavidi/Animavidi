@@ -1,3 +1,4 @@
+import {personalStorage} from '@/features/accounts/data/personalStorage'
 import { type CSSProperties, type KeyboardEvent as ReactKeyboardEvent, useEffect, useRef, useState } from 'react'
 
 import achievementTheme from '@/assets/audio/big-five-complete.wav'
@@ -19,7 +20,7 @@ type BigFiveCelebrationProps = {
 }
 
 function soundsEnabled() {
-  try { return localStorage.getItem(achievementSoundsKey) !== 'false' } catch { return true }
+  try { return personalStorage.getItem(achievementSoundsKey) !== 'false' } catch { return true }
 }
 
 export function BigFiveCelebration({ completionDate, completedAnimalId, onContinue, onViewPassport, passport }: BigFiveCelebrationProps) {
@@ -54,7 +55,7 @@ export function BigFiveCelebration({ completionDate, completedAnimalId, onContin
 
   useEffect(() => {
     dialogRef.current?.focus()
-    try { localStorage.setItem(bigFiveCelebratedKey, 'true') } catch { /* The visual remains valid without preference persistence. */ }
+    try { personalStorage.setItem(bigFiveCelebratedKey, 'true') } catch { /* The visual remains valid without preference persistence. */ }
 
     const audio = new Audio(achievementTheme)
     audioRef.current = audio
@@ -88,7 +89,7 @@ export function BigFiveCelebration({ completionDate, completedAnimalId, onContin
     }
     const next = !soundOn
     setSoundOn(next)
-    try { localStorage.setItem(achievementSoundsKey, String(next)) } catch { /* Keep the in-memory preference. */ }
+    try { personalStorage.setItem(achievementSoundsKey, String(next)) } catch { /* Keep the in-memory preference. */ }
     if (!next) { stopAudio(); setPlaybackBlocked(false) }
     else void playTheme()
   }

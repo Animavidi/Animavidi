@@ -80,7 +80,7 @@ export function LocationPage() {
           <span aria-hidden="true" className={styles.arrow}>→</span>
           <span>Start your safari</span>
         </button>
-        <p>Beta: no account is required. Sightings and personal photos are stored only in this browser on this device; they do not sync between devices.</p>
+        <p>Your verified account keeps your Safari Passport and sightings together across devices. Offline changes are saved on this device until you reconnect.</p>
 
         <section className={styles.otherParks}>
           <div className={styles.sectionTitle}><span /> <h2>Other Parks</h2> <span /></div>

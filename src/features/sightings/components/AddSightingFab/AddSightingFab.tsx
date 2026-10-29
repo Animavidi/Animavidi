@@ -1,3 +1,4 @@
+import {personalStorage} from '@/features/accounts/data/personalStorage'
 import { forwardRef, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type ReactNode, useCallback, useEffect, useRef, useState } from 'react'
 
 import styles from './AddSightingFab.module.css'
@@ -19,8 +20,8 @@ export const AddSightingFab = forwardRef<HTMLButtonElement, AddSightingFabProps>
   const timerRef = useRef<number | undefined>(undefined)
   const [expanded, setExpanded] = useState(() => {
     try {
-      if (window.localStorage.getItem(introductionKey)) return false
-      window.localStorage.setItem(introductionKey, 'true')
+      if (personalStorage.getItem(introductionKey)) return false
+      personalStorage.setItem(introductionKey, 'true')
       return true
     } catch {
       return false

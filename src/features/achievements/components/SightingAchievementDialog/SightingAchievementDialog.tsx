@@ -1,3 +1,4 @@
+import {personalStorage} from '@/features/accounts/data/personalStorage'
 import { type KeyboardEvent as ReactKeyboardEvent, useEffect, useRef } from 'react'
 
 import type { SpeciesSightingAchievement } from '@/features/achievements/model/sightingAchievement'
@@ -32,7 +33,7 @@ export function SightingAchievementDialog({ achievement, audioSrc, mammal, onCon
   useEffect(() => {
     if (!legendary || !audioSrc) return
     let enabled = true
-    try { enabled = localStorage.getItem(achievementSoundsKey) !== 'false' } catch { /* Use the enabled default. */ }
+    try { enabled = personalStorage.getItem(achievementSoundsKey) !== 'false' } catch { /* Use the enabled default. */ }
     if (!enabled) return
     const audio = new Audio(audioSrc)
     audio.loop = false

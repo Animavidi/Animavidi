@@ -1,3 +1,4 @@
+import {useJournalRevision} from '@/features/accounts/components/useJournalRevision'
 import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
@@ -17,6 +18,7 @@ import styles from './SightingsPages.module.css'
 function readable(value: string) { return value ? value.replaceAll('-', ' ') : 'Not recorded' }
 
 export function SightingDetailPage() {
+  const journalRevision=useJournalRevision()
   useWildlifeCatalogue()
   const navigate = useNavigate()
   const { sightingId = '' } = useParams()
@@ -29,7 +31,7 @@ export function SightingDetailPage() {
     let current = true
     void sightingRepository.getById(sightingId).then((record) => { if (current) { setSighting(record); setIsLoading(false) } }).catch(() => { if (current) { setError('This journal entry could not be opened.'); setIsLoading(false) } })
     return () => { current = false }
-  }, [sightingId])
+  }, [sightingId,journalRevision])
 
   async function deleteSighting() {
     if (!window.confirm('Delete this sighting permanently from this browser?')) return

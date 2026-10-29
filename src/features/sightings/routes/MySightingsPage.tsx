@@ -1,3 +1,4 @@
+import {useJournalRevision} from '@/features/accounts/components/useJournalRevision'
 import { useWildlifeCatalogue } from '@/features/birds/components/BirdCatalogueProvider'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
@@ -15,6 +16,7 @@ import styles from './SightingsPages.module.css'
 type SortOrder = 'newest' | 'oldest' | 'species'
 
 export function MySightingsPage() {
+  const journalRevision=useJournalRevision()
   useWildlifeCatalogue()
   const [searchParams] = useSearchParams()
   const [sightings, setSightings] = useState<readonly Sighting[]>([])
@@ -37,7 +39,7 @@ export function MySightingsPage() {
       })
       .catch(() => { if (isCurrent) { setError('Your local sightings could not be opened.'); setIsLoading(false) } })
     return () => { isCurrent = false }
-  }, [])
+  }, [journalRevision])
 
   const visibleSightings = useMemo(() => sightings
     .filter((sighting) => !bigFiveOnly || findMammal(sighting.animalId)?.categories.includes('big-five'))

@@ -1,0 +1,11 @@
+.access { min-height:100svh; padding:2rem 1rem; background-size:cover; background-position:center; color:#20372a; display:grid; align-content:center; gap:1.5rem; }
+.logo { justify-self:center; text-decoration:none; }
+.panel { width:min(100%,30rem); margin:auto; padding:clamp(1.2rem,5vw,2.5rem); background:#f8f5edee; border:1px solid #b9945555; border-radius:1.3rem; box-shadow:0 1rem 3rem #0004; }
+.panel h1 { font:500 clamp(2rem,6vw,2.8rem)/1.1 Georgia,serif; margin:.5rem 0 1rem; }
+.panel p { line-height:1.6; }.panel form,.panel label { display:grid; gap:.6rem; }.panel form { gap:1rem; }
+.panel input { width:100%; min-width:0; padding:.85rem; border:1px solid #aeb4a7; border-radius:.6rem; background:#fff; font:inherit; }
+.panel button { padding:.9rem 1rem; border:1px solid #b99455; border-radius:.7rem; background:#1d3828; color:#fff; font:inherit; cursor:pointer; }.panel button:disabled { opacity:.6; }
+.panel nav { display:flex; flex-wrap:wrap; align-items:center; gap:1rem; margin:1rem 0; }.panel nav button { background:transparent; color:#1d3828; padding:.4rem; }
+.eyebrow { font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:#89662f; }.state { padding:3rem; text-align:center; }
+.syncPill { position:fixed; bottom:calc(5.1rem + env(safe-area-inset-bottom)); left:.6rem; z-index:20; max-width:65vw; padding:.35rem .65rem; border-radius:1rem; background:#f8f5edf0; color:#213c2b; box-shadow:0 .2rem .6rem #0002; font-size:.7rem; }
+.migrationNotice { padding:.7rem 1rem; background:#eee3ca; color:#20372a; font-size:.85rem; }

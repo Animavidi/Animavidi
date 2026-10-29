@@ -15,6 +15,7 @@ export function BirdCatalogueProvider({ children }: { children: ReactNode }) {
     const requestGeneration = ++generation.current
     const base = getAdminApiBaseUrl()
     if (!base) { setError('Community birds are unavailable. The packaged checklist is available.'); setLoading(false); return }
+    if(!navigator.onLine){setLoading(false);return}
     try {
       const entries: PublishedBird[] = []; let cursor: number | null = null
       do {

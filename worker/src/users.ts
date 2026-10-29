@@ -10,11 +10,19 @@ export async function handleUsers(request:Request,env:UserEnv):Promise<Response>
   if(!env.CONTENT_DB || !env.BETTER_AUTH_SECRET)return json({error:'User accounts are not configured.'},503)
   try{
     if(url.pathname.startsWith('/api/auth/')){
+      if(request.method==='POST' && /\/(sign-in\/email|sign-up\/email|request-password-reset|send-verification-email)$/.test(url.pathname)){
+        const windowSize=url.pathname.endsWith('sign-in/email')?300:3600,max=url.pathname.endsWith('sign-in/email')?20:5
+        const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(env.BETTER_AUTH_SECRET),{name:'HMAC',hash:'SHA-256'},false,['sign'])
+        const bytes=await crypto.subtle.sign('HMAC',key,new TextEncoder().encode(`${request.headers.get('CF-Connecting-IP') ?? 'local'}:${url.pathname}`)),client='user-auth:'+Array.from(new Uint8Array(bytes),byte=>byte.toString(16).padStart(2,'0')).join('')
+        const result=await env.CONTENT_DB.prepare('INSERT INTO bird_submission_limits(client_key,window_start,attempts) VALUES (?,?,1) ON CONFLICT(client_key) DO UPDATE SET attempts=CASE WHEN window_start=excluded.window_start THEN attempts+1 ELSE 1 END,window_start=excluded.window_start RETURNING attempts').bind(client,Math.floor(Date.now()/1000/windowSize)).first<{attempts:number}>()
+        if(!result||result.attempts>max)return json({error:'Too many attempts. Please try again later.'},429)
+      }
       if(['sign-up/email','request-password-reset','send-verification-email'].some(path=>url.pathname.endsWith('/'+path)) && (!env.EMAIL || !env.AUTH_EMAIL_FROM))return json({error:'Account email delivery is not configured yet. Please retry when the administrator has enabled it.'},503)
       if(request.method==='POST'){const bytes=await bounded(request,16384);request=new Request(request,{body:bytes})}
       return await userAuth(env,url.origin).handler(request)
     }
     const user=await verifiedUser(request,env);if(!user)return json({error:'Sign in with a verified account to continue.'},401)
+    if(request.headers.has('X-Animavidi-Account') && request.headers.get('X-Animavidi-Account')!==user.id)return json({error:'Account changed. Retry after signing in again.'},403)
     const db=env.CONTENT_DB
     if(url.pathname==='/api/me/changes' && request.method==='GET'){
       const after=Number(url.searchParams.get('after') ?? 0);if(!Number.isSafeInteger(after)||after<0)return json({error:'Invalid cursor.'},400)
@@ -24,6 +32,12 @@ export async function handleUsers(request:Request,env:UserEnv):Promise<Response>
     if(url.pathname==='/api/me/contributions' && request.method==='GET'){
       const rows=await db.prepare('SELECT id,body,status,created_at FROM bird_proposals WHERE submitter_user_id=? ORDER BY proposal_no').bind(user.id).all<{id:string;body:string;status:string;created_at:string}>()
       return json({items:rows.results.map(row=>({id:row.id,draft:JSON.parse(row.body) as unknown,status:row.status,createdAt:row.created_at}))})
+    }
+    const ownContribution=url.pathname.match(/^\/api\/me\/contributions\/([a-f0-9-]{36})\/photo$/)
+    if(ownContribution && request.method==='GET'){
+      if(!await db.prepare('SELECT id FROM bird_proposals WHERE id=? AND submitter_user_id=?').bind(ownContribution[1],user.id).first())return json({error:'Photo not found.'},404)
+      const object=await env.MAMMAL_PHOTOS.get(`contributions/${ownContribution[1]}/photo`);if(!object)return json({error:'Photo not found.'},404)
+      return new Response(object.body,{headers:{'Content-Type':object.httpMetadata?.contentType ?? 'image/webp','Cache-Control':'private, no-store','Content-Security-Policy':"sandbox; default-src 'none'",'X-Content-Type-Options':'nosniff'}})
     }
     const photo=url.pathname.match(/^\/api\/me\/photos\/([a-f0-9-]{36})\/([a-f0-9]{64})$/)
     if(photo){
@@ -44,6 +58,12 @@ export async function handleUsers(request:Request,env:UserEnv):Promise<Response>
       }
     }
     const match=url.pathname.match(/^\/api\/me\/(sightings|preferences)\/(.+)$/)
+    if(match && request.method==='GET'){
+      const id=decodeURIComponent(match[2]),kind=match[1]==='sightings'?'sighting':'preference',table=kind==='sighting'?'av_sightings':'av_preferences'
+      if(kind==='sighting'?!uuid(id):!personalKeys.includes(id as typeof personalKeys[number]))return json({error:'Invalid record ID.'},400)
+      const row=await db.prepare(`SELECT id,body,revision,deleted,updated_at AS updatedAt FROM ${table} WHERE user_id=? AND id=?`).bind(user.id,id).first<{id:string;body:string;revision:number;deleted:number;updatedAt:string}>()
+      return row?json({...row,body:JSON.parse(row.body) as unknown}):json({error:'Record not found.'},404)
+    }
     if(match && request.method==='PUT'){
       if(!request.headers.get('Content-Type')?.includes('application/json'))return json({error:'JSON required.'},415)
       const id=decodeURIComponent(match[2]),kind=match[1]==='sightings'?'sighting':'preference',table=kind==='sighting'?'av_sightings':'av_preferences'
